@@ -1,6 +1,5 @@
-#include <stdio.h>
-int main(void)
+int	main()
 {
-	printf("TEST CHECK !\n");
+	int i = 0;
 	return (1);
 }
