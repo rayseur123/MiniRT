@@ -2,7 +2,7 @@ NAME := minirt
 
 # --- SRC/DIR --- #
 
-SRC_DIR := src/
+SRC_DIR := srcs/
 
 SRCS += minirt.c
 
@@ -73,6 +73,9 @@ re:
 
 debug: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=valgrind_readline.supp ./$(NAME)
+
+norme:
+	norminette $(SRC_DIR)$(SRCS)
 
 print-%:
 	@echo $(patsubst print-%,%,$@)=
