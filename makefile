@@ -1,77 +1,10 @@
-NAME := minishell
+NAME := minirt
 
 # --- SRC/DIR --- #
 
 SRC_DIR := src/
 
-BUILTINS_DIR := builtins/
-
-BUILTINS_SRCS :=	echo.c \
-					env.c	\
-					exit.c	\
-					export.c	\
-					ms_cd.c 	\
-					pwd_manage.c	\
-					pwd.c 			\
-					remove_cd_utils.c 	\
-					remove_cd.c 		\
-					unset.c 			\
-					utils_export.c 		\
-					utils_export2.c 		\
-
-SRCS += $(addprefix $(BUILTINS_DIR), $(BUILTINS_SRCS))
-
-EXEC_DIR :=	exec/
-
-EXEC_SRCS :=	exec.c	\
-				pipe.c 	\
-				pipe_utils.c \
-
-SRCS += $(addprefix $(EXEC_DIR), $(EXEC_SRCS))
-
-MANAGE_FILES_DIR := manage_files/
-
-MANAGE_FILES_SRCS := manage_fd.c 			\
-						manage_heredoc.c 	\
-						manage_in.c 		\
-						manage_out.c 		\
-
-SRCS += $(addprefix $(MANAGE_FILES_DIR), $(MANAGE_FILES_SRCS))
-
-PARSING_DIR  := parsing/
-
-PARSING_SRCS := alloc_expand.c 	\
-				check.c 		\
-				env_manage.c 	\
-				expand.c 		\
-				init.c 			\
-				lexer.c 		\
-				lexical_analyse.c 	\
-				parser.c 			\
-				parsing.c 			\
-				prompt.c 			\
-				quotes.c 			\
-				redirection.c 		\
-				utils_lexical_analyse.c \
-				expand_utils.c			\
-				redirection_utils.c		\
-				redirection_utils2.c	\
-
-SRCS += $(addprefix $(PARSING_DIR), $(PARSING_SRCS))
-
-TOOLS_DIR := tools/
-
-TOOLS_SRCS := command_split.c \
-				ctrl_c.c 		\
-				debug.c 		\
-				error.c 		\
-				free.c 			\
-				space.c 		\
-				utils.c 		\
-
-SRCS += $(addprefix $(TOOLS_DIR), $(TOOLS_SRCS))
-
-SRCS += minishell.c
+SRCS += minirt.c
 
 # --- LIBS TARGET --- #
 
