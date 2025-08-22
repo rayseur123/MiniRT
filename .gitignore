@@ -1,0 +1,15 @@
+gitignore
+
+.vscode
+
+.env
+
+.swp
+
+*obj*
+
+miniRT
+
+libs/libft/libft.a
+
+*.txt
