@@ -1,30 +1,81 @@
-NAME := miniRT
+NAME := minirt
 
-CC := cc
+# --- SRC/DIR --- #
 
-CFLAGS := -Wall -Wextra -Werror
+SRC_DIR := src/
 
-OBJS_DIR := objs/
-SRCS_DIR := srcs/
-SRCS := main.c
+SRCS += minirt.c
 
-SRCS := $(addprefix $(SRCS_DIR), $(SRCS))
+# --- LIBS TARGET --- #
 
-OBJS = $(SRCS:.c=.o)
+LIBS_TARGET :=			\
+	libs/libft/libft.a 	\
+
+LIBS := $(patsubst lib%.a, %, $(notdir $(LIBS_TARGET)))
+
+# --- INCLUDES --- #
+
+INCLUDES := includes/
+
+# --- OBJS/DEPS --- #
+
+OBJS_DIR := .build/objs/
+
+OBJS := $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
+
+
+DEPS := $(OBJS:.o=.d)
+
+# --- FLAGS --- #
+
+CPPFLAGS += -MMD -MP $(addprefix -I,$(INCLUDES)) \
+					 $(addprefix -I,$(addsuffix $(INCLUDES),$(dir $(LIBS_TARGET))))
+
+CFLAGS += -g3 -Wall -Wextra -Werror
+
+LFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
+			$(addprefix -l,$(LIBS)) \
+			-lreadline
+
+# --- COMPILATER --- #
+
+CC = cc
+
+# --- EXEC --- #
 
 all : $(NAME)
 
-fclean : clean
-	rm $(NAME)
+$(NAME) : $(LIBS_TARGET) $(OBJS)
+	$(CC) $^ $(LFLAGS) -o $@
+
+$(OBJS_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(LIBS_TARGET) : force
+	$(MAKE) -C $(dir $@)
+
+force:
+
+.PHONY : clean fclean all re print-% debug force
 
 clean:
-	rm -fr $(OBJS_DIR)
+	rm -rf .build
+	$(MAKE) clean -C $(dir $(LIBS_TARGET))
 
-$(NAME) : $(OBJS)
-	$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
+fclean: clean
+	rm -rf $(NAME)
+	$(MAKE) fclean -C $(dir $(LIBS_TARGET))
 
-$(OBJS_DIR)%.o: $(SRCS_DIR)%.c | $(OBJS_DIR) 
-	$(CC) $(CFLAGS) -c $< -o $@
+re:
+	$(MAKE) fclean
+	$(MAKE) all
 
-$(OBJ_D):
-	mkdir -p $(OBJ_D)
+debug: $(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=valgrind_readline.supp ./$(NAME)
+
+print-%:
+	@echo $(patsubst print-%,%,$@)=
+	@echo $($(patsubst print-%,%,$@))
+
+-include $(DEPS)
