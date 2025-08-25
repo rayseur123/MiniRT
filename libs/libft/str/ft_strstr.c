@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 15:14:16 by njooris          ###   ########.fr       */
+/*   Created: 2025/08/25 14:16:36 by njooris           #+#    #+#             */
+/*   Updated: 2025/08/25 14:21:07 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "parsing_rt.h"
 #include "libft.h"
 
-int	main(int ac, char **av)
+char	*ft_strstr(char *big, char *little)
 {
 	int	i;
+	int	j;
+	int	k;
 
-	if (ac != 2)
-		return (1);
-	if (check_name_rt_file(av[1]))
-	{
-		ft_printf("bad file extension\n");
-		return (1);
-	}
 	i = 0;
-	return (0);
+	if (!big || !little)
+		return (NULL);
+	if (ft_strlen(little) > ft_strlen(big))
+		return (NULL);
+	while (big && big[i])
+	{
+		j = 0;
+		k = i;
+		while (big[i] == little[j])
+			j++;
+		if (little[j] == '\0')
+			return (&big[k]);
+		i++;
+	}
+	return (NULL);
 }

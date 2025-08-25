@@ -1,31 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 15:14:16 by njooris          ###   ########.fr       */
+/*   Created: 2025/08/25 14:10:57 by njooris           #+#    #+#             */
+/*   Updated: 2025/08/25 15:09:40 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "parsing_rt.h"
 #include "libft.h"
 
-int	main(int ac, char **av)
+int	check_extension(char *str, char *extension)
 {
 	int	i;
+	int	j;
 
-	if (ac != 2)
-		return (1);
-	if (check_name_rt_file(av[1]))
-	{
-		ft_printf("bad file extension\n");
-		return (1);
-	}
+	j = 0;
 	i = 0;
-	return (0);
+	if (!str || !extension)
+		return (1);
+	while (str[i])
+		i++;
+	while (extension[j])
+		j++;
+	while (i > 0 && j > 0 && extension[j] == str[i])
+	{
+		j--;
+		i--;
+	}
+	if (j == 0)
+		return (0);
+	return (1);
 }
+
+int	check_name_rt_file(char *str)
+{
+	int	i;
+	
+	i = 0;
+	if (!str || ft_strlen(str) <= 3)
+		return (1);
+	return (check_extension(str, ".rt"));
+}
+

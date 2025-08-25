@@ -2,7 +2,7 @@ NAME := libft.a
 
 # --- SRC/DIR ---#
 
-INCLUDE_DIR = include/
+INCLUDE_DIR = includes/
 
 GNL_DIR := gnl/
 
@@ -66,6 +66,8 @@ STR_SRCS := ft_strchr.c \
 			ft_atoi.c \
 			ft_itoa.c \
 			ft_strlen.c \
+			ft_strstr.c \
+
 
 SRCS += $(addprefix $(STR_DIR), $(STR_SRCS))
 

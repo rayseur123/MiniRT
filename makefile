@@ -4,6 +4,12 @@ NAME := minirt
 
 SRC_DIR := srcs/
 
+PARS_DIR := parsing/
+
+PARS_SRCS := parsing.c
+
+SRCS += $(addprefix $(PARS_DIR), $(PARS_SRCS))
+
 SRCS += minirt.c
 
 # --- LIBS TARGET --- #

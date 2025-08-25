@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_objs.c                                      :+:      :+:    :+:   */
+/*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 13:29:27 by njooris          ###   ########.fr       */
+/*   Updated: 2025/08/25 15:11:38 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,16 @@ typedef struct s_camera
 	t_vec			vec;
 	uint8_t			fov;
 }	t_camera;
+
+typedef	struct s_scene
+{
+	t_camera	camera;
+	t_light		*lst_light;
+	t_plane		*lst_plane;
+	t_cylinder	*lst_cylinder;
+	t_sphere	*lst_sphere;
+	
+}	t_scene;
+
 
 #endif

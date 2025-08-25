@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   parsing_rt.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 15:14:16 by njooris          ###   ########.fr       */
+/*   Created: 2025/08/25 14:45:26 by njooris           #+#    #+#             */
+/*   Updated: 2025/08/25 14:46:33 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "parsing_rt.h"
-#include "libft.h"
+#ifndef PARSING_RT_H
+# define PARSING_RT_H
 
-int	main(int ac, char **av)
-{
-	int	i;
+int	check_name_rt_file(char *str);
 
-	if (ac != 2)
-		return (1);
-	if (check_name_rt_file(av[1]))
-	{
-		ft_printf("bad file extension\n");
-		return (1);
-	}
-	i = 0;
-	return (0);
-}
+#endif

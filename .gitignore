@@ -6,10 +6,16 @@ gitignore
 
 .swp
 
+*.o
+
+*.d
+
 *obj*
 
-miniRT
+*.gch
 
 libs/libft/libft.a
 
 *.txt
+
+miniRT
