@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct_objs.c                                      :+:      :+:    :+:   */
+/*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 13:29:27 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/01 15:57:09 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <shared_mutex>
 #include <stdint.h>
 
 #ifndef STRUCT_OBJS_H
 # define STRUCT_OBJS_H
 
-typedef struct s_point
+typedef struct s_tuple
 {
 	double	x;
 	double	y;
 	double	z;
+	bool	w;
 }	t_point;
-
-typedef struct s_vec
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vec;
 
 typedef	struct s_color_rgb
 {

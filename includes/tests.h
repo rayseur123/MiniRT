@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 13:42:31 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/03 10:45:25 by dernst            #+#    #+#             */
+/*   Updated: 2025/09/03 10:46:16 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// int	main(void)
-// {
-// 	int	i;
-//
-// 	i = 0;
-// 	return (1);
-// }
+#ifndef _TEST_H
+# define _TEST_H
+
+int	unit_test1(void);
+int	unit_test2(void);
+int	unit_test3(void);
+
+#endif 

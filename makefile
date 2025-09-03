@@ -4,7 +4,10 @@ NAME := minirt
 
 SRC_DIR := srcs/
 
-SRCS += minirt.c
+SRCS += minirt.c \
+		units.c	 \
+		test.c	 \
+		print.c	 \
 
 # --- LIBS TARGET --- #
 
