@@ -11,37 +11,102 @@
 /* ************************************************************************** */
 
 #include "units.h"
-#include "tests.h"
 #include "stdlib.h"
+#include "libft.h"
+#include "stdio.h"
+#include <inttypes.h>
+#include "tests.h"
 
-unsigned int	prepare_units(t_function **function)
+unsigned int	init_function(t_function **function, char *name)
 {
-	t_unit *unit1;
+	*function = malloc(sizeof(t_function));
+	if (!*function)
+		return (1);
+	(*function)->name = name;
+	(*function)->nb_test = 0;
+	(*function)->nb_success = 0;
+	(*function)->next = NULL;
+	(*function)->units = NULL;
+	return (0);
+}
 
-	*function = malloc(4 * sizeof(*function));
-	(*function)[0].name = "Function1";
-	(*function)[0].nb_success = 0;
-	(*function)[1].name = NULL;
-
-	unit1 = malloc(4 * sizeof(t_unit));
-
-	unit1[0].name = "Test1";
-	unit1[0].test = &unit_test1;
-	unit1[1].name = "Test2";
-	unit1[1].test = &unit_test2;
-	unit1[2].name = "Test3";
-	unit1[2].test = &unit_test3;
-	unit1[3].name = NULL;
-
-	function[0]->units = unit1;
+unsigned int	init_unit(t_unit **unit, char *name, int (test)(void))
+{
+	*unit = malloc(sizeof(t_unit));
+	if (!*unit)
+		return (1);
+	(*unit)->name = name;
+	(*unit)->succes = 0;
+	(*unit)->test = test;
+	(*unit)->next = NULL;
 	return (0);
 }
 
 
-unsigned int	adding_test(t_function **function, )
+unsigned int	adding_function(t_function **head, char *name)
 {
-	
+	t_function *new;
+
+	new = (t_function *)malloc(sizeof(t_function));
+	if (!new)
+		return (1);
+	new->name = name;
+	new->next = *head;
+	new->nb_success = 0;
+	new->nb_test = 0;
+	*head = new;
+	return (0);
 }
+
+unsigned int	adding_unit(t_unit **head, char *name, int (test)(void))
+{
+	t_unit *new;
+	
+	new = (t_unit *)malloc(sizeof(t_unit));
+	if (!new)
+		return (1);
+	new->name = name;
+	new->test = test;
+	new->next = *head;
+	new->succes = 0;
+	*head = new;
+	return (0);
+}
+
+//
+t_function	*search_function(t_function **function, char *name)
+{
+	t_function *search;
+
+	if (!*function)
+		return (NULL);
+	search = *function;
+	while (search && ft_strncmp(search->name, name, ft_strlen(name)) != 0)
+		search = search->next;
+	if (search)
+		return (search);
+	return (NULL);
+}
+
+unsigned int	adding_test(t_function **function, char *name_func, char *name_test, int (test)(void))
+{
+	t_function *search;
+
+	search = search_function(function, name_func);
+	if (!search)
+	{
+		if (!*function)
+			init_function(function, name_func);
+		else
+			adding_function(function, name_func);
+		
+		init_unit(&(*function)->units, name_test, test);
+	}
+	else
+		adding_unit(&search->units, name_test, test);
+	return (0);
+}
+
 
 void	launch_unit(t_function *function, t_unit *unit)
 {
@@ -51,42 +116,47 @@ void	launch_unit(t_function *function, t_unit *unit)
 		function->nb_success++;
 	}
 	else
-	{
-		function->units->succes = 0;
-	}
+		unit->succes = 0;
 	function->nb_test++;
 	display_unit(*unit);
 }
 
-unsigned int	select_unit(t_function **functions)
+unsigned int	select_unit(t_function **head)
 {
+	t_function	*tmp_func;
+	t_unit		*tmp_unit;
 
-	unsigned int i;
-	unsigned int j;
+	tmp_func = *head;
 
-	i = 0;
-	j = 0;
-	while ((*functions)[i].name != NULL)
+	while (tmp_func)
 	{
-		display_function((*functions)[i].name);
-		while ((*functions)[i].units[j].name != NULL)
+		display_function(tmp_func->name);
+		tmp_unit = tmp_func->units;
+		while (tmp_unit)
 		{
-			launch_unit((functions)[i], &functions[i]->units[j]);
-			j++;
+			launch_unit(tmp_func, tmp_unit);
+			tmp_unit = tmp_unit->next;
 		}
-		display_stats((*functions)[i]);
-		j = 0;
-		i++;
+		display_stats(*tmp_func);
+		tmp_func = tmp_func->next;
 	}
 	return (0);
 }
+
+// PROBLEME IF NAME FUNCTION DONT HAVE THE SAME SIZE : FUNCTION AND FUNCTION5
+// FREE THE MALLOC AND FIX LEAK
 
 int	main(void)
 {
 	t_function *function;
 
-	if (prepare_units(&function))
-		return (1);
+	function = NULL;
+	adding_test(&function, "Function1", "AHHHH1", &unit_test1);
+	adding_test(&function, "Function2", "BBBB1", &unit_test2);
+	adding_test(&function, "Function2", "BBBBB2", &unit_test3);
+	adding_test(&function, "Function2", "BBBB3", &unit_test2);
+	adding_test(&function, "Function3", "AHHH2", &unit_test1);
+	adding_test(&function, "Function1", "AHHH3", &unit_test1);
 	select_unit(&function);
 	return (0);
 }

@@ -23,12 +23,33 @@ void	display_unit(t_unit unit)
 {
 	printf("%s = ", unit.name);
 	if (unit.succes == 1)
-	  	printf("{SUCCESS}\n");
+	  	printf(PASS);
 	else 
-		printf("{FAILURE}\n");
+		printf(FAIL);
 }
 
 void	display_stats(t_function function)
 {
 	printf("\n%d / %d\n\n", function.nb_success, function.nb_test);
 }
+
+void	display_chain_f(void *head)
+{
+	t_function *tmp_func;
+	t_unit *tmp_test;
+
+	tmp_func = head;
+
+	while (tmp_func)
+	{
+		printf("%s\n", tmp_func->name);
+		tmp_test = tmp_func->units;
+		while (tmp_test)
+		{
+			printf("\t%s\n", tmp_test->name);
+			tmp_test = tmp_test->next;
+		}
+		tmp_func = tmp_func->next;
+	}
+}
+
