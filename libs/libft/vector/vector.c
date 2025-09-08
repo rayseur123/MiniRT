@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_rt.h                                       :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 14:45:26 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 14:46:33 by njooris          ###   ########.fr       */
+/*   Created: 2025/08/26 13:38:18 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/02 11:56:56 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_RT_H
-# define PARSING_RT_H
+#include <unistd.h>
+#include <stdlib.h>
+#include "vector.h"
 
-int	check_name_rt_file(char *str);
+void	*vector_init(size_t element_size, void (*del)(void *))
+{
+	t_vcthead	*vtchead;
 
-#endif
+	vtchead = malloc(sizeof (t_vcthead));
+	if (!vtchead)
+		return (NULL);
+	vtchead->capacity = 0;
+	vtchead->size = 0;
+	vtchead->element_size = element_size;
+	vtchead->del = del;
+	return (&vtchead->data);
+}

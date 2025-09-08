@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   test.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 11:32:17 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/03 14:35:44 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "scene.h"
-#include "libft.h"
-#include "test.h"
+#ifndef TEST_H
+# define TEST_H
 
-int	main()
-{		
-	return (0);
-}
+void	test(void);
+
+int	test_set_vector(void);
+int	test_set_point(void);
+
+#endif

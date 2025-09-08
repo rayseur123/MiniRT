@@ -45,6 +45,7 @@ MEM_SRCS := ft_memcpy.c \
 			ft_memcmp.c \
 			ft_memchr.c \
 			ft_memmove.c \
+			ft_realloc.c \
 
 SRCS += $(addprefix $(MEM_DIR), $(MEM_SRCS))
 
@@ -67,9 +68,22 @@ STR_SRCS := ft_strchr.c \
 			ft_itoa.c \
 			ft_strlen.c \
 			ft_strstr.c \
-
+			ft_atod.c 	\
+			ft_atof.c 	\
+			ft_free_split.c \
 
 SRCS += $(addprefix $(STR_DIR), $(STR_SRCS))
+
+VECTOR_DIR := vector/
+
+VECTOR_SRCS := vector.c \
+		vector_add.c \
+		vector_memory_manage.c\
+		vector_geter.c \
+		vector_del.c \
+
+
+SRCS += $(addprefix $(VECTOR_DIR), $(VECTOR_SRCS))
 
 OTHER_DIR := other/
 

@@ -6,85 +6,85 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/08/25 15:11:38 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/08 11:30:50 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
+#include "libft.h"
+#include "mlx.h"
+#include "mlx_int.h"
+#include <stdint.h>
+#include <X11/X.h>
 
 #ifndef STRUCT_OBJS_H
 # define STRUCT_OBJS_H
 
-typedef struct s_point
+# define EPSILON 0.00001
+# define WIDTH_CANVA 1000;
+# define HEIGHT_CANVA 1000;
+typedef struct s_rgb
+{
+	int8_t r;
+	int8_t g;
+	int8_t b;
+}	t_rgb;
+
+typedef struct s_canvas
+{
+	uint32_t	width;
+	uint32_t	height;
+	void		*mlx;
+	void		*window;
+	void		*canva;
+}	t_canvas;
+
+typedef struct s_tuple
 {
 	double	x;
 	double	y;
 	double	z;
-}	t_point;
+	uint8_t	w;
+}	t_tuple;
 
-typedef struct s_vec
+typedef struct s_projectile
 {
-	double	x;
-	double	y;
-	double	z;
-}	t_vec;
+	t_tuple	position;
+	t_tuple velocity;
+}	t_projectile;
 
-typedef	struct s_color_rgb
+typedef struct s_environment
 {
-	uint8_t	r;
-	uint8_t g;
-	uint8_t b;
-}	t_color_rgb;
+	t_tuple	gravity;
+	t_tuple	wind;
+}	t_environment;
 
-typedef	struct s_sphere
-{
-	t_point coordinate;
-	t_color_rgb	rgb;
-	double	diameter;
-}	t_sphere;
+t_tuple	set_vector(double x, double y, double z);
+t_tuple	set_point(double x, double y, double z);
 
-typedef	struct s_cylinder
-{
-	t_point coordinate;
-	t_color_rgb	rgb;
-	double		diameter;
-	double		height;
-	t_vec		vec;
-	
-}	t_cylinder;
+int				double_is_equal(double x, double y);
+int				check_equal_tuples(t_tuple tuple1, t_tuple tuple2);
+t_tuple			tuple_addition(t_tuple tuple1, t_tuple tuple2);
+t_tuple			tuple_subtraction(t_tuple tuple1, t_tuple tuple2);
+t_tuple			tuple_negation(t_tuple tuple);
+t_tuple			tuple_multiplication(t_tuple tuple1, double scale);
+t_tuple			tuple_division(t_tuple tuple1, double scale);
+double			tuple_magnitude(t_tuple tuple);
+t_tuple			tuple_normalization(t_tuple tuple);
+int				dot_product(t_tuple tuple1, t_tuple tuple2);
+t_tuple			cross_product(t_tuple a, t_tuple b);
+t_projectile	tick(t_environment env, t_projectile proj);
 
-typedef	struct s_plane
-{
-	t_point coordinate;
-	t_color_rgb	rgb;
-	double		diameter;
-	double		height;
-	t_vec		vec;
-}	t_plane;
+// rgb
 
-typedef struct s_light
-{
-	t_point coordinate;
-	float	ratio;
-	t_color_rgb	rgb;
-}	t_light;
+t_rgb	set_rgb(int8_t r, int8_t g, int8_t b);
+t_rgb	rgb_addition(t_rgb r1, t_rgb r2);
+t_rgb	rgb_subtraction(t_rgb r1, t_rgb r2);
+t_rgb	rgb_multiplication_scalar(t_rgb r1, int scale);
+t_rgb	rgb_multiplication(t_rgb r1, t_rgb r2);
 
-typedef struct s_camera
-{
-	t_point			coordinate;
-	t_vec			vec;
-	uint8_t			fov;
-}	t_camera;
+// canva
 
-typedef	struct s_scene
-{
-	t_camera	camera;
-	t_light		*lst_light;
-	t_plane		*lst_plane;
-	t_cylinder	*lst_cylinder;
-	t_sphere	*lst_sphere;
-	
-}	t_scene;
 
 
 #endif

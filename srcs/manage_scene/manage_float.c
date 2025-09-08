@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   manage_float.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 11:32:17 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/03 14:00:31 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/03 14:02:27 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "scene.h"
-#include "libft.h"
-#include "test.h"
 
-int	main()
-{		
-	return (0);
+int	double_is_equal(double x, double y)
+{
+	return ((x - y) < EPSILON);
 }

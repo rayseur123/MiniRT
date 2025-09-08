@@ -4,11 +4,19 @@ NAME := minirt
 
 SRC_DIR := srcs/
 
-PARS_DIR := parsing/
+TEST_DIR := test/
 
-PARS_SRCS := parsing.c
+TEST_SRCS := tuples.c \
+				test.c \
 
-SRCS += $(addprefix $(PARS_DIR), $(PARS_SRCS))
+SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
+
+SCENE_DIR := manage_scene/
+
+SCENE_SRCS := manage_tuples.c \
+				manage_float.c \
+
+SRCS += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 
 SRCS += minirt.c
 
@@ -16,8 +24,16 @@ SRCS += minirt.c
 
 LIBS_TARGET :=			\
 	libs/libft/libft.a 	\
+	libs/minilibx/libmlx.a \
+
+LIBS_INCLUDES := \
+	libs/libft/includes/ \
+	libs/minilibx/ \
 
 LIBS := $(patsubst lib%.a, %, $(notdir $(LIBS_TARGET)))
+
+SYS_LIBS	=	m X11 Xext
+SYS_LIBS	:=	$(addprefix -l, $(SYS_LIBS))
 
 # --- INCLUDES --- #
 
@@ -35,7 +51,7 @@ DEPS := $(OBJS:.o=.d)
 # --- FLAGS --- #
 
 CPPFLAGS += -MMD -MP $(addprefix -I,$(INCLUDES)) \
-					 $(addprefix -I,$(addsuffix $(INCLUDES),$(dir $(LIBS_TARGET))))
+					 $(addprefix -I, $(LIBS_INCLUDES))
 
 CFLAGS += -g3 -Wall -Wextra -Werror
 
@@ -52,7 +68,7 @@ CC = cc
 all : $(NAME)
 
 $(NAME) : $(LIBS_TARGET) $(OBJS)
-	$(CC) $^ $(LFLAGS) -o $@
+	$(CC) $^ $(LFLAGS) -o $@ $(SYS_LIBS)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)

@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   ft_realloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 11:32:17 by njooris          ###   ########.fr       */
+/*   Created: 2025/08/26 14:39:06 by njooris           #+#    #+#             */
+/*   Updated: 2025/08/26 14:48:24 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "scene.h"
+#include <stdlib.h>
 #include "libft.h"
-#include "test.h"
 
-int	main()
-{		
-	return (0);
+void	*ft_realloc(void *old_ptr, size_t old_size, size_t new_size)
+{
+	void	*new_ptr;
+
+	new_ptr = malloc(new_size);
+	if (!new_ptr)
+		return (NULL);
+	new_ptr = ft_memcpy(new_ptr, old_ptr, old_size);
+	free(old_ptr);
+	return (new_ptr);
 }

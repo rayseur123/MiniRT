@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   vector_del.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 11:32:17 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/02 11:36:19 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/02 13:20:03 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "scene.h"
-#include "libft.h"
-#include "test.h"
+#include "vector.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-int	main()
-{		
-	return (0);
+void	free_vector(t_vector vector)
+{
+	free(get_vector_head(vector));
+}
+
+void	delete_vector(t_vector vector)
+{
+	t_vcthead *head;
+	size_t	i;
+
+	head = get_vector_head(vector);
+	i = 0;
+	while (i < head->size && head->del)
+	{
+		head->del(head->data + (i * head->element_size));
+		i++;
+	}
+	free_vector(vector);
 }
