@@ -4,6 +4,9 @@ NAME := minirt
 
 SRC_DIR := srcs/
 
+SRCS_NORM := minirt.c \
+		units.c	 \
+
 SRCS += minirt.c \
 		units.c	 \
 		u_test.c	 \
@@ -81,7 +84,7 @@ debug: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=valgrind_readline.supp ./$(NAME)
 
 norme:
-	norminette $(SRC_DIR)$(SRCS)
+	norminette $(SRC_DIR)$(SRCS_NORM)
 
 print-%:
 	@echo $(patsubst print-%,%,$@)=
