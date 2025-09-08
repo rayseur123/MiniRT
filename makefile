@@ -6,8 +6,11 @@ SRC_DIR := srcs/
 
 SRCS += minirt.c \
 		units.c	 \
-		test.c	 \
-		print.c	 \
+		u_test.c	 \
+		u_print.c	 \
+		u_init.c	 \
+		u_manage.c	 \
+		u_launch.c	 \
 
 # --- LIBS TARGET --- #
 

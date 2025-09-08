@@ -13,8 +13,4 @@
 #ifndef _TEST_H
 # define _TEST_H
 
-int	unit_test1(void);
-int	unit_test2(void);
-int	unit_test3(void);
-
 #endif 

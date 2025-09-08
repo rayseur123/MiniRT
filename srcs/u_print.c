@@ -22,9 +22,11 @@ void	display_function(char *name)
 void	display_unit(t_unit unit)
 {
 	printf("%s = ", unit.name);
-	if (unit.succes == 1)
+	if (unit.succes == 0)
 	  	printf(PASS);
-	else 
+	if (unit.succes == 11)
+		printf(SEG);
+	if (unit.succes == 1) 
 		printf(FAIL);
 }
 

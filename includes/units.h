@@ -13,11 +13,9 @@
 #ifndef UNITS_H
 # define UNITS_H
 
-#define NB_TEST 10
-#define NB_TEST_MATH 4
-#define NB_TEST_VECTOR 8
 #define PASS "\x1B[32mPASS\n\x1B[0m"
 #define FAIL "\x1B[31mFAIL\n\x1B[0m"
+#define SEG "\x1B[33mSEGFAULT\n\x1B[0m"
 
 typedef struct s_unit
 {
@@ -34,16 +32,27 @@ typedef struct s_function
 	unsigned int		nb_test;
 	unsigned int		nb_success;
 	t_unit				*units;
-	struct s_function		*next;
+	struct s_function	*next;
 
 }	t_function;
 
-void		display_function(char *name);
-void		display_unit(t_unit unit);
-void		display_stats(t_function function);
-void		display_chain_f(void *head);
 
-void		launch_unit(t_function *function, t_unit *unit);
-unsigned	int select_unit(t_function **head);
+//	u_printf.c
+void			display_function(char *name);
+void			display_unit(t_unit unit);
+void			display_stats(t_function function);
+void			display_chain_f(void *head);
+
+// u_init.c
+unsigned int	init_function(t_function **function, char *name);
+unsigned int	init_unit(t_unit **unit, char *name, int (test)(void));
+
+// u_manage.c
+unsigned int	adding_test(t_function **function, char *name_func, char *name_test, int (test)(void));
+
+
+// u_launch.c
+void			launch_unit(t_function *function, t_unit *unit);
+unsigned		int launch_lib_test(t_function **head);
 
 #endif
