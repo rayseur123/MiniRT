@@ -2,7 +2,7 @@ NAME := libft.a
 
 # --- SRC/DIR ---#
 
-INCLUDE_DIR = include/
+INCLUDE_DIR = includes/
 
 GNL_DIR := gnl/
 

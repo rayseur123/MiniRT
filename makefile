@@ -4,7 +4,16 @@ NAME := minirt
 
 SRC_DIR := srcs/
 
-SRCS += minirt.c
+SRCS_NORM := minirt.c \
+		units.c	 \
+
+SRCS += minirt.c \
+		units.c	 \
+		u_test.c	 \
+		u_print.c	 \
+		u_init.c	 \
+		u_manage.c	 \
+		u_launch.c	 \
 
 # --- LIBS TARGET --- #
 
@@ -75,7 +84,7 @@ debug: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=valgrind_readline.supp ./$(NAME)
 
 norme:
-	norminette $(SRC_DIR)$(SRCS)
+	norminette $(SRC_DIR)$(SRCS_NORM)
 
 print-%:
 	@echo $(patsubst print-%,%,$@)=
