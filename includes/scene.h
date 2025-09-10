@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <shared_mutex>
 #include <stdint.h>
 #include "libft.h"
 #include "mlx.h"
@@ -57,15 +56,6 @@ typedef struct s_tuple
 }	t_tuple;
 
 typedef struct s_projectile
-typedef struct s_tuple
-{
-	double	x;
-	double	y;
-	double	z;
-	bool	w;
-}	t_point;
-
-typedef	struct s_color_rgb
 {
 	t_tuple	position;
 	t_tuple velocity;
