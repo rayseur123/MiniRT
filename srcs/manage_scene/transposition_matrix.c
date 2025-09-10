@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_matrix.c                                    :+:      :+:    :+:   */
+/*   transposition_matrix.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:43:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 10:02:21 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/10 11:34:28 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_matrix4_ptr	matrix4_transposition(t_matrix4 m1)
 	int		i;
 	int		j;
 	double	buff;
-	
+
 	i = 0;
 	while (i < 4)
 	{
@@ -40,7 +40,7 @@ t_matrix3_ptr	matrix3_transposition(t_matrix3 m1)
 	int		i;
 	int		j;
 	double	buff;
-	
+
 	i = 0;
 	while (i < 3)
 	{
@@ -62,7 +62,7 @@ t_matrix2_ptr	matrix2_transposition(t_matrix2 m1)
 	int		i;
 	int		j;
 	double	buff;
-	
+
 	i = 0;
 	while (i < 2)
 	{
