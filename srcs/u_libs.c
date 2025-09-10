@@ -49,9 +49,9 @@ void	lib_unit(void)
 	adding_test(&function, "Tuples", "subtraction_vector_vector_negative", &test_subtraction_vector_vector_negative);
 	adding_test(&function, "Tuples", "subtraction_point_point_positive", &test_subtraction_point_point_positive);
 	adding_test(&function, "Tuples", "subtraction_point_point_negative", &test_subtraction_point_point_negative);
-	adding_test(&function, "Tuples", "negetion_positive", &test_negetion_positive);
-	adding_test(&function, "Tuples", "negetion_negative", &test_negetion_negative);
-	adding_test(&function, "Tuples", "negetion_mixe", &test_negetion_mixe);
+	adding_test(&function, "Tuples", "negation_positive", &test_negation_positive);
+	adding_test(&function, "Tuples", "negation_negative", &test_negation_negative);
+	adding_test(&function, "Tuples", "negation_mixe", &test_negation_mixe);
 	adding_test(&function, "Tuples", "multiplication_vector_positive", &test_multiplication_vector_positive);
 	adding_test(&function, "Tuples", "multiplication_vector_negative", &test_multiplication_vector_negative);
 	adding_test(&function, "Tuples", "multiplication_zero", &test_multiplication_zero);

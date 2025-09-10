@@ -13,9 +13,9 @@
 #ifndef UNITS_H
 # define UNITS_H
 
-#define PASS "\x1B[32mPASS\n\x1B[0m"
-#define FAIL "\x1B[31mFAIL\n\x1B[0m"
-#define SEG "\x1B[33mSEGFAULT\n\x1B[0m"
+#define PASS "\x1B[32m[PASS]\n\x1B[0m"
+#define FAIL "\x1B[31m[FAIL]\n\x1B[0m"
+#define SEG "\x1B[33m[SEGFAULT]\n\x1B[0m"
 
 typedef struct s_unit
 {

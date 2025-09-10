@@ -19,8 +19,8 @@ int	test_set_vector(void)
 
 	tuple = set_vector(0, 0, 0);
 	if (tuple.w == 0)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int	test_set_point(void)
@@ -29,8 +29,8 @@ int	test_set_point(void)
 
 	tuple = set_point(0, 0, 0);
 	if (tuple.w == 1)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int	test_tuple_equality_positive(void)
