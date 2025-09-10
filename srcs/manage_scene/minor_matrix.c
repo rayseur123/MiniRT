@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_tuple.c                                        :+:      :+:    :+:   */
+/*   minor_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 09:02:42 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 13:45:29 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/10 12:45:33 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/10 13:31:22 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include <math.h>
 
-t_tuple	set_vector(double x, double y, double z)
+double	matrix3_minor(t_matrix3 m, int row, int col)
 {
-	t_tuple	tuple;
+	t_matrix2	m2;
 
-	tuple.x = x;
-	tuple.y = y;
-	tuple.z = z;
-	tuple.w = 0;
-	return (tuple);
-}
-
-t_tuple	set_point(double x, double y, double z)
-{
-	t_tuple	tuple;
-
-	tuple.x = x;
-	tuple.y = y;
-	tuple.z = z;
-	tuple.w = 1;
-	return (tuple);
+	matrix3_submatrix(m, m2, row, col);
+	return (determining_matrix2(m2));
 }
