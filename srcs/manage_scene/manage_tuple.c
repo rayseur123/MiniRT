@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:41:52 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 09:10:56 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/10 14:05:23 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,7 @@ double	tuple_magnitude(t_tuple tuple)
 
 t_tuple	tuple_normalization(t_tuple tuple)
 {
-	double	magnitude;
-	double	inv_magnitude;
-
-	magnitude = sqrt(tuple.x * tuple.x + tuple.y
-			* tuple.y + tuple.z * tuple.z + tuple.w);
-	inv_magnitude = 1.0 / magnitude;
-	tuple.x *= inv_magnitude;
-	tuple.y *= inv_magnitude;
-	tuple.z *= inv_magnitude;
-	tuple.w *= inv_magnitude;
-	return (tuple);
+	return (tuple_multiplication(tuple, 1 / tuple_magnitude(tuple)));
 }
 
 int	dot_product(t_tuple tuple1, t_tuple tuple2)
