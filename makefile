@@ -34,6 +34,17 @@ SRCS_NORME += minirt.c
 
 SRCS += minirt.c
 
+SRCS_NORM := minirt.c \
+		units.c	 \
+
+SRCS += minirt.c \
+		units.c	 \
+		u_test.c	 \
+		u_print.c	 \
+		u_init.c	 \
+		u_manage.c	 \
+		u_launch.c	 \
+
 # --- LIBS TARGET --- #
 
 LIBS_TARGET :=			\
@@ -113,7 +124,6 @@ debug: $(NAME)
 norme:
 	norminette $(addprefix $(SRC_DIR), $(SRCS_NORME))
 	
-
 print-%:
 	@echo $(patsubst print-%,%,$@)=
 	@echo $($(patsubst print-%,%,$@))
