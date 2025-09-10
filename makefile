@@ -1,22 +1,32 @@
-NAME := minirt
+NAME := miniRT
 
 # --- SRC/DIR --- #
+
 
 SRC_DIR := srcs/
 
 TEST_DIR := test/
 
 TEST_SRCS := tuples.c \
-				test.c \
+				matrix.c \
 
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 
 SCENE_DIR := manage_scene/
 
-SCENE_SRCS := manage_tuples.c \
+SCENE_SRCS := manage_tuple.c \
+				set_tuple.c   \
+				comp_tuple.c   \
+				operations_tuple.c \
 				manage_float.c \
+				manage_canva.c \
+				manage_matrix.c \
+
+SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 
 SRCS += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
+
+SRCS_NORME += minirt.c
 
 SRCS += minirt.c
 
@@ -97,7 +107,8 @@ debug: $(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=valgrind_readline.supp ./$(NAME)
 
 norme:
-	norminette $(SRC_DIR)$(SRCS)
+	norminette $(addprefix $(SRC_DIR), $(SRCS_NORME))
+	
 
 print-%:
 	@echo $(patsubst print-%,%,$@)=

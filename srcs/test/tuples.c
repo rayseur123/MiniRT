@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:22:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 11:32:06 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/08 14:51:32 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -904,6 +904,66 @@ int	test_cross_product_zero_vector(void)
 	vector2 = set_vector(5, 6, 7);
 	result = cross_product(vector1, vector2);
 	if (result.x != 0 || result.y != 0 || result.z != 0 || result.w != 0)
+		return (0);
+	return (1);
+}
+
+int	test_tick_basic_movement(void)
+{
+	t_environment env;
+	t_projectile proj;
+	t_projectile result;
+
+	env.gravity = set_vector(0, -0.1, 0);
+	env.wind = set_vector(-0.01, 0, 0);
+	proj.position = set_point(0, 1, 0);
+	proj.velocity = set_vector(1, 1, 0);
+	
+	result = tick(env, proj);
+	
+	if (result.position.x != 1 || result.position.y != 2 || result.position.z != 0)
+		return (0);
+	if (result.velocity.x != 0.99 || result.velocity.y != 0.9 || result.velocity.z != 0)
+		return (0);
+	return (1);
+}
+
+int	test_tick_no_forces(void)
+{
+	t_environment env;
+	t_projectile proj;
+	t_projectile result;
+
+	env.gravity = set_vector(0, 0, 0);
+	env.wind = set_vector(0, 0, 0);
+	proj.position = set_point(1, 2, 3);
+	proj.velocity = set_vector(0.5, -0.5, 1);
+	
+	result = tick(env, proj);
+	
+	if (result.position.x != 1.5 || result.position.y != 1.5 || result.position.z != 4)
+		return (0);
+	if (result.velocity.x != 0.5 || result.velocity.y != -0.5 || result.velocity.z != 1)
+		return (0);
+	return (1);
+}
+
+int	test_tick_strong_forces(void)
+{
+	t_environment env;
+	t_projectile proj;
+	t_projectile result;
+
+	env.gravity = set_vector(0, -10, 0);
+	env.wind = set_vector(5, 0, -2);
+	proj.position = set_point(0, 0, 0);
+	proj.velocity = set_vector(1, 1, 1);
+	
+	result = tick(env, proj);
+	
+	if (result.position.x != 1 || result.position.y != 1 || result.position.z != 1)
+		return (0);
+	if (result.velocity.x != 6 || result.velocity.y != -9 || result.velocity.z != -1)
 		return (0);
 	return (1);
 }

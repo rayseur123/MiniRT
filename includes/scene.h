@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 11:30:50 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/08 16:02:31 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,17 @@
 # define STRUCT_OBJS_H
 
 # define EPSILON 0.00001
-# define WIDTH_CANVA 1000;
-# define HEIGHT_CANVA 1000;
+# define WIDTH_CANVA 900;
+# define HEIGHT_CANVA 550;
+# define IDENTITY_MTRX {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}};
+typedef double t_matrix4[4][4];
+typedef double (*t_matrix4_ptr)[4];
+typedef double t_matrix3[3][3];
+typedef double (*t_matrix3_ptr)[3];
+typedef double t_matrix2[2][2];
+typedef double (*t_matrix2_ptr)[2];
+
+
 typedef struct s_rgb
 {
 	int8_t r;
@@ -82,9 +91,18 @@ t_rgb	rgb_addition(t_rgb r1, t_rgb r2);
 t_rgb	rgb_subtraction(t_rgb r1, t_rgb r2);
 t_rgb	rgb_multiplication_scalar(t_rgb r1, int scale);
 t_rgb	rgb_multiplication(t_rgb r1, t_rgb r2);
+int		rgb_to_int(t_rgb rgb);
 
 // canva
 
+int		init_canva(t_canvas *canva);
+void	put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb);
+
+// matrix
+
+uint8_t	matrix4_is_equal(t_matrix4 m1, t_matrix4 m2);
+uint8_t	matrix3_is_equal(t_matrix3 m1, t_matrix3 m2);
+uint8_t	matrix2_is_equal(t_matrix2 m1, t_matrix2 m2);
 
 
 #endif
