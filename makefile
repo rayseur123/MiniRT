@@ -20,7 +20,12 @@ SCENE_SRCS := manage_tuple.c \
 				operations_tuple.c \
 				manage_float.c \
 				manage_canva.c \
-				manage_matrix.c \
+				manage_rgb.c \
+				operations_matrix.c \
+				matrix_is_equal.c \
+				transposition_matrix.c \
+				determining_matrix.c \
+				submatrice_matrix.c \
 
 SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 
@@ -29,17 +34,6 @@ SRCS += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 SRCS_NORME += minirt.c
 
 SRCS += minirt.c
-
-SRCS_NORM := minirt.c \
-		units.c	 \
-
-SRCS += minirt.c \
-		units.c	 \
-		u_test.c	 \
-		u_print.c	 \
-		u_init.c	 \
-		u_manage.c	 \
-		u_launch.c	 \
 
 # --- LIBS TARGET --- #
 
@@ -120,6 +114,7 @@ debug: $(NAME)
 norme:
 	norminette $(addprefix $(SRC_DIR), $(SRCS_NORME))
 	
+
 print-%:
 	@echo $(patsubst print-%,%,$@)=
 	@echo $($(patsubst print-%,%,$@))

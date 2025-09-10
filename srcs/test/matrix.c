@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 14:50:58 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/10 09:41:24 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,3 +101,4 @@ int	test_matrix2_equal_small_difference(void)
 		return (0);
 	return (1);
 }
+
