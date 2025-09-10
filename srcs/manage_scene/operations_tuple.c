@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:06:00 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 09:12:10 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/10 14:09:32 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ t_tuple	tuple_division(t_tuple tuple1, double scale)
 
 t_tuple	tuple_negation(t_tuple tuple)
 {
-	t_tuple	zero;
-
-	zero = set_vector(0, 0, 0);
-	return (tuple_subtraction(zero, tuple));
+	return ((t_tuple){tuple.x * -1, tuple.y * -1,
+		tuple.z * -1, tuple.w * -1});
 }
