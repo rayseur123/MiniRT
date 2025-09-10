@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 16:02:31 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/10 09:38:26 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef double t_matrix3[3][3];
 typedef double (*t_matrix3_ptr)[3];
 typedef double t_matrix2[2][2];
 typedef double (*t_matrix2_ptr)[2];
-
 
 typedef struct s_rgb
 {

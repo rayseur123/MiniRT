@@ -20,7 +20,11 @@ SCENE_SRCS := manage_tuple.c \
 				operations_tuple.c \
 				manage_float.c \
 				manage_canva.c \
-				manage_matrix.c \
+				manage_rgb.c \
+				operations_matrix.c \
+				matrix_is_equal.c \
+				transposition_matrix.c \
+
 
 SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 
