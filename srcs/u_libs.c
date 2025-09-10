@@ -1,0 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   u_libs.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
+/*   Updated: 2025/09/10 12:38:52 by dernst           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "units.h"
+#include "test.h"
+#include <stdio.h>
+
+void	lib_unit(void)
+{
+	t_function *function;
+
+	function = NULL;
+	adding_test(&function, "Matrice", "matrix4_equal_identical", &test_matrix4_equal_identical);
+	adding_test(&function, "Matrice", "matrix4_equal_small_difference", &test_matrix4_equal_small_difference);
+	adding_test(&function, "Matrice", "matrix4_equal_different", &test_matrix4_equal_different);
+	adding_test(&function, "Matrice", "matrix3_equal_different", &test_matrix3_equal_different);
+	adding_test(&function, "Matrice", "matrix3_equal_identical", &test_matrix3_equal_identical);
+	adding_test(&function, "Matrice", "matrix3_equal_small_difference", &test_matrix3_equal_small_difference);
+	adding_test(&function, "Matrice", "matrix2_equal_identical", &test_matrix2_equal_identical);
+	adding_test(&function, "Matrice", "matrix2_equal_different", &test_matrix2_equal_different);
+	adding_test(&function, "Matrice", "matrix2_equal_small_difference", &test_matrix2_equal_small_difference);
+
+	adding_test(&function, "Tuples", "set_vector", &test_set_vector);
+	adding_test(&function, "Tuples", "set_point", &test_set_point);
+	adding_test(&function, "Tuples", "tuple_equality_positive", &test_tuple_equality_positive);
+	adding_test(&function, "Tuples", "tuple_inequality_positive", &test_tuple_inequality_positive);
+	adding_test(&function, "Tuples", "tuple_equality_negative", &test_tuple_equality_negative);
+	adding_test(&function, "Tuples", "tuple_inequality_negative", &test_tuple_inequality_negative);
+	adding_test(&function, "Tuples", "tuple_equality_mixed", &test_tuple_equality_mixed);
+	adding_test(&function, "Tuples", "tuple_inequality_mixed", &test_tuple_inequality_mixed);
+	adding_test(&function, "Tuples", "addition_point_vector_positive", &test_addition_point_vector_positive);
+	adding_test(&function, "Tuples", "addition_point_vector_negative", &test_addition_point_vector_negative);
+	adding_test(&function, "Tuples", "addition_vector_vector_positive", &test_addition_vector_vector_positive);
+	adding_test(&function, "Tuples", "addition_vector_vector_negative", &test_addition_vector_vector_negative);
+	adding_test(&function, "Tuples", "addition_point_point_positive", &test_addition_point_point_positive);
+	adding_test(&function, "Tuples", "addition_point_point_negative", &test_addition_point_point_negative);
+	adding_test(&function, "Tuples", "subtraction_point_vector_positive", &test_subtraction_point_vector_positive);
+	adding_test(&function, "Tuples", "subtraction_point_vector_negative", &test_subtraction_point_vector_negative);
+	adding_test(&function, "Tuples", "subtraction_vector_vector_positive", &test_subtraction_vector_vector_positive);
+	adding_test(&function, "Tuples", "subtraction_vector_vector_negative", &test_subtraction_vector_vector_negative);
+	adding_test(&function, "Tuples", "subtraction_point_point_positive", &test_subtraction_point_point_positive);
+	adding_test(&function, "Tuples", "subtraction_point_point_negative", &test_subtraction_point_point_negative);
+	adding_test(&function, "Tuples", "negetion_positive", &test_negetion_positive);
+	adding_test(&function, "Tuples", "negetion_negative", &test_negetion_negative);
+	adding_test(&function, "Tuples", "negetion_mixe", &test_negetion_mixe);
+	adding_test(&function, "Tuples", "multiplication_vector_positive", &test_multiplication_vector_positive);
+	adding_test(&function, "Tuples", "multiplication_vector_negative", &test_multiplication_vector_negative);
+	adding_test(&function, "Tuples", "multiplication_zero", &test_multiplication_zero);
+	adding_test(&function, "Tuples", "division_vector_positive", &test_division_vector_positive);
+	adding_test(&function, "Tuples", "division_vector_negative", &test_division_vector_negative);
+	adding_test(&function, "Tuples", "division_vector_by_decimal", &test_division_vector_by_decimal);
+	adding_test(&function, "Tuples", "magnitude_unit_vectors", &test_magnitude_unit_vectors);
+	adding_test(&function, "Tuples", "magnitude_positive_vectors", &test_magnitude_positive_vectors);
+	adding_test(&function, "Tuples", "magnitude_negative_vectors", &test_magnitude_negative_vectors);
+	adding_test(&function, "Tuples", "magnitude_zero_vector", &test_magnitude_zero_vector);
+	adding_test(&function, "Tuples", "magnitude_points", &test_magnitude_points);
+	adding_test(&function, "Tuples", "normalization_vector_positive", &test_normalization_vector_positive);
+	adding_test(&function, "Tuples", "normalization_vector_negative", &test_normalization_vector_negative);
+	adding_test(&function, "Tuples", "normalization_unit_vectors", &test_normalization_unit_vectors);
+	adding_test(&function, "Tuples", "normalization_point_positive", &test_normalization_point_positive);
+	adding_test(&function, "Tuples", "normalization_point_negative", &test_normalization_point_negative);
+	adding_test(&function, "Tuples", "dot_product_vectors_positive", &test_dot_product_vectors_positive);
+	adding_test(&function, "Tuples", "dot_product_vectors_negative", &test_dot_product_vectors_negative);
+	adding_test(&function, "Tuples", "dot_product_orthogonal_vectors", &test_dot_product_orthogonal_vectors);
+	adding_test(&function, "Tuples", "dot_product_zero_vector", &test_dot_product_zero_vector);
+	adding_test(&function, "Tuples", "dot_product_points", &test_dot_product_points);
+	adding_test(&function, "Tuples", "dot_product_mixed_types", &test_dot_product_mixed_types);
+	adding_test(&function, "Tuples", "cross_product_basic_vectors", &test_cross_product_basic_vectors);
+	adding_test(&function, "Tuples", "cross_product_unit_vectors", &test_cross_product_unit_vectors);
+	adding_test(&function, "Tuples", "cross_product_anticommutative", &test_cross_product_anticommutative);
+	adding_test(&function, "Tuples", "cross_product_parallel_vectors", &test_cross_product_parallel_vectors);
+	adding_test(&function, "Tuples", "cross_product_zero_vector", &test_cross_product_zero_vector);
+	adding_test(&function, "Tuples", "tick_basic_movement", &test_tick_basic_movement);
+	adding_test(&function, "Tuples", "tick_no_forces", &test_tick_no_forces);
+	adding_test(&function, "Tuples", "tick_strong_forces", &test_tick_strong_forces);	launch_lib_test(&function);
+}

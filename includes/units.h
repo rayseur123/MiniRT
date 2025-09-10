@@ -37,6 +37,9 @@ typedef struct s_function
 }	t_function;
 
 
+// u_libs.c
+void			lib_unit(void);
+
 //	u_printf.c
 void			display_function(char *name);
 void			display_unit(t_unit unit);
