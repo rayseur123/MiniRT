@@ -61,6 +61,8 @@ show:
 	@printf "OBJ		:\n	$(OBJ)\n"
 
 clean	:
-	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
+	rm -rf $(OBJ_DIR) *.a
+
+fclean	: clean
 
 .PHONY: all check show clean

@@ -10,7 +10,6 @@
 
 ## Please use configure script
 
-
 all	: do_configure
 
 do_configure	:
@@ -18,5 +17,7 @@ do_configure	:
 
 clean	:
 	./configure clean
+
+fclean	: clean
 
 re	: clean all
