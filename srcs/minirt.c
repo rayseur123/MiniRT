@@ -23,9 +23,8 @@ int	main(void)
 	t_rgb			rgb;
 	t_projectile	p;
 	t_environment	e;
-	
-	lib_unit();	
 
+	lib_unit();
 	init_canva(&canva);
 	rgb = set_rgb((u_int8_t)128, (u_int8_t)128, (u_int8_t)128);
 	p.position = set_point(0, 1, 0);
