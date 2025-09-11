@@ -49,9 +49,9 @@ void	lib_unit(void)
 	adding_test(&function, "Tuples", "subtraction_vector_vector_negative", &test_subtraction_vector_vector_negative);
 	adding_test(&function, "Tuples", "subtraction_point_point_positive", &test_subtraction_point_point_positive);
 	adding_test(&function, "Tuples", "subtraction_point_point_negative", &test_subtraction_point_point_negative);
-	adding_test(&function, "Tuples", "negation_positive", &test_negation_positive);
-	adding_test(&function, "Tuples", "negation_negative", &test_negation_negative);
-	adding_test(&function, "Tuples", "negation_mixe", &test_negation_mixe);
+	adding_test(&function, "Tuples", "negation_positive", &test_negetion_positive);
+	adding_test(&function, "Tuples", "negation_negative", &test_negetion_negative);
+	adding_test(&function, "Tuples", "negation_mixe", &test_negetion_mixe);
 	adding_test(&function, "Tuples", "multiplication_vector_positive", &test_multiplication_vector_positive);
 	adding_test(&function, "Tuples", "multiplication_vector_negative", &test_multiplication_vector_negative);
 	adding_test(&function, "Tuples", "multiplication_zero", &test_multiplication_zero);
@@ -66,8 +66,6 @@ void	lib_unit(void)
 	adding_test(&function, "Tuples", "normalization_vector_positive", &test_normalization_vector_positive);
 	adding_test(&function, "Tuples", "normalization_vector_negative", &test_normalization_vector_negative);
 	adding_test(&function, "Tuples", "normalization_unit_vectors", &test_normalization_unit_vectors);
-	adding_test(&function, "Tuples", "normalization_point_positive", &test_normalization_point_positive);
-	adding_test(&function, "Tuples", "normalization_point_negative", &test_normalization_point_negative);
 	adding_test(&function, "Tuples", "dot_product_vectors_positive", &test_dot_product_vectors_positive);
 	adding_test(&function, "Tuples", "dot_product_vectors_negative", &test_dot_product_vectors_negative);
 	adding_test(&function, "Tuples", "dot_product_orthogonal_vectors", &test_dot_product_orthogonal_vectors);

@@ -16,7 +16,7 @@
 double	tuple_magnitude(t_tuple tuple)
 {
 	return (sqrt(tuple.x * tuple.x + tuple.y
-			* tuple.y + tuple.z * tuple.z + tuple.w));
+			* tuple.y + tuple.z * tuple.z + tuple.w * tuple.w));
 }
 
 t_tuple	tuple_normalization(t_tuple tuple)

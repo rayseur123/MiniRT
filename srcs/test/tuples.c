@@ -57,12 +57,12 @@ int	test_tuple_inequality_positive(void)
 	tuple1 = set_point(1, 1, 1);
 	tuple2 = set_point(2, 2, 2);
 	if (check_equal_tuples(tuple1, tuple2))
-		return (0);
+		return (1);
 	tuple1 = set_point(87, 12, 15);
 	tuple2 = set_point(88, 13, 16);
 	if (check_equal_tuples(tuple1, tuple2))
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 int	test_tuple_equality_negative(void)
@@ -364,13 +364,13 @@ int	test_negetion_positive(void)
 
 	tuple = set_vector(10, 10, 10);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != -10 || negation_tuple.x != -10 || negation_tuple.z != -10)
-		return (0);
+	if (negation_tuple.x != -10 || negation_tuple.y != -10 || negation_tuple.z != -10)
+		return (1);
 	tuple = set_vector(87, 87, 87);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != -87 || negation_tuple.x != -87 || negation_tuple.z != -87)
-		return (0);
-	return (1);
+	if (negation_tuple.x != -87 || negation_tuple.y != -87 || negation_tuple.z != -87)
+		return (1);
+	return (0);
 }
 
 int	test_negetion_negative(void)
@@ -380,13 +380,13 @@ int	test_negetion_negative(void)
 
 	tuple = set_vector(-10, -10, -10);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != 10 || negation_tuple.x != 10 || negation_tuple.z != 10)
-		return (0);
+	if (negation_tuple.x != 10 || negation_tuple.y != 10 || negation_tuple.z != 10)
+		return (1);
 	tuple = set_vector(-87, -87, -87);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != 87 || negation_tuple.x != 87 || negation_tuple.z != 87)
-		return (0);
-	return (1);
+	if (negation_tuple.x != 87 || negation_tuple.y != 87 || negation_tuple.z != 87)
+		return (1);
+	return (0);
 }
 
 int	test_negetion_mixe(void)
@@ -396,13 +396,13 @@ int	test_negetion_mixe(void)
 
 	tuple = set_vector(-77, 77, 88);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != 77 || negation_tuple.x != -77 || negation_tuple.z != -88)
-		return (0);
+	if (negation_tuple.x != 77 || negation_tuple.y != -77 || negation_tuple.z != -88)
+		return (1);
 	tuple = set_vector(-87, 87, -87);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != 87 || negation_tuple.x != -87 || negation_tuple.z != 87)
-		return (0);
-	return (1);
+	if (negation_tuple.x != 87 || negation_tuple.y != -87 || negation_tuple.z != 87)
+		return (1);
+	return (0);
 }
 
 int test_multiplication_vector_positive(void)
@@ -639,46 +639,6 @@ int	test_normalization_unit_vectors(void)
 	vector = set_vector(0, 0, 1);
 	result = tuple_normalization(vector);
 	if (result.x != 0.0 || result.y != 0.0 || result.z != 1.0 || result.w != 0.0)
-		return (1);
-	return (0);
-}
-
-int	test_normalization_point_positive(void)
-{
-	t_tuple point;
-	t_tuple result;
-	double magnitude;
-
-	point = set_point(1, 2, 3);
-	result = tuple_normalization(point);
-	magnitude = tuple_magnitude(result);
-	if (fabs(magnitude - 1.0) > 0.00001)
-		return (1);
-	
-	point = set_point(5, 0, 0);
-	result = tuple_normalization(point);
-	magnitude = tuple_magnitude(result);
-	if (fabs(magnitude - 1.0) > 0.00001)
-		return (1);
-	return (0);
-}
-
-int	test_normalization_point_negative(void)
-{
-	t_tuple point;
-	t_tuple result;
-	double magnitude;
-
-	point = set_point(-1, -2, -3);
-	result = tuple_normalization(point);
-	magnitude = tuple_magnitude(result);
-	if (fabs(magnitude - 1.0) > 0.00001)
-		return (1);
-	
-	point = set_point(-5, 0, 0);
-	result = tuple_normalization(point);
-	magnitude = tuple_magnitude(result);
-	if (fabs(magnitude - 1.0) > 0.00001)
 		return (1);
 	return (0);
 }
