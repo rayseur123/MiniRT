@@ -10,6 +10,7 @@ TEST_DIR := test/
 TEST_SRCS := tuples.c \
 				matrix.c \
 
+
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 
 SCENE_DIR := manage_scene/
@@ -33,7 +34,12 @@ SRCS += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 
 SRCS_NORME += minirt.c
 
-SRCS += minirt.c
+SRCS += minirt.c \
+		u_init.c \
+		u_launch.c \
+		u_manage.c \
+		u_print.c \
+		u_libs.c \
 
 # --- LIBS TARGET --- #
 

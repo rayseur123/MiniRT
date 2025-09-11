@@ -15,6 +15,7 @@
 #include "scene.h"
 #include "libft.h"
 #include "test.h"
+#include "units.h"
 
 int	main(void)
 {
@@ -23,6 +24,7 @@ int	main(void)
 	t_projectile	p;
 	t_environment	e;
 
+	lib_unit();
 	init_canva(&canva);
 	rgb = set_rgb((u_int8_t)128, (u_int8_t)128, (u_int8_t)128);
 	p.position = set_point(0, 1, 0);
