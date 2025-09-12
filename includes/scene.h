@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 13:27:17 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/12 06:07:42 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,9 @@ uint8_t			matrix3_is_equal(t_matrix3 m1, t_matrix3 m2);
 uint8_t			matrix2_is_equal(t_matrix2 m1, t_matrix2 m2);
 t_matrix3_ptr	matrix4_submatrix(t_matrix4 m1, t_matrix3 m2, int row, int col);
 t_matrix2_ptr	matrix3_submatrix(t_matrix3 m1, t_matrix2 m2, int row, int col);
-int				determining_matrix2(t_matrix2 m);
-double			matrix3_minor(t_matrix3 m, int i, int j);
+double			determining_matrix2(t_matrix2 m);
+double			matrix3_minor(t_matrix3 m, int row, int col);
+double			matrix4_minor(t_matrix4 m, int row, int col);
 t_matrix4_ptr	matrix4_multiplication(t_matrix4 m1, t_matrix4 m2, t_matrix4 m3);
 t_matrix4_ptr	matrix3_multiplication(t_matrix3 m1, t_matrix3 m2, t_matrix4 m3);
 t_tuple			matrix4_multiplication_by_tuple(t_matrix4 m1, t_tuple t1);
@@ -113,5 +114,12 @@ t_matrix4_ptr	matrix2_multiplication(t_matrix2 m1, t_matrix2 m2, t_matrix4 m3);
 t_matrix4_ptr	matrix4_transposition(t_matrix4 m1);
 t_matrix3_ptr	matrix3_transposition(t_matrix3 m1);
 t_matrix2_ptr	matrix2_transposition(t_matrix2 m1);
+double			matrix3_cofactor(t_matrix3 m, int row, int col);
+double			matrix4_cofactor(t_matrix4 m, int row, int col);
+double			determining_matrix2(t_matrix2 m);
+double 			determining_matrix3(t_matrix3 m);
+double 			determining_matrix4(t_matrix4 m);
+int				matrix4_is_reversible(t_matrix4 m);
+t_matrix4_ptr	matrix4_reverse(t_matrix4 m1, t_matrix4 m2);
 
 #endif

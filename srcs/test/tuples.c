@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:22:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/08 14:51:32 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/10 14:39:27 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -654,7 +654,6 @@ int	test_normalization_point_positive(void)
 	magnitude = tuple_magnitude(result);
 	if (fabs(magnitude - 1.0) > 0.00001)
 		return (0);
-	
 	point = set_point(5, 0, 0);
 	result = tuple_normalization(point);
 	magnitude = tuple_magnitude(result);

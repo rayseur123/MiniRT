@@ -26,6 +26,9 @@ SCENE_SRCS := manage_tuple.c \
 				transposition_matrix.c \
 				determining_matrix.c \
 				submatrice_matrix.c \
+				cofactor_matrix.c \
+				inversing_matrix.c \
+				minor_matrix.c \
 
 SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 

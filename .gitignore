@@ -14,8 +14,10 @@ gitignore
 
 *.gch
 
-libs/libft/libft.a
+*.a
 
 *.txt
+
+mlx-test
 
 miniRT

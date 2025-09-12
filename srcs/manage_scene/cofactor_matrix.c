@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minor_matrix.c                                     :+:      :+:    :+:   */
+/*   cofactor_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 12:45:33 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/12 06:07:19 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/12 03:58:44 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/12 06:06:52 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include <math.h>
 
-double	matrix3_minor(t_matrix3 m, int row, int col)
+double	matrix3_cofactor(t_matrix3 m, int row, int col)
 {
-	t_matrix2	m2;
-
-	matrix3_submatrix(m, m2, row, col);
-	return (determining_matrix2(m2));
+	double	minor_m;
+	
+	minor_m = matrix3_minor(m, row, col);
+	if ((row + col) % 2)
+		minor_m = -1;
+	return (minor_m);
 }
 
-double	matrix4_minor(t_matrix4 m, int row, int col)
+double	matrix4_cofactor(t_matrix4 m, int row, int col)
 {
-	t_matrix3	m2;
-
-	matrix4_submatrix(m, m2, row, col);
-	return (determining_matrix3(m2));
+	double	minor_m;
+	
+	minor_m = matrix4_minor(m, row, col);
+	if ((row + col) % 2)
+		minor_m = -1;
+	return (minor_m);
 }
