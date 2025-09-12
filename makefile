@@ -2,7 +2,6 @@ NAME := miniRT
 
 # --- SRC/DIR --- #
 
-
 SRC_DIR := srcs/
 
 TEST_DIR := test/
@@ -14,29 +13,52 @@ SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 
 SCENE_DIR := manage_scene/
 
-SCENE_SRCS := manage_tuple.c \
-				set_tuple.c   \
-				comp_tuple.c   \
-				operations_tuple.c \
-				manage_float.c \
-				manage_canva.c \
-				manage_rgb.c \
-				operations_matrix.c \
+CANVA_DIR := canva/
+
+CANVA_SRCS := manage_canva.c \
+
+SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
+
+FLOAT_DIR := float/
+
+FLOAT_SRCS := manage_float.c \
+
+SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
+
+MATRICE_DIR := matrice/
+
+MATRICE_SRCS := operations_matrix.c \
 				matrix_is_equal.c \
 				transposition_matrix.c \
-				determining_matrix.c \
-				submatrice_matrix.c \
 				cofactor_matrix.c \
-				inversing_matrix.c \
 				minor_matrix.c \
+				inversing_matrix.c \
+				submatrice_matrix.c \
+				determining_matrix.c \
 
-SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
+SCENE_SRCS += $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))
+
+RGB_DIR := rgb/
+
+RGB_SRCS := manage_rgb.c \
+
+SCENE_SRCS += $(addprefix $(RGB_DIR), $(RGB_SRCS))
+
+RGB_DIR := tuple/
+
+RGB_SRCS := manage_tuple.c \
+				set_tuple.c   \
+				comp_tuple.c   \
+				operations_tuple.c \				
+
 
 SRCS += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
-
-SRCS_NORME += minirt.c
-
 SRCS += minirt.c
+
+# --- CHECK NORME --- #
+
+SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
+SRCS_NORME += minirt.c
 
 # --- LIBS TARGET --- #
 
