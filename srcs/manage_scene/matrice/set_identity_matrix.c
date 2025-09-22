@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cofactor_matrix.c                                  :+:      :+:    :+:   */
+/*   set_identity_matrix.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/12 03:58:44 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/22 12:53:30 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/22 15:41:04 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/22 15:44:17 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
-#include <math.h>
 
-double	matrix3_cofactor(t_matrix3 m, int row, int col)
+t_matrix4 *set_identity_matrix(t_matrix4 m)
 {
-	double	minor_m;
-	
-	minor_m = matrix3_minor(m, row, col);
-	if ((row + col) % 2)
-		minor_m = -1;
-	return (minor_m);
-}
-
-double	matrix4_cofactor(t_matrix4 m, int row, int col)
-{
-	double	minor_m;
-	
-	minor_m = matrix4_minor(m, row, col);
-	if ((row + col) % 2)
-		minor_m = -1;
-	return (minor_m);
+	m[0][0] = 1;
+	m[0][1] = 0;
+	m[0][2] = 0;
+	m[0][3] = 0;
+	m[1][0] = 0;
+	m[1][1] = 1;
+	m[1][2] = 0;
+	m[1][3] = 0;
+	m[2][0] = 0;
+	m[2][1] = 0;
+	m[2][2] = 1;
+	m[2][3] = 0;
+	m[3][0] = 0;
+	m[3][1] = 0;
+	m[3][2] = 0;
+	m[3][3] = 1;
+	return (m);
 }

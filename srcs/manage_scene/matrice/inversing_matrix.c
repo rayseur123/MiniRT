@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   inversing_matrix.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 05:08:27 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/12 05:47:42 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/22 14:25:19 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include <math.h>
 
-int	matrix4_is_reversible(t_matrix4 m)
+int matrix4_is_reversible(t_matrix4 m)
 {
 	return (!double_is_equal(determining_matrix4(m), 0));
 }
 
-t_matrix4_ptr	matrix4_reverse(t_matrix4 m1, t_matrix4 m2)
+t_matrix4_ptr matrix4_reverse(t_matrix4 m1, t_matrix4 m2)
 {
-	double	deter;
+	double deter;
 
 	if (!matrix4_is_reversible(m1))
 		return (m1);

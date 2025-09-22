@@ -18,24 +18,8 @@
 
 int	main(void)
 {
-	t_canvas		canva;
-	t_rgb			rgb;
-	t_projectile	p;
-	t_environment	e;
+	t_tuple tuple;
 
-	init_canva(&canva);
-	rgb = set_rgb((u_int8_t)128, (u_int8_t)128, (u_int8_t)128);
-	p.position = set_point(0, 1, 0);
-	p.velocity = tuple_multiplication (tuple_normalization(
-				set_vector(1, 1.8, 0)), 11.25);
-	e.gravity = set_vector(0, -0.1, 0);
-	e.wind = set_vector(-0.01, 0, 0);
-	while (p.position.y >= 0)
-	{
-		put_px_in_canva(canva, p.position.x, p.position.y, rgb);
-		p = tick(e, p);
-	}
-	mlx_put_image_to_window(canva.mlx, canva.window, canva.canva, 0, 0);
-	mlx_loop(canva.mlx);
+	tuple = set_point(0.0, 0.0, 0.0);
 	return (0);
 }

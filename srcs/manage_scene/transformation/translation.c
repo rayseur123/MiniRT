@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cofactor_matrix.c                                  :+:      :+:    :+:   */
+/*   translation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/12 03:58:44 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/22 12:53:30 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/22 15:22:28 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/22 16:04:08 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
-#include <math.h>
 
-double	matrix3_cofactor(t_matrix3 m, int row, int col)
+t_matrix4 *translation(double x, double y, double z, t_matrix4 m1)
 {
-	double	minor_m;
-	
-	minor_m = matrix3_minor(m, row, col);
-	if ((row + col) % 2)
-		minor_m = -1;
-	return (minor_m);
-}
-
-double	matrix4_cofactor(t_matrix4 m, int row, int col)
-{
-	double	minor_m;
-	
-	minor_m = matrix4_minor(m, row, col);
-	if ((row + col) % 2)
-		minor_m = -1;
-	return (minor_m);
+	set_identity_matrix(m1);
+	m1[0][3] = x;
+	m1[1][3] = y;
+	m1[2][3] = z;
+	return (m1);
 }
