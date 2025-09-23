@@ -11,24 +11,16 @@ TEST_SRCS := tuples.c \
 				rgb.c \
 				transformation.c \
 
-SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 
 SCENE_DIR := manage_scene/
 
 CANVA_DIR := canva/
-
 CANVA_SRCS := manage_canva.c \
 
-SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
-
 FLOAT_DIR := float/
-
 FLOAT_SRCS := manage_float.c \
 
-SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
-
 MATRICE_DIR := matrice/
-
 MATRICE_SRCS := operations_matrix.c \
 				matrix_is_equal.c \
 				transposition_matrix.c \
@@ -37,31 +29,35 @@ MATRICE_SRCS := operations_matrix.c \
 				inversing_matrix.c \
 				submatrice_matrix.c \
 				determining_matrix.c \
-
-SCENE_SRCS += $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))
+				set_identity_matrix.c \
 
 RGB_DIR := rgb/
-
 RGB_SRCS := manage_rgb.c \
 
-SCENE_SRCS += $(addprefix $(RGB_DIR), $(RGB_SRCS))
-
 TUPLE_DIR := tuple/
-
 TUPLE_SRCS := manage_tuple.c \
 			set_tuple.c   \
 			comp_tuple.c   \
 			operations_tuple.c \
 
-SRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
-
 TRANS_DIR := transformation/
-
 TRANS_SRCS := scaling.c \
 			translation.c   \
 
-SRCS += $(addprefix $(TRANS_DIR), $(TRANS_SRCS))
+SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
+SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
+SSCENE_SRCSRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
+SCENE_SRCS += $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))
+SCENE_SRCS += $(addprefix $(RGB_DIR), $(RGB_SRCS))
+SCENE_SRCS += $(addprefix $(TRANS_DIR), $(TRANS_SRCS))
 
+SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RGB_DIR), $(RGB_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TRANS_DIR), $(TRANS_SRCS)))
 SRCS += minirt.c
 
 # --- CHECK NORME --- #

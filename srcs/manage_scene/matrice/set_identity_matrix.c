@@ -6,13 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 15:41:04 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/22 15:44:17 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:14:23 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 
-t_matrix4 *set_identity_matrix(t_matrix4 m)
+t_matrix4_ptr	set_identity_matrix(t_matrix4 m)
 {
 	m[0][0] = 1;
 	m[0][1] = 0;
