@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:58:07 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/23 13:27:48 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:34:42 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	test_scaling_to_point(void)
 	t_tuple		p;
 
 	scaling(2, 3, 4, m);
-	p = set_point(-4, 6, 8);
+	p = matrix4_multiplication_by_tuple(m, set_point(-4, 6, 8));
 	if (!check_equal_tuples(p, set_point(-8, 18, 32)))
 		return (1);
 	return (0);
@@ -73,9 +73,21 @@ int	test_scaling_to_vector(void)
 	t_tuple		p;
 
 	scaling(2, 3, 4, m);
-	p = set_vector(-4, 6, 8);
+	p = matrix4_multiplication_by_tuple(m, set_vector(-4, 6, 8));
 	if (!check_equal_tuples(p, set_vector(-8, 18, 32)))
 		return (1);
 	return (0);
 }
 
+int	test_scaling_to_matrix_inverse(void)
+{
+	t_matrix4	m;
+	t_tuple		v;
+
+	scaling(2, 3, 4, m);
+	matrix4_reverse(m, m);
+	v = matrix4_multiplication_by_tuple(m, set_vector(-4, 6, 8));
+	if (!check_equal_tuples(v, set_vector(-2, -2, -2)))
+		return (1);
+	return (0);
+}
