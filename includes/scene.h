@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/23 13:15:23 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:24:31 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,6 @@ t_matrix4_ptr	set_identity_matrix(t_matrix4 m);
 // transformation
 
 t_matrix4_ptr 	translation(double x, double y, double z, t_matrix4 m1);
+t_matrix4_ptr	scaling(double x, double y, double z, t_matrix4 m);
 
 #endif
