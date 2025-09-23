@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/22 15:44:35 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:59:06 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,9 @@ double determining_matrix4(t_matrix4 m);
 int matrix4_is_reversible(t_matrix4 m);
 t_matrix4_ptr matrix4_reverse(t_matrix4 m1, t_matrix4 m2);
 t_matrix4 *set_identity_matrix(t_matrix4 m);
+
+// transformation
+
+t_matrix4 *translation(double x, double y, double z, t_matrix4 m1);
 
 #endif

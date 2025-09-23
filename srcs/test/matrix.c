@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/22 14:42:43 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:18:52 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int test_matrix4_submatrice(void)
 	t_matrix3 m2 = {{1, 1, 1}, {3, 3, 3}, {4, 4, 4}};
 	t_matrix3 m3;
 
-	matrix4_submatrix(&m1, &m3, 1, 1);
+	matrix4_submatrix(m1, m3, 1, 1);
 	if (!matrix3_is_equal(m3, m2))
 		return (1);
 	return (0);
@@ -120,7 +120,7 @@ int test_matrix3_submatrice(void)
 	t_matrix2 m2 = {{1, 1}, {3, 3}};
 	t_matrix2 m3;
 
-	matrix3_submatrix(&m1, &m3, 1, 1);
+	matrix3_submatrix(m1, m3, 1, 1);
 	if (!matrix2_is_equal(m3, m2))
 		return (1);
 	return (0);
@@ -146,9 +146,9 @@ int test_matrix3_determining(void)
 
 int test_matrix4_determining(void)
 {
-	t_matrix3 m1 = {{-2, -8, 3, 5}, {-3, 1, 7, 3}, {1, 2, -9, 6}, {-6, 7, 7, -9}};
+	t_matrix4 m1 = {{-2, -8, 3, 5}, {-3, 1, 7, 3}, {1, 2, -9, 6}, {-6, 7, 7, -9}};
 
-	if (!double_is_equal(determining_matrix3(m1), -4071))
+	if (!double_is_equal(determining_matrix4(m1), -4071))
 		return (1);
 	return (0);
 }
@@ -177,7 +177,7 @@ int test_matrix3_transposing(void)
 	t_matrix3 m1 = {{0, 9, 3}, {9, 8, 0}, {1, 8, 5}};
 	t_matrix3 m2 = {{0, 9, 1}, {9, 8, 8}, {3, 0, 5}};
 
-	if (!matrix3_is_equal(matrix4_transposition(m1), m2))
+	if (!matrix3_is_equal(matrix3_transposition(m1), m2))
 		return (1);
 	return (0);
 }
@@ -187,7 +187,7 @@ int test_matrix2_transposing(void)
 	t_matrix2 m1 = {{0, 9}, {9, 8}};
 	t_matrix2 m2 = {{0, 9}, {9, 8}};
 
-	if (!matrix2_is_equal(matrix4_transposition(m1), m2))
+	if (!matrix2_is_equal(matrix2_transposition(m1), m2))
 		return (1);
 	return (0);
 }
@@ -210,7 +210,7 @@ int test_matrix_inversing(void)
 	t_matrix4 m3;
 
 	matrix4_reverse(m1, m3);
-	if (!matrix4_is_equal(m1, m3))
+	if (!matrix4_is_equal(m2, m3))
 		return (1);
 	return (0);
 }

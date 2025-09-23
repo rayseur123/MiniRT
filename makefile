@@ -9,6 +9,7 @@ TEST_DIR := test/
 TEST_SRCS := tuples.c \
 				matrix.c \
 				rgb.c \
+				transformation.c \
 
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 
@@ -45,14 +46,22 @@ RGB_SRCS := manage_rgb.c \
 
 SCENE_SRCS += $(addprefix $(RGB_DIR), $(RGB_SRCS))
 
-RGB_DIR := tuple/
+TUPLE_DIR := tuple/
 
-RGB_SRCS := manage_tuple.c \
+TUPLE_SRCS := manage_tuple.c \
 			set_tuple.c   \
 			comp_tuple.c   \
 			operations_tuple.c \
 
-SRCS += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
+SRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
+
+TRANS_DIR := transformation/
+
+TRANS_SRCS := scaling.c \
+			translation.c   \
+
+SRCS += $(addprefix $(TRANS_DIR), $(TRANS_SRCS))
+
 SRCS += minirt.c
 
 # --- CHECK NORME --- #

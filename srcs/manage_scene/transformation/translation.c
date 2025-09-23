@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 15:22:28 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/23 11:33:52 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:36:51 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@ t_tuple	translation_tuple(double x, double y, double z, t_tuple point)
 
 	return (matrix4_multiplication_by_tuple(translation(x, y, z, matrix), point));
 }
+
