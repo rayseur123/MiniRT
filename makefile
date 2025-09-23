@@ -40,6 +40,7 @@ SRCS += minirt.c \
 		u_manage.c \
 		u_print.c \
 		u_libs.c \
+		devan.c \
 
 # --- LIBS TARGET --- #
 
