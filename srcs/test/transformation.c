@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:58:07 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/23 13:34:42 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/24 11:48:20 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,23 @@ int	test_scaling_to_matrix_inverse(void)
 	matrix4_reverse(m, m);
 	v = matrix4_multiplication_by_tuple(m, set_vector(-4, 6, 8));
 	if (!check_equal_tuples(v, set_vector(-2, -2, -2)))
+		return (1);
+	return (0);
+}
+
+int	test_rotation_x(void)
+{
+	t_tuple		point;
+	double		half;
+	double		full;
+	t_matrix4	half;
+	t_matrix4	full;
+	const double pi = 2 * acos(0.0);
+
+	point = set_point(0, 1, 0);
+	rotation_x(pi / 4, &half);
+	rotation_x(pi / 2, &full);
+	if (!check_equal_tuples(matrix4_multiplication_by_tuple(&half, point), set_point(0, sqrt(2) / 2, sqrt(2) / 2)))
 		return (1);
 	return (0);
 }

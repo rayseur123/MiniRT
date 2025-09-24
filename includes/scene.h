@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/23 13:24:31 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/24 13:24:55 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 #define STRUCT_OBJS_H
 
 #define EPSILON 0.00001
-#define WIDTH_CANVA 900;
-#define HEIGHT_CANVA 550;
-#define IDENTITY_MTRX {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}};
+#define WIDTH_CANVA 900
+#define HEIGHT_CANVA 550
+#define IDENTITY_MTRX {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}}
 typedef double t_matrix4[4][4];
 typedef double (*t_matrix4_ptr)[4];
 typedef double t_matrix3[3][3];
@@ -127,5 +127,8 @@ t_matrix4_ptr	set_identity_matrix(t_matrix4 m);
 
 t_matrix4_ptr 	translation(double x, double y, double z, t_matrix4 m1);
 t_matrix4_ptr	scaling(double x, double y, double z, t_matrix4 m);
+t_matrix4_ptr	rotation_x(double radian, t_matrix4 m);
+t_matrix4_ptr	rotation_y(double radian, t_matrix4 m);
+t_matrix4_ptr	rotation_z(double radian, t_matrix4 m);
 
 #endif
