@@ -45,6 +45,7 @@ typedef struct s_canvas
 	void		*mlx;
 	void		*window;
 	void		*canva;
+	void		*addr
 }	t_canvas;
 
 typedef struct s_tuple
