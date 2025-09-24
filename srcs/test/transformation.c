@@ -6,11 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:58:07 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 11:48:20 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/24 13:51:49 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
+#include <math.h>
 
 int	test_translation_tuple(void)
 {
@@ -95,16 +96,14 @@ int	test_scaling_to_matrix_inverse(void)
 int	test_rotation_x(void)
 {
 	t_tuple		point;
-	double		half;
-	double		full;
 	t_matrix4	half;
 	t_matrix4	full;
 	const double pi = 2 * acos(0.0);
 
 	point = set_point(0, 1, 0);
-	rotation_x(pi / 4, &half);
-	rotation_x(pi / 2, &full);
-	if (!check_equal_tuples(matrix4_multiplication_by_tuple(&half, point), set_point(0, sqrt(2) / 2, sqrt(2) / 2)))
+	rotation_x(pi / 4, half);
+	rotation_x(pi / 2, full);
+	if (!check_equal_tuples(matrix4_multiplication_by_tuple(half, point), set_point(0, sqrt(2) / 2, sqrt(2) / 2)))
 		return (1);
 	return (0);
 }

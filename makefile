@@ -43,6 +43,7 @@ TUPLE_SRCS := manage_tuple.c \
 TRANS_DIR := transformation/
 TRANS_SRCS := scaling.c \
 			translation.c   \
+			rotation.c \
 
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
 SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
