@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   determining_matrix.c                               :+:      :+:    :+:   */
+/*   tests.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 10:21:37 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 11:38:56 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/03 10:45:25 by dernst            #+#    #+#             */
+/*   Updated: 2025/09/03 10:46:16 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
+#ifndef _TEST_H
+# define _TEST_H
 
-int	determining_matrix2(t_matrix2 m)
-{
-	return ((m[0][0] * m[1][1]) + (m[1][0] * m[0][1]));
-}
+#endif 

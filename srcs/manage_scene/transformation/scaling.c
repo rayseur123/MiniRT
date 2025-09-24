@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   scaling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 13:43:30 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/22 16:06:07 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/23 13:06:07 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "scene.h"
-#include "libft.h"
-#include "test.h"
 
-int	main(void)
+t_matrix4_ptr	scaling(double x, double y, double z, t_matrix4 m)
 {
-	return (0);
+	set_identity_matrix(m);
+	m[0][0] = x;
+	m[1][1] = y;
+	m[2][2] = z;
+	m[3][3] = 1;
+	return (m);
 }
