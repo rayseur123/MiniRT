@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:50:34 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 13:52:46 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/24 13:56:04 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ t_matrix4_ptr	rotation_z(double radian, t_matrix4 m)
 	m[1][1] = cos(radian);
 	return (m);
 }
-
