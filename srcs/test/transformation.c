@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:58:07 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 13:51:49 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/25 13:17:46 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,42 @@ int	test_rotation_x(void)
 	point = set_point(0, 1, 0);
 	rotation_x(pi / 4, half);
 	rotation_x(pi / 2, full);
-	if (!check_equal_tuples(matrix4_multiplication_by_tuple(half, point), set_point(0, sqrt(2) / 2, sqrt(2) / 2)))
+	if (!check_equal_tuples(matrix4_multiplication_by_tuple(half, point), set_point(0, sqrt(2) / 2, sqrt(2) / 2))
+			&& !check_equal_tuples(matrix4_multiplication_by_tuple(full, point), set_point(0, 0, 1)))
 		return (1);
 	return (0);
 }
+
+int	test_rotation_y(void)
+{
+	t_tuple		point;
+	t_matrix4	half;
+	t_matrix4	full;
+	const double pi = 2 * acos(0.0);
+
+	point = set_point(0, 0, 1);
+	rotation_x(pi / 4, half);
+	rotation_x(pi / 2, full);
+	if (!check_equal_tuples(matrix4_multiplication_by_tuple(half, point), set_point(sqrt(2) / 2, 0, sqrt(2) / 2))
+			&& !check_equal_tuples(matrix4_multiplication_by_tuple(full, point), set_point(1, 0, 0)))
+		return (1);
+	return (0);
+}
+
+int	test_rotation_z(void)
+{
+	t_tuple		point;
+	t_matrix4	half;
+	t_matrix4	full;
+	const double pi = 2 * acos(0.0);
+
+	point = set_point(0, 1, 0);
+	rotation_x(pi / 4, half);
+	rotation_x(pi / 2, full);
+	if (!check_equal_tuples(matrix4_multiplication_by_tuple(half, point), set_point(-(sqrt(2) / 2), sqrt(2) / 2, 0))
+			&& !check_equal_tuples(matrix4_multiplication_by_tuple(full, point), set_point(-1, 0, 0)))
+		return (1);
+	return (0);
+}
+
+
