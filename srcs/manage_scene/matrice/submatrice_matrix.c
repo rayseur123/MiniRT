@@ -21,22 +21,20 @@ t_matrix3_ptr	matrix4_submatrix(t_matrix4 m1, t_matrix3 m2, int row, int col)
 	int	y;
 
 	y2 = 0;
-	y = 0;
-	while (y < 4)
+	y = -1;
+	while (++y < 4)
 	{
 		if (y == row)
 			continue ;
-		x = 0;
+		x = -1;
 		x2 = 0;
-		while (x < 4)
+		while (++x < 4)
 		{
 			if (x == col)
 				continue ;
 			m2[y2][x2] = m1[y][x];
 			++x2;
-			++x;
 		}
-		++y;
 		++y2;
 	}
 	return (m2);
@@ -50,22 +48,20 @@ t_matrix2_ptr	matrix3_submatrix(t_matrix3 m1, t_matrix2 m2, int row, int col)
 	int	y;
 
 	y2 = 0;
-	y = 0;
-	while (y < 3)
+	y = -1;
+	while (++y < 3)
 	{
 		if (y == row)
 			continue ;
-		x = 0;
+		x = -1;
 		x2 = 0;
-		while (x < 3)
+		while (++x < 3)
 		{
 			if (x == col)
 				continue ;
 			m2[y2][x2] = m1[y][x];
 			++x2;
-			++x;
 		}
-		++y;
 		++y2;
 	}
 	return (m2);

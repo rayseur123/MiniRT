@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   determining_matrix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 10:21:37 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/12 04:44:18 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/24 16:06:11 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 double	determining_matrix2(t_matrix2 m)
 {
-	return ((m[0][0] * m[1][1]) + (m[1][0] * m[0][1]));
+	return ((m[0][0] * m[1][1]) - (m[1][0] * m[0][1]));
 }
 
 double	determining_matrix3(t_matrix3 m)

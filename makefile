@@ -59,6 +59,11 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RGB_DIR), $(RGB_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TRANS_DIR), $(TRANS_SRCS)))
+SRCS += u_init.c
+SRCS += u_launch.c
+SRCS += u_manage.c
+SRCS += u_print.c
+SRCS += u_libs.c
 SRCS += minirt.c
 
 # --- CHECK NORME --- #
