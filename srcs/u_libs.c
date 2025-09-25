@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/09/25 13:35:14 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/25 14:56:25 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,16 @@ void	lib_unit(void)
 	adding_test(&function, "Tuples", "cross_product_zero_vector", &test_cross_product_zero_vector);
 	adding_test(&function, "Tuples", "tick_basic_movement", &test_tick_basic_movement);
 	adding_test(&function, "Tuples", "tick_no_forces", &test_tick_no_forces);
-	adding_test(&function, "Tuples", "tick_strong_forces", &test_tick_strong_forces);	launch_lib_test(&function);
+	adding_test(&function, "Tuples", "tick_strong_forces", &test_tick_strong_forces);
+	
+	adding_test(&function, "Trans", "translation_tuple", &test_translation_tuple);
+	adding_test(&function, "Trans", "translation_inverse_mtrx", &test_translation_inverse_mtrx);
+	adding_test(&function, "Trans", "translation_vector", &test_translation_vector);
+	adding_test(&function, "Trans", "scaling_to_point", &test_scaling_to_point);
+	adding_test(&function, "Trans", "scaling_to_vector", &test_scaling_to_vector);
+	adding_test(&function, "Trans", "scaling_to_matrix_inverse", &test_scaling_to_matrix_inverse);
+	adding_test(&function, "Trans", "rotation_x", &test_rotation_x);
+	adding_test(&function, "Trans", "rotation_y", &test_rotation_y);
+	adding_test(&function, "Trans", "rotation_z", &test_rotation_z);
+	launch_lib_test(&function);
 }

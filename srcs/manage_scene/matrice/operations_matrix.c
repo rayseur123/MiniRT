@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_matrix.c                                    :+:      :+:    :+:   */
+/*   operations_matrix.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:23:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 09:17:07 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/25 16:51:04 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,14 @@ t_matrix4_ptr	matrix2_multiplication(t_matrix2 m1, t_matrix2 m2, t_matrix4 m3)
 t_tuple	matrix4_multiplication_by_tuple(t_matrix4 m1, t_tuple t1)
 {
 	t_tuple		t2;
-	int			x;
-	int			y;
 
-	x = 0;
-	while (x < 4)
-	{
-		y = 0;
-		if (x == 0)
-			t2.x = (m1[x][0] * t1.x) + (m1[x][1] * t1.y)
-				+ (m1[x][2] * t1.z) + (m1[x][3] * t1.w);
-		else if (x == 1)
-			t2.y = (m1[x][0] * t1.x) + (m1[x][1] * t1.y)
-				+ (m1[x][2] * t1.z) + (m1[x][3] * t1.w);
-		else if (x == 2)
-			t2.z = (m1[x][0] * t1.x) + (m1[x][1] * t1.y)
-				+ (m1[x][2] * t1.z) + (m1[x][3] * t1.w);
-		else if (x == 3)
-			t2.w = (m1[x][0] * t1.x) + (m1[x][1] * t1.y)
-				+ (m1[x][2] * t1.z) + (m1[x][3] * t1.w);
-		x++;
-	}
+	t2.x = (m1[0][0] * t1.x) + (m1[0][1] * t1.y)
+		+ (m1[0][2] * t1.z) + (m1[0][3] * t1.w);
+	t2.y = (m1[1][0] * t1.x) + (m1[1][1] * t1.y)
+		+ (m1[1][2] * t1.z) + (m1[1][3] * t1.w);
+	t2.z = (m1[2][0] * t1.x) + (m1[2][1] * t1.y)
+		+ (m1[2][2] * t1.z) + (m1[2][3] * t1.w);
+	t2.w = (m1[3][0] * t1.x) + (m1[3][1] * t1.y)
+		+ (m1[3][2] * t1.z) + (m1[3][3] * t1.w);
 	return (t2);
 }

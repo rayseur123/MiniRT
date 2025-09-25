@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.c                                           :+:      :+:    :+:   */
+/*   shearing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/25 16:52:03 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/25 13:49:35 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/25 14:08:18 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
 #include "scene.h"
-#include "libft.h"
-#include "test.h"
-#include "units.h"
 
-int	main(void)
+t_matrix4_ptr	shearing(double x[2], double y[2], double z[2], t_matrix4 m)
 {
-	t_function	*test;
-
-	test = NULL;
-	lib_unit();
-	launch_lib_test(&test);
-	return (0);
+	set_identity_matrix(m);
+	m[0][1] = x[0];
+	m[0][2] = x[1];
+	m[1][0] = y[0];
+	m[1][2] = y[1];
+	m[2][0] = z[0];
+	m[2][1] = z[1];
+	return (m);
 }
