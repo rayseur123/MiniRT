@@ -1,0 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/29 15:54:33 by njooris          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "scene.h"
+#include <math.h>
+
+t_tuple	position(t_ray ray, double range) // range = time
+{
+	return ((ray.origin,
+			tuple_multiplication(ray.direction, range)));
+}
+
+t_inter	*hit(t_inters inters)
+{
+	int min;
+	uint32_t i;
+
+	min = 0;
+	i = 0;
+	while (i < inters.count)
+	{
+		if ((inters.inters[i].range > 0)
+			&& inters.inters[i].range < inters.inters[min].range || inters.inters[min].range < 0)
+			min = i;
+		i++;
+	}
+	if (inters.inters[min].range < 0)
+		return (NULL);
+	return (&inters.inters[min]);
+}

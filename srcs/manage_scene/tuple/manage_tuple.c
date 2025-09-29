@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:41:52 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 14:31:55 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/29 12:51:58 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_tuple	tuple_normalization(t_tuple tuple)
 	return (tuple_multiplication(tuple, 1 / tuple_magnitude(tuple)));
 }
 
-int	dot_product(t_tuple tuple1, t_tuple tuple2)
+double	dot_product(t_tuple tuple1, t_tuple tuple2)
 {
 	return (tuple1.x * tuple2.x + tuple1.y
 		* tuple2.y + tuple1.z * tuple2.z + tuple1.w * tuple2.w);

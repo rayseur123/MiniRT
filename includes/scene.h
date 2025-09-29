@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/25 15:31:37 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/29 15:23:16 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,32 @@ typedef double t_matrix3[3][3];
 typedef double (*t_matrix3_ptr)[3];
 typedef double t_matrix2[2][2];
 typedef double (*t_matrix2_ptr)[2];
+
+typedef enum e_tobj
+{
+	SPHERE,
+	PLANE,
+	CYLINDER,
+}	t_tobj;
+
+typedef struct s_obj
+{
+	t_tobj	type;
+	int		id;
+}	t_obj;
+
+typedef struct s_inter
+{
+	t_obj		*obj;
+	double		range;
+}	t_inter;
+
+typedef struct s_inters
+{
+	uint32_t	size;
+	uint32_t	count;
+	t_inter		inters[2];
+} t_inters;
 
 typedef struct s_rgb
 {
@@ -61,11 +87,22 @@ typedef struct s_projectile
 	t_tuple velocity;
 } t_projectile;
 
+typedef struct s_sphere
+{
+	uint32_t id;
+} t_sphere;
+
 typedef struct s_environment
 {
 	t_tuple gravity;
 	t_tuple wind;
 } t_environment;
+
+typedef struct s_ray
+{
+	t_tuple origin;
+	t_tuple direction;
+}	t_ray;
 
 t_tuple set_vector(double x, double y, double z);
 t_tuple set_point(double x, double y, double z);
@@ -77,9 +114,9 @@ t_tuple tuple_subtraction(t_tuple tuple1, t_tuple tuple2);
 t_tuple tuple_negation(t_tuple tuple);
 t_tuple tuple_multiplication(t_tuple tuple1, double scale);
 t_tuple tuple_division(t_tuple tuple1, double scale);
-double tuple_magnitude(t_tuple tuple);
+double	tuple_magnitude(t_tuple tuple);
 t_tuple tuple_normalization(t_tuple tuple);
-int dot_product(t_tuple tuple1, t_tuple tuple2);
+double	dot_product(t_tuple tuple1, t_tuple tuple2);
 t_tuple cross_product(t_tuple a, t_tuple b);
 t_projectile tick(t_environment env, t_projectile proj);
 
@@ -130,5 +167,9 @@ t_matrix4_ptr	scaling(double x, double y, double z, t_matrix4 m);
 t_matrix4_ptr	rotation_x(double radian, t_matrix4 m);
 t_matrix4_ptr	rotation_y(double radian, t_matrix4 m);
 t_matrix4_ptr	rotation_z(double radian, t_matrix4 m);
+
+// ray
+
+t_tuple	position(t_ray ray, double range);
 
 #endif
