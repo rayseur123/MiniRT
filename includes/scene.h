@@ -170,6 +170,12 @@ t_matrix4_ptr	rotation_z(double radian, t_matrix4 m);
 
 // ray
 
-t_tuple	position(t_ray ray, double range);
+t_ray			set_ray(t_tuple point, t_tuple vector);
+t_tuple			position(t_ray ray, double range);
 
+// sphere
+
+uint32_t	intersect_sphere(t_sphere s, t_ray r, t_inters *inters);
+t_sphere		sphere(void);
+void			draw_sphere(t_canvas canvas);
 #endif

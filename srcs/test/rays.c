@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "scene.h"
+#include "../../includes/scene.h"
+#include <stdio.h>
 
 int	test_ray_position(void)
 {
@@ -27,4 +29,81 @@ int	test_ray_position(void)
 	if (!check_equal_tuples(position(ray, 2.5), set_point(4.5, 3, 4)))
 		return (1);
 	return (0);
+}
+
+int test_intersect_sphere_1(void)
+{
+	t_ray r;
+	t_sphere s;
+	t_inters xs;
+
+	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
+	s = sphere();
+	intersect_sphere(s, r, &xs);
+	if (xs.count == 2)
+	{
+		printf("\n\n1 VALIDATE: %f\n\n", xs.inters[0].range);
+			if (xs.inters[0].range == 4.0)
+			{
+				printf("\n\n 2 VALIDATE\n\n");
+
+				if (xs.inters[1].range == 6.0)
+					return (0);
+			}
+	}
+	return (1);
+}
+
+int test_intersect_sphere_2(void)
+{
+	t_ray r;
+	t_sphere s;
+	t_inters xs;
+
+	r = set_ray(set_point(0, 2, -5), set_vector(0, 0 , 1));
+	s = sphere();
+	intersect_sphere(s, r, &xs);
+	if (xs.count == 0)
+		return (0);
+	return (1);
+}
+
+int test_intersect_sphere_3(void)
+{
+	t_ray r;
+	t_sphere s;
+	t_inters xs;
+
+	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
+	s = sphere();
+	intersect_sphere(s, r, &xs);
+	if (xs.count == 2)
+	{
+		if (xs.inters[0].range == -1.0)
+		{
+			if (xs.inters[1].range == 1.0)
+				return (0);
+		}
+	}
+	return (1);
+}
+
+int test_intersect_sphere_4(void)
+{
+	t_ray r;
+	t_sphere s;
+	t_inters xs;
+
+	r = set_ray(set_point(0, 0, 5), set_vector(0, 0 , 1));
+	s = sphere();
+	intersect_sphere(s, r, &xs);
+	if (xs.count == 2)
+	{
+		if (xs.inters[0].range == -6.0)
+		{
+			if (xs.inters[1].range == -4.0)
+				return (0);
+		}
+	}
+	return (1);
 }

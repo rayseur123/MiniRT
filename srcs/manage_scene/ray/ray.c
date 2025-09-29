@@ -13,27 +13,37 @@
 #include "scene.h"
 #include <math.h>
 
+#include "../../../includes/scene.h"
+
 t_tuple	position(t_ray ray, double range) // range = time
 {
-	return ((ray.origin,
-			tuple_multiplication(ray.direction, range)));
+	return (tuple_addition(ray.origin, tuple_multiplication(ray.direction, range)));
 }
 
-t_inter	*hit(t_inters inters)
+t_ray	set_ray(const t_tuple point, const t_tuple vector)
 {
-	int min;
-	uint32_t i;
+	t_ray ray;
 
-	min = 0;
-	i = 0;
-	while (i < inters.count)
-	{
-		if ((inters.inters[i].range > 0)
-			&& inters.inters[i].range < inters.inters[min].range || inters.inters[min].range < 0)
-			min = i;
-		i++;
-	}
-	if (inters.inters[min].range < 0)
-		return (NULL);
-	return (&inters.inters[min]);
+	ray.origin = point;
+	ray.direction = vector;
+	return (ray);
 }
+
+// t_inter	*hit(t_inters inters)
+// {
+// 	int min;
+// 	uint32_t i;
+//
+// 	min = 0;
+// 	i = 0;
+// 	while (i < inters.count)
+// 	{
+// 		if ((inters.inters[i].range > 0)
+// 			&& inters.inters[i].range < inters.inters[min].range || inters.inters[min].range < 0)
+// 			min = i;
+// 		i++;
+// 	}
+// 	if (inters.inters[min].range < 0)
+// 		return (NULL);
+// 	return (&inters.inters[min]);
+// }

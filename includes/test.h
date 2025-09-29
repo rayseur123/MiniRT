@@ -105,5 +105,12 @@ int	test_rotation_x(void);
 int	test_rotation_y(void);
 int	test_rotation_z(void);
 
+// ray
+
+int	test_ray_position(void);
+int test_intersect_sphere_1(void);
+int test_intersect_sphere_2(void);
+int test_intersect_sphere_3(void);
+int test_intersect_sphere_4(void);
 
 #endif

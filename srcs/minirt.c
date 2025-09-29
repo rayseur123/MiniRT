@@ -24,5 +24,17 @@ int	main(void)
 	test = NULL;
 	lib_unit();
 	launch_lib_test(&test);
+
+	t_canvas canvas;
+	t_rgb	red;
+
+	red.r = 127;
+	red.g = 0;
+	red.b = 0;
+
+	init_canva(&canvas);
+	// draw_sphere(canvas);
+	mlx_put_image_to_window(canvas.mlx, canvas.window, canvas.canva, 0, 0);
+	mlx_loop(canvas.mlx);
 	return (0);
 }

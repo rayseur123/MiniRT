@@ -101,5 +101,11 @@ void	lib_unit(void)
 	adding_test(&function, "Trans", "rotation_x", &test_rotation_x);
 	adding_test(&function, "Trans", "rotation_y", &test_rotation_y);
 	adding_test(&function, "Trans", "rotation_z", &test_rotation_z);
+
+	adding_test(&function, "Rays", "set_position", &test_ray_position);
+	adding_test(&function, "Rays", "intersect_sphere_1", &test_intersect_sphere_1);
+	adding_test(&function, "Rays", "intersect_sphere_2", &test_intersect_sphere_2);
+	adding_test(&function, "Rays", "intersect_sphere_3", &test_intersect_sphere_3);
+	adding_test(&function, "Rays", "intersect_sphere_4", &test_intersect_sphere_4);
 	launch_lib_test(&function);
 }
