@@ -12,7 +12,7 @@ MiniRT genere une image 3D avec une lumiere realisteen utilisant la technologie 
 
 - the raytracer challenge de Jamis Buck
 
-## Development Stages
+## Logic Implementation
 
 ### Tuples
 
