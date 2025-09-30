@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/25 13:19:18 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:38:54 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,14 @@ int test_intersect_sphere_4(void);
 int	test_set_intersection(void);
 int test_aggregating_intersection(void);
 int test_intersection_objet(void);
+int	test_hit_1(void);
+int	test_hit_2(void);
+int	test_hit_3(void);
+int	test_transfrom_1(void);
+int	test_transfrom_2(void);
+int	test_transfrom_3(void);
+int	test_transfrom_4(void);
+int	test_transfrom_5(void);
+int	test_transfrom_6(void);
 
 #endif

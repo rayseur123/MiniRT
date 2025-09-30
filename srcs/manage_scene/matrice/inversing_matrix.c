@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 05:08:27 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/25 16:51:27 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:21:57 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,25 @@ int	matrix4_is_reversible(t_matrix4 m)
 	return (!double_is_equal(determining_matrix4(m), 0));
 }
 
-void	matrix4_cpy(t_matrix4 src, t_matrix4 dest)
+t_matrix4_ptr	matrix4_cpy(t_matrix4 m, t_matrix4 m2)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (j < 4)
-		{
-			dest[i][j] = src[i][j];
-			j++;
-		}
-		i++;
-	}
+	m[0][0] = m2[0][0];
+	m[0][1] = m2[0][1];
+	m[0][2] = m2[0][2];
+	m[0][3] = m2[0][3];
+	m[1][0] = m2[1][0];
+	m[1][1] = m2[1][1];
+	m[1][2] = m2[1][2];
+	m[1][3] = m2[1][3];
+	m[2][0] = m2[2][0];
+	m[2][1] = m2[2][1];
+	m[2][2] = m2[2][2];
+	m[2][3] = m2[2][3];
+	m[3][0] = m2[3][0];
+	m[3][1] = m2[3][1];
+	m[3][2] = m2[3][2];
+	m[3][3] = m2[3][3];
+	return (m);
 }
 
 t_matrix4_ptr	matrix4_inverse(t_matrix4 m1, t_matrix4 m2)

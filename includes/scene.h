@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 10:50:09 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:36:19 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,19 @@ typedef double (*t_matrix3_ptr)[3];
 typedef double t_matrix2[2][2];
 typedef double (*t_matrix2_ptr)[2];
 
-typedef enum e_tobj
+typedef enum e_obj_type
 {
 	SPHERE,
 	PLANE,
 	CYLINDER,
-}	t_tobj;
+}	t_obj_type;
 
 typedef struct s_obj
 {
-	t_tobj	type;
+	t_obj_type	type;
 	int		id;
+	t_matrix4	transform;
+	t_matrix4	reverse_transform;
 }	t_obj;
 
 typedef struct s_inter
@@ -86,11 +88,6 @@ typedef struct s_projectile
 	t_tuple position;
 	t_tuple velocity;
 } t_projectile;
-
-typedef struct s_sphere
-{
-	uint32_t id;
-} t_sphere;
 
 typedef struct s_environment
 {
@@ -159,6 +156,7 @@ double 			determining_matrix4(t_matrix4 m);
 int 			matrix4_is_reversible(t_matrix4 m);
 t_matrix4_ptr 	matrix4_inverse(t_matrix4 m1, t_matrix4 m2);
 t_matrix4_ptr	set_identity_matrix(t_matrix4 m);
+t_matrix4_ptr	matrix4_cpy(t_matrix4 m, t_matrix4 m2);
 
 // transformation
 
@@ -167,6 +165,7 @@ t_matrix4_ptr	scaling(double x, double y, double z, t_matrix4 m);
 t_matrix4_ptr	rotation_x(double radian, t_matrix4 m);
 t_matrix4_ptr	rotation_y(double radian, t_matrix4 m);
 t_matrix4_ptr	rotation_z(double radian, t_matrix4 m);
+void			set_transform(t_obj *s, t_matrix4 m);
 
 // ray
 
@@ -174,10 +173,12 @@ t_ray			set_ray(t_tuple point, t_tuple vector);
 t_tuple			position(t_ray ray, double range);
 t_inter			set_intersection(double t, t_obj *obj);
 int				set_intersections(t_inters *inters, t_inter inter1, t_inter inter2);
+t_inter			*hit(t_inters *inters);
+t_ray			transform(t_ray ray, t_matrix4 m);
+void			intersect(t_ray r, t_obj *o, t_inters *xs);
 
 // sphere
-
-uint32_t		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);
+uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);
 t_obj			sphere(void);
 void			draw_sphere(t_canvas canvas);
 #endif

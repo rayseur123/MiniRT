@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 10:55:08 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:20:43 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,4 +153,146 @@ int test_intersection_objet(void)
 			return (0);
 	}
 	return (1);
+}
+
+int	test_hit_1(void)
+{
+	t_obj	s;
+	t_inter	i1;
+	t_inter i2;
+	t_inters xs;
+
+	s = sphere();
+	
+	i1 = set_intersection(1, &s);
+	i2 = set_intersection(2, &s);
+	set_intersections(&xs, i1, i2);
+	if (hit(&xs)->range != 1.0)
+		return (1);
+	return (0);
+}
+
+int	test_hit_2(void)
+{
+	t_obj	s;
+	t_inter	i1;
+	t_inter i2;
+	t_inters xs;
+
+	s = sphere();
+	
+	i1 = set_intersection(-1, &s);
+	i2 = set_intersection(1, &s);
+	set_intersections(&xs, i1, i2);
+	if (hit(&xs)->range != 1)
+		return (1);
+	return (0);
+}
+
+int	test_hit_3(void)
+{
+	t_obj	s;
+	t_inter	i1;
+	t_inter i2;
+	t_inters xs;
+
+	s = sphere();
+	
+	i1 = set_intersection(-2, &s);
+	i2 = set_intersection(-1, &s);
+	set_intersections(&xs, i1, i2);
+	if (hit(&xs))
+		return (1);
+	return (0);
+}
+
+int	test_transfrom_1(void)
+{
+	t_ray 		r;
+	t_ray		r2;
+	t_matrix4	m;
+
+	r = set_ray(set_point(1, 2, 3), set_vector(0, 1, 0));
+	translation(3, 4, 5, m);
+	r2 = transform(r, m);
+	if (!check_equal_tuples(r2.origin, set_point(4, 6, 8))
+		|| !check_equal_tuples(r2.direction, set_point(0, 1, 0)))
+		return (1);
+	return (0);
+}
+
+int	test_transfrom_2(void)
+{
+	t_ray 		r;
+	t_ray		r2;
+	t_matrix4	m;
+
+	r = set_ray(set_point(1, 2, 3), set_vector(0, 1, 0));
+	scaling(2, 3, 4, m);
+	r2 = transform(r, m);
+	if (!check_equal_tuples(r2.origin, set_point(2, 6, 12))
+		|| !check_equal_tuples(r2.direction, set_point(0, 3, 0)))
+		return (1);
+	return (0);
+}
+
+int	test_transfrom_3(void)
+{
+	t_obj		s;
+	t_matrix4	m;
+
+	set_identity_matrix(s.transform);
+	set_identity_matrix(m);
+
+	if (!matrix4_is_equal(s.transform, m))
+		return (1);
+	return (0);
+}
+
+int	test_transfrom_4(void)
+{
+	t_obj		s;
+	t_matrix4	m;
+
+	set_identity_matrix(s.transform);
+	translation(2, 3, 4, m);
+	set_transform(&s, m);
+	if (!matrix4_is_equal(s.transform, m))
+		return (1);
+	return (0);
+}
+
+int	test_transfrom_5(void)
+{
+	t_ray		r;
+	t_obj		s;
+	t_matrix4	m;
+	t_inters	xs;
+
+	r = set_ray(set_point(0, 0, -5), set_vector(0, 0, 1));
+	s = sphere();
+	scaling(2, 2, 2, m);
+	set_transform(&s, m);
+	intersect(r, &s, &xs);
+	if (xs.count != 2 || !double_is_equal(xs.inters[0].range, 3.0)
+		|| !double_is_equal(xs.inters[1].range, 7.0))
+		return (1);
+	return (0);
+}
+
+int	test_transfrom_6(void)
+{
+	t_ray		r;
+	t_obj		s;
+	t_matrix4	m;
+	t_inters	xs;
+
+	r = set_ray(set_point(0, 0, -5), set_vector(0, 0, 1));
+	s = sphere();
+	translation(5, 0, 0, m);
+	set_transform(&s, m);
+	intersect(r, &s, &xs);
+	if (xs.count != 0)
+		return (1);
+	return (0);
 }

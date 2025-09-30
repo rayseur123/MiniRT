@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/09/25 14:56:25 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:39:55 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,14 @@ void	lib_unit(void) {
 	adding_test(&function, "Rays", "set_intersection", &test_set_intersection);
 	adding_test(&function, "Rays", "intersection_aggregating", &test_aggregating_intersection);
 	adding_test(&function, "Rays", "intersection_object", &test_intersection_objet);
-
+	adding_test(&function, "Rays", "hit_1", &test_hit_1);
+	adding_test(&function, "Rays", "hit_2", &test_hit_2);
+	adding_test(&function, "Rays", "hit_3", &test_hit_3);
+	adding_test(&function, "Rays", "transfrom_1", &test_transfrom_1);
+	adding_test(&function, "Rays", "transfrom_2", &test_transfrom_2);
+	adding_test(&function, "Rays", "transfrom_3", &test_transfrom_3);
+	adding_test(&function, "Rays", "transfrom_4", &test_transfrom_4);
+	adding_test(&function, "Rays", "transfrom_5", &test_transfrom_5);
+	adding_test(&function, "Rays", "transfrom_6", &test_transfrom_6);
 	launch_lib_test(&function);
 }

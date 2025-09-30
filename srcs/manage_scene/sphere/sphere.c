@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 10:50:35 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:47:14 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_obj sphere(void)
 
 	obj.id = id++;
 	obj.type = SPHERE;
+	set_identity_matrix(obj.transform);
 	return (obj);
 }
 
@@ -40,6 +41,11 @@ uint32_t intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
 	inters->inters[0] = set_intersection((-b - sqrt(discriminant)) / (2 * a), s);
 	inters->inters[1] = set_intersection((-b + sqrt(discriminant)) / (2 * a), s);
 	return (0);
+}
+
+void	set_transform(t_obj *s, t_matrix4 m)
+{
+	matrix4_cpy(s->transform, m);
 }
 
 void	draw_sphere(t_canvas canvas) {
