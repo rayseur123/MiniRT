@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.c                                              :+:      :+:    :+:   */
+/*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/29 10:06:49 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 10:51:12 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int test_intersect_sphere_1(void)
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
 	s = sphere();
-	intersect_sphere(s, r, &xs);
+	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2)
 	{
 			if (xs.inters[0].range == 4.0)
@@ -59,7 +59,7 @@ int test_intersect_sphere_2(void)
 
 	r = set_ray(set_point(0, 2, -5), set_vector(0, 0 , 1));
 	s = sphere();
-	intersect_sphere(s, r, &xs);
+	intersect_sphere(&s, r, &xs);
 	if (xs.count == 0)
 		return (0);
 	return (1);
@@ -73,7 +73,7 @@ int test_intersect_sphere_3(void)
 
 	r = set_ray(set_point(0, 0, 0), set_vector(0, 0 , 1));
 	s = sphere();
-	intersect_sphere(s, r, &xs);
+	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2)
 	{
 		if (xs.inters[0].range == -1.0)
@@ -93,7 +93,7 @@ int test_intersect_sphere_4(void)
 
 	r = set_ray(set_point(0, 0, 5), set_vector(0, 0 , 1));
 	s = sphere();
-	intersect_sphere(s, r, &xs);
+	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2)
 	{
 		if (xs.inters[0].range == -6.0)
@@ -113,9 +113,9 @@ int	test_set_intersection(void)
 	t_inter i;
 
 	s = sphere();
-	i = set_intersection(3.5, s);
+	i = set_intersection(3.5, &s);
 	if (i.range == 3.5)
-		if (i.obj.id == s.id)
+		if (i.obj->id == s.id)
 			return (0);
 	return (1);
 }
@@ -128,11 +128,11 @@ int test_aggregating_intersection(void)
 	t_inters xs;
 
 	s.type = SPHERE;
-	i1 = set_intersection(1, s);
-	i2 = set_intersection(2, s);
-	xs = set_intersections(i1, i2);
+	i1 = set_intersection(1, &s);
+	i2 = set_intersection(2, &s);
+	set_intersections(&xs, i1, i2);
 	if (xs.count == 2) {
-		if (xs.inters[0].obj.id == s.id && xs.inters[1].obj.id == s.id)
+		if (xs.inters[0].obj->id == s.id && xs.inters[1].obj->id == s.id)
 			return (0);
 	}
 	return (1);

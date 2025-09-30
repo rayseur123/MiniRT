@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/29 15:23:16 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 10:50:09 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_obj
 
 typedef struct s_inter
 {
-	t_obj		obj;
+	t_obj		*obj;
 	double		range;
 }	t_inter;
 
@@ -172,12 +172,12 @@ t_matrix4_ptr	rotation_z(double radian, t_matrix4 m);
 
 t_ray			set_ray(t_tuple point, t_tuple vector);
 t_tuple			position(t_ray ray, double range);
-t_inter			set_intersection(double t, t_obj obj);
-t_inters		set_intersections(t_inter inter1, t_inter inter2);
+t_inter			set_intersection(double t, t_obj *obj);
+int				set_intersections(t_inters *inters, t_inter inter1, t_inter inter2);
 
 // sphere
 
-uint32_t		intersect_sphere(t_obj s, t_ray r, t_inters *inters);
+uint32_t		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);
 t_obj			sphere(void);
 void			draw_sphere(t_canvas canvas);
 #endif
