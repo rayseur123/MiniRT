@@ -57,8 +57,7 @@ t_inters	set_intersections(t_inter inter1, t_inter inter2)
 // 	i = 0;
 // 	while (i < inters.count)
 // 	{
-// 		if ((inters.inters[i].range > 0)
-// 			&& inters.inters[i].range < inters.inters[min].range || inters.inters[min].range < 0)
+// 		if (((inters.inters[i].range > 0 && inters.inters[i].range < inters.inters[min].range) || inters.inters[min].range < 0))
 // 			min = i;
 // 		i++;
 // 	}
