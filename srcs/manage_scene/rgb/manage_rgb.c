@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_rgb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 09:14:28 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 15:27:51 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "mlx_int.h"
 #include <X11/X.h>
 
-t_rgb	set_rgb(int8_t r, int8_t g, int8_t b)
+t_rgb	set_rgb(int16_t r, int16_t g, int16_t b)
 {
 	t_rgb	rgb;
 

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 12:47:14 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 15:33:28 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,28 +53,25 @@ void	draw_sphere(t_canvas canvas) {
 	int y;
 	t_rgb color;
 	t_obj s;
-	t_tuple pos;
 	t_ray r;
-	t_tuple ray_origin;
 	t_inters inters;
-	pos = set_point(0, 0, 0);
 
 	x = 0;
-	y = 0;
-	ray_origin = set_point(0,0,0);
-	r.direction = ray_origin;
-	r.origin = tuple_normalization(tuple_subtraction(pos, ray_origin));
+	r.origin = set_point(0, 0, -5);
 	s = sphere();
-	color = set_rgb(127, 0, 0);
-	while (x < WIDTH_CANVA) {
-		while (y < HEIGHT_CANVA) {
-			pos = set_point(x, y , 0);
+	color = set_rgb(255, 0, 0);
+	y = 0;
+	while (x < WIDTH_CANVA)
+	{
+		y = 0;
+		while (y < HEIGHT_CANVA)
+		{
+			r.direction = tuple_normalization(set_vector((x - WIDTH_CANVA / 2) * 0.005, (-y + HEIGHT_CANVA / 2) * 0.005, 1));
 			intersect_sphere(&s, r, &inters);
-			if (inters.count > 0 && inters.inters[0].range > 0)
+			if (inters.count > 0)
 				put_px_in_canva(canvas, x, y , color);
 			y++;
 		}
-		y = 0;
 		x++;
 	}
 }

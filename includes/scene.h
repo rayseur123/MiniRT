@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 13:36:19 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 15:28:02 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 #define STRUCT_OBJS_H
 
 #define EPSILON 0.00001
-#define WIDTH_CANVA 900
-#define HEIGHT_CANVA 550
+#define WIDTH_CANVA 500
+#define HEIGHT_CANVA 500
 #define IDENTITY_MTRX {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}}
 typedef double t_matrix4[4][4];
 typedef double (*t_matrix4_ptr)[4];
@@ -61,9 +61,9 @@ typedef struct s_inters
 
 typedef struct s_rgb
 {
-	int8_t r;
-	int8_t g;
-	int8_t b;
+	int16_t r;
+	int16_t g;
+	int16_t b;
 } t_rgb;
 
 typedef struct s_canvas
@@ -119,7 +119,7 @@ t_projectile tick(t_environment env, t_projectile proj);
 
 // rgb
 
-t_rgb set_rgb(int8_t r, int8_t g, int8_t b);
+t_rgb	set_rgb(int16_t r, int16_t g, int16_t b);
 t_rgb rgb_addition(t_rgb r1, t_rgb r2);
 t_rgb rgb_subtraction(t_rgb r1, t_rgb r2);
 t_rgb rgb_multiplication_scalar(t_rgb r1, int scale);
