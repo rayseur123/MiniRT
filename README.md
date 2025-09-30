@@ -12,6 +12,13 @@ MiniRT genere une image 3D avec une lumiere realisteen utilisant la technologie 
 
 - the raytracer challenge de Jamis Buck
 
+## Visual Progress
+
+### First Step
+<img width="500" height="500" alt="MiniRT1" src="https://github.com/user-attachments/assets/b950ac49-de75-4dee-b29c-1505310700cc" />
+
+At this stage, we have a visible sphere. Lighting is not yet implemented, but we've established the ray casting logic and distance calculation relative to the camera.
+
 ## Logic Implementation
 
 ### Tuples
