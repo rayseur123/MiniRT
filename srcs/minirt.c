@@ -22,6 +22,8 @@ int	main(void)
 	t_function	*test;
 
 	test = NULL;
+	lib_unit();
+	launch_lib_test(&test);
 
 	// t_canvas canvas;
 	// t_rgb	red;

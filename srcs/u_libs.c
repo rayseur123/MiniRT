@@ -14,8 +14,7 @@
 #include "test.h"
 #include <stdio.h>
 
-void	lib_unit(void)
-{
+void	lib_unit(void) {
 	t_function *function;
 
 	function = NULL;
@@ -109,6 +108,7 @@ void	lib_unit(void)
 	adding_test(&function, "Rays", "intersect_sphere_4", &test_intersect_sphere_4);
 	adding_test(&function, "Rays", "set_intersection", &test_set_intersection);
 	adding_test(&function, "Rays", "intersection_aggregating", &test_aggregating_intersection);
+	adding_test(&function, "Rays", "intersection_object", &test_intersection_objet);
 
 	launch_lib_test(&function);
 }

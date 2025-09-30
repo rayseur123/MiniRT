@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 10:51:12 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/30 10:55:08 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,23 @@ int test_aggregating_intersection(void)
 	i1 = set_intersection(1, &s);
 	i2 = set_intersection(2, &s);
 	set_intersections(&xs, i1, i2);
+	if (xs.count == 2) {
+		if (xs.inters[0].obj->id == s.id && xs.inters[1].obj->id == s.id)
+			return (0);
+	}
+	return (1);
+}
+
+int test_intersection_objet(void)
+{
+	t_ray r;
+	t_obj s;
+	t_inters xs;
+
+	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
+	s = sphere();
+	s.type = SPHERE;
+	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2) {
 		if (xs.inters[0].obj->id == s.id && xs.inters[1].obj->id == s.id)
 			return (0);
