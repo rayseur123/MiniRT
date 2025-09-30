@@ -29,6 +29,25 @@ t_ray	set_ray(const t_tuple point, const t_tuple vector)
 	return (ray);
 }
 
+t_inter	set_intersection(double t, t_obj obj)
+{
+	t_inter	inter;
+
+	inter.obj = obj;
+	inter.range = t;
+	return (inter);
+}
+
+t_inters	set_intersections(t_inter inter1, t_inter inter2)
+{
+	t_inters	inters;
+
+	inters.count = 2;
+	inters.inters[0] = inter1;
+	inters.inters[1] = inter2;
+	return (inters);
+}
+
 // t_inter	*hit(t_inters inters)
 // {
 // 	int min;

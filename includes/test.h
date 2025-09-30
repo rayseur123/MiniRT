@@ -112,5 +112,7 @@ int test_intersect_sphere_1(void);
 int test_intersect_sphere_2(void);
 int test_intersect_sphere_3(void);
 int test_intersect_sphere_4(void);
+int	test_set_intersection(void);
+int test_aggregating_intersection(void);
 
 #endif

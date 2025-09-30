@@ -107,5 +107,8 @@ void	lib_unit(void)
 	adding_test(&function, "Rays", "intersect_sphere_2", &test_intersect_sphere_2);
 	adding_test(&function, "Rays", "intersect_sphere_3", &test_intersect_sphere_3);
 	adding_test(&function, "Rays", "intersect_sphere_4", &test_intersect_sphere_4);
+	adding_test(&function, "Rays", "set_intersection", &test_set_intersection);
+	adding_test(&function, "Rays", "intersection_aggregating", &test_aggregating_intersection);
+
 	launch_lib_test(&function);
 }

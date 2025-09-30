@@ -22,8 +22,6 @@ int	main(void)
 	t_function	*test;
 
 	test = NULL;
-	lib_unit();
-	launch_lib_test(&test);
 
 	t_canvas canvas;
 	t_rgb	red;
@@ -33,7 +31,7 @@ int	main(void)
 	red.b = 0;
 
 	init_canva(&canvas);
-	// draw_sphere(canvas);
+	draw_sphere(canvas);
 	mlx_put_image_to_window(canvas.mlx, canvas.window, canvas.canva, 0, 0);
 	mlx_loop(canvas.mlx);
 	return (0);

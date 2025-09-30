@@ -34,7 +34,7 @@ int	test_ray_position(void)
 int test_intersect_sphere_1(void)
 {
 	t_ray r;
-	t_sphere s;
+	t_obj s;
 	t_inters xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
@@ -42,11 +42,8 @@ int test_intersect_sphere_1(void)
 	intersect_sphere(s, r, &xs);
 	if (xs.count == 2)
 	{
-		printf("\n\n1 VALIDATE: %f\n\n", xs.inters[0].range);
 			if (xs.inters[0].range == 4.0)
 			{
-				printf("\n\n 2 VALIDATE\n\n");
-
 				if (xs.inters[1].range == 6.0)
 					return (0);
 			}
@@ -57,7 +54,7 @@ int test_intersect_sphere_1(void)
 int test_intersect_sphere_2(void)
 {
 	t_ray r;
-	t_sphere s;
+	t_obj s;
 	t_inters xs;
 
 	r = set_ray(set_point(0, 2, -5), set_vector(0, 0 , 1));
@@ -71,10 +68,10 @@ int test_intersect_sphere_2(void)
 int test_intersect_sphere_3(void)
 {
 	t_ray r;
-	t_sphere s;
+	t_obj s;
 	t_inters xs;
 
-	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
+	r = set_ray(set_point(0, 0, 0), set_vector(0, 0 , 1));
 	s = sphere();
 	intersect_sphere(s, r, &xs);
 	if (xs.count == 2)
@@ -91,7 +88,7 @@ int test_intersect_sphere_3(void)
 int test_intersect_sphere_4(void)
 {
 	t_ray r;
-	t_sphere s;
+	t_obj s;
 	t_inters xs;
 
 	r = set_ray(set_point(0, 0, 5), set_vector(0, 0 , 1));
@@ -104,6 +101,39 @@ int test_intersect_sphere_4(void)
 			if (xs.inters[1].range == -4.0)
 				return (0);
 		}
+	}
+	return (1);
+}
+
+
+// NOT FINISH MISSING A VERIF ON THE OBJ
+int	test_set_intersection(void)
+{
+	t_obj s;
+	t_inter i;
+
+	s = sphere();
+	i = set_intersection(3.5, s);
+	if (i.range == 3.5)
+		if (i.obj.id == s.id)
+			return (0);
+	return (1);
+}
+
+int test_aggregating_intersection(void)
+{
+	t_obj s;
+	t_inter i1;
+	t_inter i2;
+	t_inters xs;
+
+	s.type = SPHERE;
+	i1 = set_intersection(1, s);
+	i2 = set_intersection(2, s);
+	xs = set_intersections(i1, i2);
+	if (xs.count == 2) {
+		if (xs.inters[0].obj.id == s.id && xs.inters[1].obj.id == s.id)
+			return (0);
 	}
 	return (1);
 }
