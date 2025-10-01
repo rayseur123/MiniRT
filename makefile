@@ -4,8 +4,15 @@ NAME := miniRT
 
 SRC_DIR := srcs/
 
-TEST_DIR := test/
 
+LIBSTEST_DIR := libs_test/
+LIBSTEST_SRCS := u_init.c \
+             u_launch.c \
+             u_manage.c \
+             u_print.c \
+             u_libs.c \
+
+TEST_DIR := test/
 TEST_SRCS := tuples.c \
 				matrix.c \
 				rgb.c \
@@ -14,6 +21,7 @@ TEST_SRCS := tuples.c \
 
 RAY_DIR := ray/
 RAY_SRCS := ray.c \
+			set_ray.c \
 
 SPHERE_DIR := sphere/
 SPHERE_SRCS := sphere.c \
@@ -71,11 +79,7 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RGB_DIR), $(RGB_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TRANS_DIR), $(TRANS_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RAY_DIR), $(RAY_SRCS)))
-SRCS += u_init.c
-SRCS += u_launch.c
-SRCS += u_manage.c
-SRCS += u_print.c
-SRCS += u_libs.c
+SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 
 # --- CHECK NORME --- #

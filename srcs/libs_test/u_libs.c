@@ -6,13 +6,15 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/09/30 13:39:55 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/01 11:51:52 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "units.h"
 #include "test.h"
 #include <stdio.h>
+
+#include "scene.h"
 
 void	lib_unit(void) {
 	t_function *function;
@@ -118,5 +120,12 @@ void	lib_unit(void) {
 	adding_test(&function, "Rays", "transfrom_4", &test_transfrom_4);
 	adding_test(&function, "Rays", "transfrom_5", &test_transfrom_5);
 	adding_test(&function, "Rays", "transfrom_6", &test_transfrom_6);
+
+	adding_test(&function, "Rgb", "set_rgb", &test_set_rgb);
+	adding_test(&function, "Rgb", "rgb_addition", &test_rgb_addition);
+	adding_test(&function, "Rgb", "rgb_subtraction", &test_rgb_subtraction);
+	adding_test(&function, "Rgb", "rgb_multiplication_scalar", &test_rgb_multiplication_scalar);
+	adding_test(&function, "Rgb", "rgb_multiplication", &test_rgb_multiplication);
+
 	launch_lib_test(&function);
 }

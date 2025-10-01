@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 13:05:12 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/01 13:10:30 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "../../../includes/scene.h"
 #include <math.h>
 
-t_obj sphere(void)
+t_obj	sphere(void)
 {
-	static uint32_t id;
-	t_obj obj;
+	static int32_t	id;
+	t_obj			obj;
 
 	obj.id = id++;
 	obj.type = SPHERE;
@@ -25,21 +25,24 @@ t_obj sphere(void)
 	return (obj);
 }
 
-uint32_t intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
+uint32_t	intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
 {
-	(void)s;
-	const t_tuple		sphere_to_ray = tuple_subtraction(r.origin, set_point(0, 0, 0));
-	const double 		a = dot_product(r.direction, r.direction);
-	const double 		b = 2 * dot_product(r.direction, sphere_to_ray);
+	const t_tuple		sphere_to_ray = tuple_subtraction(r.origin,
+			set_point(0, 0, 0));
+	const double		a = dot_product(r.direction, r.direction);
+	const double		b = 2 * dot_product(r.direction, sphere_to_ray);
 	const double		c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
 	const long int		discriminant = (b * b) - 4 * a * c;
 
+	(void)s;
 	inters->count = 0;
 	if (discriminant < 0)
 		return (1);
 	inters->count = 2;
-	inters->inters[0] = set_intersection((-b - sqrt(discriminant)) / (2 * a), s);
-	inters->inters[1] = set_intersection((-b + sqrt(discriminant)) / (2 * a), s);
+	inters->inters[0] = set_intersection((-b - sqrt(discriminant))
+			/ (2 * a), s);
+	inters->inters[1] = set_intersection((-b + sqrt(discriminant))
+			/ (2 * a), s);
 	return (0);
 }
 
