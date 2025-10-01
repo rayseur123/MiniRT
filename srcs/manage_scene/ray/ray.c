@@ -17,33 +17,8 @@
 
 t_tuple	position(t_ray ray, double range) // range = time
 {
-	return (tuple_addition(ray.origin, tuple_multiplication(ray.direction, range)));
-}
-
-t_ray	set_ray(const t_tuple point, const t_tuple vector)
-{
-	t_ray ray;
-
-	ray.origin = point;
-	ray.direction = vector;
-	return (ray);
-}
-
-t_inter	set_intersection(double t, t_obj *obj)
-{
-	t_inter	inter;
-
-	inter.obj = obj;
-	inter.range = t;
-	return (inter);
-}
-
-int	set_intersections(t_inters *inters, t_inter inter1, t_inter inter2)
-{
-	inters->count = 2;
-	inters->inters[0] = inter1;
-	inters->inters[1] = inter2;
-	return (0);
+	return (tuple_addition(ray.origin,
+			tuple_multiplication(ray.direction, range)));
 }
 
 t_inter	*hit(t_inters *inters)
@@ -55,9 +30,9 @@ t_inter	*hit(t_inters *inters)
 	i = 1;
 	while (i < inters->count)
 	{
-		if ((inters->inters[i].range > 0) && 
-			(inters->inters[i].range < inters->inters[min].range || 
-			inters->inters[min].range < 0))
+		if ((inters->inters[i].range > 0)
+			&& (inters->inters[i].range < inters->inters[min].range
+				|| inters->inters[min].range < 0))
 			min = i;
 		i++;
 	}
@@ -75,9 +50,9 @@ t_ray	transform(t_ray ray, t_matrix4 m)
 	return (new_ray);
 }
 
-void intersect(t_ray r, t_obj *o, t_inters *xs)
+void	intersect(t_ray r, t_obj *o, t_inters *xs)
 {
 	r = transform(r, matrix4_inverse(o->transform, o->reverse_transform));
 	if (o->type == SPHERE)
-		intersect_sphere(o, r , xs);
+		intersect_sphere(o, r, xs);
 }
