@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 15:33:28 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/01 13:05:12 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,40 @@ void	set_transform(t_obj *s, t_matrix4 m)
 	matrix4_cpy(s->transform, m);
 }
 
-void	draw_sphere(t_canvas canvas) {
-	int x;
-	int y;
-	t_rgb color;
-	t_obj s;
-	t_ray r;
-	t_inters inters;
+void	do_draw_sphere(t_canvas canvas, double wall_size, t_rgb color, t_obj *obj)
+{
+	u_int32_t	x;
+	u_int32_t	y;
+	double		pixel_size;
+	double		half;
+	t_inters	xs;
+	t_ray		ray;
 
-	x = 0;
-	r.origin = set_point(0, 0, -5);
-	s = sphere();
-	color = set_rgb(255, 0, 0);
-	y = 0;
-	while (x < WIDTH_CANVA)
+	pixel_size = wall_size / WIDTH_CANVA;
+	half = wall_size / 2;
+	ray.origin = set_point(0, 0, -5);
+	x = -1;
+	while (++x < WIDTH_CANVA)
 	{
-		y = 0;
-		while (y < HEIGHT_CANVA)
+		y = -1;
+		while (++y < HEIGHT_CANVA)
 		{
-			r.direction = tuple_normalization(set_vector((x - WIDTH_CANVA / 2) * 0.005, (-y + HEIGHT_CANVA / 2) * 0.005, 1));
-			intersect_sphere(&s, r, &inters);
-			if (inters.count > 0)
-				put_px_in_canva(canvas, x, y , color);
-			y++;
+			t_tuple position = set_point(-half + pixel_size * x, half - pixel_size * y, 10);
+			ray.direction = tuple_normalization(tuple_subtraction(position, ray.origin));
+			intersect_sphere(obj, ray, &xs);
+			if (hit(&xs))
+				put_px_in_canva(canvas, x ,y , color);
 		}
-		x++;
 	}
+}
+
+void	draw_sphere(t_canvas canvas)
+{
+	t_obj		obj;
+	double wall_size;
+	
+	
+	wall_size = 10;
+	obj = sphere();
+	do_draw_sphere(canvas, wall_size, set_rgb(255, 0, 0), &obj);
 }

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 13:36:47 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/01 11:43:53 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ t_inter	*hit(t_inters *inters)
 
 	min = 0;
 	i = 1;
+	if (inters->count <= 0)
+		return (NULL);
 	while (i < inters->count)
 	{
 		if ((inters->inters[i].range > 0) && 
