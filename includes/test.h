@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 13:38:54 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/01 11:48:11 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,14 @@ int	test_scaling_to_matrix_inverse(void);
 int	test_rotation_x(void);
 int	test_rotation_y(void);
 int	test_rotation_z(void);
+
+// rgb
+
+int	test_set_rgb(void);
+int test_rgb_addition(void);
+int test_rgb_subtraction(void);
+int test_rgb_multiplication_scalar(void);
+int test_rgb_multiplication(void);
 
 // ray
 

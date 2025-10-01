@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 15:28:02 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/01 11:40:16 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ typedef struct s_inters
 
 typedef struct s_rgb
 {
-	int16_t r;
-	int16_t g;
-	int16_t b;
+	uint8_t r;
+	uint8_t g;
+	uint8_t b;
 } t_rgb;
 
 typedef struct s_canvas
@@ -119,7 +119,7 @@ t_projectile tick(t_environment env, t_projectile proj);
 
 // rgb
 
-t_rgb	set_rgb(int16_t r, int16_t g, int16_t b);
+t_rgb	set_rgb(uint8_t r, uint8_t g, uint8_t b);
 t_rgb rgb_addition(t_rgb r1, t_rgb r2);
 t_rgb rgb_subtraction(t_rgb r1, t_rgb r2);
 t_rgb rgb_multiplication_scalar(t_rgb r1, int scale);
