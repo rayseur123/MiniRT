@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   units.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:07:04 by dernst            #+#    #+#             */
-/*   Updated: 2025/09/03 10:55:32 by dernst           ###   ########.fr       */
+/*   Updated: 2025/09/24 14:20:16 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_function
 
 }	t_function;
 
+
+void	lib_unit(void);
 
 //	u_printf.c
 void			display_function(char *name);

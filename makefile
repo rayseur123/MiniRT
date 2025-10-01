@@ -4,13 +4,27 @@ NAME := miniRT
 
 SRC_DIR := srcs/
 
-TEST_DIR := test/
 
+LIBSTEST_DIR := libs_test/
+LIBSTEST_SRCS := u_init.c \
+             u_launch.c \
+             u_manage.c \
+             u_print.c \
+             u_libs.c \
+
+TEST_DIR := test/
 TEST_SRCS := tuples.c \
 				matrix.c \
 				rgb.c \
 				transformation.c \
+				rays.c \
 
+RAY_DIR := ray/
+RAY_SRCS := ray.c \
+			set_ray.c \
+
+SPHERE_DIR := sphere/
+SPHERE_SRCS := sphere.c \
 
 SCENE_DIR := manage_scene/
 
@@ -45,12 +59,16 @@ TRANS_SRCS := scaling.c \
 			translation.c   \
 			rotation.c \
 
+
+
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
 SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
-SSCENE_SRCSRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
+SCENE_SRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
 SCENE_SRCS += $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))
 SCENE_SRCS += $(addprefix $(RGB_DIR), $(RGB_SRCS))
 SCENE_SRCS += $(addprefix $(TRANS_DIR), $(TRANS_SRCS))
+SCENE_SRCS += $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS))
+SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS)))
@@ -59,6 +77,9 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RGB_DIR), $(RGB_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TRANS_DIR), $(TRANS_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RAY_DIR), $(RAY_SRCS)))
+SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 
 # --- CHECK NORME --- #

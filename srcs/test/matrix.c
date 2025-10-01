@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/23 12:18:52 by njooris          ###   ########.fr       */
+/*   Updated: 2025/09/25 15:29:05 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,11 @@ int test_matrix2_equal_small_difference(void)
 
 int test_matrix4_submatrice(void)
 {
-	t_matrix4 m1 = {{1, 1, 1, 1}, {2, 2, 2, 2}, {3, 3, 3, 3}, {4, 4, 4, 4}};
-	t_matrix3 m2 = {{1, 1, 1}, {3, 3, 3}, {4, 4, 4}};
+	t_matrix4 m1 = {{-6, 1, 1, 6}, {-8, 5, 8, 6}, {-1, 0, 8, 2}, {-7, 1, -1, 1}};
+	t_matrix3 m2 = {{-6, 1, 6}, {-8, 8, 6}, {-7, -1, 1}};
 	t_matrix3 m3;
 
-	matrix4_submatrix(m1, m3, 1, 1);
+	matrix4_submatrix(m1, m3, 2, 1);
 	if (!matrix3_is_equal(m3, m2))
 		return (1);
 	return (0);
@@ -116,11 +116,11 @@ int test_matrix4_submatrice(void)
 
 int test_matrix3_submatrice(void)
 {
-	t_matrix3 m1 = {{1, 1, 1}, {2, 2, 2}, {3, 3, 3}};
-	t_matrix2 m2 = {{1, 1}, {3, 3}};
+	t_matrix3 m1 = {{1, 5, 0}, {-3, 2, 7}, {0, 6, -3}};
+	t_matrix2 m2 = {{-3, 2}, {0, 6}};
 	t_matrix2 m3;
 
-	matrix3_submatrix(m1, m3, 1, 1);
+	matrix3_submatrix(m1, m3, 0, 2);
 	if (!matrix2_is_equal(m3, m2))
 		return (1);
 	return (0);
@@ -156,7 +156,11 @@ int test_matrix4_determining(void)
 int test_matrix3_minor(void)
 {
 	t_matrix3 m1 = {{3, 5, 0}, {2, -1, -7}, {6, -1, 5}};
-
+	t_matrix2	m2;
+	
+	matrix3_submatrix(m1, m2, 1, 0);
+	if (!double_is_equal(determining_matrix2(m2), 25))
+		return (1);
 	if (!double_is_equal(matrix3_minor(m1, 1, 0), 25))
 		return (1);
 	return (0);
@@ -192,10 +196,10 @@ int test_matrix2_transposing(void)
 	return (0);
 }
 
-int test_matrix_cofactor(void)
+int test_matrix3_cofactor(void)
 {
+	
 	t_matrix3 m1 = {{3, 5, 0}, {2, -1, -7}, {6, -1, 5}};
-
 	if (!double_is_equal(matrix3_cofactor(m1, 0, 0), -12))
 		return (1);
 	if (!double_is_equal(matrix3_cofactor(m1, 1, 0), -25))
@@ -205,11 +209,11 @@ int test_matrix_cofactor(void)
 
 int test_matrix_inversing(void)
 {
-	t_matrix4 m1 = {{-5, 2, 6, -8}, {9, 6, 2, 6}, {0, -5, 1, -5}, {0, 0, 0, 0}};
+	t_matrix4 m1 = {{-5, 2, 6, -8}, {1, -5, 1, 8}, {7, 7, -6, -7}, {1, -3, 7, 4}};
 	t_matrix4 m2 = {{0.21805, 0.45113, 0.24060, -0.04511}, {-0.80827, -1.45677, -0.44361, 0.52068}, {-0.07895, -0.22368, -0.05263, 0.19737}, {-0.52256, -0.81391, -0.30075, 0.30639}};
 	t_matrix4 m3;
-
-	matrix4_reverse(m1, m3);
+	
+	matrix4_inverse(m1, m3);
 	if (!matrix4_is_equal(m2, m3))
 		return (1);
 	return (0);

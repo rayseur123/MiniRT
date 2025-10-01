@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_tuple.c                                        :+:      :+:    :+:   */
+/*   shearing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 09:02:42 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 14:33:56 by njooris          ###   ########.fr       */
+/*   Created: 2025/09/25 13:49:35 by njooris           #+#    #+#             */
+/*   Updated: 2025/09/25 14:08:18 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
-#include <math.h>
 
-t_tuple	set_vector(double x, double y, double z)
+t_matrix4_ptr	shearing(double x[2], double y[2], double z[2], t_matrix4 m)
 {
-	t_tuple	tuple;
-
-	tuple.x = x;
-	tuple.y = y;
-	tuple.z = z;
-	tuple.w = 0;
-	return (tuple);
-}
-
-t_tuple	set_point(double x, double y, double z)
-{
-	t_tuple	tuple;
-
-	tuple.x = x;
-	tuple.y = y;
-	tuple.z = z;
-	tuple.w = 1;
-	return (tuple);
+	set_identity_matrix(m);
+	m[0][1] = x[0];
+	m[0][2] = x[1];
+	m[1][0] = y[0];
+	m[1][2] = y[1];
+	m[2][0] = z[0];
+	m[2][1] = z[1];
+	return (m);
 }
