@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/01 11:51:52 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/02 11:27:54 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,15 @@ void	lib_unit(void) {
 	adding_test(&function, "Rays", "transfrom_4", &test_transfrom_4);
 	adding_test(&function, "Rays", "transfrom_5", &test_transfrom_5);
 	adding_test(&function, "Rays", "transfrom_6", &test_transfrom_6);
+	adding_test(&function, "Rays", "normal_vector_on_sphere1", &test_normal_vector_on_sphere1);
+	adding_test(&function, "Rays", "normal_vector_on_sphere2", &test_normal_vector_on_sphere2);
+	adding_test(&function, "Rays", "normal_vector_on_sphere3", &test_normal_vector_on_sphere3);
+	adding_test(&function, "Rays", "normal_vector_on_sphere4", &test_normal_vector_on_sphere4);
+	adding_test(&function, "Rays", "normal_vector_on_sphere5", &test_normal_vector_on_sphere5);
+	adding_test(&function, "Rays", "normal_vector_on_sphere6", &test_normal_vector_on_sphere6);
+	adding_test(&function, "Rays", "normal_vector_on_sphere7", &test_normal_vector_on_sphere7);
+	adding_test(&function, "Rays", "reflect_vector_on_sphere1", &test_reflect_vector_on_sphere1);
+	adding_test(&function, "Rays", "reflect_vector_on_sphere2", &test_reflect_vector_on_sphere2);
 
 	adding_test(&function, "Rgb", "set_rgb", &test_set_rgb);
 	adding_test(&function, "Rgb", "rgb_addition", &test_rgb_addition);

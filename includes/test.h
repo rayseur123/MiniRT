@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 11:48:11 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/02 11:26:37 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,14 @@ int	test_transfrom_3(void);
 int	test_transfrom_4(void);
 int	test_transfrom_5(void);
 int	test_transfrom_6(void);
+int	test_normal_vector_on_sphere1(void);
+int	test_normal_vector_on_sphere2(void);
+int	test_normal_vector_on_sphere3(void);
+int	test_normal_vector_on_sphere4(void);
+int	test_normal_vector_on_sphere5(void);
+int	test_normal_vector_on_sphere6(void);
+int	test_normal_vector_on_sphere7(void);
+int	test_reflect_vector_on_sphere1(void);
+int	test_reflect_vector_on_sphere2(void);
 
 #endif

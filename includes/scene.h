@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 11:40:16 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/02 11:57:04 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,8 @@ int				set_intersections(t_inters *inters, t_inter inter1, t_inter inter2);
 t_inter			*hit(t_inters *inters);
 t_ray			transform(t_ray ray, t_matrix4 m);
 void			intersect(t_ray r, t_obj *o, t_inters *xs);
+t_tuple			normal_at(t_obj s, t_tuple p);
+t_tuple			reflect(t_tuple	v, t_tuple n);
 
 // sphere
 uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);

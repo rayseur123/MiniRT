@@ -6,13 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/30 13:20:43 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/02 12:03:05 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 #include "../../includes/scene.h"
 #include <stdio.h>
+#include <math.h>
 
 int	test_ray_position(void)
 {
@@ -293,6 +294,128 @@ int	test_transfrom_6(void)
 	set_transform(&s, m);
 	intersect(r, &s, &xs);
 	if (xs.count != 0)
+		return (1);
+	return (0);
+}
+
+int	test_normal_vector_on_sphere1(void)
+{
+	t_obj	s;
+	t_tuple	v;
+
+	s = sphere();
+	v = normal_at(s, set_point(1, 0, 0));
+	if (!check_equal_tuples(v, set_vector(1, 0, 0)))
+		return (1);
+	return (0);
+}
+
+int	test_normal_vector_on_sphere2(void)
+{
+	t_obj	s;
+	t_tuple	v;
+
+	s = sphere();
+	v = normal_at(s, set_point(0, 1, 0));
+	if (!check_equal_tuples(v, set_vector(0, 1, 0)))
+		return (1);
+	return (0);
+}
+
+int	test_normal_vector_on_sphere3(void)
+{
+	t_obj	s;
+	t_tuple	v;
+
+	s = sphere();
+	v = normal_at(s, set_point(0, 0, 1));
+	if (!check_equal_tuples(v, set_vector(0, 0, 1)))
+		return (1);
+	return (0);
+}
+
+int	test_normal_vector_on_sphere4(void)
+{
+	t_obj	s;
+	t_tuple	v;
+
+	s = sphere();
+	v = normal_at(s, set_point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3));
+	if (!check_equal_tuples(v, set_vector(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3)))
+		return (1);
+	return (0);
+}
+
+int	test_normal_vector_on_sphere5(void)
+{
+	t_obj	s;
+	t_tuple	v;
+
+	s = sphere();
+	v = normal_at(s, set_point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3));
+	if (!check_equal_tuples(v, tuple_normalization(v)))
+		return (1);
+	return (0);
+}
+
+int	test_normal_vector_on_sphere6(void)
+{
+	t_obj		s;
+	t_tuple		v;
+	t_matrix4 	m;
+
+	s = sphere();
+	set_transform(&s, translation(0, 1, 0, m));
+	v = normal_at(s, set_point(0,  1.70711, -0.70711));
+	if (!check_equal_tuples(v, set_point(0,  0.70711, -0.70711)))
+		return (1);
+	return (0);
+}
+
+int	test_normal_vector_on_sphere7(void)
+{
+	t_obj		s;
+	t_tuple		v;
+	t_matrix4 	m;
+	t_matrix4	scale;
+	t_matrix4	rota;
+	const double pi = 2 * acos(0.0);
+
+	s = sphere();
+	scaling(1, 0.5, 1, scale);
+	rotation_z(pi / 5, rota);
+	matrix4_multiplication(scale, rota, m);
+	set_transform(&s, m);
+	v = normal_at(s, set_point(0,  sqrt(2) / 2, -(sqrt(2) / 2)));
+	if (!check_equal_tuples(v, set_vector(0,  0.97014, -0.24254)))
+		return (1);
+	return (0);
+}
+
+int	test_reflect_vector_on_sphere1(void)
+{
+	t_tuple	v;
+	t_tuple	n;
+	t_tuple	r;
+
+	v = set_vector(1, -1, 0);
+	n = set_vector(0, 1, 0);
+	r = reflect(v, n);
+	if (!check_equal_tuples(r, set_vector(1, 1, 0)))
+		return (1);
+	return (0);
+}
+
+int	test_reflect_vector_on_sphere2(void)
+{
+	t_tuple	v;
+	t_tuple	n;
+	t_tuple	r;
+
+	v = set_vector(0, -1, 0);
+	n = set_vector(sqrt(2) / 2, sqrt(2) / 2, 0);
+	r = reflect(v, n);
+	if (!check_equal_tuples(r, set_vector(1, 0, 0)))
 		return (1);
 	return (0);
 }
