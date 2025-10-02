@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 11:40:16 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/02 14:02:47 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "mlx_int.h"
 #include <X11/X.h>
 
-t_rgb	set_rgb(uint8_t r, uint8_t g, uint8_t b)
+t_rgb	set_rgb(double r, double g, double b)
 {
 	t_rgb	rgb;
 

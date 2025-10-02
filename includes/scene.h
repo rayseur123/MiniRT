@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 11:57:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/02 14:03:37 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,29 @@ typedef enum e_obj_type
 	CYLINDER,
 }	t_obj_type;
 
+typedef struct s_rgb
+{
+	double r;
+	double g;
+	double b;
+} t_rgb;
+
+typedef struct s_material
+{
+	t_rgb	color;
+	double	ambient;
+	double	diffus;
+	double	spec;
+	double	shininess;
+}	t_material;
+
 typedef struct s_obj
 {
 	t_obj_type	type;
-	int		id;
+	int			id;
 	t_matrix4	transform;
 	t_matrix4	reverse_transform;
+	t_material	material;
 }	t_obj;
 
 typedef struct s_inter
@@ -58,13 +75,6 @@ typedef struct s_inters
 	uint32_t	count;
 	t_inter		inters[2];
 } t_inters;
-
-typedef struct s_rgb
-{
-	uint8_t r;
-	uint8_t g;
-	uint8_t b;
-} t_rgb;
 
 typedef struct s_canvas
 {
@@ -101,6 +111,12 @@ typedef struct s_ray
 	t_tuple direction;
 }	t_ray;
 
+typedef struct s_p_light
+{
+	t_rgb	intensity;
+	t_tuple	position;
+}	t_p_light;
+
 t_tuple set_vector(double x, double y, double z);
 t_tuple set_point(double x, double y, double z);
 
@@ -119,12 +135,11 @@ t_projectile tick(t_environment env, t_projectile proj);
 
 // rgb
 
-t_rgb	set_rgb(uint8_t r, uint8_t g, uint8_t b);
+t_rgb	set_rgb(double r, double g, double b);
 t_rgb rgb_addition(t_rgb r1, t_rgb r2);
 t_rgb rgb_subtraction(t_rgb r1, t_rgb r2);
 t_rgb rgb_multiplication_scalar(t_rgb r1, int scale);
 t_rgb rgb_multiplication(t_rgb r1, t_rgb r2);
-int rgb_to_int(t_rgb rgb);
 
 // canva
 
@@ -183,4 +198,12 @@ t_tuple			reflect(t_tuple	v, t_tuple n);
 uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);
 t_obj			sphere(void);
 void			draw_sphere(t_canvas canvas);
+
+// light
+
+t_material	material(void);
+t_p_light	point_light(t_tuple	position, t_rgb inte);
+t_rgb		lighting(t_material mat, t_p_light l, t_tuple eyev, t_tuple point, t_tuple normalv);
+
+
 #endif

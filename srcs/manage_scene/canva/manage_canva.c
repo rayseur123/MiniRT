@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   manage_canva.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 09:14:26 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/02 14:04:00 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,16 @@ int	init_canva(t_canvas *canva)
 	return (0);
 }
 
-int	rgb_to_int(t_rgb rgb)
+uint32_t	fcolor_to_uint(t_rgb col)
 {
-	return ((rgb.r << 16) | (rgb.g << 8) | rgb.b);
+	uint32_t	r;
+	uint32_t	g;
+	uint32_t	b;
+
+	r = (uint32_t)(col.r * 255);
+	g = (uint32_t)(col.g * 255);
+	b = (uint32_t)(col.b * 255);
+	return (r << 16) | (g << 8) | b;
 }
 
 void	put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb)
@@ -53,5 +60,5 @@ void	put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb)
 	char	*img_data;
 
 	img_data = mlx_get_data_addr(canva.canva, &bppx, &size_line, &endian);
-	*(int *)(img_data + ((bppx >> 3) * x) + (size_line * y)) = rgb_to_int(rgb);
+	*(int *)(img_data + ((bppx >> 3) * x) + (size_line * y)) = fcolor_to_uint(rgb);
 }

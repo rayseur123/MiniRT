@@ -23,6 +23,7 @@ RAY_DIR := ray/
 RAY_SRCS := ray.c \
 			set_ray.c \
 			vector.c \
+			light.c \
 
 SPHERE_DIR := sphere/
 SPHERE_SRCS := sphere.c \

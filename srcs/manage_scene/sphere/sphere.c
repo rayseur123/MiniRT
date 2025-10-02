@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 15:15:29 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/02 13:48:28 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,13 @@ void	do_draw_sphere(t_canvas canvas, double wall_size,
 	double		half;
 	t_inters	xs;
 	t_ray		ray;
+	t_p_light	p_light;
+	t_tuple		point;
+	t_tuple		normal;
+	t_tuple		eye;
+	t_inter		*h;
 
+	p_light	= point_light(set_point(-10, 10, -10), set_rgb(1, 1, 1));
 	half = wall_size / 2;
 	ray.origin = set_point(0, 0, -5);
 	x = -1;
@@ -73,8 +79,15 @@ void	do_draw_sphere(t_canvas canvas, double wall_size,
 							half - (wall_size / WIDTH_CANVA) * y, 10),
 						ray.origin));
 			intersect(ray, obj, &xs);
-			if (hit(&xs))
+			h = hit(&xs);
+			if (h)
+			{
+				point = position(ray, h->range);
+				normal = normal_at(*h->obj, point);
+				eye = tuple_negation(ray.direction);
+				color = lighting(h->obj->material, p_light, point, eye, normal);
 				put_px_in_canva(canvas, x, y, color);
+			}
 		}
 	}
 }
@@ -86,5 +99,7 @@ void	draw_sphere(t_canvas canvas)
 
 	wall_size = 10;
 	obj = sphere();
+	obj.material = material();
+	obj.material.color = set_rgb(200, 50, 200);
 	do_draw_sphere(canvas, wall_size, set_rgb(255, 0, 0), &obj);
 }
