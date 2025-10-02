@@ -19,6 +19,11 @@ MiniRT generates a 3D image with realistic lighting using ray tracing technology
 
 At this stage, we have a visible sphere. Lighting is not yet implemented, but we've established the ray casting logic and distance calculation relative to the camera.
 
+### First Step
+<img width="489" height="473" alt="screen2" src="https://github.com/user-attachments/assets/a35a0a25-d565-4a88-ad64-dc40b782359c" />
+
+At this stage, we have a visible sphere. Lighting is implemented.
+
 ## Logic Implementation
 
 ### Tuples
