@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 11:26:37 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/02 15:22:24 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,15 @@ int	test_normal_vector_on_sphere6(void);
 int	test_normal_vector_on_sphere7(void);
 int	test_reflect_vector_on_sphere1(void);
 int	test_reflect_vector_on_sphere2(void);
+
+// light
+
+int	test_create_light(void);
+int test_default_material(void);
+int	test_light_btw_light_surface(void);
+int	test_light_btw_light_45(void);
+int	test_light_btw_light_opposite_45(void);
+int	test_light_btw_light_reflection(void);
+int	test_light_behind_surface(void);
 
 #endif

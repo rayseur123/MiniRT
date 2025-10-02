@@ -18,6 +18,7 @@ TEST_SRCS := tuples.c \
 				rgb.c \
 				transformation.c \
 				rays.c \
+				light.c \
 
 RAY_DIR := ray/
 RAY_SRCS := ray.c \

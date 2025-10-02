@@ -46,7 +46,7 @@ t_rgb	rgb_subtraction(t_rgb r1, t_rgb r2)
 	return (r3);
 }
 
-t_rgb	rgb_multiplication_scalar(t_rgb r1, int scale)
+t_rgb	rgb_multiplication_scalar(t_rgb r1, double scale)
 {
 	t_rgb	r3;
 

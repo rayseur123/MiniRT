@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/02 11:27:54 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/02 15:25:42 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,14 @@ void	lib_unit(void) {
 	adding_test(&function, "Rgb", "rgb_subtraction", &test_rgb_subtraction);
 	adding_test(&function, "Rgb", "rgb_multiplication_scalar", &test_rgb_multiplication_scalar);
 	adding_test(&function, "Rgb", "rgb_multiplication", &test_rgb_multiplication);
+
+	adding_test(&function, "Light", "create_light", &test_create_light);
+	adding_test(&function, "Light", "default_material", &test_default_material);
+	adding_test(&function, "Light", "light_btw_light_surface", &test_light_btw_light_surface);
+	adding_test(&function, "Light", "light_btw_light_45", &test_light_btw_light_45);
+	adding_test(&function, "Light", "light_btw_light_opposite_45", &test_light_btw_light_opposite_45);
+	adding_test(&function, "Light", "light_btw_light_reflection", &test_light_btw_light_reflection);
+	adding_test(&function, "Light", "light_light_behind_surface", &test_light_behind_surface);
 
 	launch_lib_test(&function);
 }

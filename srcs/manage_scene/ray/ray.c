@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 11:43:53 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/02 17:13:20 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ t_tuple	position(t_ray ray, double range) // range = time
 
 t_inter	*hit(t_inters *inters)
 {
-	int			min;
-	uint32_t	i;
+	int				min;
+	unsigned int	i;
 
 	min = 0;
 	i = 1;
@@ -32,9 +32,8 @@ t_inter	*hit(t_inters *inters)
 		return (NULL);
 	while (i < inters->count)
 	{
-		if ((inters->inters[i].range > 0)
-			&& (inters->inters[i].range < inters->inters[min].range
-				|| inters->inters[min].range < 0))
+		if ((inters->inters[min].range < 0)
+			|| (inters->inters[i].range >= 0 && inters->inters[i].range < inters->inters[min].range))
 			min = i;
 		i++;
 	}
