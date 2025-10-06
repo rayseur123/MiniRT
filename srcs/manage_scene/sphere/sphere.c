@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/06 11:56:49 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/06 12:35:43 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 	int			y;
 	t_inter		*h;
 	t_ray		ray;
-	t_tuple		point;
 	t_inters	xs;
 
 	ray.origin = set_point(0,0,-5);
@@ -102,10 +101,7 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 			ray_manage(&ray, x, y);
 			h = intersect_manage(ray, &obj, &xs);
 			if (h)
-			{
-				point = position(ray, h->range);
-				put_px_in_canva(canvas, x, y, add_phong(h, point, ray));
-			}
+				put_px_in_canva(canvas, x, y, add_phong(h, position(ray, h->range), ray));
 			y++;
 		}
 		x++;
