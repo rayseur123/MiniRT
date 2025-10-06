@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/06 11:05:11 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/06 11:56:49 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,10 @@ void ray_manage(t_ray *ray, const int x, const int y)
 						ray->origin));
 }
 
-t_inter *intersect_manage(const t_ray ray, t_obj *obj)
+t_inter *intersect_manage(const t_ray ray, t_obj *obj, t_inters *xs)
 {
-	t_inters xs;
-
-	intersect(ray, obj, &xs);
-	return (hit(&xs));
+	intersect(ray, obj, xs);
+	return (hit(xs));
 }
 
 void	do_draw_sphere(const t_canvas canvas, t_obj obj)
@@ -92,7 +90,7 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 	t_inter		*h;
 	t_ray		ray;
 	t_tuple		point;
-	(void)canvas;
+	t_inters	xs;
 
 	ray.origin = set_point(0,0,-5);
 	x = 0;
@@ -102,7 +100,7 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 		while (y < HEIGHT_CANVA)
 		{
 			ray_manage(&ray, x, y);
-			h = intersect_manage(ray, &obj);
+			h = intersect_manage(ray, &obj, &xs);
 			if (h)
 			{
 				point = position(ray, h->range);
