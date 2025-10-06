@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 17:21:12 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/06 09:00:47 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #define EPSILON 0.00001
 #define WIDTH_CANVA 500
 #define HEIGHT_CANVA 500
+#define WALL_SIZE 10.00
 #define IDENTITY_MTRX {{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}}
 typedef double t_matrix4[4][4];
 typedef double (*t_matrix4_ptr)[4];
