@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/06 12:35:43 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/06 14:11:28 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_obj	sphere(void)
 uint32_t	intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
 {
 	const t_tuple		sphere_to_ray = tuple_subtraction(r.origin,
-			set_point(0, 0, 0));
+			set_point(-1, 1, 1));
 	const double		a = dot_product(r.direction, r.direction);
 	const double		b = 2 * dot_product(r.direction, sphere_to_ray);
 	const double		c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
@@ -59,25 +59,25 @@ t_rgb	add_phong(const t_inter *h, const t_tuple point, t_ray ray)
 	t_tuple	eye;
 	t_rgb	color;
 
-	light	= point_light(set_point(-10, 10, -10), set_rgb(1, 1, 1));
+	light = point_light(set_point(-10, 10, -10), set_rgb(1, 1, 1));
 	normal = normal_at(*h->obj, point);
 	eye = tuple_negation(ray.direction);
 	color = lighting(h->obj->material, light, eye, point, normal);
 	return (color);
 }
 
-void ray_manage(t_ray *ray, const int x, const int y)
+void	ray_manage(t_ray *ray, const int x, const int y)
 {
 	double		half;
 
 	half = WALL_SIZE * 0.5;
 	ray->direction = tuple_normalization(tuple_subtraction(
-						set_point(-half + (WALL_SIZE / WIDTH_CANVA) * x,
-							half - (WALL_SIZE / HEIGHT_CANVA) * y, 10),
-						ray->origin));
+				set_point(-half + (WALL_SIZE / WIDTH_CANVA) * x,
+					half - (WALL_SIZE / HEIGHT_CANVA) * y, 10),
+				ray->origin));
 }
 
-t_inter *intersect_manage(const t_ray ray, t_obj *obj, t_inters *xs)
+t_inter	*intersect_manage(const t_ray ray, t_obj *obj, t_inters *xs)
 {
 	intersect(ray, obj, xs);
 	return (hit(xs));
@@ -91,7 +91,7 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 	t_ray		ray;
 	t_inters	xs;
 
-	ray.origin = set_point(0,0,-5);
+	ray.origin = set_point(0, 0, -5);
 	x = 0;
 	while (x < WIDTH_CANVA)
 	{
@@ -101,7 +101,8 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 			ray_manage(&ray, x, y);
 			h = intersect_manage(ray, &obj, &xs);
 			if (h)
-				put_px_in_canva(canvas, x, y, add_phong(h, position(ray, h->range), ray));
+				put_px_in_canva(canvas, x, y,
+					add_phong(h, position(ray, h->range), ray));
 			y++;
 		}
 		x++;
@@ -114,6 +115,5 @@ void	draw_sphere(const t_canvas canvas)
 
 	obj = sphere();
 	obj.material.color = set_rgb(1, 0.2, 1);
-
 	do_draw_sphere(canvas, obj);
 }

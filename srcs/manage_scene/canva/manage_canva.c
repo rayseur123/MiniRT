@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 17:05:04 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/06 12:39:49 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int32_t	fcolor_to_uint(t_rgb col)
 	uint32_t	g;
 	uint32_t	b;
 
-
 	if (col.r > 1)
 		col.r = 1;
 	if (col.g > 1)
@@ -59,11 +58,10 @@ int32_t	fcolor_to_uint(t_rgb col)
 		col.g = 0;
 	if (col.b < 0)
 		col.b = 0;
-
 	r = (uint32_t)(col.r * 255);
 	g = (uint32_t)(col.g * 255);
 	b = (uint32_t)(col.b * 255);
-	return (r << 16) | (g << 8) | b;
+	return ((r << 16) | (g << 8) | b);
 }
 
 void	put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb)
@@ -74,5 +72,6 @@ void	put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb)
 	char	*img_data;
 
 	img_data = mlx_get_data_addr(canva.canva, &bppx, &size_line, &endian);
-	*(uint32_t *)(img_data + ((bppx >> 3) * x) + (size_line * y)) = fcolor_to_uint(rgb);
+	*(uint32_t *)(img_data + ((bppx >> 3) * x)
+		+ (size_line * y)) = fcolor_to_uint(rgb);
 }

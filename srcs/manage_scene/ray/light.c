@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:06:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 14:51:38 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/07 10:56:01 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ t_light	point_light(t_tuple	position, t_rgb inte)
 	return (l);
 }
 
-t_rgb	lighting(t_material mat, t_light l, t_tuple eyev, t_tuple point, t_tuple normalv)
+t_rgb	lighting(t_material mat, t_light l, t_tuple eyev,
+		t_tuple point, t_tuple normalv)
 {
 	t_rgb	ef_color;
 	t_tuple	lightv;
@@ -51,10 +52,7 @@ t_rgb	lighting(t_material mat, t_light l, t_tuple eyev, t_tuple point, t_tuple n
 	ambient = rgb_multiplication_scalar(ef_color, mat.ambient);
 	light_dot_normal = dot_product(lightv, normalv);
 	if (light_dot_normal < 0)
-	{
-		diffuse = set_rgb(0, 0, 0);
-		spec = set_rgb(0, 0, 0);
-	}
+		return (ambient);
 	else
 	{
 		diffuse = rgb_multiplication_scalar(rgb_multiplication_scalar(ef_color, mat.diffuse), light_dot_normal);

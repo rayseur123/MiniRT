@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 17:13:20 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/06 14:11:57 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "../../../includes/scene.h"
 
-t_tuple	position(t_ray ray, double range) // range = time
+t_tuple	position(t_ray ray, double range)
 {
 	return (tuple_addition(ray.origin,
 			tuple_multiplication(ray.direction, range)));
@@ -33,7 +33,8 @@ t_inter	*hit(t_inters *inters)
 	while (i < inters->count)
 	{
 		if ((inters->inters[min].range < 0)
-			|| (inters->inters[i].range >= 0 && inters->inters[i].range < inters->inters[min].range))
+			|| (inters->inters[i].range >= 0
+				&& inters->inters[i].range < inters->inters[min].range))
 			min = i;
 		i++;
 	}
