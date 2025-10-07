@@ -22,14 +22,15 @@ MiniRT generates a 3D image with realistic lighting using ray tracing technology
 
 ## Resources 
 
-- the raytracer challenge de Jamis Buck
+- [the raytracer challenge de Jamis Buck](http://raytracerchallenge.com/)
+- [Line–sphere intersection](https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection)
 
 ## Visual Progress
 
 ### First Step
 <img width="500" height="500" alt="MiniRT1" src="https://github.com/user-attachments/assets/b950ac49-de75-4dee-b29c-1505310700cc" />
 
-At this stage, we have a visible sphere. Lighting is not yet implemented, but we've established the ray casting logic and distance calculation relative to the camera.
+At this stage, we have a visible sphere. Lighting is not yet implemented, but we've established the ray casting logic and distance calculation relative to the camera. There is also a principle of intersection with the sphere. If the ray has at least one possibility of intersection with the sphere, then a red pixel is placed there. For the math used ([Line–sphere intersection](https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection)).
 
 ## Logic Implementation
 
