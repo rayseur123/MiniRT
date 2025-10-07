@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 14:02:47 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/07 15:30:00 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,11 @@ t_rgb	rgb_multiplication(t_rgb r1, t_rgb r2)
 	r3.b = r1.b * r2.b;
 	r3.g = r1.g * r2.g;
 	return (r3);
+}
+
+int	equals_rgb(t_rgb r1, t_rgb r2)
+{
+	if (r1.r == r2.r && r1.g == r2.g && r1.b == r2.b)
+		return (1);
+	return (0);
 }

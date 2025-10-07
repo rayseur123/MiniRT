@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/06 14:11:28 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/07 15:40:44 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ uint32_t	intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
 	const double		c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
 	const double		discriminant = (b * b) - 4 * a * c;
 
-	(void)s;
+	inters->inters = malloc(2 *sizeof(t_inter));
+	if (!inters->inters)
+		return (-1);
 	inters->count = 0;
 	if (discriminant < 0)
 		return (1);

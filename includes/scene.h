@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/06 09:00:47 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/07 15:53:36 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,15 @@ typedef struct s_inter
 {
 	t_obj		*obj;
 	double		range;
+	t_tuple		point;
+	t_tuple		eyev;
+	t_tuple		normalv;
 }	t_inter;
 
 typedef struct s_inters
 {
 	uint32_t	count;
-	t_inter		inters[2];
+	t_inter		*inters;
 } t_inters;
 
 typedef struct s_canvas
@@ -117,6 +120,14 @@ typedef struct s_light
 	t_tuple	position;
 }	t_light;
 
+typedef struct s_world
+{
+	int		nb_obj;
+	int		nb_light;
+	t_obj	*obj;
+	t_light	*light;
+}	t_world;
+
 t_tuple set_vector(double x, double y, double z);
 t_tuple set_point(double x, double y, double z);
 
@@ -140,6 +151,7 @@ t_rgb rgb_addition(t_rgb r1, t_rgb r2);
 t_rgb rgb_subtraction(t_rgb r1, t_rgb r2);
 t_rgb rgb_multiplication_scalar(t_rgb r1, double scale);
 t_rgb rgb_multiplication(t_rgb r1, t_rgb r2);
+int	equals_rgb(t_rgb r1, t_rgb r2);
 
 // canva
 
@@ -205,5 +217,8 @@ t_material	material(void);
 t_light	point_light(t_tuple	position, t_rgb inte);
 t_rgb		lighting(t_material mat, t_light l, t_tuple eyev, t_tuple point, t_tuple normalv);
 
+// world
+
+t_world	world(void);
 
 #endif
