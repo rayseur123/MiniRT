@@ -6,10 +6,18 @@
 MiniRT generates a 3D image with realistic lighting using ray tracing technology.
 
 ## Installation
-
-- git clone this repo
+### Download the repository
+```
+- git clone https://github.com/rayseur123/MiniRT.git rayseur_MiniRT
+```
+### Access and compile
+```
 - utilisez la commande 'make' a la racine du projet
+```
+### Launch the program
+```
 - executer avec './miniRT'
+```
 
 ## Resources 
 
