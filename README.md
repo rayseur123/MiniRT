@@ -64,3 +64,9 @@ We build a global transformation matrix by successively applying individual tran
 - Moving an object down = elevating our viewpoint
 
 This approach simplifies calculations while producing identical results.
+
+## Contributors
+[@njooris] (https://github.com/rayseur123)
+
+[@dernst] (https://github.com/Ernst-Devan)
+
