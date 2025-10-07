@@ -66,7 +66,7 @@ We build a global transformation matrix by successively applying individual tran
 This approach simplifies calculations while producing identical results.
 
 ## Contributors
-[@njooris] (https://github.com/rayseur123)
+[njooris](https://github.com/rayseur123)
 
-[@dernst] (https://github.com/Ernst-Devan)
+[dernst](https://github.com/Ernst-Devan)
 
