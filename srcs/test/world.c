@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:38:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 13:14:21 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 13:21:52 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	test_world_0(void)
 	w = default_world();
 	r = set_ray(set_point(0,0,-5), set_vector(0,0,1));
 	intersect_world(w, r, &xs);
-	printf("count:%d\n", xs.count);
 	if (xs.count == 4 && xs.inters[0].range == 4 && xs.inters[1].range == 4.5 && xs.inters[2].range == 5.5 && xs.inters[3].range == 6)
 		return (0);
 	return (1);

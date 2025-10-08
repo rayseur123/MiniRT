@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 10:56:34 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/01 11:01:42 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 13:54:29 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_inter	set_intersection(double t, t_obj *obj)
 
 int	set_intersections(t_inters *inters, t_inter inter1, t_inter inter2)
 {
+	inters->inters = malloc(sizeof(t_inter) * 2);
 	inters->count = 2;
 	inters->inters[0] = inter1;
 	inters->inters[1] = inter2;

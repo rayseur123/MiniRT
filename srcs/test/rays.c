@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 12:03:05 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/08 14:32:46 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int test_intersect_sphere_1(void)
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
 	s = sphere();
+	xs.count = 0;
+	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2)
 	{
@@ -60,6 +62,8 @@ int test_intersect_sphere_2(void)
 
 	r = set_ray(set_point(0, 2, -5), set_vector(0, 0 , 1));
 	s = sphere();
+	xs.count = 0;
+	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
 	if (xs.count == 0)
 		return (0);
@@ -74,6 +78,8 @@ int test_intersect_sphere_3(void)
 
 	r = set_ray(set_point(0, 0, 0), set_vector(0, 0 , 1));
 	s = sphere();
+	xs.count = 0;
+	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2)
 	{
@@ -94,6 +100,8 @@ int test_intersect_sphere_4(void)
 
 	r = set_ray(set_point(0, 0, 5), set_vector(0, 0 , 1));
 	s = sphere();
+	xs.count = 0;
+	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2)
 	{
@@ -105,7 +113,6 @@ int test_intersect_sphere_4(void)
 	}
 	return (1);
 }
-
 
 // NOT FINISH MISSING A VERIF ON THE OBJ
 int	test_set_intersection(void)
@@ -128,9 +135,10 @@ int test_aggregating_intersection(void)
 	t_inter i2;
 	t_inters xs;
 
-	s.type = SPHERE;
+	s = sphere();
 	i1 = set_intersection(1, &s);
 	i2 = set_intersection(2, &s);
+	xs.count = 0;
 	set_intersections(&xs, i1, i2);
 	if (xs.count == 2) {
 		if (xs.inters[0].obj->id == s.id && xs.inters[1].obj->id == s.id)
@@ -148,6 +156,8 @@ int test_intersection_objet(void)
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
 	s = sphere();
 	s.type = SPHERE;
+	xs.count = 0;
+	xs.inters = malloc(2 * sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
 	if (xs.count == 2) {
 		if (xs.inters[0].obj->id == s.id && xs.inters[1].obj->id == s.id)
@@ -167,6 +177,7 @@ int	test_hit_1(void)
 	
 	i1 = set_intersection(1, &s);
 	i2 = set_intersection(2, &s);
+	xs.count = 0;
 	set_intersections(&xs, i1, i2);
 	if (hit(&xs)->range != 1.0)
 		return (1);
@@ -201,6 +212,7 @@ int	test_hit_3(void)
 	
 	i1 = set_intersection(-2, &s);
 	i2 = set_intersection(-1, &s);
+	xs.count = 0;
 	set_intersections(&xs, i1, i2);
 	if (hit(&xs))
 		return (1);
@@ -274,6 +286,8 @@ int	test_transfrom_5(void)
 	s = sphere();
 	scaling(2, 2, 2, m);
 	set_transform(&s, m);
+	xs.count = 0;
+	xs.inters = malloc(2 * sizeof(t_inter));
 	intersect(r, &s, &xs);
 	if (xs.count != 2 || !double_is_equal(xs.inters[0].range, 3.0)
 		|| !double_is_equal(xs.inters[1].range, 7.0))
@@ -292,6 +306,8 @@ int	test_transfrom_6(void)
 	s = sphere();
 	translation(5, 0, 0, m);
 	set_transform(&s, m);
+	xs.count = 0;
+	xs.inters = malloc(2 * sizeof(t_inter));
 	intersect(r, &s, &xs);
 	if (xs.count != 0)
 		return (1);

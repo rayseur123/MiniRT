@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 13:12:50 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 14:35:17 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ t_obj	sphere(void)
 uint32_t	intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
 {
 	const t_tuple		sphere_to_ray = tuple_subtraction(r.origin,
-			set_point(-1, 1, 1));
+			set_point(0, 0, 0));
 	const double		a = dot_product(r.direction, r.direction);
 	const double		b = 2 * dot_product(r.direction, sphere_to_ray);
 	const double		c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
 	const double		discriminant = (b * b) - 4 * a * c;
-
+	
 	if (discriminant < 0)
 		return (1);
 	inters->inters[inters->count++] = set_intersection((-b - sqrt(discriminant))
@@ -88,6 +88,8 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 	t_ray		ray;
 	t_inters	xs;
 
+	xs.inters = malloc(2 * sizeof(t_inter));
+	xs.count = 0;
 	ray.origin = set_point(0, 0, -5);
 	x = 0;
 	while (x < WIDTH_CANVA)
