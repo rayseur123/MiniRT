@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/07 15:30:00 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/08 13:03:26 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,20 @@
 #include "mlx.h"
 #include "mlx_int.h"
 #include <X11/X.h>
+
+t_rgb	color_at(t_world w, t_ray r)
+{
+	t_inters inters;
+	t_inter *h;
+
+	inters.inters = NULL;
+	intersect_world(w, r, &inters);
+	h = hit(&inters);
+	if (!h)
+		return (set_rgb(0,0,0));
+	prepare_computations(h, r);
+	return (shade_hit(w, *h));
+}
 
 t_rgb	set_rgb(double r, double g, double b)
 {

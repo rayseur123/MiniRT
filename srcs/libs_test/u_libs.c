@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/02 15:25:42 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 12:57:23 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,10 @@ void	lib_unit(void) {
 	adding_test(&function, "Light", "light_btw_light_opposite_45", &test_light_btw_light_opposite_45);
 	adding_test(&function, "Light", "light_btw_light_reflection", &test_light_btw_light_reflection);
 	adding_test(&function, "Light", "light_light_behind_surface", &test_light_behind_surface);
+
+	adding_test(&function, "World", "world_0", &test_world_0);
+	adding_test(&function, "World", "world_1", &test_world_1);
+	adding_test(&function, "World", "world_2", &test_world_2);
 
 	launch_lib_test(&function);
 }

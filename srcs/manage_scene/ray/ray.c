@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/06 14:11:57 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/08 13:12:05 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void	intersect(t_ray r, t_obj *o, t_inters *xs)
 	r = transform(r, matrix4_inverse(o->transform, o->reverse_transform));
 	if (o->type == SPHERE)
 		intersect_sphere(o, r, xs);
+	printf("count:%d", xs->count);
 }

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/07 15:53:36 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/08 11:48:29 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "mlx_int.h"
 #include <stdint.h>
 #include <X11/X.h>
+#include <stdbool.h>
 
 #ifndef STRUCT_OBJS_H
 #define STRUCT_OBJS_H
@@ -64,21 +65,6 @@ typedef struct s_obj
 	t_material	material;
 }	t_obj;
 
-typedef struct s_inter
-{
-	t_obj		*obj;
-	double		range;
-	t_tuple		point;
-	t_tuple		eyev;
-	t_tuple		normalv;
-}	t_inter;
-
-typedef struct s_inters
-{
-	uint32_t	count;
-	t_inter		*inters;
-} t_inters;
-
 typedef struct s_canvas
 {
 	uint32_t width;
@@ -95,6 +81,24 @@ typedef struct s_tuple
 	double z;
 	uint8_t w;
 } t_tuple;
+
+typedef struct s_inter
+{
+	double			nb_inter;
+	t_obj			*obj;
+	double			range;
+	uint32_t		index;
+	t_tuple			point;
+	t_tuple			eyev;
+	t_tuple			normalv;
+	bool			inside;
+}	t_inter;
+
+typedef struct s_inters
+{
+	uint32_t	count;
+	t_inter		*inters;
+} t_inters;
 
 typedef struct s_projectile
 {
@@ -122,10 +126,10 @@ typedef struct s_light
 
 typedef struct s_world
 {
-	int		nb_obj;
-	int		nb_light;
-	t_obj	*obj;
-	t_light	*light;
+	uint32_t	nb_obj;
+	uint32_t	nb_light;
+	t_obj		*obj;
+	t_light		*light;
 }	t_world;
 
 t_tuple set_vector(double x, double y, double z);
@@ -220,5 +224,8 @@ t_rgb		lighting(t_material mat, t_light l, t_tuple eyev, t_tuple point, t_tuple 
 // world
 
 t_world	world(void);
+uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters);
+void	prepare_computations(t_inter *inter, const t_ray ray);
+t_rgb	shade_hit(t_world world, t_inter comps);
 
 #endif
