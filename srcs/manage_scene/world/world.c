@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 13:11:32 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 16:12:50 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,18 @@ uint32_t	sort_intersection(t_inters *inters)
 	unsigned int	new_count;
 
 	i = 0;
-	new_count = 0;
+	new_count = inters->count;
 	while (i < inters->count)
 	{
 		j = i;
 		k = i;
+		if (inters->inters[i].range < 0)
+			new_count--;
 		while (j < inters->count)
 		{
 			if (inters->inters[j].range < inters->inters[k].range
 				&& inters->inters[j].obj > 0)
-			{
 				k = j;
-				new_count++;
-			}
 			j++;
 		}
 		temp = inters->inters[i];

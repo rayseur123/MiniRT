@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 12:57:37 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 15:48:54 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,5 +157,12 @@ int	test_light_behind_surface(void);
 int	test_world_0(void);
 int	test_world_1(void);
 int	test_world_2(void);
+int	test_world_3(void);
+int	test_world_4(void);
+int	test_world_5(void);
+int	test_world_6(void);
+int	test_world_7(void);
+int	test_world_8(void);
+int	test_world_9(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 14:35:17 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/08 14:45:05 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 	t_inters	xs;
 
 	xs.inters = malloc(2 * sizeof(t_inter));
-	xs.count = 0;
 	ray.origin = set_point(0, 0, -5);
 	x = 0;
 	while (x < WIDTH_CANVA)
@@ -97,6 +96,7 @@ void	do_draw_sphere(const t_canvas canvas, t_obj obj)
 		y = 0;
 		while (y < HEIGHT_CANVA)
 		{
+			xs.count = 0;
 			ray_manage(&ray, x, y);
 			h = intersect_manage(ray, &obj, &xs);
 			if (h)

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 13:03:26 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 16:13:19 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_rgb	color_at(t_world w, t_ray r)
 	t_inters inters;
 	t_inter *h;
 
-	inters.inters = NULL;
 	intersect_world(w, r, &inters);
 	h = hit(&inters);
 	if (!h)
@@ -30,7 +29,7 @@ t_rgb	color_at(t_world w, t_ray r)
 	return (shade_hit(w, *h));
 }
 
-t_rgb	set_rgb(double r, double g, double b)
+t_rgb	set_rgb(const double r, const double g, const double b)
 {
 	t_rgb	rgb;
 
@@ -82,7 +81,7 @@ t_rgb	rgb_multiplication(t_rgb r1, t_rgb r2)
 
 int	equals_rgb(t_rgb r1, t_rgb r2)
 {
-	if (r1.r == r2.r && r1.g == r2.g && r1.b == r2.b)
+	if (double_is_equal(r1.r,  r2.r) &&  double_is_equal(r1.g,  r2.g) && double_is_equal(r1.b,  r2.b))
 		return (1);
 	return (0);
 }

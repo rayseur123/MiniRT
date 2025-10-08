@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/08 12:57:23 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 15:50:01 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,13 @@ void	lib_unit(void) {
 	adding_test(&function, "World", "world_0", &test_world_0);
 	adding_test(&function, "World", "world_1", &test_world_1);
 	adding_test(&function, "World", "world_2", &test_world_2);
+	adding_test(&function, "World", "world_3", &test_world_3);
+	adding_test(&function, "World", "world_4", &test_world_4);
+	adding_test(&function, "World", "world_5", &test_world_5);
+	adding_test(&function, "World", "world_6", &test_world_6);
+	adding_test(&function, "World", "world_7", &test_world_7);
+	adding_test(&function, "World", "world_8", &test_world_8);
+	adding_test(&function, "World", "world_9", &test_world_9);
 
 	launch_lib_test(&function);
 }

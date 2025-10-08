@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/22 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 11:48:29 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/08 16:19:59 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ typedef struct s_inter
 	double			nb_inter;
 	t_obj			*obj;
 	double			range;
-	uint32_t		index;
 	t_tuple			point;
 	t_tuple			eyev;
 	t_tuple			normalv;
@@ -156,6 +155,7 @@ t_rgb rgb_subtraction(t_rgb r1, t_rgb r2);
 t_rgb rgb_multiplication_scalar(t_rgb r1, double scale);
 t_rgb rgb_multiplication(t_rgb r1, t_rgb r2);
 int	equals_rgb(t_rgb r1, t_rgb r2);
+t_rgb	color_at(t_world w, t_ray r);
 
 // canva
 
