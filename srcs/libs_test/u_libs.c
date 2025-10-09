@@ -6,16 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/08 15:50:01 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 13:29:48 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "units.h"
 #include "test.h"
 #include <stdio.h>
-
-#include "scene.h"
-
 void	lib_unit(void) {
 	t_function *function;
 
@@ -154,6 +151,12 @@ void	lib_unit(void) {
 	adding_test(&function, "World", "world_7", &test_world_7);
 	adding_test(&function, "World", "world_8", &test_world_8);
 	adding_test(&function, "World", "world_9", &test_world_9);
+
+	adding_test(&function, "Camera", "camera_1", &test_camera_1);	
+	adding_test(&function, "Camera", "camera_2", &test_camera_2);
+	adding_test(&function, "Camera", "camera_3", &test_camera_3);
+	adding_test(&function, "Camera", "camera_4", &test_camera_4);
+
 
 	launch_lib_test(&function);
 }

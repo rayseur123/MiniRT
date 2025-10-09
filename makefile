@@ -20,6 +20,7 @@ TEST_SRCS := tuples.c \
 				rays.c \
 				light.c \
 				world.c \
+				camera.c \
 
 RAY_DIR := ray/
 RAY_SRCS := ray.c \
@@ -37,6 +38,7 @@ SCENE_DIR := manage_scene/
 
 CANVA_DIR := canva/
 CANVA_SRCS := manage_canva.c \
+				camera.c 	\
 
 FLOAT_DIR := float/
 FLOAT_SRCS := manage_float.c \

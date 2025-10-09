@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:31:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 08:47:25 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 12:17:51 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ typedef struct s_canvas
 	void *canva;
 } t_canvas;
 
+
+
+
 int		init_canva(t_canvas *canva);
 void	put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb);
 
-#endif //MINIRT_CANVAS_H
+#endif

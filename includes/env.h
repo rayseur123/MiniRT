@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projectile.h                                       :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:34:06 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 10:44:09 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 12:17:40 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef ENV_H
 #define ENV_H
@@ -30,4 +29,4 @@ typedef struct s_environment
 
 t_projectile	tick(t_environment env, t_projectile proj);
 
-#endif  //PROJECTILE_H
+#endif

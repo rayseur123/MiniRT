@@ -6,17 +6,21 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 16:36:24 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 11:22:53 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "scene.h"
 #include "libft.h"
 #include "test.h"
 #include "units.h"
 #include "../includes/test.h"
+#include "canvas.h"
+#include "sphere.h"
+#include "mlx.h"
+#include "mlx_int.h"
+#include <X11/X.h>
 
 int	main(void)
 {

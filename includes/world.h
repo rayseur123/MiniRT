@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 10:28:50 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 11:13:50 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,4 @@ uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters);
 void		prepare_computations(t_inter *inter, t_ray ray);
 t_rgb		shade_hit(t_world world, t_inter comps);
 t_rgb		color_at(t_world w, t_ray r);
-#endif //MINIRT_WORLD_H
+#endif

@@ -6,12 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:06:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:54:35 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 11:20:02 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuple.h"
 #include "light.h"
+#include "intersection.h"
 #include <math.h>
 
 t_material	material(void)

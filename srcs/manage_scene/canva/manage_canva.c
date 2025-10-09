@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:31:39 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 13:01:23 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "mlx_int.h"
 #include "canvas.h"
+#include "camera.h"
 #include <X11/X.h>
 
 int	init_canva(t_canvas *canva)

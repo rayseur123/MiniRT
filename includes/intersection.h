@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 09:30:42 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 11:19:17 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,4 @@ void			intersect(t_ray r, t_obj *o, t_inters *xs);
 t_tuple			normal_at(t_obj s, t_tuple p);
 t_tuple			reflect(t_tuple	v, t_tuple n);
 
-#endif //MINIRT_INTERSECTION_H
+#endif

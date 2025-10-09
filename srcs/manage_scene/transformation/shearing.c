@@ -6,10 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 13:49:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:48:23 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 11:50:30 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "matrix.h"
 
 t_matrix4_ptr	shearing(double x[2], double y[2], double z[2], t_matrix4 m)
 {
