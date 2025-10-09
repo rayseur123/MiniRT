@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:46:46 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 16:48:32 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ t_rgb	color_at(t_world w, t_ray r)
 	intersect_world(w, r, &inters);
 	h = hit(&inters);
 	if (!h)
+	{
+		free(inters.inters);
 		return (set_rgb(0,0,0));
+	}
+	free(inters.inters);
 	prepare_computations(h, r);
 	return (shade_hit(w, *h));
 }

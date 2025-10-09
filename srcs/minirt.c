@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 15:06:21 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 16:59:41 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "mlx.h"
 #include "mlx_int.h"
 #include <X11/X.h>
+#include "camera.h"
 
 int	main(void)
 {
@@ -28,16 +29,15 @@ int	main(void)
 	t_canvas	canvas;
 	t_rgb		red;
 
-	test_camera_7();
+	test_world_8();
 	test = NULL;
 	lib_unit();
 	launch_lib_test(&test);
 	red.r = 127;
 	red.g = 0;
 	red.b = 0;
-	test_world_3();
 	init_canva(&canvas);
-	draw_sphere(canvas);
+	create_scene(canvas);
 	mlx_put_image_to_window(canvas.mlx, canvas.window, canvas.canva, 0, 0);
 	mlx_loop(canvas.mlx);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:18:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 15:03:17 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 16:19:19 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 #include "matrix.h"
 #include "color.h"
 #include "sphere.h"
-#include <math.h>
+
 #include <stdint.h>
 #include <stdlib.h>
+#include <math.h>
 
 int	test_camera_1(void)
 {

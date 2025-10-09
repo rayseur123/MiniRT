@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:52:49 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 16:46:43 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_obj	sphere(void)
 	return (obj);
 }
 
-uint32_t	intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
+uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_inters *inters)
 {
 	const t_tuple		sphere_to_ray = tuple_subtraction(r.origin,
 			set_point(0, 0, 0));
