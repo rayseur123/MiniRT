@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:18:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 14:36:49 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 15:03:17 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	test_camera_6(void)
 	const double 	pi = 2 * acos(0.0);
 
 	c = camera(200, 125, pi / 2);
-	if (c.pixel_size != 0.01)
+	if (!double_is_equal(c.pixel_size,0.01))
 		return (1);
 	return (0);
 }
@@ -118,7 +118,7 @@ int	test_camera_7(void)
 	const double 	pi = 2 * acos(0.0);
 
 	c = camera(125, 200, pi / 2);
-	if (c.pixel_size != 0.01)
+	if (!double_is_equal(c.pixel_size, 0.01))
 		return (1);
 	return (0);
 }

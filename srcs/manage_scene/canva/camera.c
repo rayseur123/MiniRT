@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 14:09:00 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 15:18:06 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up, t_matrix4 r)
 	t_tuple		forward;
 	t_tuple		left;
 	t_tuple		true_up;
+	t_matrix4	trans;
 
 	forward = tuple_normalization(tuple_subtraction(to, from));
 	left = cross_product(forward, tuple_normalization(up));
@@ -38,10 +39,11 @@ t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up, t_matrix4 r)
 	m[2][0] = -forward.x;
 	m[2][1] = -forward.y;
 	m[2][2] = -forward.z;
-	return (matrix4_multiplication(m, translation(-from.x, -from.y, -from.z, r), r));
+	translation(-from.x, -from.y, -from.z, trans);
+	return (matrix4_multiplication(m, trans, r));
 }
 
-t_camera	camera(uint32_t hsize, uint32_t vsize, double fov)
+t_camera	camera(double hsize, double vsize, double fov)
 {
 	t_camera	c;
 	double		half_view;
