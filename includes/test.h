@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 13:29:57 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 14:33:19 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,11 @@ int	test_camera_1(void);
 int	test_camera_2(void);
 int	test_camera_3(void);
 int	test_camera_4(void);
+int	test_camera_5(void);
+int	test_camera_6(void);
+int	test_camera_7(void);
+int	test_camera_8(void);
+int	test_camera_9(void);
+int	test_camera_10(void);
 
 #endif

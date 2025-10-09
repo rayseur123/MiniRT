@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 13:29:48 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 14:33:54 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,12 @@ void	lib_unit(void) {
 	adding_test(&function, "Camera", "camera_2", &test_camera_2);
 	adding_test(&function, "Camera", "camera_3", &test_camera_3);
 	adding_test(&function, "Camera", "camera_4", &test_camera_4);
-
+	adding_test(&function, "Camera", "camera_5", &test_camera_5);
+	adding_test(&function, "Camera", "camera_6", &test_camera_6);
+	adding_test(&function, "Camera", "camera_7", &test_camera_7);
+	adding_test(&function, "Camera", "camera_8", &test_camera_8);
+	adding_test(&function, "Camera", "camera_9", &test_camera_9);
+	adding_test(&function, "Camera", "camera_10", &test_camera_10);
 
 	launch_lib_test(&function);
 }

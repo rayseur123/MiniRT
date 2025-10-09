@@ -6,13 +6,16 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:09:03 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 12:46:15 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 14:35:14 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdint.h>
 #include "tuple.h"
+#include "intersection.h"
 #include "matrix.h"
+#include "canvas.h"
+#include "world.h"
 
 #ifndef CAMERA_H
 #define CAMERA_H
@@ -30,5 +33,7 @@ typedef struct s_camera
 
 t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up, t_matrix4 r);
 t_camera		camera(uint32_t hsize, uint32_t vsize, double fov);
+t_ray			ray_for_pixel(t_camera c, uint32_t px, uint32_t py);
+t_canvas		render(t_camera c, t_world w, t_canvas img);
 
 #endif
