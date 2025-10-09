@@ -6,11 +6,11 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:04:30 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 09:11:12 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:45:06 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "tuple.h"
 #include <math.h>
 
 int	check_equal_tuples(t_tuple tuple1, t_tuple tuple2)

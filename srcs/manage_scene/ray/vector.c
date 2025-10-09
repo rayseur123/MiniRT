@@ -6,11 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:49:54 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/06 12:43:41 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:54:18 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "tuple.h"
+#include "matrix.h"
+#include "object.h"
 
 t_tuple	normal_at(t_obj s, t_tuple wp)
 {

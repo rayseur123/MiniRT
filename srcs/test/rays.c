@@ -6,13 +6,15 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 14:32:46 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:30:03 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "../../includes/scene.h"
-#include <stdio.h>
+#include <stdlib.h>
+#include "tuple.h"
+#include "intersection.h"
+#include "sphere.h"
+#include "transform.h"
 #include <math.h>
 
 int	test_ray_position(void)

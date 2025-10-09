@@ -6,11 +6,11 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:43:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 11:37:41 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:45:37 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "matrix.h"
 #include <math.h>
 
 t_matrix4_ptr	matrix4_transposition(t_matrix4 m1)

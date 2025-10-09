@@ -6,19 +6,21 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 14:41:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/02 16:08:56 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 10:30:28 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 
-#include "../../includes/scene.h"
+#include "color.h"
+#include "light.h"
+
 
 int	test_create_light(void)
 {
 	t_rgb	intensity;
 	t_tuple	pos;
-	t_light	light;;
+	t_light	light;
 
 	intensity = set_rgb(1, 1, 1);
 	pos = set_point(0,0,0);

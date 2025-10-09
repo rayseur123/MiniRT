@@ -6,11 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 12:30:07 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/07 15:27:59 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:26:32 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "color.h"
 #include <math.h>
 
 int	test_set_rgb(void)

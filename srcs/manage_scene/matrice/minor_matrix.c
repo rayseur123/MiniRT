@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
+#include "matrix.h"
 
 double	matrix3_minor(t_matrix3 m, int row, int col)
 {

@@ -6,11 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:41:52 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/07 12:31:27 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:35:10 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "tuple.h"
+#include "env.h"
 #include <math.h>
 
 double	tuple_magnitude(t_tuple tuple)

@@ -6,14 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 13:21:54 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:53:29 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
-
-#include "../../../includes/scene.h"
+#include "intersection.h"
+#include "stdlib.h"
+#include "sphere.h"
 
 t_tuple	position(t_ray ray, double range)
 {

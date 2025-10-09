@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
+#include "matrix.h"
 
 t_matrix4_ptr	matrix4_multiplication(t_matrix4 m1, t_matrix4 m2, t_matrix4 m3)
 {

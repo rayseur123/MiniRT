@@ -6,11 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 10:56:34 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/08 13:54:29 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:53:55 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/scene.h"
+#include "intersection.h"
+#include "tuple.h"
+#include <stdlib.h>
 
 t_ray	set_ray(const t_tuple point, const t_tuple vector)
 {

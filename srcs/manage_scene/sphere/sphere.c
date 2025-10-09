@@ -6,13 +6,16 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 14:45:05 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 10:52:49 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "../../../includes/scene.h"
+#include "intersection.h"
+#include "color.h"
+#include "light.h"
+#include "canvas.h"
 #include <math.h>
+#include <stdlib.h>
 
 t_obj	sphere(void)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "matrix.h"
 #include <math.h>
 
 t_matrix3_ptr	matrix4_submatrix(t_matrix4 m1, t_matrix3 m2, int row, int col)

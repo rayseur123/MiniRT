@@ -6,13 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:38:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 16:35:01 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 10:31:02 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/scene.h"
 #include <stdlib.h>
-#include <stdio.h>
+#include "world.h"
+#include "sphere.h"
+#include "transform.h"
 
 t_world default_world()
 {

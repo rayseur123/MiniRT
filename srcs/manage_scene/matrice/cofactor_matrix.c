@@ -6,12 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 03:58:44 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 16:47:03 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:46:18 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
+#include "matrix.h"
 
 double	matrix3_cofactor(t_matrix3 m, int row, int col)
 {

@@ -6,11 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:50:34 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/02 12:02:20 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:49:20 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "matrix.h"
 #include <math.h>
 
 t_matrix4_ptr	rotation_x(double radian, t_matrix4 m)

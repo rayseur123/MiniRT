@@ -6,12 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 16:13:19 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 10:46:46 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "scene.h"
+#include "color.h"
+#include "world.h"
 #include "mlx.h"
 #include "mlx_int.h"
 #include <X11/X.h>

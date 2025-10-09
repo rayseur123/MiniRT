@@ -6,11 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/08 16:12:50 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 10:55:15 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/scene.h"
+#include "world.h"
 #include "stdlib.h"
 #include <stdio.h>
 

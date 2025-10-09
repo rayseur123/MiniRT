@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
+#include "matrix.h"
 
 int	matrix4_is_reversible(t_matrix4 m)
 {
