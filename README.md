@@ -32,10 +32,14 @@ MiniRT generates a 3D image with realistic lighting using ray tracing technology
 
 At this stage, we have a visible sphere. Lighting is not yet implemented, but we've established the ray casting logic and distance calculation relative to the camera. There is also a principle of intersection with the sphere. If the ray has at least one possibility of intersection with the sphere, then a red pixel is placed there. For the math used ([Line–sphere intersection](https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection)).
 
-## Lumiere et reflection
+## Light and reflection
 <img width="495" height="480" alt="Screenshot from 2025-10-07 13-08-27" src="https://github.com/user-attachments/assets/d59369af-0a1b-4077-aa26-21ae6012b350" />
 
 To simulate reflection, we use the Phong model ([Phong reflection model](https://en.wikipedia.org/wiki/Phong_reflection_model)). To achieve this, we have 3 types of lighting. Ambient reflection assumes that each object is slightly illuminated regardless of light sources. Diffuse reflection simulates the light gradient based on the alignment between the light direction and the surface normal. Finally, there is specular reflection (the white highlight) which corresponds to the direct alignment between the reflected light and the viewer's eye.
+
+## First Scene
+
+<img width="994" height="492" alt="Screenshot from 2025-10-13 12-27-40" src="https://github.com/user-attachments/assets/3b201be1-6c17-4f40-b80e-4ec3afe02ed2" />
 
 ## Logic Implementation
 
