@@ -33,9 +33,11 @@ MSCENE_SRCS := scene.c\
 
 WORLD_DIR := world/
 WORLD_SRCS := world.c \
+				default_world.c \
 
 SPHERE_DIR := sphere/
 SPHERE_SRCS := sphere.c \
+				draw_sphere.c \
 
 SCENE_DIR := manage_scene/
 
@@ -72,8 +74,6 @@ TRANS_SRCS := scaling.c \
 			translation.c   \
 			rotation.c \
 
-
-
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
 SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
 SCENE_SRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
@@ -83,7 +83,6 @@ SCENE_SRCS += $(addprefix $(TRANS_DIR), $(TRANS_SRCS))
 SCENE_SRCS += $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS))
 SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 SCENE_SRCS += $(addprefix $(WORLD_DIR), $(WORLD_SRCS))
-SCENE_SRCS += $(addprefix $(MSCENE_DIR), $(MSCENE_SRCS))
 
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS)))

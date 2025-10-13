@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:51:15 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 12:51:31 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 12:55:28 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,3 @@ t_rgb	rgb_multiplication(t_rgb r1, t_rgb r2)
 	r3.g = r1.g * r2.g;
 	return (r3);
 }
-

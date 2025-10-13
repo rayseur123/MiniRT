@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 17:22:16 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/13 13:23:00 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_world	world(void)
 	return (w);
 }
 
-uint32_t	sort_intersection(t_inters *inters)
+void	sort_intersection(t_inters *inters)
 {
 	t_inter			temp;
 	unsigned int	i;
@@ -35,28 +35,25 @@ uint32_t	sort_intersection(t_inters *inters)
 	unsigned int	k;
 	unsigned int	new_count;
 
-	i = 0;
+	i = -1;
 	new_count = inters->count;
-	while (i < inters->count)
+	while (++i < inters->count)
 	{
-		j = i;
+		j = i - 1;
 		k = i;
 		if (inters->inters[i].range < 0)
 			new_count--;
-		while (j < inters->count)
+		while (++j < inters->count)
 		{
 			if (inters->inters[j].range < inters->inters[k].range
 				&& inters->inters[j].obj > 0)
 				k = j;
-			j++;
 		}
 		temp = inters->inters[i];
 		inters->inters[i] = inters->inters[k];
 		inters->inters[k] = temp;
-		i++;
 	}
 	inters->count = new_count;
-	return (0);
 }
 
 uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters)
@@ -91,34 +88,16 @@ void	prepare_computations(t_inter *inter, const t_ray ray)
 
 t_rgb	shade_hit(t_world world, t_inter comps)
 {
-	unsigned int i;
-	t_rgb	color;
+	unsigned int	i;
+	t_rgb			color;
 
-	color = set_rgb(0,0,0);
+	color = set_rgb(0, 0, 0);
 	i = 0;
 	while (i < world.nb_light)
 	{
-		color = rgb_addition(color, lighting(comps.obj->material, world.light[i], comps.eyev, comps.point, comps.normalv));
+		color = rgb_addition(color, lighting(comps.obj->material,
+					world.light[i], comps.eyev, comps.point, comps.normalv));
 		i++;
 	}
 	return (color);
-}
-
-t_world default_world(void)
-{
-	t_world w;
-
-	w = world();
-	w.light = malloc(4 * sizeof(t_light));
-	w.light[0] = point_light(set_point(-10, 10, -10), set_rgb(1, 1, 1));
-	w.obj = malloc(4 * sizeof(t_obj));
-	w.nb_obj = 2;
-	w.nb_light = 1;
-	w.obj[0] = sphere();
-	w.obj[1] = sphere();
-	w.obj[0].material.color = set_rgb(0.8, 1.0, 0.6);
-	w.obj[0].material.diffuse = 0.7;
-	w.obj[0].material.spec = 0.2;
-	scaling(0.5, 0.5, 0.5, w.obj[1].transform);
-	return (w);
 }
