@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:33:33 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 10:23:12 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 17:33:13 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_tuple
 	double x;
 	double y;
 	double z;
-	uint8_t w;
+	double w;
 } t_tuple;
 
 t_tuple	tuple_addition(t_tuple tuple1, t_tuple tuple2);
