@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 13:01:23 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 17:08:41 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	init_canva(t_canvas *canva)
 	return (0);
 }
 
-int32_t	fcolor_to_uint(t_rgb col)
+uint32_t	fcolor_to_uint(t_rgb col)
 {
 	uint32_t	r;
 	uint32_t	g;
@@ -75,4 +75,16 @@ void	put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb)
 	img_data = mlx_get_data_addr(canva.canva, &bppx, &size_line, &endian);
 	*(uint32_t *)(img_data + ((bppx >> 3) * x)
 		+ (size_line * y)) = fcolor_to_uint(rgb);
+}
+
+uint32_t	pixel_at(t_canvas canva, int x, int y)
+{
+	int		bppx;
+	int		size_line;
+	int		endian;
+	char	*img_data;
+
+	img_data = mlx_get_data_addr(canva.canva, &bppx, &size_line, &endian);
+	return (*(uint32_t *)(img_data + ((bppx >> 3) * x)
+		+ (size_line * y)));
 }

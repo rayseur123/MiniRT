@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:18:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 16:19:19 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 17:13:37 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,7 @@ int	test_camera_10(void)
 	return (0);
 }
 
-int	test_camera_11(void) // faut le terminer
+int	test_camera_11(void)
 {
 	t_world			w;
 	t_camera		c;
@@ -191,5 +191,8 @@ int	test_camera_11(void) // faut le terminer
 	view_transform(from, to , up, c.transform);
 	init_canva(&img);
 	img = render(c, w, img);
+	uint32_t grep_color = pixel_at(img, 5, 5);
+	if (fcolor_to_uint(set_rgb(0.38066, 0.47583, 0.2855)) != grep_color)
+		return (1);
 	return (0);
 }
