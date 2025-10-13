@@ -27,6 +27,7 @@ RAY_SRCS := ray.c \
 			set_ray.c \
 			vector.c \
 			light.c \
+			cal_light.c \
 
 MSCENE_DIR := scene/
 MSCENE_SRCS := scene.c\

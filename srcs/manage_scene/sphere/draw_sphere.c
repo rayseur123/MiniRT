@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:59:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 13:03:45 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 15:54:30 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,16 @@ t_inter	*intersect_manage(const t_ray ray, t_obj *obj, t_inters *xs)
 
 t_rgb	add_phong(const t_inter *h, const t_tuple point, t_ray ray)
 {
-	t_light	light;
-	t_tuple	normal;
-	t_tuple	eye;
-	t_rgb	color;
+	t_tuple		normal;
+	t_tuple		eye;
+	t_rgb		color;
+	t_lighting	l;
 
-	light = point_light(set_point(-10, 10, -10), set_rgb(1, 1, 1));
+	l.light = point_light(set_point(-10, 10, -10), set_rgb(1, 1, 1));
+	l.mat = h->obj->material;
 	normal = normal_at(*h->obj, point);
 	eye = tuple_negation(ray.direction);
-	color = lighting(h->obj->material, light, eye, point, normal);
+	color = lighting(l, eye, point, normal);
 	return (color);
 }
 

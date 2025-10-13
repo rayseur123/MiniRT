@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 15:35:59 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 16:17:34 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 
 	pixel = matrix4_multiplication_by_tuple(c.inverse_transform,
 			set_point(world_x, world_y, -1));
-	origin = matrix4_multiplication_by_tuple(c.inverse_transform, set_point(0, 0, 0));
+	origin = matrix4_multiplication_by_tuple(c.inverse_transform,
+			set_point(0, 0, 0));
 	return (set_ray(origin, tuple_normalization(
 				tuple_subtraction(pixel, origin))));
 }
