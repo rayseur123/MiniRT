@@ -25,9 +25,7 @@ t_rgb	color_at(t_world w, t_ray r)
 	intersect_world(w, r, &inters);
 	h = hit(&inters);
 	if (!h)
-	{
 		return (set_rgb(0,0,0));
-	}
 	prepare_computations(h, r);
 	return (shade_hit(w, *h));
 }

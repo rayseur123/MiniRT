@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:53:29 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/13 09:30:17 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_tuple	position(t_ray ray, double range)
 
 t_inter	*hit(t_inters *inters)
 {
-	int				min;
+	unsigned int				min;
 	unsigned int	i;
 
 	min = 0;
