@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 12:33:28 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 15:46:54 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_ray	transform(t_ray ray, t_matrix4 m)
 
 void	intersect(t_ray r, t_obj *o, t_inters *xs)
 {
-	r = transform(r, matrix4_inverse(o->transform, o->reverse_transform));
+	r = transform(r, o->inverse_transform);
 	if (o->type == SPHERE)
 		intersect_sphere(o, r, xs);
 }

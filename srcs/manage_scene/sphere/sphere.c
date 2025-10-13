@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 13:04:43 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 15:47:20 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_obj	sphere(void)
 	obj.type = SPHERE;
 	obj.material = material();
 	set_identity_matrix(obj.transform);
-	set_identity_matrix(obj.reverse_transform);
+	set_identity_matrix(obj.inverse_transform);
 	return (obj);
 }
 

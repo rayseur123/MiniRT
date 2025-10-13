@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:23:02 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/13 12:16:42 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 15:46:31 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	create_scene(t_canvas canvas)
 	floor = sphere();
 	set_identity_matrix(floor.transform);
 	scaling(10, 0.01, 10, floor.transform);
+	matrix4_inverse(floor.transform, floor.inverse_transform);
 	floor.material = material();
 	floor.material.color = set_rgb(1, 0.9, 0.9);
 	floor.material.spec = 0;
@@ -54,6 +55,7 @@ void	create_scene(t_canvas canvas)
 	matrix4_multiplication(trans1, rotatey1, left_wall.transform);
 	matrix4_multiplication(left_wall.transform, rotatex1, mult);
 	matrix4_multiplication(mult, scaling1, left_wall.transform);
+	matrix4_inverse(left_wall.transform, left_wall.inverse_transform);
 	left_wall.material = floor.material;
 
 	// Right wall
@@ -66,11 +68,13 @@ void	create_scene(t_canvas canvas)
 	matrix4_multiplication(trans1, rotatey1, right_wall.transform);
 	matrix4_multiplication(right_wall.transform, rotatex1, mult);
 	matrix4_multiplication(mult, scaling1, right_wall.transform);
+	matrix4_inverse(right_wall.transform, right_wall.inverse_transform);
 	right_wall.material = floor.material;
 
 	// Middle sphere
 	middle = sphere();
 	translation(-0.5, 1, 0.5, middle.transform);
+	matrix4_inverse(middle.transform, middle.inverse_transform);
 	middle.material = material();
 	middle.material.color = set_rgb(0.1, 1, 0.5);
 	middle.material.diffuse = 0.7;
@@ -81,6 +85,7 @@ void	create_scene(t_canvas canvas)
 	translation(1.5, 0.5, -0.5, trans1);
 	scaling(0.5, 0.5, 0.5, scaling1);
 	matrix4_multiplication(trans1, scaling1, right.transform);
+	matrix4_inverse(right.transform, right.inverse_transform);
 	right.material = material();
 	right.material.color = set_rgb(0.5, 1, 0.1);
 	right.material.diffuse = 0.7;
@@ -91,6 +96,7 @@ void	create_scene(t_canvas canvas)
 	translation(-1.5, 0.33, -0.75, trans1);
 	scaling(0.33, 0.33, 0.33, scaling1);
 	matrix4_multiplication(trans1, scaling1, left.transform);
+	matrix4_inverse(left.transform, left.inverse_transform);
 	left.material = material();
 	left.material.color = set_rgb(1, 0.8, 0.1);
 	left.material.diffuse = 0.7;
@@ -112,6 +118,6 @@ void	create_scene(t_canvas canvas)
 
 	c = camera(WIDTH_CANVA, HEIGHT_CANVA, pi/3);
 	view_transform(set_point(0, 1.5, -5), set_point(0, 1, 0), set_vector(0, 1, 0), c.transform);
-	
+	matrix4_inverse(c.transform, c.inverse_transform);
 	render(c, world, canvas);
 }
