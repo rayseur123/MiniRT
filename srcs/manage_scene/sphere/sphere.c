@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 16:46:43 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 17:37:53 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_obj	sphere(void)
 	obj.type = SPHERE;
 	obj.material = material();
 	set_identity_matrix(obj.transform);
+	set_identity_matrix(obj.reverse_transform);
 	return (obj);
 }
 
@@ -37,7 +38,7 @@ uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_inters *inters)
 	const double		b = 2 * dot_product(r.direction, sphere_to_ray);
 	const double		c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
 	const double		discriminant = (b * b) - 4 * a * c;
-	
+
 	if (discriminant < 0)
 		return (1);
 	inters->inters[inters->count++] = set_intersection((-b - sqrt(discriminant))

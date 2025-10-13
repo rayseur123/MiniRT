@@ -59,6 +59,7 @@ MATRICE_SRCS := operations_matrix.c \
 
 RGB_DIR := rgb/
 RGB_SRCS := manage_rgb.c \
+			rgb_operations.c \
 
 TUPLE_DIR := tuple/
 TUPLE_SRCS := manage_tuple.c \

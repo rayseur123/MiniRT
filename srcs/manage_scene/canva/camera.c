@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 16:31:07 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/13 12:31:05 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 #include "canvas.h"
 #include "world.h"
 
-t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up, t_matrix4 r)
+t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
+					t_matrix4 r)
 {
 	t_matrix4	m;
 	t_tuple		forward;
@@ -48,7 +49,7 @@ t_camera	camera(double hsize, double vsize, double fov)
 	t_camera	c;
 	double		half_view;
 	double		aspect;
-	
+
 	c.fov = fov;
 	c.hsize = hsize;
 	c.vsize = vsize;
@@ -74,10 +75,15 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 	const double	world_x = c.half_width - (px + 0.5) * c.pixel_size;
 	const double	world_y = c.half_height - (py + 0.5) * c.pixel_size;
 	t_matrix4		inv;
-	const t_tuple	pixel = matrix4_multiplication_by_tuple(matrix4_inverse(c.transform, inv), set_point(world_x, world_y, -1));
-	const t_tuple	origin = matrix4_multiplication_by_tuple(matrix4_inverse(c.transform, inv), set_point(0, 0, 0));
-	const t_tuple	direction = tuple_normalization(tuple_subtraction(pixel, origin));
-	
+	t_tuple			pixel;
+	t_tuple			origin;
+	t_tuple			direction;
+
+	matrix4_inverse(c.transform, inv);
+	pixel = matrix4_multiplication_by_tuple(inv,
+			set_point(world_x, world_y, -1));
+	origin = matrix4_multiplication_by_tuple(inv, set_point(0, 0, 0));
+	direction = tuple_normalization(tuple_subtraction(pixel, origin));
 	return (set_ray(origin, direction));
 }
 
@@ -89,10 +95,10 @@ t_canvas	render(t_camera c, t_world w, t_canvas img)
 	t_rgb	color;
 
 	x = 0;
-	while (x < WIDTH_CANVA)
+	while (x < c.hsize)
 	{
 		y = 0;
-		while (y < HEIGHT_CANVA)
+		while (y < c.vsize)
 		{
 			r = ray_for_pixel(c, x, y);
 			color = color_at(w, r);

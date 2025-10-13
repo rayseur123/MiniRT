@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 16:59:41 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/13 10:34:20 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,12 @@
 
 int	main(void)
 {
-	t_function	*test;
+	//t_function	*test;
 	t_canvas	canvas;
-	t_rgb		red;
 
-	test_world_8();
-	test = NULL;
-	lib_unit();
-	launch_lib_test(&test);
-	red.r = 127;
-	red.g = 0;
-	red.b = 0;
+	//test = NULL;
+	// lib_unit();
+	// launch_lib_test(&test);
 	init_canva(&canvas);
 	create_scene(canvas);
 	mlx_put_image_to_window(canvas.mlx, canvas.window, canvas.canva, 0, 0);

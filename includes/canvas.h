@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:31:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 17:10:11 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 12:27:01 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 
 typedef struct s_canvas
 {
-	uint32_t width;
-	uint32_t height;
+	int width;
+	int height;
 	void *mlx;
 	void *window;
 	void *canva;
