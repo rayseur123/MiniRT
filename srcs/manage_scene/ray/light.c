@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:06:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 13:18:08 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 16:05:34 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 #include "light.h"
 #include "intersection.h"
 #include <math.h>
-
-t_material	material(void)
-{
-	t_material	mat;
-
-	mat.ambient = 0.1;
-	mat.diffuse = 0.9;
-	mat.spec = 0.9;
-	mat.shininess = 200;
-	mat.color = set_rgb(1, 1, 1);
-	return (mat);
-}
 
 t_light	point_light(t_tuple	position, t_rgb inte)
 {
@@ -36,34 +24,31 @@ t_light	point_light(t_tuple	position, t_rgb inte)
 	return (l);
 }
 
-t_rgb	lighting(t_material mat, t_light l, t_tuple eyev,
-		t_tuple point, t_tuple normalv)
+t_rgb	asb_phong(t_rgb c, t_lighting l, double light, t_rgb spec)
+{
+	t_rgb	diffuse;
+
+	diffuse = cal_diffuse(c, light, l.mat);
+	return (rgb_addition(rgb_addition(
+				cal_ambient(&c, l.light, l.mat), diffuse), spec));
+}
+
+t_rgb	lighting(t_lighting l, t_tuple eyev,
+				t_tuple point, t_tuple normalv)
 {
 	t_rgb	ef_color;
 	t_tuple	lightv;
-	t_rgb	ambient;
 	double	light_dot_normal;
 	double	reflect_dot_eye;
-	t_rgb	spec;
-	t_rgb	diffuse;
-	t_tuple reflectv;
-	double	factor;
+	t_tuple	reflectv;
 
-	ef_color = rgb_multiplication(mat.color, l.intensity);
-	lightv = tuple_normalization(tuple_subtraction(l.position, point));
-	ambient = rgb_multiplication_scalar(ef_color, mat.ambient);
+	lightv = tuple_normalization(tuple_subtraction(l.light.position, point));
 	light_dot_normal = dot_product(lightv, normalv);
+	cal_ambient(&ef_color, l.light, l.mat);
 	if (light_dot_normal < 0)
-		return (ambient);
-	diffuse = rgb_multiplication_scalar(rgb_multiplication_scalar(ef_color, mat.diffuse), light_dot_normal);
+		return (cal_ambient(&ef_color, l.light, l.mat));
 	reflectv = reflect(tuple_negation(lightv), normalv);
 	reflect_dot_eye = dot_product(reflectv, eyev);
-	if (reflect_dot_eye <= 0)
-		spec = set_rgb(0, 0, 0);
-	else
-	{
-		factor = pow(reflect_dot_eye, mat.shininess);
-		spec = rgb_multiplication_scalar(rgb_multiplication_scalar(l.intensity, mat.spec), factor);
-	}
-	return (rgb_addition(rgb_addition(ambient, diffuse), spec));
+	return (asb_phong(ef_color, l, light_dot_normal,
+			cal_spec(l.mat, reflect_dot_eye, l.light)));
 }

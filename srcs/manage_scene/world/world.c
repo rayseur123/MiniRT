@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 13:23:00 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 16:14:36 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,17 @@ void	prepare_computations(t_inter *inter, const t_ray ray)
 t_rgb	shade_hit(t_world world, t_inter comps)
 {
 	unsigned int	i;
+	t_lighting		l;
 	t_rgb			color;
 
 	color = set_rgb(0, 0, 0);
 	i = 0;
 	while (i < world.nb_light)
 	{
-		color = rgb_addition(color, lighting(comps.obj->material,
-					world.light[i], comps.eyev, comps.point, comps.normalv));
+		l.mat = comps.obj->material;
+		l.light = world.light[i];
+		color = rgb_addition(color, lighting(l, comps.eyev,
+					comps.point, comps.normalv));
 		i++;
 	}
 	return (color);
