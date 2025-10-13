@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "matrix.h"
 
 t_matrix4_ptr	set_identity_matrix(t_matrix4 m)
 {

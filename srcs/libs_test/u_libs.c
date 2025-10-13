@@ -6,16 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/01 11:51:52 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 17:13:05 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "units.h"
 #include "test.h"
 #include <stdio.h>
-
-#include "scene.h"
-
 void	lib_unit(void) {
 	t_function *function;
 
@@ -120,6 +117,15 @@ void	lib_unit(void) {
 	adding_test(&function, "Rays", "transfrom_4", &test_transfrom_4);
 	adding_test(&function, "Rays", "transfrom_5", &test_transfrom_5);
 	adding_test(&function, "Rays", "transfrom_6", &test_transfrom_6);
+	adding_test(&function, "Rays", "normal_vector_on_sphere1", &test_normal_vector_on_sphere1);
+	adding_test(&function, "Rays", "normal_vector_on_sphere2", &test_normal_vector_on_sphere2);
+	adding_test(&function, "Rays", "normal_vector_on_sphere3", &test_normal_vector_on_sphere3);
+	adding_test(&function, "Rays", "normal_vector_on_sphere4", &test_normal_vector_on_sphere4);
+	adding_test(&function, "Rays", "normal_vector_on_sphere5", &test_normal_vector_on_sphere5);
+	adding_test(&function, "Rays", "normal_vector_on_sphere6", &test_normal_vector_on_sphere6);
+	adding_test(&function, "Rays", "normal_vector_on_sphere7", &test_normal_vector_on_sphere7);
+	adding_test(&function, "Rays", "reflect_vector_on_sphere1", &test_reflect_vector_on_sphere1);
+	adding_test(&function, "Rays", "reflect_vector_on_sphere2", &test_reflect_vector_on_sphere2);
 
 	adding_test(&function, "Rgb", "set_rgb", &test_set_rgb);
 	adding_test(&function, "Rgb", "rgb_addition", &test_rgb_addition);
@@ -127,5 +133,36 @@ void	lib_unit(void) {
 	adding_test(&function, "Rgb", "rgb_multiplication_scalar", &test_rgb_multiplication_scalar);
 	adding_test(&function, "Rgb", "rgb_multiplication", &test_rgb_multiplication);
 
+	adding_test(&function, "Light", "create_light", &test_create_light);
+	adding_test(&function, "Light", "default_material", &test_default_material);
+	adding_test(&function, "Light", "light_btw_light_surface", &test_light_btw_light_surface);
+	adding_test(&function, "Light", "light_btw_light_45", &test_light_btw_light_45);
+	adding_test(&function, "Light", "light_btw_light_opposite_45", &test_light_btw_light_opposite_45);
+	adding_test(&function, "Light", "light_btw_light_reflection", &test_light_btw_light_reflection);
+	adding_test(&function, "Light", "light_light_behind_surface", &test_light_behind_surface);
+
+	adding_test(&function, "World", "world_0", &test_world_0);
+	adding_test(&function, "World", "world_1", &test_world_1);
+	adding_test(&function, "World", "world_2", &test_world_2);
+	adding_test(&function, "World", "world_3", &test_world_3);
+	adding_test(&function, "World", "world_4", &test_world_4);
+	adding_test(&function, "World", "world_5", &test_world_5);
+	adding_test(&function, "World", "world_6", &test_world_6);
+	adding_test(&function, "World", "world_7", &test_world_7);
+	adding_test(&function, "World", "world_8", &test_world_8);
+	adding_test(&function, "World", "world_9", &test_world_9);
+
+	adding_test(&function, "Camera", "camera_1", &test_camera_1);	
+	adding_test(&function, "Camera", "camera_2", &test_camera_2);
+	adding_test(&function, "Camera", "camera_3", &test_camera_3);
+	adding_test(&function, "Camera", "camera_4", &test_camera_4);
+	adding_test(&function, "Camera", "camera_5", &test_camera_5);
+	adding_test(&function, "Camera", "camera_6", &test_camera_6);
+	adding_test(&function, "Camera", "camera_7", &test_camera_7);
+	adding_test(&function, "Camera", "camera_8", &test_camera_8);
+	adding_test(&function, "Camera", "camera_9", &test_camera_9);
+	adding_test(&function, "Camera", "camera_10", &test_camera_10);
+	adding_test(&function, "Camera", "camera_11", &test_camera_11);
+	
 	launch_lib_test(&function);
 }

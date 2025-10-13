@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   operations_tuple.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:06:00 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 14:20:55 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 12:31:30 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "tuple.h"
 #include <math.h>
 
 t_tuple	tuple_addition(t_tuple tuple1, t_tuple tuple2)
@@ -45,14 +45,12 @@ t_tuple	tuple_multiplication(t_tuple tuple1, double scale)
 
 t_tuple	tuple_division(t_tuple tuple1, double scale)
 {
-	t_tuple	result;
-
 	if (scale == 0)
 		return (tuple1);
-	result.x = tuple1.x / scale;
-	result.y = tuple1.y / scale;
-	result.z = tuple1.z / scale;
-	return (result);
+	tuple1.x = tuple1.x / scale;
+	tuple1.y = tuple1.y / scale;
+	tuple1.z = tuple1.z / scale;
+	return (tuple1);
 }
 
 t_tuple	tuple_negation(t_tuple tuple)

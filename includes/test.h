@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 11:48:11 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/09 17:10:42 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,50 @@ int	test_transfrom_3(void);
 int	test_transfrom_4(void);
 int	test_transfrom_5(void);
 int	test_transfrom_6(void);
+int	test_normal_vector_on_sphere1(void);
+int	test_normal_vector_on_sphere2(void);
+int	test_normal_vector_on_sphere3(void);
+int	test_normal_vector_on_sphere4(void);
+int	test_normal_vector_on_sphere5(void);
+int	test_normal_vector_on_sphere6(void);
+int	test_normal_vector_on_sphere7(void);
+int	test_reflect_vector_on_sphere1(void);
+int	test_reflect_vector_on_sphere2(void);
 
+// light
+
+int	test_create_light(void);
+int test_default_material(void);
+int	test_light_btw_light_surface(void);
+int	test_light_btw_light_45(void);
+int	test_light_btw_light_opposite_45(void);
+int	test_light_btw_light_reflection(void);
+int	test_light_behind_surface(void);
+
+// world
+
+int	test_world_0(void);
+int	test_world_1(void);
+int	test_world_2(void);
+int	test_world_3(void);
+int	test_world_4(void);
+int	test_world_5(void);
+int	test_world_6(void);
+int	test_world_7(void);
+int	test_world_8(void);
+int	test_world_9(void);
+
+// camera
+
+int	test_camera_1(void);
+int	test_camera_2(void);
+int	test_camera_3(void);
+int	test_camera_4(void);
+int	test_camera_5(void);
+int	test_camera_6(void);
+int	test_camera_7(void);
+int	test_camera_8(void);
+int	test_camera_9(void);
+int	test_camera_10(void);
+int	test_camera_11(void);
 #endif

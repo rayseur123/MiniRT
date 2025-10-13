@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
+#include "matrix.h"
 
 double	determining_matrix2(t_matrix2 m)
 {

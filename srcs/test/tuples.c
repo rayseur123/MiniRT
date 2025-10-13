@@ -6,11 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:22:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/24 14:34:21 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:44:44 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "tuple.h"
+#include "env.h"
+
 #include <math.h>
 
 int	test_set_vector(void)

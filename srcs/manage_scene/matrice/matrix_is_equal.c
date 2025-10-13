@@ -6,12 +6,11 @@
 /*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:16:54 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/10 11:34:40 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:46:07 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include <math.h>
+#include "matrix.h"
 
 uint8_t	matrix4_is_equal(t_matrix4 m1, t_matrix4 m2)
 {

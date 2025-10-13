@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shearing.c                                         :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/25 13:49:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/25 14:08:18 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/09 08:34:06 by dernst            #+#    #+#             */
+/*   Updated: 2025/10/09 12:17:40 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#ifndef ENV_H
+#define ENV_H
 
-t_matrix4_ptr	shearing(double x[2], double y[2], double z[2], t_matrix4 m)
+#include "tuple.h"
+
+typedef struct s_projectile
 {
-	set_identity_matrix(m);
-	m[0][1] = x[0];
-	m[0][2] = x[1];
-	m[1][0] = y[0];
-	m[1][2] = y[1];
-	m[2][0] = z[0];
-	m[2][1] = z[1];
-	return (m);
-}
+	t_tuple position;
+	t_tuple velocity;
+} t_projectile;
+
+typedef struct s_environment
+{
+	t_tuple gravity;
+	t_tuple wind;
+} t_environment;
+
+t_projectile	tick(t_environment env, t_projectile proj);
+
+#endif

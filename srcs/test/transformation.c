@@ -6,11 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 11:58:07 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/25 16:50:29 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/09 10:29:24 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
+#include "tuple.h"
+#include "matrix.h"
+#include "transform.h"
 #include <math.h>
 
 int	test_translation_tuple(void)

@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_tuple.c                                        :+:      :+:    :+:   */
+/*   sphere.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 09:02:42 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:44:56 by dernst           ###   ########.fr       */
+/*   Created: 2025/10/09 08:42:14 by dernst            #+#    #+#             */
+/*   Updated: 2025/10/13 12:55:39 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
-#include <math.h>
+#ifndef MINIRT_SPHERE_H
+#define MINIRT_SPHERE_H
 
-t_tuple	set_vector(double x, double y, double z)
-{
-	t_tuple	tuple;
+#include <stdint.h>
+#include "canvas.h"
+#include "object.h"
+#include "intersection.h"
 
-	tuple.x = x;
-	tuple.y = y;
-	tuple.z = z;
-	tuple.w = 0;
-	return (tuple);
-}
+uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);
+t_obj			sphere(void);
+void			draw_sphere(t_canvas canvas);
 
-t_tuple	set_point(double x, double y, double z)
-{
-	t_tuple	tuple;
-
-	tuple.x = x;
-	tuple.y = y;
-	tuple.z = z;
-	tuple.w = 1;
-	return (tuple);
-}
+#endif

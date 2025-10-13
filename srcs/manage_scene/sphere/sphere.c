@@ -6,13 +6,28 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/01 13:31:26 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/13 16:16:38 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scene.h"
-#include "../../../includes/scene.h"
+#include "intersection.h"
+#include "color.h"
+#include "light.h"
+#include "canvas.h"
 #include <math.h>
+#include <stdlib.h>
+
+t_material	material(void)
+{
+	t_material	mat;
+
+	mat.ambient = 0.1;
+	mat.diffuse = 0.9;
+	mat.spec = 0.9;
+	mat.shininess = 200;
+	mat.color = set_rgb(1, 1, 1);
+	return (mat);
+}
 
 t_obj	sphere(void)
 {
@@ -21,27 +36,26 @@ t_obj	sphere(void)
 
 	obj.id = id++;
 	obj.type = SPHERE;
+	obj.material = material();
 	set_identity_matrix(obj.transform);
+	set_identity_matrix(obj.inverse_transform);
 	return (obj);
 }
 
-uint32_t	intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
+uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_inters *inters)
 {
 	const t_tuple		sphere_to_ray = tuple_subtraction(r.origin,
 			set_point(0, 0, 0));
 	const double		a = dot_product(r.direction, r.direction);
 	const double		b = 2 * dot_product(r.direction, sphere_to_ray);
 	const double		c = dot_product(sphere_to_ray, sphere_to_ray) - 1;
-	const long int		discriminant = (b * b) - 4 * a * c;
+	const double		discriminant = (b * b) - 4 * a * c;
 
-	(void)s;
-	inters->count = 0;
 	if (discriminant < 0)
 		return (1);
-	inters->count = 2;
-	inters->inters[0] = set_intersection((-b - sqrt(discriminant))
+	inters->inters[inters->count++] = set_intersection((-b - sqrt(discriminant))
 			/ (2 * a), s);
-	inters->inters[1] = set_intersection((-b + sqrt(discriminant))
+	inters->inters[inters->count++] = set_intersection((-b + sqrt(discriminant))
 			/ (2 * a), s);
 	return (0);
 }
@@ -49,42 +63,4 @@ uint32_t	intersect_sphere(t_obj *s, t_ray r, t_inters *inters)
 void	set_transform(t_obj *s, t_matrix4 m)
 {
 	matrix4_cpy(s->transform, m);
-}
-
-void	do_draw_sphere(t_canvas canvas, double wall_size,
-			t_rgb color, t_obj *obj)
-{
-	u_int32_t	x;
-	u_int32_t	y;
-	double		half;
-	t_inters	xs;
-	t_ray		ray;
-
-	half = wall_size / 2;
-	ray.origin = set_point(0, 0, -5);
-	x = -1;
-	while (++x < WIDTH_CANVA)
-	{
-		y = -1;
-		while (++y < HEIGHT_CANVA)
-		{
-			ray.direction = tuple_normalization(tuple_subtraction(
-						set_point(-half + (wall_size / WIDTH_CANVA) * x,
-							half - (wall_size / WIDTH_CANVA) * y, 10),
-						ray.origin));
-			intersect(ray, obj, &xs);
-			if (hit(&xs))
-				put_px_in_canva(canvas, x, y, color);
-		}
-	}
-}
-
-void	draw_sphere(t_canvas canvas)
-{
-	t_obj		obj;
-	double		wall_size;
-
-	wall_size = 10;
-	obj = sphere();
-	do_draw_sphere(canvas, wall_size, set_rgb(255, 0, 0), &obj);
 }
