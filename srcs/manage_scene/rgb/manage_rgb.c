@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 12:51:39 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/15 17:05:44 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 
 t_rgb	color_at(t_world w, t_ray r)
 {
-	t_inters	inters;
-	t_inter		*h;
+	static t_inters	inters;
+	t_inter			*h;
 
+	if (!inters.inters)
+		inters.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
 	intersect_world(w, r, &inters);
 	h = hit(&inters);
 	if (!h)
