@@ -40,8 +40,6 @@ SPHERE_DIR := sphere/
 SPHERE_SRCS := sphere.c \
 				draw_sphere.c \
 
-SCENE_DIR := manage_scene/
-
 CANVA_DIR := canva/
 CANVA_SRCS := manage_canva.c \
 				camera.c 	\
@@ -75,6 +73,13 @@ TRANS_SRCS := scaling.c \
 			translation.c   \
 			rotation.c \
 
+SCENE_DIR := manage_scene/
+
+PARSING_SRC := file_manage.c \
+				parsing.c \
+
+PARSING_DIR := parsing/
+
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
 SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
 SCENE_SRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
@@ -85,6 +90,7 @@ SCENE_SRCS += $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS))
 SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 SCENE_SRCS += $(addprefix $(WORLD_DIR), $(WORLD_SRCS))
 
+SRCS += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS)))
