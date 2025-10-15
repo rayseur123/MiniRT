@@ -41,12 +41,6 @@ To simulate reflection, we use the Phong model ([Phong reflection model](https:/
 
 <img width="994" height="492" alt="Screenshot from 2025-10-13 12-27-40" src="https://github.com/user-attachments/assets/3b201be1-6c17-4f40-b80e-4ec3afe02ed2" />
 
-## Parsing
-
-<img width="959" height="458" alt="Screenshot from 2025-10-15 16-52-58" src="https://github.com/user-attachments/assets/8d59c912-c642-4464-b937-00facead39e3" />
-
-We have a parsing system that allows us to easily create as many objects as desired at any position and in any location.
-
 ## Logic Implementation
 
 ### Tuples
