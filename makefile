@@ -57,6 +57,7 @@ MATRICE_SRCS := operations_matrix.c \
 				submatrice_matrix.c \
 				determining_matrix.c \
 				set_identity_matrix.c \
+				matrix_utils.c \
 
 RGB_DIR := rgb/
 RGB_SRCS := manage_rgb.c \
@@ -76,7 +77,9 @@ TRANS_SRCS := scaling.c \
 SCENE_DIR := manage_scene/
 
 PARSING_SRC := file_manage.c \
-				parsing.c \
+					parsing.c \
+					parse_objs.c \
+					parse_sphere.c \
 
 PARSING_DIR := parsing/
 

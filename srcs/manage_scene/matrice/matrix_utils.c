@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 14:47:28 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 11:30:14 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/15 11:15:49 by njooris           #+#    #+#             */
+/*   Updated: 2025/10/15 11:33:05 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "matrix.h"
+#include "libft.h"
 
-int	ft_free_split(char **split)
+void	display_matrix(t_matrix4 m)
 {
-	unsigned int	i;
+	int i = 0;
 
-	i = 0;
-	if (split)
+	while (i < 4)
 	{
-		while (split[i])
+		int j = 0;
+		while (j < 4)
 		{
-			free(split[i]);
-			i++;
+			ft_printf("|%f|", m[i][j]);
+			j++;
 		}
-		free(split);
+		ft_printf("\n");
+		i++;
 	}
-	return (0);
 }
