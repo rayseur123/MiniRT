@@ -6,13 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 15:46:54 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/15 15:50:28 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 #include "stdlib.h"
 #include "sphere.h"
+#include <tgmath.h>
 
 t_tuple	position(t_ray ray, double range)
 {
@@ -51,9 +52,25 @@ t_ray	transform(t_ray ray, t_matrix4 m)
 	return (new_ray);
 }
 
+void	shape_intersect(t_obj *o, t_ray r, t_inters *xs)
+{
+	double	t;
+	if (o->type == PLANE)
+	{
+		if (fabs(r.direction.y) < EPSILON) // !  fabs not allowed
+			xs->inters = NULL;
+		else
+		{
+			t = -r.origin.y / r.direction.y;
+			xs->inters[xs->count++] = set_intersection(t, o);
+		}
+	}
+	if (o->type == SPHERE)
+		intersect_sphere(o, r, xs);
+}
+
 void	intersect(t_ray r, t_obj *o, t_inters *xs)
 {
 	r = transform(r, o->inverse_transform);
-	if (o->type == SPHERE)
-		intersect_sphere(o, r, xs);
+	shape_intersect(o, r, xs);
 }

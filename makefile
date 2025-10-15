@@ -21,6 +21,7 @@ TEST_SRCS := tuples.c \
 				light.c \
 				world.c \
 				camera.c \
+				object.c \
 
 RAY_DIR := ray/
 RAY_SRCS := ray.c \
