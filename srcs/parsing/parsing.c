@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 15:32:39 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/15 16:00:09 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	get_coord(char *str, t_tuple *point)
 
 double	get_diameter(char *str)
 {
-	return (ft_atod(str));	
+	return (ft_atod(str));
 }
 
 int	get_rgb(char *str, t_rgb *rgb)
 {
-	char 	**rgb_split;
+	char	**rgb_split;
 
 	rgb_split = ft_split(str, ',');
 	if (!rgb_split)
@@ -68,6 +68,6 @@ int	parsing(char *str, t_world *world, t_camera *c)
 		return (1);
 	if (alloc_world(world))
 		return (1);
-	make_objs(str, world, c); // check file is good if sphere == good partern
+	make_objs(str, world, c);
 	return (0);
 }

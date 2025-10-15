@@ -1,45 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_sphere.c                                     :+:      :+:    :+:   */
+/*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 16:02:33 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
+/*   Updated: 2025/10/15 16:01:31 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "sphere.h"
+#include "camera.h"
+#include "tuple.h"
 #include "libft.h"
 #include "transform.h"
+#include "matrix.h"
+#include "parsing.h"
 
-int	make_sp(t_obj *o, char *str)
+int	make_cam(t_camera *c, char *str)
 {
-	t_tuple		coor;
-	double		diameter;
 	char		**data;
-	t_matrix4	trans;
-	t_matrix4	scale;
+	t_tuple		from;
+	t_tuple		to;
 
 	data = ft_split(str, ' ');
 	if (!data)
 		return (1);
-	*o = sphere();
-	if (get_coord(data[1], &coor))
+	if (get_coord(data[1], &from))
 	{
 		ft_free_split(data);
 		return (1);
 	}
-	diameter = get_diameter(data[2]);
-	matrix4_multiplication(translation(coor.x, coor.y, coor.z, trans),
-		scaling(diameter, diameter, diameter, scale), o->transform);
-	matrix4_inverse(o->transform, o->inverse_transform);
-	if (get_rgb(data[3], &o->material.color))
+	if (get_coord(data[2], &to))
 	{
 		ft_free_split(data);
 		return (1);
 	}
+	*c = camera(WIDTH_CANVA, HEIGHT_CANVA, (ft_atod(data[3]) / 180) * M_PI);
+	view_transform(from, tuple_addition(from, to),
+		set_vector(0, 1, 0), c->transform);
+	matrix4_inverse(c->transform, c->inverse_transform);
 	return (0);
 }

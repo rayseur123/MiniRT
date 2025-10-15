@@ -1,45 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_sphere.c                                     :+:      :+:    :+:   */
+/*   parse_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 16:02:33 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
+/*   Updated: 2025/10/15 15:52:38 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
-#include "sphere.h"
+#include "camera.h"
+#include "tuple.h"
 #include "libft.h"
 #include "transform.h"
+#include "matrix.h"
+#include "parsing.h"
 
-int	make_sp(t_obj *o, char *str)
+int	make_light(t_light *l, char *str)
 {
-	t_tuple		coor;
-	double		diameter;
+	double		bright;
 	char		**data;
-	t_matrix4	trans;
-	t_matrix4	scale;
 
 	data = ft_split(str, ' ');
 	if (!data)
 		return (1);
-	*o = sphere();
-	if (get_coord(data[1], &coor))
+	if (get_coord(data[1], &l->position))
 	{
 		ft_free_split(data);
 		return (1);
 	}
-	diameter = get_diameter(data[2]);
-	matrix4_multiplication(translation(coor.x, coor.y, coor.z, trans),
-		scaling(diameter, diameter, diameter, scale), o->transform);
-	matrix4_inverse(o->transform, o->inverse_transform);
-	if (get_rgb(data[3], &o->material.color))
+	bright = ft_atod(data[2]);
+	if (get_rgb(data[3], &l->intensity))
 	{
 		ft_free_split(data);
 		return (1);
 	}
+	l->intensity = rgb_multiplication_scalar(l->intensity, bright);
 	return (0);
 }

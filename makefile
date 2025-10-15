@@ -76,12 +76,15 @@ TRANS_SRCS := scaling.c \
 
 SCENE_DIR := manage_scene/
 
+PARSING_DIR := parsing/
+
 PARSING_SRC := file_manage.c \
 					parsing.c \
 					parse_objs.c \
 					parse_sphere.c \
+					parse_camera.c \
+					parse_light.c \
 
-PARSING_DIR := parsing/
 
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
 SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
@@ -111,6 +114,7 @@ SRCS += minirt.c
 # --- CHECK NORME --- #
 
 SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
+SRCS_NORME += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
 SRCS_NORME += minirt.c
 
 # --- LIBS TARGET --- #
