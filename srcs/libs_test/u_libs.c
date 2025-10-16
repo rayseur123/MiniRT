@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/15 15:41:03 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/16 10:42:02 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,6 @@ void	lib_unit(void) {
 	adding_test(&function, "Object", "shape_1", &test_shape1);
 	adding_test(&function, "Object", "shape_2", &test_shape2);
 	adding_test(&function, "Object", "shape_3", &test_shape3);
-	// adding_test(&function, "Object", "shape_4", &test_shape4);
-	// adding_test(&function, "Object", "shape_5", &test_shape5);
 	adding_test(&function, "Object", "shape_6", &test_shape6);
 	adding_test(&function, "Object", "plane_0", &test_plane0);
 	adding_test(&function, "Object", "plane_1", &test_plane1);
