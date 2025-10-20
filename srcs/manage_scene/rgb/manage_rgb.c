@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 12:23:54 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/20 16:42:59 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce)
 		return (set_rgb	(0, 0, 0));
 	prepare_computations(h, r);
 	direct_color = shade_hit(w, *h);
-	indirect_light = set_rgb(0, 0, 0);
-	//indirect_light = indirect_light_maker(h, w, nb_bounce);
+	//indirect_light = set_rgb(0, 0, 0);
+	indirect_light = indirect_light_maker(h, w, nb_bounce);
 	return (rgb_addition(direct_color, indirect_light));
 }
 

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 16:00:09 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/20 16:33:43 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	alloc_world(t_world *world)
 	world->obj = malloc(sizeof(t_obj) * world->nb_obj);
 	if (!world->obj)
 		return (1);
-	world->light = malloc(sizeof(t_obj) * world->nb_light);
+	world->light = malloc(sizeof(t_light) * world->nb_light);
 	if (!world->light)
 	{
 		free(world->obj);
@@ -43,9 +43,9 @@ int	get_coord(char *str, t_tuple *point)
 	return (0);
 }
 
-double	get_diameter(char *str)
+double	get_radius(char *str)
 {
-	return (ft_atod(str));
+	return (ft_atod(str) / 2);
 }
 
 int	get_rgb(char *str, t_rgb *rgb)

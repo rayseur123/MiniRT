@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 11:20:52 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/20 16:42:49 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,16 @@ t_camera	camera(double hsize, double vsize, double fov)
 		c.half_width = half_view * aspect;
 		c.half_height = half_view;
 	}
-	c.pixel_size = (c.half_width * 2) / c.hsize;
+	c.pixel_size_x = (c.half_width * 2) / c.hsize;
+	c.pixel_size_y = (c.half_height * 2) / c.vsize;
 	set_identity_matrix(c.transform);
 	return (c);
 }
 
 t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 {
-	const double	world_x = c.half_width - (px + 0.5) * c.pixel_size;
-	const double	world_y = c.half_height - (py + 0.5) * c.pixel_size;
+	const double	world_x = c.half_width - (px + 0.5) * c.pixel_size_x;
+	const double	world_y = c.half_height - (py + 0.5) * c.pixel_size_y;
 	t_tuple			pixel;
 	t_tuple			origin;
 
@@ -85,7 +86,9 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 	return (set_ray(origin, tuple_normalization(
 				tuple_subtraction(pixel, origin))));
 }
+
 #include <stdio.h>
+
 t_canvas	render(t_camera c, t_world w, t_canvas img)
 {
 	int				x;
@@ -104,9 +107,7 @@ t_canvas	render(t_camera c, t_world w, t_canvas img)
 			put_px_in_canva(img, x, y, color);
 			y++;
 		}
-		printf("%d\n", x);
 		x++;
 	}
-	printf("end\n");
 	return (img);
 }

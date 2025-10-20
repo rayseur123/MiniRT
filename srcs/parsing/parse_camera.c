@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 16:01:31 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/20 16:30:37 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	make_cam(t_camera *c, char *str)
 		ft_free_split(data);
 		return (1);
 	}
-	*c = camera(WIDTH_CANVA, HEIGHT_CANVA, (ft_atod(data[3]) / 180) * M_PI);
-	view_transform(from, tuple_addition(from, to),
+	*c = camera(WIDTH_CANVA, HEIGHT_CANVA, (ft_atod(data[3]) * M_PI) / 180.0);
+	to = tuple_addition(from, to);
+	to.w = 1;
+	view_transform(from, to,
 		set_vector(0, 1, 0), c->transform);
 	matrix4_inverse(c->transform, c->inverse_transform);
 	return (0);
