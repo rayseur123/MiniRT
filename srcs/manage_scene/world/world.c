@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 17:09:49 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/16 15:07:07 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #include "stdlib.h"
 #include "transform.h"
 #include <stdio.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 
 t_world	world(void)
 {
@@ -24,6 +27,7 @@ t_world	world(void)
 	w.nb_obj = 0;
 	w.light = NULL;
 	w.obj = 0;
+	w.fd = open("/dev/random", O_RDONLY);
 	return (w);
 }
 

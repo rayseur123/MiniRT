@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:38:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 17:04:46 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/20 11:21:52 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	test_world_7(void)
 
 	w = default_world();
 	r = set_ray(set_point(0,0,-5), set_vector(0,1,0));
-	c = color_at(w, r);
+	c = color_at(w, r, NB_BOUNCE);
 	if (!equals_rgb(c , set_rgb(0,0,0)))
 		return (1);
 	return (0);
@@ -141,7 +141,7 @@ int	test_world_8(void)
 
 	w = default_world();
 	r = set_ray(set_point(0,0,-5), set_vector(0,0,1));
-	c = color_at(w, r);
+	c = color_at(w, r, NB_BOUNCE);
 	if (!equals_rgb(c , set_rgb(0.38066,0.47583,0.2855)))
 		return (1);
 	return (0);
@@ -157,7 +157,7 @@ int	test_world_9(void)
 	w.obj[0].material.ambient = 1;
 	w.obj[1].material.ambient = 1;
 	r = set_ray(set_point(0,0,0.75), set_vector(0,0,-1));
-	c = color_at(w, r);
+	c = color_at(w, r, NB_BOUNCE);
 	if (!equals_rgb(c , w.obj[1].material.color))
 		return (1);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 16:17:34 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/20 11:20:52 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "intersection.h"
 #include "canvas.h"
 #include "world.h"
+#include "color.h"
 
 t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
 					t_matrix4 r)
@@ -84,13 +85,13 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 	return (set_ray(origin, tuple_normalization(
 				tuple_subtraction(pixel, origin))));
 }
-
+#include <stdio.h>
 t_canvas	render(t_camera c, t_world w, t_canvas img)
 {
-	int		x;
-	int		y;
-	t_ray	r;
-	t_rgb	color;
+	int				x;
+	int				y;
+	t_ray			r;
+	t_rgb			color;
 
 	x = 0;
 	while (x < c.hsize)
@@ -99,11 +100,13 @@ t_canvas	render(t_camera c, t_world w, t_canvas img)
 		while (y < c.vsize)
 		{
 			r = ray_for_pixel(c, x, y);
-			color = color_at(w, r);
+			color = color_at(w, r, NB_BOUNCE);
 			put_px_in_canva(img, x, y, color);
 			y++;
 		}
+		printf("%d\n", x);
 		x++;
 	}
+	printf("end\n");
 	return (img);
 }
