@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/20 11:31:07 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:03:32 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "intersection.h"
 
 #define NB_BOUNCE 2
-#define NB_RAY 16
+#define NB_RAY 64
 
 typedef struct s_world
 {

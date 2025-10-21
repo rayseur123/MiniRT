@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 16:42:59 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:15:25 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,20 @@
 
 #include <unistd.h>
 
-double double_random(int fd) // changer cette fonction pour la rendre plus uniforme
-{ 
-    unsigned char c;
-
-    if (read(fd, &c, 1) != 1)
-        return 0.0;
-    return c / 256.0;
+double double_random(void)
+{
+    static uint64_t seed = 0;
+    
+    // Initialisation paresseuse au premier appel
+    if (seed == 0)
+        seed = (uint64_t)&seed ^ (uint64_t)__TIME__[7];
+    
+    // xorshift64
+    seed ^= seed << 13;
+    seed ^= seed >> 7;
+    seed ^= seed << 17;
+    
+    return (seed >> 11) * 0x1.0p-53;
 }
 
 t_rgb indirect_light_maker(t_inter *h, t_world w, uint32_t nb_bounce)
@@ -39,25 +46,23 @@ t_rgb indirect_light_maker(t_inter *h, t_world w, uint32_t nb_bounce)
     double  lambert;
 
     i = 0;
-    new_ray.origin = tuple_addition(h->point, tuple_multiplication(h->normalv, 0.001));
+    new_ray.origin = tuple_addition(h->point, tuple_multiplication(h->normalv, 0.01));
     indirect_color = set_rgb(0, 0, 0);
     while (i < NB_RAY)
     {
-        new_ray.direction = tuple_normalization(set_vector(double_random(w.fd), double_random(w.fd), double_random(w.fd)));
-        if (dot_product(new_ray.direction, h->normalv) < 0)
-            new_ray.direction = tuple_negation(new_ray.direction);
-        
+        new_ray.direction = tuple_normalization(set_vector(double_random(), double_random(), double_random()));
         lambert = dot_product(new_ray.direction, h->normalv);
-        indirect_color = rgb_addition(indirect_color, 
-            rgb_multiplication_scalar(
-                rgb_multiplication(h->obj->material.color, color_at(w, new_ray, nb_bounce - 1)),
-                lambert * 2.0
-            )
-        );
+        if (lambert < 0)
+		{
+			new_ray.direction = tuple_negation(new_ray.direction);
+			lambert = -lambert;
+		}
+		indirect_color = rgb_addition(indirect_color,
+			rgb_multiplication(h->obj->material.color, color_at(w, new_ray, nb_bounce - 1))
+		);
         i++;
     }
-    indirect_color = rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY);
-    return (indirect_color);
+    return (rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY));
 }
 
 

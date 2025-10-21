@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 12:24:45 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:09:26 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_material	material(void)
 {
 	t_material	mat;
 
-	mat.ambient = 0.5;
+	mat.ambient = 0.0;
 	mat.diffuse = 0.9;
 	mat.spec = 0.9;
 	mat.shininess = 200;

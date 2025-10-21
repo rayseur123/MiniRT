@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 16:33:43 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 13:09:18 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	get_rgb(char *str, t_rgb *rgb)
 	rgb_split = ft_split(str, ',');
 	if (!rgb_split)
 		return (1);
-	rgb->r = atoi(rgb_split[0]) / 255;
-	rgb->g = atoi(rgb_split[1]) / 255;
-	rgb->b = atoi(rgb_split[2]) / 255;
+	rgb->r = (double)atoi(rgb_split[0]) / 255;
+	rgb->g = (double)atoi(rgb_split[1]) / 255;
+	rgb->b = (double)atoi(rgb_split[2]) / 255;
 	ft_free_split(rgb_split);
 	return (0);
 }
