@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/21 13:15:25 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 14:19:06 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 #include <unistd.h>
 
-double double_random(void)
+double double_random(void) // changer le random
 {
     static uint64_t seed = 0;
     
@@ -57,14 +57,17 @@ t_rgb indirect_light_maker(t_inter *h, t_world w, uint32_t nb_bounce)
 			new_ray.direction = tuple_negation(new_ray.direction);
 			lambert = -lambert;
 		}
-		indirect_color = rgb_addition(indirect_color,
-			rgb_multiplication(h->obj->material.color, color_at(w, new_ray, nb_bounce - 1))
-		);
+		indirect_color = rgb_addition(indirect_color, color_at(w, new_ray, nb_bounce - 1));
         i++;
     }
-    return (rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY));
+    indirect_color = rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY);
+	if (indirect_color.b > 0.3)
+	{
+		printf("%f, %f, %f\n", indirect_color.r, indirect_color.g, indirect_color.b);
+		exit(0);
+	}
+    return (indirect_color);
 }
-
 
 t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce)
 {
