@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 10:15:23 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 10:46:21 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,42 @@
 #include <stdlib.h>
 #include <time.h>
 
+void	escape(int key_code, t_canvas *c)
+{
+	if (key_code == 65307)
+		mlx_loop_end(c->mlx);
+}
+
+int	actions_hook(int key_code, t_canvas *c)
+{
+	escape(key_code, c);
+	return (0);
+}
+
+int	hook_close(void *mlx)
+{
+	mlx_loop_end(mlx);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_world		w;
 	t_canvas	c;
 	t_camera	cam;
 
-	(void)ac;
+	if (ac != 2)
+		return (0);
 	w = world();
 	if (parsing(av[1], &w, &cam))
-		return (-1);
+		return (1);
 	init_canva(&c);
-	// create_scene(c);
 	render(cam, w, c);
-	printf("end\n");
 	mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
 	free(w.obj);
 	free(w.light);
+	mlx_hook(c.window, KeyPress, KeyPressMask, &actions_hook, &c);
+	mlx_hook(c.window, DestroyNotify, NoEventMask, &hook_close, c.mlx);
 	mlx_loop(c.mlx);
 	mlx_destroy_image(c.mlx, c.canva);
 	mlx_destroy_window(c.mlx, c.window);
