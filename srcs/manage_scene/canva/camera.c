@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 13:58:48 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 14:02:18 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 				tuple_subtraction(pixel, origin))));
 }
 
-#include <stdio.h>
-
-t_canvas	render(t_camera c, t_world w, t_canvas img)
+int	render(t_camera c, t_world w, t_canvas img)
 {
 	int				x;
 	int				y;
@@ -103,7 +101,7 @@ t_canvas	render(t_camera c, t_world w, t_canvas img)
 	if (!inters.inters)
 	{
 		free(inters.inters);
-		return (img); // changer ca
+		return (1); // changer ca
 	}
 	while (x < c.hsize)
 	{
@@ -118,5 +116,5 @@ t_canvas	render(t_camera c, t_world w, t_canvas img)
 		x++;
 	}
 	free(inters.inters);
-	return (img);
+	return (0);
 }

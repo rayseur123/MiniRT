@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:42:14 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/13 12:55:39 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 14:06:50 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@
 
 uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);
 t_obj			sphere(void);
-void			draw_sphere(t_canvas canvas);
 
 #endif
