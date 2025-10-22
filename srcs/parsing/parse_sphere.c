@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 09:43:13 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 14:11:23 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	make_sp(t_obj *o, char *str)
 		ft_free_split(data);
 		return (1);
 	}
+	ft_free_split(data);
 	return (0);
 }

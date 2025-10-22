@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/21 16:12:25 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 14:12:27 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int	make_light(t_light *l, char *str)
 		return (1);
 	}
 	l->intensity = rgb_multiplication_scalar(l->intensity, bright);
+	ft_free_split(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 10:37:47 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 14:10:29 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	make_cam(t_camera *c, char *str)
 	view_transform(from, to,
 		set_vector(0, 1, 0), c->transform);
 	matrix4_inverse(c->transform, c->inverse_transform);
+	ft_free_split(data);
 	return (0);
 }
