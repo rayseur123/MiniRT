@@ -6,11 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 09:34:16 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 13:58:48 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include <stdlib.h>
 #include "matrix.h"
 #include "camera.h"
 #include "transform.h"
@@ -95,19 +96,27 @@ t_canvas	render(t_camera c, t_world w, t_canvas img)
 	int				y;
 	t_ray			r;
 	t_rgb			color;
-
+	t_inters		inters;
+	
 	x = 0;
+	inters.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
+	if (!inters.inters)
+	{
+		free(inters.inters);
+		return (img); // changer ca
+	}
 	while (x < c.hsize)
 	{
 		y = 0;
 		while (y < c.vsize)
 		{
 			r = ray_for_pixel(c, x, y);
-			color = color_at(w, r, NB_BOUNCE);
+			color = color_at(w, r, NB_BOUNCE, inters);
 			put_px_in_canva(img, x, y, color);
 			y++;
 		}
 		x++;
 	}
+	free(inters.inters);
 	return (img);
 }
