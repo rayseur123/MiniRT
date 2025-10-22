@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 15:52:38 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 16:12:25 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	make_light(t_light *l, char *str)
 	data = ft_split(str, ' ');
 	if (!data)
 		return (1);
-	if (get_coord(data[1], &l->position))
+	if (size_of_split(data) != 4 || get_coord(data[1], &l->position))
 	{
 		ft_free_split(data);
 		return (1);

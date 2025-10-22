@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/21 10:15:09 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 09:34:16 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ t_canvas	render(t_camera c, t_world w, t_canvas img)
 			put_px_in_canva(img, x, y, color);
 			y++;
 		}
-		printf("%d\n", x);
 		x++;
 	}
 	return (img);

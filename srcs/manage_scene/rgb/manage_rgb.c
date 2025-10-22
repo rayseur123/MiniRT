@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/21 14:19:06 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 09:34:35 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,6 @@ t_rgb indirect_light_maker(t_inter *h, t_world w, uint32_t nb_bounce)
         i++;
     }
     indirect_color = rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY);
-	if (indirect_color.b > 0.3)
-	{
-		printf("%f, %f, %f\n", indirect_color.r, indirect_color.g, indirect_color.b);
-		exit(0);
-	}
     return (indirect_color);
 }
 
@@ -86,8 +81,8 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce)
 		return (set_rgb	(0, 0, 0));
 	prepare_computations(h, r);
 	direct_color = shade_hit(w, *h);
-	//indirect_light = set_rgb(0, 0, 0);
-	indirect_light = indirect_light_maker(h, w, nb_bounce);
+	indirect_light = set_rgb(0, 0, 0);
+	//indirect_light = indirect_light_maker(h, w, nb_bounce);
 	return (rgb_addition(direct_color, indirect_light));
 }
 

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 16:30:37 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 16:13:29 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	make_cam(t_camera *c, char *str)
 	data = ft_split(str, ' ');
 	if (!data)
 		return (1);
-	if (get_coord(data[1], &from))
+	if (size_of_split(data) != 4 || get_coord(data[1], &from))
 	{
 		ft_free_split(data);
 		return (1);

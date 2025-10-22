@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 16:24:42 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 09:37:56 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		get_rgb(char *str, t_rgb *rgb);
 int		count_obj_and_light(char *str, t_world *w);
 int		make_cam(t_camera *c, char *str);
 int		make_light(t_light *l, char *str);
+int		check_is_digit_str(char *str);
 
 #endif

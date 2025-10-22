@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/20 16:24:17 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 09:43:13 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	make_sp(t_obj *o, char *str)
 	if (!data)
 		return (1);
 	*o = sphere();
-	if (get_coord(data[1], &coor))
+	if (size_of_split(data) != 4 || get_coord(data[1], &coor) || check_is_digit_str(data[2]))
 	{
 		ft_free_split(data);
 		return (1);

@@ -6,12 +6,29 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 15:59:44 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/22 09:42:59 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "parsing.h"
+#include "libft.h"
+
+int	check_is_digit_str(char *str)
+{
+	int	i;
+
+	i = 0;
+	if ((str[0] == '-' || str[0] == '+') && ft_strlen(str) > 1)
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	check_extension(char *str, char *ext)
 {
