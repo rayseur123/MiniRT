@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 13:22:48 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/14 14:40:50 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ t_world	default_world(void)
 	w.obj[0].material.diffuse = 0.7;
 	w.obj[0].material.spec = 0.2;
 	scaling(0.5, 0.5, 0.5, w.obj[1].transform);
+	matrix4_inverse(w.obj[0].transform, w.obj[0].inverse_transform);
+	matrix4_inverse(w.obj[1].transform, w.obj[1].inverse_transform);
 	return (w);
 }

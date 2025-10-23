@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:23:02 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/13 15:46:31 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/15 15:54:02 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,15 @@ void	create_scene(t_canvas canvas)
 	const double pi = 2 * acos(0.0);
 
 	// Floor
-	floor = sphere();
+	floor = shape(PLANE);
 	set_identity_matrix(floor.transform);
-	scaling(10, 0.01, 10, floor.transform);
 	matrix4_inverse(floor.transform, floor.inverse_transform);
 	floor.material = material();
 	floor.material.color = set_rgb(1, 0.9, 0.9);
 	floor.material.spec = 0;
 
 	// Left wall
-	left_wall = sphere();
+	left_wall = shape(PLANE);
 	translation(0, 0, 5, trans1);
 	rotation_y(-pi / 4, rotatey1);
 	rotation_x(pi / 2, rotatex1);
@@ -59,21 +58,23 @@ void	create_scene(t_canvas canvas)
 	left_wall.material = floor.material;
 
 	// Right wall
-	right_wall = sphere();
+	right_wall = shape(PLANE);
 	translation(0, 0, 5, trans1);
 	rotation_y(pi / 4, rotatey1);
 	rotation_x(pi / 2, rotatex1);
 	scaling(10, 0.01, 10, scaling1);
-	
+
 	matrix4_multiplication(trans1, rotatey1, right_wall.transform);
 	matrix4_multiplication(right_wall.transform, rotatex1, mult);
 	matrix4_multiplication(mult, scaling1, right_wall.transform);
 	matrix4_inverse(right_wall.transform, right_wall.inverse_transform);
 	right_wall.material = floor.material;
 
-	// Middle sphere
-	middle = sphere();
+	right_wall.material = floor.material;
+
+	middle = shape(SPHERE);
 	translation(-0.5, 1, 0.5, middle.transform);
+	scaling(10, 0.01, 10, scaling1);
 	matrix4_inverse(middle.transform, middle.inverse_transform);
 	middle.material = material();
 	middle.material.color = set_rgb(0.1, 1, 0.5);
@@ -81,7 +82,7 @@ void	create_scene(t_canvas canvas)
 	middle.material.spec = 0.3;
 
 	// Right sphere
-	right = sphere();
+	right = shape(SPHERE);
 	translation(1.5, 0.5, -0.5, trans1);
 	scaling(0.5, 0.5, 0.5, scaling1);
 	matrix4_multiplication(trans1, scaling1, right.transform);
@@ -92,7 +93,7 @@ void	create_scene(t_canvas canvas)
 	right.material.spec = 0.3;
 
 	// Left sphere
-	left = sphere();
+	left = shape(SPHERE);
 	translation(-1.5, 0.33, -0.75, trans1);
 	scaling(0.33, 0.33, 0.33, scaling1);
 	matrix4_multiplication(trans1, scaling1, left.transform);
@@ -117,7 +118,7 @@ void	create_scene(t_canvas canvas)
 	world.obj[5] = left;
 
 	c = camera(WIDTH_CANVA, HEIGHT_CANVA, pi/3);
-	view_transform(set_point(0, 1.5, -5), set_point(0, 1, 0), set_vector(0, 1, 0), c.transform);
+	view_transform(set_point(0, 1.5, -50), set_point(0, 1, 0), set_vector(0, 1, 0), c.transform);
 	matrix4_inverse(c.transform, c.inverse_transform);
 	render(c, world, canvas);
 }
