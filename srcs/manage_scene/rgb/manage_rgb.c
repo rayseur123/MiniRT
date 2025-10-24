@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 13:58:01 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 13:15:54 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,42 +21,54 @@
 #include <time.h>
 #include <unistd.h>
 
-double double_random(void)
+int	random_vector(t_tuple *vector)
 {
-	static uint64_t seed = 0;
+	static uint32_t	seed;
+	int				fd;
+	double			x;
+	double			y;
+	double			z;
 
-	if (seed == 0)
-		seed = (uint64_t)&seed ^ (uint64_t)__TIME__[7];
-	seed ^= seed << 13;
-	seed ^= seed >> 7;
-	seed ^= seed << 17;
-	return ((seed >> 11) * 0x1.0p-53);
+	if (!seed)
+	{
+		fd = open("/dev/urandom", O_RDONLY);
+		if (fd == -1)
+			return (1);
+		if (read(fd, &seed, 4) == -1)
+			return (1);
+		close(fd);
+	}
+	x = random_xor(&seed);
+	y = random_xor(&seed);
+	z = random_xor(&seed);
+	*vector = set_vector(x, y, z);
+	*vector = tuple_normalization(*vector);
+	return (0);
 }
 
-t_rgb indirect_light_maker(t_inter *h, t_world w, uint32_t nb_bounce, t_inters inters)
+t_rgb	indirect_light_maker(t_inter *h, t_world w,
+		uint32_t nb_bounce, t_inters inters)
 {
 	int		i;
 	t_ray	new_ray;
 	t_rgb	indirect_color;
-	double	lambert;
 
 	i = 0;
-	new_ray.origin = tuple_addition(h->point, tuple_multiplication(h->normalv, 0.01));
+	new_ray.origin = tuple_addition(h->point,
+			tuple_multiplication(h->normalv, 0.001));
 	indirect_color = set_rgb(0, 0, 0);
 	while (i < NB_RAY)
 	{
-		new_ray.direction = tuple_normalization(set_vector(double_random(), double_random(), double_random()));
-		lambert = dot_product(new_ray.direction, h->normalv);
-		if (lambert < 0)
-		{
+		random_vector(&new_ray.direction);
+		if (dot_product(new_ray.direction, h->normalv) <= 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
-			lambert = -lambert;
-		}
-		indirect_color = rgb_addition(indirect_color, color_at(w, new_ray, nb_bounce - 1, inters));
+		indirect_color = rgb_addition(indirect_color,
+				color_at(w, new_ray, nb_bounce - 1, inters));
+		indirect_color = rgb_multiplication(indirect_color,
+				h->obj->material.color);
 		i++;
-	} 
+	}
 	indirect_color = rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY);
-	indirect_color = rgb_multiplication(indirect_color, h->obj->material.color);
 	return (indirect_color);
 }
 
@@ -71,10 +83,9 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_inters inters)
 	intersect_world(w, r, &inters);
 	h = hit(&inters);
 	if (!h)
-		return (set_rgb	(0, 0, 0));
+		return (set_rgb (0, 0, 0));
 	prepare_computations(h, r);
 	direct_color = shade_hit(w, *h);
-	//indirect_light = set_rgb(0, 0, 0);
 	indirect_light = indirect_light_maker(h, w, nb_bounce, inters);
 	return (rgb_addition(direct_color, indirect_light));
 }

@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   random_double.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 15:51:15 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 16:08:16 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/22 15:23:06 by njooris           #+#    #+#             */
+/*   Updated: 2025/10/24 13:12:04 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdint.h>
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+double	random_xor(uint32_t *seed)
 {
-	while (n > 0)
-	{
-		((unsigned char *)dest)[n - 1] = ((unsigned char *)src)[n - 1];
-		n--;
-	}
-	return (dest);
+	*seed ^= (*seed << 13);
+	*seed ^= *seed >> 17;
+	*seed ^= *seed << 5;
+	return (((double)*seed / (UINT32_MAX / 2.0)) - 1.0);
 }

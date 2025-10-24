@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 14:11:23 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 13:47:15 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,35 @@
 #include "libft.h"
 #include "transform.h"
 
+void	build_matrix_transform(t_tuple coor, double radius, t_obj *o)
+{
+	t_matrix4	trans;
+	t_matrix4	scale;
+
+	translation(coor.x, coor.y, coor.z, trans);
+	scaling(radius, radius, radius, scale);
+	matrix4_multiplication(trans, scale, o->transform);
+	matrix4_inverse(o->transform, o->inverse_transform);
+}
+
 int	make_sp(t_obj *o, char *str)
 {
 	t_tuple		coor;
 	double		radius;
 	char		**data;
-	t_matrix4	trans;
-	t_matrix4	scale;
 
 	data = ft_split(str, ' ');
 	if (!data)
 		return (1);
 	*o = sphere();
-	if (size_of_split(data) != 4 || get_coord(data[1], &coor) || check_is_digit_str(data[2]))
+	if (size_of_split(data) != 4 || get_coord(data[1], &coor)
+		|| check_is_digit_str(data[2]))
 	{
 		ft_free_split(data);
 		return (1);
 	}
 	radius = get_radius(data[2]);
-	translation(coor.x, coor.y, coor.z, trans);
-	scaling(radius, radius, radius, scale);
-	matrix4_multiplication(trans, scale, o->transform);
-	matrix4_inverse(o->transform, o->inverse_transform);
+	build_matrix_transform(coor, radius, o);
 	if (get_rgb(data[3], &o->material.color))
 	{
 		ft_free_split(data);

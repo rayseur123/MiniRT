@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 10:36:13 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 13:45:53 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	get_coord(char *str, t_tuple *point)
 	coord = ft_split(str, ',');
 	if (!coord)
 		return (1);
-	if (size_of_split(coord) != 3 || check_is_digit_str(coord[0]) || check_is_digit_str(coord[1]) || check_is_digit_str(coord[2]))
+	if (size_of_split(coord) != 3 || check_is_digit_str(coord[0])
+		|| check_is_digit_str(coord[1]) || check_is_digit_str(coord[2]))
 	{
 		ft_free_split(coord);
 		return (1);
@@ -74,9 +75,13 @@ int	get_rgb(char *str, t_rgb *rgb)
 
 int	parsing(char *str, t_world *world, t_camera *c)
 {
+	const int	fd = open_rt_file(str);
+
+	if (fd == -1)
+		return (1);
 	if (count_obj_and_light(str, world))
 		return (1);
 	if (alloc_world(world))
 		return (1);
-	return (make_objs(str, world, c));
+	return (make_objs(world, c, fd));
 }

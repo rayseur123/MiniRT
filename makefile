@@ -46,6 +46,7 @@ CANVA_SRCS := manage_canva.c \
 
 FLOAT_DIR := float/
 FLOAT_SRCS := manage_float.c \
+				random_double.c \
 
 MATRICE_DIR := matrice/
 MATRICE_SRCS := operations_matrix.c \
@@ -180,11 +181,13 @@ force:
 
 clean:
 	rm -rf .build
-	$(MAKE) clean -C $(dir $(LIBS_TARGET))
+	$(MAKE) clean -C libs/libft/
+	$(MAKE) clean -C libs/minilibx/
 
 fclean: clean
 	rm -rf $(NAME)
-	$(MAKE) fclean -C $(dir $(LIBS_TARGET))
+	$(MAKE) fclean -C libs/libft/
+	$(MAKE) fclean -C libs/minilibx/
 
 re:
 	$(MAKE) fclean

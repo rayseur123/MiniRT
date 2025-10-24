@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 09:37:56 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 13:45:48 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		open_rt_file(char *str);
 int		parsing(char *str, t_world *world, t_camera *c);
-int		make_objs(char *str, t_world *world, t_camera *c);
+int		make_objs(t_world *world, t_camera *c, int fd);
 char	*next_obj(int fd);
 int		make_sp(t_obj *o, char *str);
 int		get_coord(char *str, t_tuple *point);

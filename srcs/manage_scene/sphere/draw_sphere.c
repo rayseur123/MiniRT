@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:59:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 14:06:41 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 13:16:19 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,3 @@ t_rgb	add_phong(const t_inter *h, const t_tuple point, t_ray ray)
 	color = lighting(l, eye, point, normal);
 	return (color);
 }
-
