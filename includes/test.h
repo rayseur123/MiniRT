@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/15 13:28:22 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/22 14:03:28 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,9 +161,9 @@ int	test_world_3(void);
 int	test_world_4(void);
 int	test_world_5(void);
 int	test_world_6(void);
-int	test_world_7(void);
-int	test_world_8(void);
-int	test_world_9(void);
+// int	test_world_7(void);
+// int	test_world_8(void);
+// int	test_world_9(void);
 
 // camera
 
@@ -177,20 +177,5 @@ int	test_camera_7(void);
 int	test_camera_8(void);
 int	test_camera_9(void);
 int	test_camera_10(void);
-int	test_camera_11(void);
-
-// object
-
-int test_shape1(void);
-int test_shape2(void);
-int test_shape3(void);
-int test_shape4(void);
-int test_shape5(void);
-int test_shape6(void);
-int test_plane0(void);
-int test_plane1(void);
-int test_plane2(void);
-int test_plane3(void);
-int	test_plane4(void);
-int	test_plane5(void);
+//int	test_camera_11(void);
 #endif

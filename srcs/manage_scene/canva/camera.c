@@ -6,17 +6,19 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 16:17:34 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/23 08:58:50 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+#include <stdlib.h>
 #include "matrix.h"
 #include "camera.h"
 #include "transform.h"
 #include "intersection.h"
 #include "canvas.h"
 #include "world.h"
+#include "color.h"
 
 t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
 					t_matrix4 r)
@@ -65,15 +67,16 @@ t_camera	camera(double hsize, double vsize, double fov)
 		c.half_width = half_view * aspect;
 		c.half_height = half_view;
 	}
-	c.pixel_size = (c.half_width * 2) / c.hsize;
+	c.pixel_size_x = (c.half_width * 2) / c.hsize;
+	c.pixel_size_y = (c.half_height * 2) / c.vsize;
 	set_identity_matrix(c.transform);
 	return (c);
 }
 
 t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 {
-	const double	world_x = c.half_width - (px + 0.5) * c.pixel_size;
-	const double	world_y = c.half_height - (py + 0.5) * c.pixel_size;
+	const double	world_x = c.half_width - (px + 0.5) * c.pixel_size_x;
+	const double	world_y = c.half_height - (py + 0.5) * c.pixel_size_y;
 	t_tuple			pixel;
 	t_tuple			origin;
 
@@ -85,25 +88,28 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 				tuple_subtraction(pixel, origin))));
 }
 
-t_canvas	render(t_camera c, t_world w, t_canvas img)
+int	render(t_camera c, t_world w, t_canvas img)
 {
-	int		x;
-	int		y;
-	t_ray	r;
-	t_rgb	color;
+	int				x;
+	int				y;
+	t_rgb			color;
+	t_inters		inters;
 
 	x = 0;
+	inters.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
+	if (!inters.inters)
+		return (1);
 	while (x < c.hsize)
 	{
 		y = 0;
 		while (y < c.vsize)
 		{
-			r = ray_for_pixel(c, x, y);
-			color = color_at(w, r);
+			color = color_at(w, ray_for_pixel(c, x, y), NB_BOUNCE, inters);
 			put_px_in_canva(img, x, y, color);
 			y++;
 		}
 		x++;
 	}
-	return (img);
+	free(inters.inters);
+	return (0);
 }

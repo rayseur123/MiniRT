@@ -18,6 +18,8 @@ gitignore
 
 *.txt
 
+*.rt
+
 mlx-test
 
 miniRT

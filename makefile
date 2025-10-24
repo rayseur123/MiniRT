@@ -43,14 +43,13 @@ SPHERE_DIR := sphere/
 SPHERE_SRCS := sphere.c \
 				draw_sphere.c \
 
-SCENE_DIR := manage_scene/
-
 CANVA_DIR := canva/
 CANVA_SRCS := manage_canva.c \
 				camera.c 	\
 
 FLOAT_DIR := float/
 FLOAT_SRCS := manage_float.c \
+				random_double.c \
 
 MATRICE_DIR := matrice/
 MATRICE_SRCS := operations_matrix.c \
@@ -62,6 +61,7 @@ MATRICE_SRCS := operations_matrix.c \
 				submatrice_matrix.c \
 				determining_matrix.c \
 				set_identity_matrix.c \
+				matrix_utils.c \
 
 RGB_DIR := rgb/
 RGB_SRCS := manage_rgb.c \
@@ -78,6 +78,18 @@ TRANS_SRCS := scaling.c \
 			translation.c   \
 			rotation.c \
 
+SCENE_DIR := manage_scene/
+
+PARSING_DIR := parsing/
+
+PARSING_SRC := file_manage.c \
+					parsing.c \
+					parse_objs.c \
+					parse_sphere.c \
+					parse_camera.c \
+					parse_light.c \
+
+
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
 SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
 SCENE_SRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
@@ -89,6 +101,7 @@ SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 SCENE_SRCS += $(addprefix $(WORLD_DIR), $(WORLD_SRCS))
 SCENE_SRCS += $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))
 
+SRCS += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS)))
@@ -107,6 +120,7 @@ SRCS += minirt.c
 # --- CHECK NORME --- #
 
 SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
+SRCS_NORME += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
 SRCS_NORME += minirt.c
 
 # --- LIBS TARGET --- #
@@ -142,7 +156,7 @@ DEPS := $(OBJS:.o=.d)
 CPPFLAGS += -MMD -MP $(addprefix -I,$(INCLUDES)) \
 					 $(addprefix -I, $(LIBS_INCLUDES))
 
-CFLAGS += -g3 -Wall -Wextra -Werror
+CFLAGS += -g3 -Wall -Wextra -Werror -Ofast
 
 LFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
 			$(addprefix -l,$(LIBS)) \
@@ -172,11 +186,13 @@ force:
 
 clean:
 	rm -rf .build
-	$(MAKE) clean -C $(dir $(LIBS_TARGET))
+	$(MAKE) clean -C libs/libft/
+	$(MAKE) clean -C libs/minilibx/
 
 fclean: clean
 	rm -rf $(NAME)
-	$(MAKE) fclean -C $(dir $(LIBS_TARGET))
+	$(MAKE) fclean -C libs/libft/
+	$(MAKE) fclean -C libs/minilibx/
 
 re:
 	$(MAKE) fclean

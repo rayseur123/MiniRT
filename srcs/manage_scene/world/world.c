@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 16:14:36 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/24 13:16:29 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "stdlib.h"
 #include "transform.h"
 #include <stdio.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 t_world	world(void)
 {
@@ -24,6 +26,7 @@ t_world	world(void)
 	w.nb_obj = 0;
 	w.light = NULL;
 	w.obj = 0;
+	w.fd = open("/dev/random", O_RDONLY);
 	return (w);
 }
 
@@ -61,7 +64,6 @@ uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters)
 	unsigned int	i;
 
 	i = 0;
-	inters->inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
 	inters->count = 0;
 	while (i < w.nb_obj)
 	{

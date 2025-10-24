@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:33:24 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 11:13:50 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/15 11:20:32 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int 			matrix4_is_reversible(t_matrix4 m);
 t_matrix4_ptr 	matrix4_inverse(t_matrix4 m1, t_matrix4 m2);
 t_matrix4_ptr	set_identity_matrix(t_matrix4 m);
 t_matrix4_ptr	matrix4_cpy(t_matrix4 m, t_matrix4 m2);
+void			display_matrix(t_matrix4 m);
 
 #endif //MINIRT_MATRIX_H

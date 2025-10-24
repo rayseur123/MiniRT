@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:59 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/13 16:13:49 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/23 13:33:15 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,7 @@ t_rgb		lighting(t_lighting l, t_tuple eyev, t_tuple point, t_tuple normalv);
 t_rgb		cal_ambient(t_rgb *ef_color, t_light l, t_material mat);
 t_rgb		cal_spec(t_material mat, double reflect_dot_eye, t_light l);
 t_rgb		cal_diffuse(const t_rgb ef_color, const double light, t_material mat);
+
+double 		random_xor(uint32_t *seed);
+
 #endif

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_size_of_split.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 15:51:15 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 16:08:16 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/21 16:02:00 by njooris           #+#    #+#             */
+/*   Updated: 2025/10/21 16:03:36 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	size_of_split(char **split)
 {
-	while (n > 0)
-	{
-		((unsigned char *)dest)[n - 1] = ((unsigned char *)src)[n - 1];
-		n--;
-	}
-	return (dest);
+	int	i;
+
+	i = 0;
+	while (split[i])
+		i++;
+	return (i);
 }
