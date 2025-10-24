@@ -105,6 +105,47 @@ void	create_scene(t_canvas canvas)
 	left = sphere();
 	translation(0, 0, 3, trans1);
 	scaling(1, 1, 1, scaling1);
+
+	// Right wall
+	right_wall = shape(PLANE);
+	translation(0, 0, 5, trans1);
+	rotation_y(pi / 4, rotatey1);
+	rotation_x(pi / 2, rotatex1);
+	scaling(10, 0.01, 10, scaling1);
+
+	matrix4_multiplication(trans1, rotatey1, right_wall.transform);
+	matrix4_multiplication(right_wall.transform, rotatex1, mult);
+	matrix4_multiplication(mult, scaling1, right_wall.transform);
+	matrix4_inverse(right_wall.transform, right_wall.inverse_transform);
+	right_wall.material = floor.material;
+
+	right_wall.material = floor.material;
+
+	middle = shape(SPHERE);
+	translation(-0.5, 1, 0.5, middle.transform);
+	scaling(10, 0.01, 10, scaling1);
+	matrix4_inverse(middle.transform, middle.inverse_transform);
+	middle.material = material();
+	middle.material.color = set_rgb(0.1, 1, 0.5);
+	middle.material.diffuse = 0.7;
+	middle.material.spec = 0.3;
+
+	// Right sphere
+	right = shape(SPHERE);
+	translation(1.5, 0.5, -0.5, trans1);
+	scaling(0.5, 0.5, 0.5, scaling1);
+	matrix4_multiplication(trans1, scaling1, right.transform);
+	matrix4_inverse(right.transform, right.inverse_transform);
+	right.material = material();
+	right.material.color = set_rgb(0.5, 1, 0.1);
+	right.material.diffuse = 0.7;
+	right.material.spec = 0.3;
+
+	// Left sphere
+	left = shape(SPHERE);
+	translation(-1.5, 0.33, -0.75, trans1);
+	scaling(0.33, 0.33, 0.33, scaling1);
+
 	matrix4_multiplication(trans1, scaling1, left.transform);
 	matrix4_inverse(left.transform, left.inverse_transform);
 

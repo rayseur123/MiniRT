@@ -21,13 +21,16 @@ TEST_SRCS := tuples.c \
 				light.c \
 				world.c \
 				camera.c \
+				object.c \
 
 RAY_DIR := ray/
 RAY_SRCS := ray.c \
 			set_ray.c \
 			vector.c \
-			light.c \
-			cal_light.c \
+
+LIGHT_DIR := light/
+LIGHT_SRCS := light.c \
+			 cal_light.c \
 
 MSCENE_DIR := scene/
 MSCENE_SRCS := scene.c\
@@ -96,6 +99,7 @@ SCENE_SRCS += $(addprefix $(TRANS_DIR), $(TRANS_SRCS))
 SCENE_SRCS += $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS))
 SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 SCENE_SRCS += $(addprefix $(WORLD_DIR), $(WORLD_SRCS))
+SCENE_SRCS += $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))
 
 SRCS += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
@@ -109,6 +113,7 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RAY_DIR), $(RAY_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(WORLD_DIR), $(WORLD_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MSCENE_DIR), $(MSCENE_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
 SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 

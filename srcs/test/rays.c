@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:30:03 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/14 11:05:00 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,6 +288,7 @@ int	test_transfrom_5(void)
 	s = sphere();
 	scaling(2, 2, 2, m);
 	set_transform(&s, m);
+	matrix4_inverse(s.transform, s.inverse_transform);
 	xs.count = 0;
 	xs.inters = malloc(2 * sizeof(t_inter));
 	intersect(r, &s, &xs);
@@ -308,6 +309,7 @@ int	test_transfrom_6(void)
 	s = sphere();
 	translation(5, 0, 0, m);
 	set_transform(&s, m);
+	matrix4_inverse(s.transform, s.inverse_transform);
 	xs.count = 0;
 	xs.inters = malloc(2 * sizeof(t_inter));
 	intersect(r, &s, &xs);
@@ -384,6 +386,7 @@ int	test_normal_vector_on_sphere6(void)
 
 	s = sphere();
 	set_transform(&s, translation(0, 1, 0, m));
+	matrix4_inverse(s.transform, s.inverse_transform);
 	v = normal_at(s, set_point(0,  1.70711, -0.70711));
 	if (!check_equal_tuples(v, set_point(0,  0.70711, -0.70711)))
 		return (1);
@@ -404,6 +407,7 @@ int	test_normal_vector_on_sphere7(void)
 	rotation_z(pi / 5, rota);
 	matrix4_multiplication(scale, rota, m);
 	set_transform(&s, m);
+	matrix4_inverse(s.transform, s.inverse_transform);
 	v = normal_at(s, set_point(0,  sqrt(2) / 2, -(sqrt(2) / 2)));
 	if (!check_equal_tuples(v, set_vector(0,  0.97014, -0.24254)))
 		return (1);
