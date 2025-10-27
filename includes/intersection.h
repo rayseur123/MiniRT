@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/24 15:11:44 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 15:18:53 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,29 @@
 #define MINIRT_INTERSECTION_H
 
 #include <stdbool.h>
-#include "object.h"
+#include "intersection.h"
 #include "tuple.h"
+#include "matrix.h"
+#include "color.h"
+
+typedef struct s_ray	t_ray;
+
+typedef enum e_obj_type
+{
+	SPHERE,
+	PLANE,
+	CYLINDER,
+}	t_obj_type;
+
+typedef struct s_obj
+{
+	t_obj_type	type;
+	int			id;
+	t_matrix4	transform;
+	t_matrix4	inverse_transform;
+	t_material	material;
+	t_ray		*saved_ray;
+}	t_obj;
 
 typedef struct s_inter
 {

@@ -6,13 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:49:54 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 16:18:21 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 15:15:30 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuple.h"
 #include "matrix.h"
-#include "object.h"
+#include "intersection.h"
 
 t_tuple	normal_at(t_obj s, t_tuple wp)
 {
