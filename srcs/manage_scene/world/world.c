@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 15:27:48 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 15:45:04 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ t_rgb	shade_hit(t_world world, t_inter comps)
 		l.mat = comps.obj->material;
 		l.light = world.light[i];
 		l.eyev = comps.eyev;
-
 		color = rgb_addition(color, lighting(l,
 			comps.point, comps.normalv,
 			false));
