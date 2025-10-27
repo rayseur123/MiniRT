@@ -47,7 +47,7 @@ int	random_vector(t_tuple *vector)
 }
 
 t_rgb	indirect_light_maker(t_inter *h, t_world w,
-		uint32_t nb_bounce, t_inters inters)
+		uint32_t nb_bounce)
 {
 	int		i;
 	t_ray	new_ray;
@@ -60,10 +60,10 @@ t_rgb	indirect_light_maker(t_inter *h, t_world w,
 	while (i < NB_RAY)
 	{
 		random_vector(&new_ray.direction);
-		if (dot_product(new_ray.direction, h->normalv) <= 0)
+		if (dot_product(new_ray.direction, h->normalv) < 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
 		indirect_color = rgb_addition(indirect_color,
-				color_at(w, new_ray, nb_bounce - 1, inters));
+				color_at(w, new_ray, nb_bounce - 1));
 		indirect_color = rgb_multiplication(indirect_color,
 				h->obj->material.color);
 		i++;
@@ -72,22 +72,27 @@ t_rgb	indirect_light_maker(t_inter *h, t_world w,
 	return (indirect_color);
 }
 
-t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_inters inters)
+t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce)
 {
 	t_inter			*h;
 	t_rgb			direct_color;
 	t_rgb			indirect_light;
+	t_inters		inters;
 
 	if (nb_bounce == 0)
 		return (set_rgb(0, 0, 0));
-	intersect_world(w, r, &inters);
+	if (intersect_world(w, r, &inters))
+		return (set_rgb (0, 0, 0));
 	h = hit(&inters);
 	if (!h)
+	{
+		free(inters.inters);
 		return (set_rgb (0, 0, 0));
+	}
 	prepare_computations(h, r);
 	direct_color = shade_hit(w, *h);
-	//indirect_light = indirect_light_maker(h, w, nb_bounce, inters);
-	indirect_light = set_rgb(0, 0, 0);
+	indirect_light = indirect_light_maker(h, w, nb_bounce);
+	free(inters.inters);
 	return (rgb_addition(direct_color, indirect_light));
 }
 

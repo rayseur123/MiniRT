@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/24 13:00:07 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/27 14:48:14 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "intersection.h"
 
 #define NB_BOUNCE 2
-#define NB_RAY 1
+#define NB_RAY 16
 
 typedef struct s_world
 {
@@ -33,7 +33,7 @@ t_world		world(void);
 uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters);
 void		prepare_computations(t_inter *inter, t_ray ray);
 t_rgb		shade_hit(t_world world, t_inter comps);
-t_rgb		color_at(t_world w, t_ray r, uint32_t nb_bounce, t_inters inters);
+t_rgb		color_at(t_world w, t_ray r, uint32_t nb_bounce);
 t_world 	default_world(void);
 
 #endif

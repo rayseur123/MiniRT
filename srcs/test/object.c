@@ -11,15 +11,13 @@
 /* ************************************************************************** */
 
 #include "object.h"
-#include "../../includes/object.h"
-
+#include "object.h"
 #include <stdlib.h>
-
 #include "sphere.h"
 #include "light.h"
-#include "../../includes/intersection.h"
-#include "../../includes/light.h"
-#include "../../includes/transform.h"
+#include "intersection.h"
+#include "light.h"
+#include "transform.h"
 #include <math.h>
 
 t_obj	shape(enum e_obj_type const type)
