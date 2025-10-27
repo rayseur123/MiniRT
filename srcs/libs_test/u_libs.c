@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/16 10:42:02 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 09:02:47 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,14 @@ void	lib_unit(void) {
 	adding_test(&function, "Object", "plane_3", &test_plane3);
 	adding_test(&function, "Object", "plane_4", &test_plane4);
 	adding_test(&function, "Object", "plane_5", &test_plane5);
+
+	adding_test(&function, "Shadow", "shadow_1", &test_shadow1);
+	adding_test(&function, "Shadow", "shadow_2", &test_shadow2);
+	adding_test(&function, "Shadow", "shadow_3", &test_shadow3);
+	adding_test(&function, "Shadow", "shadow_4", &test_shadow4);
+	adding_test(&function, "Shadow", "shadow_5", &test_shadow5);
+	adding_test(&function, "Shadow", "shadow_6", &test_shadow6);
+	adding_test(&function, "Shadow", "shadow_7", &test_shadow7);
 
 	launch_lib_test(&function);
 }

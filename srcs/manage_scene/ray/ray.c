@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/16 08:41:21 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 10:39:59 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_inter	*hit(t_inters *inters)
 		return (NULL);
 	while (i < inters->count)
 	{
-		if ((inters->inters[min].range < 0)
+		if ((inters->inters->null == false && inters->inters[min].range < 0)
 			|| (inters->inters[i].range >= 0
 				&& inters->inters[i].range < inters->inters[min].range))
 			min = i;
@@ -59,14 +59,14 @@ void	shape_intersect(t_obj *o, t_ray r, t_inters *xs)
 	if (o->type == PLANE)
 	{
 		if (fabs(r.direction.y) < EPSILON)
-			xs->inters = NULL;
-		else
 		{
-			t = -r.origin.y / r.direction.y;
-			xs->inters[xs->count++] = set_intersection(t, o);
+			xs->inters[xs->count].null = true;
+			return;
 		}
+		t = -r.origin.y / r.direction.y;
+		xs->inters[xs->count++] = set_intersection(t, o);
 	}
-	if (o->type == SPHERE)
+	else if (o->type == SPHERE)
 		intersect_sphere(o, r, xs);
 }
 

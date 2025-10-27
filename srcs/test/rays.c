@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/14 11:05:00 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/24 13:44:02 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int test_intersect_sphere_1(void)
 	t_inters xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
-	s = sphere();
+	s = shape(SPHERE);
 	xs.count = 0;
 	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
@@ -63,7 +63,7 @@ int test_intersect_sphere_2(void)
 	t_inters xs;
 
 	r = set_ray(set_point(0, 2, -5), set_vector(0, 0 , 1));
-	s = sphere();
+	s = shape(SPHERE);
 	xs.count = 0;
 	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
@@ -79,7 +79,7 @@ int test_intersect_sphere_3(void)
 	t_inters xs;
 
 	r = set_ray(set_point(0, 0, 0), set_vector(0, 0 , 1));
-	s = sphere();
+	s = shape(SPHERE);
 	xs.count = 0;
 	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
@@ -101,7 +101,7 @@ int test_intersect_sphere_4(void)
 	t_inters xs;
 
 	r = set_ray(set_point(0, 0, 5), set_vector(0, 0 , 1));
-	s = sphere();
+	s = shape(SPHERE);
 	xs.count = 0;
 	xs.inters = malloc(2 *sizeof(t_inter));
 	intersect_sphere(&s, r, &xs);
@@ -122,7 +122,7 @@ int	test_set_intersection(void)
 	t_obj s;
 	t_inter i;
 
-	s = sphere();
+	s = shape(SPHERE);
 	i = set_intersection(3.5, &s);
 	if (i.range == 3.5)
 		if (i.obj->id == s.id)
@@ -137,7 +137,7 @@ int test_aggregating_intersection(void)
 	t_inter i2;
 	t_inters xs;
 
-	s = sphere();
+	s = shape(SPHERE);
 	i1 = set_intersection(1, &s);
 	i2 = set_intersection(2, &s);
 	xs.count = 0;
@@ -156,7 +156,7 @@ int test_intersection_objet(void)
 	t_inters xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
-	s = sphere();
+	s = shape(SPHERE);
 	s.type = SPHERE;
 	xs.count = 0;
 	xs.inters = malloc(2 * sizeof(t_inter));
@@ -175,7 +175,7 @@ int	test_hit_1(void)
 	t_inter i2;
 	t_inters xs;
 
-	s = sphere();
+	s = shape(SPHERE);
 	
 	i1 = set_intersection(1, &s);
 	i2 = set_intersection(2, &s);
@@ -193,7 +193,7 @@ int	test_hit_2(void)
 	t_inter i2;
 	t_inters xs;
 
-	s = sphere();
+	s = shape(SPHERE);
 	
 	i1 = set_intersection(-1, &s);
 	i2 = set_intersection(1, &s);
@@ -210,7 +210,7 @@ int	test_hit_3(void)
 	t_inter i2;
 	t_inters xs;
 
-	s = sphere();
+	s = shape(SPHERE);
 	
 	i1 = set_intersection(-2, &s);
 	i2 = set_intersection(-1, &s);
@@ -285,7 +285,7 @@ int	test_transfrom_5(void)
 	t_inters	xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0, 1));
-	s = sphere();
+	s = shape(SPHERE);
 	scaling(2, 2, 2, m);
 	set_transform(&s, m);
 	matrix4_inverse(s.transform, s.inverse_transform);
@@ -306,7 +306,7 @@ int	test_transfrom_6(void)
 	t_inters	xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0, 1));
-	s = sphere();
+	s = shape(SPHERE);
 	translation(5, 0, 0, m);
 	set_transform(&s, m);
 	matrix4_inverse(s.transform, s.inverse_transform);
@@ -323,7 +323,7 @@ int	test_normal_vector_on_sphere1(void)
 	t_obj	s;
 	t_tuple	v;
 
-	s = sphere();
+	s = shape(SPHERE);
 	v = normal_at(s, set_point(1, 0, 0));
 	if (!check_equal_tuples(v, set_vector(1, 0, 0)))
 		return (1);
@@ -335,7 +335,7 @@ int	test_normal_vector_on_sphere2(void)
 	t_obj	s;
 	t_tuple	v;
 
-	s = sphere();
+	s = shape(SPHERE);
 	v = normal_at(s, set_point(0, 1, 0));
 	if (!check_equal_tuples(v, set_vector(0, 1, 0)))
 		return (1);
@@ -347,7 +347,7 @@ int	test_normal_vector_on_sphere3(void)
 	t_obj	s;
 	t_tuple	v;
 
-	s = sphere();
+	s = shape(SPHERE);
 	v = normal_at(s, set_point(0, 0, 1));
 	if (!check_equal_tuples(v, set_vector(0, 0, 1)))
 		return (1);
@@ -359,7 +359,7 @@ int	test_normal_vector_on_sphere4(void)
 	t_obj	s;
 	t_tuple	v;
 
-	s = sphere();
+	s = shape(SPHERE);
 	v = normal_at(s, set_point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3));
 	if (!check_equal_tuples(v, set_vector(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3)))
 		return (1);
@@ -371,7 +371,7 @@ int	test_normal_vector_on_sphere5(void)
 	t_obj	s;
 	t_tuple	v;
 
-	s = sphere();
+	s = shape(SPHERE);
 	v = normal_at(s, set_point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3));
 	if (!check_equal_tuples(v, tuple_normalization(v)))
 		return (1);
@@ -384,7 +384,7 @@ int	test_normal_vector_on_sphere6(void)
 	t_tuple		v;
 	t_matrix4 	m;
 
-	s = sphere();
+	s = shape(SPHERE);
 	set_transform(&s, translation(0, 1, 0, m));
 	matrix4_inverse(s.transform, s.inverse_transform);
 	v = normal_at(s, set_point(0,  1.70711, -0.70711));
@@ -402,7 +402,7 @@ int	test_normal_vector_on_sphere7(void)
 	t_matrix4	rota;
 	const double pi = 2 * acos(0.0);
 
-	s = sphere();
+	s = shape(SPHERE);
 	scaling(1, 0.5, 1, scale);
 	rotation_z(pi / 5, rota);
 	matrix4_multiplication(scale, rota, m);

@@ -57,7 +57,7 @@ int	test_world_3(void)
 	t_inter	inter;
 
 	r = set_ray(set_point(0,0,-5), set_vector(0,0,1));
-	o = sphere();
+	o = shape(SPHERE);
 	inter = set_intersection(4, &o);
 	prepare_computations(&inter, r);
 	if (inter.range == 4 && check_equal_tuples(inter.point, set_point(0,0, -1)) && check_equal_tuples(inter.eyev, set_vector(0,0,-1)) && check_equal_tuples(inter.normalv, set_vector(0,0,-1)))
@@ -72,7 +72,7 @@ int	test_world_4(void)
 	t_inter	inter;
 
 	r = set_ray(set_point(0,0,-5), set_vector(0,0,1));
-	o = sphere();
+	o = shape(SPHERE);
 	inter = set_intersection(1, &o);
 	prepare_computations(&inter, r);
 	if (check_equal_tuples(inter.point, set_point(0,0, 1)) && check_equal_tuples(inter.eyev, set_vector(0,0,-1)) && check_equal_tuples(inter.normalv, set_vector(0,0,-1)) && inter.inside == true)
@@ -90,7 +90,7 @@ int	test_world_5(void)
 
 	w = default_world();
 	r = set_ray(set_point(0,0,-5), set_vector(0,0,1));
-	o = sphere();
+	o = shape(SPHERE);
 	inter = set_intersection(4, &o);
 	prepare_computations(&inter, r);
 	c = shade_hit(w, inter);
@@ -110,7 +110,7 @@ int	test_world_6(void)
 	w = default_world();
 	w.light[0] = point_light(set_point(0, 0.25, 0), set_rgb(1, 1, 1));
 	r = set_ray(set_point(0,0,0), set_vector(0,0,1));
-	o = sphere();
+	o = shape(SPHERE);
 	inter = set_intersection(0.5, &o);
 	prepare_computations(&inter, r);
 	c = shade_hit(w, inter);

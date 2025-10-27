@@ -22,6 +22,10 @@ TEST_SRCS := tuples.c \
 				world.c \
 				camera.c \
 				object.c \
+				shadow.c \
+
+SHADOW_DIR := shadow/
+SHADOW_SRCS := shadow.c \
 
 RAY_DIR := ray/
 RAY_SRCS := ray.c \
@@ -88,6 +92,7 @@ SCENE_SRCS += $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS))
 SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 SCENE_SRCS += $(addprefix $(WORLD_DIR), $(WORLD_SRCS))
 SCENE_SRCS += $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))
+SCENE_SRCS += $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS))
 
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS)))
@@ -101,6 +106,7 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RAY_DIR), $(RAY_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(WORLD_DIR), $(WORLD_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MSCENE_DIR), $(MSCENE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS)))
 SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 
@@ -144,9 +150,11 @@ CPPFLAGS += -MMD -MP $(addprefix -I,$(INCLUDES)) \
 
 CFLAGS += -g3 -Wall -Wextra -Werror
 
-LFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
+LDFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
 			$(addprefix -l,$(LIBS)) \
-			-lreadline
+			-lreadline \
+
+
 
 # --- COMPILATER --- #
 
@@ -157,7 +165,7 @@ CC = cc
 all : $(NAME)
 
 $(NAME) : $(LIBS_TARGET) $(OBJS)
-	$(CC) $^ $(LFLAGS) -o $@ $(SYS_LIBS)
+	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
@@ -187,7 +195,6 @@ debug: $(NAME)
 
 norme:
 	norminette $(addprefix $(SRC_DIR), $(SRCS_NORME))
-	
 
 print-%:
 	@echo $(patsubst print-%,%,$@)=

@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:33:33 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 17:33:13 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 11:08:17 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <stdint.h>
 
-#define EPSILON 0.00001
+#define EPSILON 0.0001
 
 typedef struct s_tuple
 {

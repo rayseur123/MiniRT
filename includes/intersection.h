@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/15 13:42:28 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/24 13:51:41 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,14 @@ typedef struct s_obj
 
 typedef struct s_inter
 {
+	bool			null;
 	double			nb_inter;
 	t_obj			*obj;
 	double			range;
 	t_tuple			point;
 	t_tuple			eyev;
 	t_tuple			normalv;
+	t_tuple			over_point;
 	bool			inside;
 }	t_inter;
 

@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 14:41:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/13 15:49:50 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/23 11:23:43 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	test_light_btw_light_surface(void)
 	eyev = set_vector(0,0,-1);
 	normalv = set_vector(0,0,-1);
 	l.light = point_light(set_point(0,0, -10), set_rgb(1, 1, 1));
-	result = lighting(l, eyev, position, normalv);
+	result = lighting(l, eyev, position, normalv, false);
 	if (result.r == 1.9 && result.g == 1.9 && result.b == 1.9)
 		return (0);
 	return (1);
@@ -72,7 +72,7 @@ int	test_light_btw_light_45(void)
 	eyev = set_vector(0,sqrt(2) / 2,-sqrt(2) / 2);
 	normalv = set_vector(0,0,-1);
 	l.light = point_light(set_point(0,0,-10), set_rgb(1,1,1));
-	result = lighting(l, eyev, position, normalv);
+	result = lighting(l, eyev, position, normalv ,false);
 	if (result.r == 1.0 && result.g == 1.0 && result.b == 1.0)
 		return (0);
 	return (1);
@@ -91,7 +91,7 @@ int	test_light_btw_light_opposite_45(void)
 	eyev = set_vector(0,0,-1);
 	normalv = set_vector(0,0,-1);
 	l.light = point_light(set_point(0,10,-10), set_rgb(1,1,1));
-	result = lighting(l, eyev, position, normalv);
+	result = lighting(l, eyev, position, normalv, false);
 	if (double_is_equal(result.r, 0.7364) && double_is_equal(result.g, 0.7364) && result.b, 0.7364)
 		return (0);
 	return (1);
@@ -110,7 +110,7 @@ int	test_light_btw_light_reflection(void)
 	eyev = set_vector(0,-sqrt(2) / 2,-sqrt(2) / 2);
 	normalv = set_vector(0,0,-1);
 	l.light = point_light(set_point(0,10,-10), set_rgb(1,1,1));
-	result = lighting(l, eyev, position, normalv);
+	result = lighting(l, eyev, position, normalv, false);
 	if (double_is_equal(result.r, 1.6364) && double_is_equal(result.g, 1.6364) && result.b, 1.6364)
 		return (0);
 	return (1);
@@ -129,7 +129,7 @@ int	test_light_behind_surface(void)
 	eyev = set_vector(0,0,-1);
 	normalv = set_vector(0,0,-1);
 	l.light = point_light(set_point(0,0,10), set_rgb(1,1,1));
-	result = lighting(l, eyev, position, normalv);
+	result = lighting(l, eyev, position, normalv, false);
 	if (result.r == 0.1 && result.g == 0.1 && result.b == 0.1)
 		return (0);
 	return (1);

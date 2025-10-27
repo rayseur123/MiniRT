@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:06:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 16:05:34 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 11:00:37 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_rgb	asb_phong(t_rgb c, t_lighting l, double light, t_rgb spec)
 }
 
 t_rgb	lighting(t_lighting l, t_tuple eyev,
-				t_tuple point, t_tuple normalv)
+				t_tuple point, t_tuple normalv, bool is_shadowed)
 {
 	t_rgb	ef_color;
 	t_tuple	lightv;
@@ -45,7 +45,7 @@ t_rgb	lighting(t_lighting l, t_tuple eyev,
 	lightv = tuple_normalization(tuple_subtraction(l.light.position, point));
 	light_dot_normal = dot_product(lightv, normalv);
 	cal_ambient(&ef_color, l.light, l.mat);
-	if (light_dot_normal < 0)
+	if (light_dot_normal < 0 || is_shadowed)
 		return (cal_ambient(&ef_color, l.light, l.mat));
 	reflectv = reflect(tuple_negation(lightv), normalv);
 	reflect_dot_eye = dot_product(reflectv, eyev);
