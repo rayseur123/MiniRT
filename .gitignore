@@ -1,6 +1,4 @@
-### C template
-# Prerequisites
-*.d
+gitignore
 
 .vscode
 

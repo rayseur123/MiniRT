@@ -22,9 +22,6 @@
 #include "../../includes/transform.h"
 #include <math.h>
 
-
-
-
 t_obj	shape(enum e_obj_type const type)
 {
 	static int32_t	id;
