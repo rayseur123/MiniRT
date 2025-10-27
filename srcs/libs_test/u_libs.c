@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 17:13:05 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 15:12:28 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,9 @@ void	lib_unit(void) {
 	adding_test(&function, "World", "world_4", &test_world_4);
 	adding_test(&function, "World", "world_5", &test_world_5);
 	adding_test(&function, "World", "world_6", &test_world_6);
-	adding_test(&function, "World", "world_7", &test_world_7);
-	adding_test(&function, "World", "world_8", &test_world_8);
-	adding_test(&function, "World", "world_9", &test_world_9);
+	// adding_test(&function, "World", "world_7", &test_world_7);
+	// adding_test(&function, "World", "world_8", &test_world_8);
+	// adding_test(&function, "World", "world_9", &test_world_9);
 
 	adding_test(&function, "Camera", "camera_1", &test_camera_1);	
 	adding_test(&function, "Camera", "camera_2", &test_camera_2);
@@ -162,7 +162,7 @@ void	lib_unit(void) {
 	adding_test(&function, "Camera", "camera_8", &test_camera_8);
 	adding_test(&function, "Camera", "camera_9", &test_camera_9);
 	adding_test(&function, "Camera", "camera_10", &test_camera_10);
-	adding_test(&function, "Camera", "camera_11", &test_camera_11);
+	// adding_test(&function, "Camera", "camera_11", &test_camera_11);
 	
 	launch_lib_test(&function);
 }

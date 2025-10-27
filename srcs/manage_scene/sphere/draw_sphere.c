@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:59:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 15:54:30 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/24 13:16:19 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,52 +37,4 @@ t_rgb	add_phong(const t_inter *h, const t_tuple point, t_ray ray)
 	eye = tuple_negation(ray.direction);
 	color = lighting(l, eye, point, normal);
 	return (color);
-}
-
-void	ray_manage(t_ray *ray, const int x, const int y)
-{
-	double		half;
-
-	half = WALL_SIZE * 0.5;
-	ray->direction = tuple_normalization(tuple_subtraction(
-				set_point(-half + (WALL_SIZE / WIDTH_CANVA) * x,
-					half - (WALL_SIZE / HEIGHT_CANVA) * y, 10),
-				ray->origin));
-}
-
-void	do_draw_sphere(const t_canvas canvas, t_obj obj)
-{
-	int			x;
-	int			y;
-	t_inter		*h;
-	t_ray		ray;
-	t_inters	xs;
-
-	xs.inters = malloc(2 * sizeof(t_inter));
-	ray.origin = set_point(0, 0, -5);
-	x = 0;
-	while (x < WIDTH_CANVA)
-	{
-		y = 0;
-		while (y < HEIGHT_CANVA)
-		{
-			xs.count = 0;
-			ray_manage(&ray, x, y);
-			h = intersect_manage(ray, &obj, &xs);
-			if (h)
-				put_px_in_canva(canvas, x, y,
-					add_phong(h, position(ray, h->range), ray));
-			y++;
-		}
-		x++;
-	}
-}
-
-void	draw_sphere(const t_canvas canvas)
-{
-	t_obj				obj;
-
-	obj = sphere();
-	obj.material.color = set_rgb(1, 0.2, 1);
-	do_draw_sphere(canvas, obj);
 }

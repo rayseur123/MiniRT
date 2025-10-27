@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 15:51:15 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 16:08:16 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/15 11:15:49 by njooris           #+#    #+#             */
+/*   Updated: 2025/10/15 15:54:27 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "matrix.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	display_matrix(t_matrix4 m)
 {
-	while (n > 0)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < 4)
 	{
-		((unsigned char *)dest)[n - 1] = ((unsigned char *)src)[n - 1];
-		n--;
+		j = 0;
+		while (j < 4)
+		{
+			ft_printf("|%f|", m[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
 	}
-	return (dest);
 }

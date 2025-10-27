@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:31:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/13 12:27:01 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/23 09:33:46 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 #define WIDTH_CANVA 1000
 #define HEIGHT_CANVA 500
-#define WALL_SIZE 10.00
 
 typedef struct s_canvas
 {
@@ -28,9 +27,6 @@ typedef struct s_canvas
 	void *window;
 	void *canva;
 } t_canvas;
-
-
-
 
 int			init_canva(t_canvas *canva);
 void		put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb);

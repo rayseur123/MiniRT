@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 14:20:11 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/02 14:52:05 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/21 16:03:26 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 double	ft_atod(char *str);
 float	ft_atof(char *str);
 int		ft_free_split(char **split);
+int		size_of_split(char **split);
 
 // MEM
 void	*ft_memset(void *s, int c, size_t n);
