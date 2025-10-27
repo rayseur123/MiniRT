@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 10:39:59 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/16 08:41:21 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ void	shape_intersect(t_obj *o, t_ray r, t_inters *xs)
 void	intersect(t_ray r, t_obj *o, t_inters *xs)
 {
 	r = transform(r, o->inverse_transform);
-	shape_intersect(o, r, xs);
+	if (o->type == SPHERE)
+		intersect_sphere(o, r, xs);
 }

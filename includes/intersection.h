@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/24 13:51:41 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/15 13:42:28 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 #define MINIRT_INTERSECTION_H
 
 #include <stdbool.h>
-#include "object.h"
+#include "intersection.h"
 #include "tuple.h"
+#include "matrix.h"
+#include "color.h"
 
 typedef struct s_ray	t_ray;
 
@@ -48,6 +50,7 @@ typedef struct s_inter
 	t_tuple			over_point;
 	bool			inside;
 }	t_inter;
+
 
 typedef struct s_inters
 {

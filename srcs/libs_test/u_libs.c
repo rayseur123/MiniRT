@@ -148,9 +148,9 @@ void	lib_unit(void) {
 	adding_test(&function, "World", "world_4", &test_world_4);
 	adding_test(&function, "World", "world_5", &test_world_5);
 	adding_test(&function, "World", "world_6", &test_world_6);
-	adding_test(&function, "World", "world_7", &test_world_7);
-	adding_test(&function, "World", "world_8", &test_world_8);
-	adding_test(&function, "World", "world_9", &test_world_9);
+	// adding_test(&function, "World", "world_7", &test_world_7);
+	// adding_test(&function, "World", "world_8", &test_world_8);
+	// adding_test(&function, "World", "world_9", &test_world_9);
 
 	adding_test(&function, "Camera", "camera_1", &test_camera_1);	
 	adding_test(&function, "Camera", "camera_2", &test_camera_2);

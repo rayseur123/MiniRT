@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:41:28 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/09 11:50:37 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 15:15:13 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define MINIRT_TRANSFORM_H
 
 #include "matrix.h"
-#include "object.h"
+#include "intersection.h"
 
 t_matrix4_ptr 	translation(double x, double y, double z, t_matrix4 m1);
 t_matrix4_ptr	scaling(double x, double y, double z, t_matrix4 m);

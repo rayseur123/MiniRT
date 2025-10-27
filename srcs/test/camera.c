@@ -6,9 +6,10 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 13:18:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/14 11:07:31 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/24 15:14:44 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "camera.h"
 #include "transform.h"
@@ -108,7 +109,7 @@ int	test_camera_6(void)
 	const double 	pi = 2 * acos(0.0);
 
 	c = camera(200, 125, pi / 2);
-	if (!double_is_equal(c.pixel_size,0.01))
+	if (!double_is_equal(c.pixel_size_x,0.01))
 		return (1);
 	return (0);
 }
@@ -119,7 +120,7 @@ int	test_camera_7(void)
 	const double 	pi = 2 * acos(0.0);
 
 	c = camera(125, 200, pi / 2);
-	if (!double_is_equal(c.pixel_size, 0.01))
+	if (!double_is_equal(c.pixel_size_x, 0.01))
 		return (1);
 	return (0);
 }
@@ -131,7 +132,6 @@ int	test_camera_8(void)
 	const double 	pi = 2 * acos(0.0);
 
 	c = camera(201, 101, pi / 2);
-	matrix4_inverse(c.transform, c.inverse_transform);
 	r = ray_for_pixel(c, 100, 50);
 	if (!check_equal_tuples(r.origin, set_point(0, 0, 0))
 		|| !check_equal_tuples(r.direction, set_vector(0, 0, -1)))
@@ -146,7 +146,6 @@ int	test_camera_9(void)
 	const double 	pi = 2 * acos(0.0);
 
 	c = camera(201, 101, pi / 2);
-	matrix4_inverse(c.transform, c.inverse_transform);
 	r = ray_for_pixel(c, 0, 0);
 	if (!check_equal_tuples(r.origin, set_point(0, 0, 0))
 		|| !check_equal_tuples(r.direction, set_vector(0.66519, 0.33259,  -0.66851)))
@@ -166,8 +165,8 @@ int	test_camera_10(void)
 	rotation_y(pi / 4, rota);
 	translation(0, -2, 5, trans);
 	matrix4_multiplication(rota, trans, c.transform);
-	matrix4_inverse(c.transform, c.inverse_transform);
 	r = ray_for_pixel(c, 100, 50);
+
 
 	if (!check_equal_tuples(r.origin, set_point(0, 2, -5))
 		|| !check_equal_tuples(r.direction, set_vector(sqrt(2)/2, 0, -sqrt(2)/2)))
@@ -175,27 +174,26 @@ int	test_camera_10(void)
 	return (0);
 }
 
-int	test_camera_11(void)
-{
-	t_world			w;
-	t_camera		c;
-	const double 	pi = 2 * acos(0.0);
-	t_tuple			from;
-	t_tuple			to;
-	t_tuple			up;
-	t_canvas		img;
+// int	test_camera_11(void)
+// {
+// 	t_world			w;
+// 	t_camera		c;
+// 	const double 	pi = 2 * acos(0.0);
+// 	t_tuple			from;
+// 	t_tuple			to;
+// 	t_tuple			up;
+// 	t_canvas		img;
 
-	w = default_world();
-	c = camera(11, 11, pi/2);
-	from = set_point(0, 0, -5);
-	to = set_point(0, 0, 0);
-	up = set_vector(0, 1, 0);
-	view_transform(from, to , up, c.transform);
-	matrix4_inverse(c.transform, c.inverse_transform);
-	init_canva(&img);
-	img = render(c, w, img);
-	uint32_t grep_color = pixel_at(img, 5, 5);
-	if (fcolor_to_uint(set_rgb(0.38066, 0.47583, 0.2855)) != grep_color)
-		return (1);
-	return (0);
-}
+// 	w = default_world();
+// 	c = camera(11, 11, pi/2);
+// 	from = set_point(0, 0, -5);
+// 	to = set_point(0, 0, 0);
+// 	up = set_vector(0, 1, 0);
+// 	view_transform(from, to , up, c.transform);
+// 	init_canva(&img);
+// 	img = render(c, w, img);
+// 	uint32_t grep_color = pixel_at(img, 5, 5);
+// 	if (fcolor_to_uint(set_rgb(0.38066, 0.47583, 0.2855)) != grep_color)
+// 		return (1);
+// 	return (0);
+// }

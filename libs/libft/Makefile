@@ -71,7 +71,8 @@ STR_SRCS := ft_strchr.c \
 			ft_atod.c 	\
 			ft_atof.c 	\
 			ft_free_split.c \
-
+			ft_size_of_split.c\
+			
 SRCS += $(addprefix $(STR_DIR), $(STR_SRCS))
 
 VECTOR_DIR := vector/
