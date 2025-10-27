@@ -6,14 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 11:16:16 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 15:27:48 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include "sphere.h"
 #include "stdlib.h"
-#include "transform.h"
 #include <stdio.h>
 #include "shadow.h"
 #include <sys/stat.h>
@@ -64,9 +63,8 @@ uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters)
 {
 	unsigned int	i;
 
-	i = 0;
-	inters->count = 0;
 
+	i = 0;
 	while (i < w.nb_obj)
 	{
 		intersect(r, &w.obj[i], inters);
@@ -88,7 +86,8 @@ void	prepare_computations(t_inter *inter, const t_ray ray)
 	}
 	else
 		inter->inside = false;
-	inter->over_point = tuple_addition(inter->point, tuple_multiplication(inter->normalv,EPSILON));
+	inter->over_point = tuple_addition(inter->point,
+			tuple_multiplication(inter->normalv, EPSILON));
 }
 
 t_rgb	shade_hit(t_world world, t_inter comps)
@@ -103,11 +102,11 @@ t_rgb	shade_hit(t_world world, t_inter comps)
 	{
 		l.mat = comps.obj->material;
 		l.light = world.light[i];
-		if (!is_shadowed(world,comps.over_point, world.light[i]))
-		{
-			color = rgb_addition(color, lighting(l, comps.eyev,
-					comps.point, comps.normalv, is_shadowed(world, comps.over_point, world.light[i])));
-		}
+		l.eyev = comps.eyev;
+
+		color = rgb_addition(color, lighting(l,
+			comps.point, comps.normalv,
+			false));
 		i++;
 	}
 	return (color);

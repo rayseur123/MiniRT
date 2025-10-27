@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:51:20 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 11:15:31 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 14:05:09 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
 #include <stdlib.h>
 #include <transform.h>
 #include <world.h>
-
 #include "light.h"
 #include "tuple.h"
 
 int	test_shadow1(void)
 {
-	t_tuple eyev;
 	t_tuple normalv;
 	t_rgb	result;
 	bool	in_shadow;
 	t_lighting l;
 
-	eyev = set_vector(0, 0, -1);
+	l.eyev = set_vector(0, 0, -1);
 	normalv = set_vector(0, 0, -1);
 	l.light = point_light(set_point(0, 0, -10), set_rgb(1, 1, 1));
 	l.mat = material();
 	in_shadow = true;
-	result = lighting(l, eyev, set_point(0,0,0), normalv, in_shadow);
+	result = lighting(l, set_point(0,0,0), normalv, in_shadow);
 	if (equals_rgb(result, set_rgb(0.1,0.1,0.1)))
 		return (false);
 	return (true);

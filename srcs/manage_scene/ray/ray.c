@@ -61,7 +61,7 @@ void	shape_intersect(t_obj *o, t_ray r, t_inters *xs)
 		if (fabs(r.direction.y) < EPSILON)
 		{
 			xs->inters[xs->count].null = true;
-			return;
+			return ;
 		}
 		t = -r.origin.y / r.direction.y;
 		xs->inters[xs->count++] = set_intersection(t, o);

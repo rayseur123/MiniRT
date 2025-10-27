@@ -117,6 +117,7 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RAY_DIR), $(RAY_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(WORLD_DIR), $(WORLD_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MSCENE_DIR), $(MSCENE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS)))
 SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 

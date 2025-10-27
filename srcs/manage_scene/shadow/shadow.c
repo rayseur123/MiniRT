@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:29:31 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 11:11:05 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 14:03:18 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "world.h"
 #include "stdbool.h"
 
-bool is_shadowed(t_world world, t_tuple point, t_light light)
+bool	is_shadowed(t_world world, t_tuple point, t_light light)
 {
 	t_tuple		v;
 	double		distance;
