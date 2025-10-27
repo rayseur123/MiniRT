@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:49:54 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 14:04:13 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 16:19:07 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_tuple	normal_at(t_obj s, t_tuple wp)
 	t_tuple		wn;
 
 	op = matrix4_multiplication_by_tuple(s.inverse_transform, wp);
-	on = tuple_subtraction(op, set_point(0, 0, 0));
+	on = shape_normal_at(s, op);
 	wn = matrix4_multiplication_by_tuple(matrix4_transposition(
 				s.inverse_transform), on);
 	wn.w = 0;

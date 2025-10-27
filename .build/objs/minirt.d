@@ -4,7 +4,8 @@
   includes/canvas.h includes/color.h includes/sphere.h \
   includes/intersection.h includes/tuple.h includes/matrix.h \
   libs/minilibx/mlx.h libs/minilibx/mlx_int.h includes/camera.h \
-  includes/world.h includes/light.h includes/parsing.h
+  includes/world.h includes/light.h includes/parsing.h \
+  srcs/../includes/camera.h
 
 libs/libft/includes/libft.h:
 
@@ -41,3 +42,5 @@ includes/world.h:
 includes/light.h:
 
 includes/parsing.h:
+
+srcs/../includes/camera.h:

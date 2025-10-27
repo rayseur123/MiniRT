@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 15:45:04 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 17:09:14 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,12 @@ void	sort_intersection(t_inters *inters)
 	unsigned int	i;
 	unsigned int	j;
 	unsigned int	k;
-	unsigned int	new_count;
 
 	i = -1;
-	new_count = inters->count;
 	while (++i < inters->count)
 	{
 		j = i - 1;
 		k = i;
-		if (inters->inters[i].range < 0)
-			new_count--;
 		while (++j < inters->count)
 		{
 			if (inters->inters[j].range < inters->inters[k].range
@@ -56,7 +52,6 @@ void	sort_intersection(t_inters *inters)
 		inters->inters[i] = inters->inters[k];
 		inters->inters[k] = temp;
 	}
-	inters->count = new_count;
 }
 
 uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters)
@@ -107,8 +102,7 @@ t_rgb	shade_hit(t_world world, t_inter comps)
 		l.light = world.light[i];
 		l.eyev = comps.eyev;
 		color = rgb_addition(color, lighting(l,
-			comps.point, comps.normalv,
-			false));
+			comps.point, comps.normalv, is_shadowed(world, comps.over_point, world.light[i])));
 		i++;
 	}
 	return (color);

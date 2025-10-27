@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:31:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/23 09:33:46 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/27 17:09:43 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "color.h"
 
 #define WIDTH_CANVA 1000
-#define HEIGHT_CANVA 500
+#define HEIGHT_CANVA 800
 
 typedef struct s_canvas
 {

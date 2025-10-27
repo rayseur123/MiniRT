@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:23:02 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 15:45:37 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 17:12:13 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ t_obj	floor;
 
 	// Right sphere
 	right = shape(SPHERE);
-	translation(1.5, 0.5, -0.5, trans1);
-	scaling(0.5, 0.5, 0.5, scaling1);
+	translation(2, 3, -0.5, trans1);
+	scaling(3.42, 3.42, 3.42, scaling1);
 	matrix4_multiplication(trans1, scaling1, right.transform);
 	matrix4_inverse(right.transform, right.inverse_transform);
 	right.material = material();
@@ -89,10 +89,10 @@ t_obj	floor;
 
 	// World setup
 	world.light = malloc(1 * sizeof(t_light));
-	world.obj = malloc(6 * sizeof(t_obj));
+	world.obj = malloc(5 * sizeof(t_obj));
 	world.nb_light = 1;
 	world.nb_obj = 5;
-	world.light[0] = point_light(set_point(5, 3, -10), set_rgb(1, 1, 1));
+	world.light[0] = point_light(set_point(10, 4, -10), set_rgb(1, 1, 1));
 
 	world.obj[0] = floor;
 	world.obj[1] = left_wall;

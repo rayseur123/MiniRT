@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:29:31 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 14:03:18 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 16:53:00 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	is_shadowed(t_world world, t_tuple point, t_light light)
 	ray = set_ray(point, tuple_normalization(v));
 	intersect_world(world, ray, &xs);
 	h = hit(&xs);
-	if (h && h->range < distance)
+	if (h && distance - h->range > EPSILON)
 	{
 		free(xs.inters);
 		return (true);

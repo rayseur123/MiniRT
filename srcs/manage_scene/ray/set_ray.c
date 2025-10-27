@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 10:56:34 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 09:41:44 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 17:06:20 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ t_inter	set_intersection(double t, t_obj *obj)
 {
 	t_inter	inter;
 
-	inter.null = false;
 	inter.obj = obj;
 	inter.range = t;
 	inter.eyev = set_point(0, 0, 0);
