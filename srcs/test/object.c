@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:56:29 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/16 10:41:42 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/27 14:02:02 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "object.h"
-#include "../../includes/object.h"
-
+#include "object.h"
 #include <stdlib.h>
-
 #include "sphere.h"
 #include "light.h"
-#include "../../includes/intersection.h"
-#include "../../includes/light.h"
-#include "../../includes/transform.h"
+#include "intersection.h"
+#include "light.h"
+#include "transform.h"
 #include <math.h>
 
 t_obj	shape(enum e_obj_type const type)

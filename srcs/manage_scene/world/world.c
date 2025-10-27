@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 15:14:14 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/27 14:47:47 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters)
 {
 	unsigned int	i;
 
+	inters->inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
+	if (!inters->inters)
+		return (1);
+	inters->count = 0;
 	i = 0;
 	inters->count = 0;
 	while (i < w.nb_obj)
