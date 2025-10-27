@@ -15,7 +15,6 @@
 
 #include <stdint.h>
 #include "canvas.h"
-#include "object.h"
 #include "intersection.h"
 
 uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);

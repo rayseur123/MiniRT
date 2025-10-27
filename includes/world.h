@@ -15,7 +15,6 @@
 
 #include <stdint.h>
 #include "light.h"
-#include "object.h"
 #include "intersection.h"
 
 #define NB_BOUNCE 2
