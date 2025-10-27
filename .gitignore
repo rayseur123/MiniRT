@@ -10,8 +10,6 @@ gitignore
 
 *.d
 
-*obj*
-
 *.gch
 
 *.a
