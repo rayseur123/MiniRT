@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/23 08:58:50 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/27 14:49:24 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,23 +93,18 @@ int	render(t_camera c, t_world w, t_canvas img)
 	int				x;
 	int				y;
 	t_rgb			color;
-	t_inters		inters;
 
 	x = 0;
-	inters.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
-	if (!inters.inters)
-		return (1);
 	while (x < c.hsize)
 	{
 		y = 0;
 		while (y < c.vsize)
 		{
-			color = color_at(w, ray_for_pixel(c, x, y), NB_BOUNCE, inters);
+			color = color_at(w, ray_for_pixel(c, x, y), NB_BOUNCE);
 			put_px_in_canva(img, x, y, color);
 			y++;
 		}
 		x++;
 	}
-	free(inters.inters);
 	return (0);
 }
