@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:56:29 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 14:02:02 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/27 11:20:38 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int test_plane1(void)
 	xs.inters = malloc(2 * sizeof(t_inter));
 	xs.count = 0;
 	intersect(r, &p, &xs);
-	if (xs.inters == NULL)
+	if (xs.inters->null)
 		return (0);
 	return (1);
 }
@@ -131,7 +131,7 @@ int test_plane2(void)
 	xs.inters = malloc(2 * sizeof(t_inter));
 	xs.count = 0;
 	intersect(r, &p, &xs);
-	if (xs.inters == NULL)
+	if (xs.inters->null)
 		return (0);
 	return (1);
 }
@@ -147,7 +147,7 @@ int	test_plane3(void)
 	xs.inters = malloc(2 * sizeof(t_inter));
 	xs.count = 0;
 	intersect(r, &p, &xs);
-	if (xs.inters == NULL)
+	if (xs.inters->null)
 		return (0);
 	return (1);
 }

@@ -3,19 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 11:16:55 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 14:40:03 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef MINIRT_OBJECT_H
+#define MINIRT_OBJECT_H
+
 #include "matrix.h"
 #include "color.h"
+#include "intersection.h"
 
-#ifndef OBJECT_H
-#define OBJECT_H
-
-
-
-#endif 
+#endif //MINIRT_OBJECT_H

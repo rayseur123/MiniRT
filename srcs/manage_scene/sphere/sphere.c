@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 10:14:57 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 11:49:57 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/27 09:41:54 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,6 @@ t_material	material(void)
 	mat.shininess = 200;
 	mat.color = set_rgb(1, 1, 1);
 	return (mat);
-}
-
-t_obj	sphere(void)
-{
-	static int32_t	id;
-	t_obj			obj;
-
-	obj.id = id++;
-	obj.type = SPHERE;
-	obj.material = material();
-	set_identity_matrix(obj.transform);
-	set_identity_matrix(obj.inverse_transform);
-	return (obj);
 }
 
 uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_inters *inters)

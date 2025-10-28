@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 15:12:12 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/27 15:55:29 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #include "world.h"
 #include <stdlib.h>
 #include <time.h>
+
+#include "../includes/camera.h"
 
 void	escape(int key_code, t_canvas *c)
 {
@@ -57,8 +59,8 @@ int	main(int ac, char **av)
 	if (parsing(av[1], &w, &cam))
 		return (1);
 	init_canva(&c);
-	if (!render(cam, w, c))
-		mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
+	create_scene(c);
+	mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
 	free(w.obj);
 	free(w.light);
 	mlx_hook(c.window, KeyPress, KeyPressMask, &actions_hook, &c);

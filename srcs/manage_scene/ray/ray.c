@@ -6,13 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 15:46:54 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/28 11:37:48 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 #include "stdlib.h"
 #include "sphere.h"
+#include <math.h>
 
 t_tuple	position(t_ray ray, double range)
 {
@@ -22,24 +23,19 @@ t_tuple	position(t_ray ray, double range)
 
 t_inter	*hit(t_inters *inters)
 {
-	unsigned int	min;
-	unsigned int	i;
+	t_inter		*min;
+	uint32_t	i;
 
-	min = 0;
-	i = 1;
-	if (inters->count <= 0)
-		return (NULL);
-	while (i < inters->count)
+	min = NULL;
+	i = -1;
+	while (++i < inters->count)
 	{
-		if ((inters->inters[min].range < 0)
-			|| (inters->inters[i].range >= 0
-				&& inters->inters[i].range < inters->inters[min].range))
-			min = i;
-		i++;
+		if (inters->inters[i].range < 0)
+			continue ;
+		if (min == NULL || inters->inters[i].range < min->range)
+			min = inters->inters + i;
 	}
-	if (inters->inters[min].range < 0)
-		return (NULL);
-	return (&inters->inters[min]);
+	return (min);
 }
 
 t_ray	transform(t_ray ray, t_matrix4 m)
@@ -51,9 +47,23 @@ t_ray	transform(t_ray ray, t_matrix4 m)
 	return (new_ray);
 }
 
+void	shape_intersect(t_obj *o, t_ray r, t_inters *xs)
+{
+	double	t;
+
+	if (o->type == PLANE)
+	{
+		if (fabs(r.direction.y) < EPSILON)
+			return ;
+		t = -r.origin.y / r.direction.y;
+		xs->inters[xs->count++] = set_intersection(t, o);
+	}
+	else if (o->type == SPHERE)
+		intersect_sphere(o, r, xs);
+}
+
 void	intersect(t_ray r, t_obj *o, t_inters *xs)
 {
 	r = transform(r, o->inverse_transform);
-	if (o->type == SPHERE)
-		intersect_sphere(o, r, xs);
+	shape_intersect(o, r, xs);
 }

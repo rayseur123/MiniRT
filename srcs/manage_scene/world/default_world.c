@@ -26,8 +26,8 @@ t_world	default_world(void)
 	w.obj = malloc(4 * sizeof(t_obj));
 	w.nb_obj = 2;
 	w.nb_light = 1;
-	w.obj[0] = sphere();
-	w.obj[1] = sphere();
+	w.obj[0] = shape(SPHERE);
+	w.obj[1] = shape(SPHERE);
 	w.obj[0].material.color = set_rgb(0.8, 1.0, 0.6);
 	w.obj[0].material.diffuse = 0.7;
 	w.obj[0].material.spec = 0.2;
