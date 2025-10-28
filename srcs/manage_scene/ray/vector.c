@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:49:54 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 16:19:07 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/28 11:40:11 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include "matrix.h"
 #include "intersection.h"
 
-
-t_tuple    shape_normal_at(t_obj o, t_tuple op)
+t_tuple	shape_normal_at(t_obj o, t_tuple op)
 {
 	if (o.type == SPHERE)
 		return (tuple_subtraction(op, set_point(0, 0, 0)));

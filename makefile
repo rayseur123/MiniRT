@@ -42,8 +42,7 @@ WORLD_SRCS := world.c \
 				default_world.c \
 
 SPHERE_DIR := sphere/
-SPHERE_SRCS := sphere.c \
-				draw_sphere.c \
+SPHERE_SRCS := sphere.c
 
 CANVA_DIR := canva/
 CANVA_SRCS := manage_canva.c \
