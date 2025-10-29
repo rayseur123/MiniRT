@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:56:29 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 11:20:38 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/29 13:16:58 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "light.h"
 #include "transform.h"
 #include <math.h>
+#include <world.h>
 
 t_obj	shape(enum e_obj_type const type)
 {
@@ -32,6 +33,12 @@ t_obj	shape(enum e_obj_type const type)
 	*(obj.saved_ray) = set_ray(set_point(0, 0, 0), set_vector(0, 0, 0));
 	set_identity_matrix(obj.transform);
 	set_identity_matrix(obj.inverse_transform);
+	if (type == CYLINDER)
+	{
+		obj.max = 100;
+		obj.min = -100;
+		obj.closed = true;
+	}
 	return (obj);
 }
 
@@ -115,7 +122,7 @@ int test_plane1(void)
 	xs.inters = malloc(2 * sizeof(t_inter));
 	xs.count = 0;
 	intersect(r, &p, &xs);
-	if (xs.inters->null)
+	if (!xs.count)
 		return (0);
 	return (1);
 }
@@ -131,7 +138,7 @@ int test_plane2(void)
 	xs.inters = malloc(2 * sizeof(t_inter));
 	xs.count = 0;
 	intersect(r, &p, &xs);
-	if (xs.inters->null)
+	if (!xs.count)
 		return (0);
 	return (1);
 }
@@ -147,7 +154,7 @@ int	test_plane3(void)
 	xs.inters = malloc(2 * sizeof(t_inter));
 	xs.count = 0;
 	intersect(r, &p, &xs);
-	if (xs.inters->null)
+	if (!xs.count)
 		return (0);
 	return (1);
 }
@@ -189,4 +196,30 @@ int	test_plane5(void)
 	if (xs.count == 1 && xs.inters[0].range == 1 && equals_obj(xs.inters[0].obj[0], p))
 		return (0);
 	return (1);
+}
+
+int test_cylinder1(void)
+{
+	unsigned int i;
+	t_obj c;
+	t_ray	r;
+	t_inters xs;
+
+	i = 0;
+	while (i < 3)
+	{
+		xs.inters = malloc(2 * sizeof(t_inter));
+		xs.count = 0;
+		if (i == 0)
+			r = set_ray(set_point(1, 0, 0), set_vector(0, 1, 0));
+		else if (i == 1)
+			r = set_ray(set_point(0, 0, 0), set_vector(0, 1, 0));
+		else if (i == 2)
+			r = set_ray(set_point(0, 0, -5), set_vector(1, 1, 1));
+		intersect_cylinder(&c, r, &xs);
+		if (xs.count > 0)
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:23:02 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/28 10:43:20 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/29 15:42:35 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_obj	floor;
 	t_obj	right;
 	t_obj	left;
 	t_obj	middle;
+	t_obj	cylindre;
 	t_matrix4 trans1;
 	t_matrix4 rotatex1;
 	t_matrix4 rotatey1;
@@ -88,6 +89,14 @@ t_obj	floor;
 	middle.material.diffuse = 0.7;
 	middle.material.spec = 0.3;
 
+	cylindre = shape(CYLINDER);
+	translation(0,1,-2, cylindre.transform);
+	cylindre.material = material();
+	cylindre.material.color = set_rgb(0,0,1);
+	matrix4_inverse(cylindre.transform,cylindre.inverse_transform);
+	cylindre.min = 1;
+	cylindre.max = 2;
+
 	// Left sphere
 	left = shape(SPHERE);
 	translation(-1.5, 0.33, -0.75, trans1);
@@ -101,9 +110,9 @@ t_obj	floor;
 
 	// World setup
 	world.light = malloc(1 * sizeof(t_light));
-	world.obj = malloc(6 * sizeof(t_obj));
+	world.obj = malloc(7 * sizeof(t_obj));
 	world.nb_light = 1;
-	world.nb_obj = 6;
+	world.nb_obj = 7;
 	world.light[0] = point_light(set_point(2, 5, -10), set_rgb(1, 1, 1));
 
 	world.obj[0] = floor;
@@ -112,9 +121,10 @@ t_obj	floor;
 	world.obj[3] = right;
 	world.obj[4] = left;
 	world.obj[5] = middle;
+	world.obj[6] = cylindre;
 
 	c = camera(WIDTH_CANVA, HEIGHT_CANVA, pi/3);
-	view_transform(set_point(0, 3, -20), set_point(0, 1, 0), set_vector(0, 1, 0), c.transform);
+	view_transform(set_point(0, 1, -5), set_point(0, 1, 0), set_vector(0, 1, 0), c.transform);
 	matrix4_inverse(c.transform, c.inverse_transform);
 	render(c, world, canvas);
 }

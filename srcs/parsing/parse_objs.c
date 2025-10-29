@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:14:01 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 13:45:30 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/28 15:46:51 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,15 @@ char	*next_obj(int fd)
 		if (!ft_strncmp(str, "pl", 2) || !ft_strncmp(str, "cy", 2)
 			|| !ft_strncmp(str, "sp", 2) || str[0] == 'L' || str[0] == 'C')
 			return (str);
-		str = get_next_line(fd);
 		free(str);
+		str = get_next_line(fd);
 	}
 	return (str);
 }
 
 int	free_line(char *line)
 {
+
 	free(line);
 	return (1);
 }

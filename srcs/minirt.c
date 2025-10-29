@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 15:55:29 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/29 12:10:03 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,38 @@
 #include <time.h>
 
 #include "../includes/camera.h"
+#include "../includes/units.h"
 
-void	escape(int key_code, t_canvas *c)
+void escape(int key_code, t_canvas *c)
 {
 	if (key_code == 65307)
 		mlx_loop_end(c->mlx);
 }
 
-int	actions_hook(int key_code, t_canvas *c)
+int actions_hook(int key_code, t_canvas *c)
 {
 	escape(key_code, c);
 	return (0);
 }
 
-int	hook_close(void *mlx)
+int hook_close(void *mlx)
 {
 	mlx_loop_end(mlx);
 	return (0);
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_world		w;
-	t_canvas	c;
-	t_camera	cam;
+	t_world w;
+	t_canvas c;
+	t_camera cam;
+	t_function *test;
 
+
+	test_cylinder1();
+	test = NULL;
+	lib_unit();
+	launch_lib_test(&test);
 	if (ac != 2)
 		return (0);
 	w = world();

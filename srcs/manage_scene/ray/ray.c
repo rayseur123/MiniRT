@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/28 11:37:48 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/28 14:54:54 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "stdlib.h"
 #include "sphere.h"
 #include <math.h>
+#include "object.h"
 
 t_tuple	position(t_ray ray, double range)
 {
@@ -47,19 +48,14 @@ t_ray	transform(t_ray ray, t_matrix4 m)
 	return (new_ray);
 }
 
-void	shape_intersect(t_obj *o, t_ray r, t_inters *xs)
+void	shape_intersect(t_obj *o, const t_ray r, t_inters *xs)
 {
-	double	t;
-
 	if (o->type == PLANE)
-	{
-		if (fabs(r.direction.y) < EPSILON)
-			return ;
-		t = -r.origin.y / r.direction.y;
-		xs->inters[xs->count++] = set_intersection(t, o);
-	}
+		intersect_plane(o, r, xs);
 	else if (o->type == SPHERE)
 		intersect_sphere(o, r, xs);
+	else if (o->type == CYLINDER)
+		intersect_cylinder(o, r, xs);
 }
 
 void	intersect(t_ray r, t_obj *o, t_inters *xs)

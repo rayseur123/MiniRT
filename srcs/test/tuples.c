@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:22:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:44:44 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/28 15:47:23 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -366,11 +366,11 @@ int	test_negetion_positive(void)
 
 	tuple = set_vector(10, 10, 10);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != -10 || negation_tuple.x != -10 || negation_tuple.z != -10)
+	if (negation_tuple.x != -10 || negation_tuple.y != -10 || negation_tuple.z != -10)
 		return (1);
 	tuple = set_vector(87, 87, 87);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != -87 || negation_tuple.x != -87 || negation_tuple.z != -87)
+	if (negation_tuple.x != -87 || negation_tuple.y != -87 || negation_tuple.z != -87)
 		return (1);
 	return (0);
 }
@@ -382,7 +382,7 @@ int	test_negetion_negative(void)
 
 	tuple = set_vector(-10, -10, -10);
 	negation_tuple = tuple_negation(tuple);
-	if (negation_tuple.x != 10 || negation_tuple.x != 10 || negation_tuple.z != 10)
+	if (negation_tuple.x != 10 || negation_tuple.y != 10 || negation_tuple.z != 10)
 		return (1);
 	tuple = set_vector(-87, -87, -87);
 	negation_tuple = tuple_negation(tuple);
