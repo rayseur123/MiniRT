@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/28 13:39:58 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/29 16:58:07 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	main(int ac, char **av)
 		return (1);
 	init_canva(&c);
 	render(cam, w, c);
-	//create_scene(c);
 	mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
 	free(w.obj);
 	free(w.light);

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/29 13:45:53 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/29 16:36:51 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_is_digit_str(char *str)
 			if (str[i] == '.' && count_dot == 0)
 				count_dot++;
 			else
-				return (1);	
+				return (1);
 		}
 		i++;
 	}
