@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 13:45:53 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/29 13:38:43 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,26 @@ int	get_coord(char *str, t_tuple *point)
 	ft_free_split(coord);
 	return (0);
 }
+
+int	get_vector_coord(char *str, t_tuple *vector)
+{
+	char	**coord;
+
+	coord = ft_split(str, ',');
+	if (!coord)
+		return (1);
+	if (size_of_split(coord) != 3 || check_is_digit_str(coord[0])
+		|| check_is_digit_str(coord[1]) || check_is_digit_str(coord[2]))
+	{
+		ft_free_split(coord);
+		return (1);
+	}
+	*vector = set_vector(ft_atod(coord[0]), ft_atod(coord[1]), ft_atod(coord[2]));
+	*vector = tuple_normalization(*vector);
+	ft_free_split(coord);
+	return (0);
+}
+
 
 double	get_radius(char *str)
 {

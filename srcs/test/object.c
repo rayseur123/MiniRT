@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:56:29 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 11:20:38 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/28 14:06:03 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_obj	shape(enum e_obj_type const type)
 	obj.id = id++;
 	obj.type = type;
 	obj.material = material();
-	obj.saved_ray = malloc(sizeof(t_ray));
-	*(obj.saved_ray) = set_ray(set_point(0, 0, 0), set_vector(0, 0, 0));
 	set_identity_matrix(obj.transform);
 	set_identity_matrix(obj.inverse_transform);
 	return (obj);

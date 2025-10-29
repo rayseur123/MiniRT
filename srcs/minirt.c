@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 15:55:29 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/28 13:39:58 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,8 @@ int	main(int ac, char **av)
 	if (parsing(av[1], &w, &cam))
 		return (1);
 	init_canva(&c);
-	create_scene(c);
+	render(cam, w, c);
+	//create_scene(c);
 	mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
 	free(w.obj);
 	free(w.light);

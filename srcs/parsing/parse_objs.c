@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:14:01 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 13:45:30 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/29 13:42:32 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ char	*next_obj(int fd)
 		if (!ft_strncmp(str, "pl", 2) || !ft_strncmp(str, "cy", 2)
 			|| !ft_strncmp(str, "sp", 2) || str[0] == 'L' || str[0] == 'C')
 			return (str);
-		str = get_next_line(fd);
 		free(str);
+		str = get_next_line(fd);
 	}
+	free(str);
 	return (str);
 }
 
@@ -84,6 +85,8 @@ int	make_objs(t_world *world, t_camera *c, int fd)
 	{
 		if (!ft_strncmp(line_obj, "sp", 2)
 			&& make_sp(&world->obj[count_obj++], line_obj))
+			return (free_line(line_obj));
+		if (!ft_strncmp(line_obj, "pl", 2) && make_pl(&world->obj[count_obj++], line_obj))
 			return (free_line(line_obj));
 		if (line_obj[0] == 'L'
 			&& make_light(&world->light[count_light++], line_obj))
