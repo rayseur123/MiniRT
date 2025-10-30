@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:33:33 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 11:08:17 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/28 13:16:16 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,4 @@ double	dot_product(t_tuple tuple1, t_tuple tuple2);
 int		double_is_equal(double x, double y);
 int		check_equal_tuples(t_tuple tuple1, t_tuple tuple2);
 
-#endif 
+#endif

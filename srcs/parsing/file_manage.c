@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/29 16:36:51 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/24 13:29:24 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	check_is_digit_str(char *str)
 	return (0);
 }
 
-int	check_extension(char *str, char *ext)
+static int	check_extension(char *str, char *ext)
 {
-	const int	len = ft_strlen(str);
+	const size_t	len = ft_strlen(str);
 
 	if (len <= 3)
 		return (1);

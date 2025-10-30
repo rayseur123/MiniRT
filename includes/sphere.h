@@ -21,3 +21,4 @@ uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_inters *inters);
 t_obj			sphere(void);
 
 #endif
+
