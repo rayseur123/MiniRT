@@ -18,6 +18,10 @@ miniRT
 
 .idea
 
+.build
+
+*.d
+
 # Object files
 *.o
 *.ko

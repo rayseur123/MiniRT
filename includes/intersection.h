@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/29 13:15:35 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/30 12:49:04 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef enum e_obj_type
 	CYLINDER,
 }	t_obj_type;
 
+
+typedef struct s_range
+{
+	double t0;
+	double t1;
+} t_range;
 typedef struct s_obj
 {
 	t_obj_type	type;
@@ -73,7 +79,9 @@ int				set_intersections(t_inters *inters, t_inter inter1, t_inter inter2);
 t_inter			*hit(t_inters *inters);
 t_ray			transform(t_ray ray, t_matrix4 m);
 void			shape_intersect(t_obj *o, t_ray r, t_inters *xs);
+void			intersect_caps(t_obj *o, const t_ray r, t_inters *xs);
 void			intersect(t_ray r, t_obj *o, t_inters *xs);
+void			trunc_cylinder(t_obj *o, t_ray r, t_inters *xs, t_range range);
 t_tuple			normal_at(t_obj s, t_tuple p);
 t_tuple			shape_normal_at(t_obj s, t_tuple p);
 t_tuple			reflect(t_tuple	v, t_tuple n);

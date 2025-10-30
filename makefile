@@ -39,6 +39,7 @@ MSCENE_SRCS := scene.c\
 
 OBJECTS_DIR := object/
 OBJECTS_SRCS := object.c \
+				cylinder.c \
 
 WORLD_DIR := world/
 WORLD_SRCS := world.c \

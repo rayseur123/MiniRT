@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:23:02 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/29 15:42:35 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/30 11:52:33 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ t_obj	floor;
 	world.obj[6] = cylindre;
 
 	c = camera(WIDTH_CANVA, HEIGHT_CANVA, pi/3);
-	view_transform(set_point(0, 1, -5), set_point(0, 1, 0), set_vector(0, 1, 0), c.transform);
+	view_transform(set_point(0, 1, -20), set_point(0, 1, 0), set_vector(0, 1, 0), c.transform);
 	matrix4_inverse(c.transform, c.inverse_transform);
 	render(c, world, canvas);
 }
