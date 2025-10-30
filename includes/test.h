@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:50:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 09:02:34 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/28 16:27:16 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ int test_plane2(void);
 int test_plane3(void);
 int	test_plane4(void);
 int	test_plane5(void);
+int test_cylinder1(void);
 
 // shadow
 int	test_shadow1(void);

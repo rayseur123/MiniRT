@@ -37,6 +37,10 @@ RAY_SRCS := ray.c \
 MSCENE_DIR := scene/
 MSCENE_SRCS := scene.c\
 
+OBJECTS_DIR := object/
+OBJECTS_SRCS := object.c \
+				cylinder.c \
+
 WORLD_DIR := world/
 WORLD_SRCS := world.c \
 				default_world.c \
@@ -104,6 +108,8 @@ SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 SCENE_SRCS += $(addprefix $(WORLD_DIR), $(WORLD_SRCS))
 SCENE_SRCS += $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))
 SCENE_SRCS += $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS))
+SCENE_SRCS += $(addprefix $(OBJECTS_DIR), $(OBJECTS_SRCS))
+
 
 SRCS += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
 SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
@@ -119,6 +125,7 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(WORLD_DIR), $(WORLD_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MSCENE_DIR), $(MSCENE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(OBJECTS_DIR), $(OBJECTS_SRCS)))
 SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 
