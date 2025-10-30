@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/28 13:34:40 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/24 13:29:24 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,21 @@
 int	check_is_digit_str(char *str)
 {
 	int	i;
+	int	count_dot;
 
+	count_dot = 0;
 	i = 0;
 	if ((str[0] == '-' || str[0] == '+') && ft_strlen(str) > 1)
 		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (1);
+		{
+			if (str[i] == '.' && count_dot == 0)
+				count_dot++;
+			else
+				return (1);
+		}
 		i++;
 	}
 	return (0);

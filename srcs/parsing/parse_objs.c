@@ -60,6 +60,7 @@ char	*next_obj(int fd)
 		free(str);
 		str = get_next_line(fd);
 	}
+	free(str);
 	return (str);
 }
 
@@ -67,6 +68,23 @@ int	free_line(char *line)
 {
 	free(line);
 	return (1);
+}
+
+int	build_objs(char *line_obj, t_world *world, int *count_obj)
+{
+	if (!ft_strncmp(line_obj, "sp", 2))
+	{
+		if (make_sp(&world->obj[*count_obj], line_obj))
+			return (free_line(line_obj));
+		*count_obj += 1;
+	}
+	if (!ft_strncmp(line_obj, "pl", 2))
+	{
+		if (make_pl(&world->obj[*count_obj], line_obj))
+			return (free_line(line_obj));
+		*count_obj += 1;
+	}
+	return (0);
 }
 
 int	make_objs(t_world *world, t_camera *c, int fd)
@@ -82,9 +100,8 @@ int	make_objs(t_world *world, t_camera *c, int fd)
 	count_light = 0;
 	while (line_obj)
 	{
-		if (!ft_strncmp(line_obj, "sp", 2)
-			&& make_sp(&world->obj[count_obj++], line_obj))
-			return (free_line(line_obj));
+		if (build_objs(line_obj, world, &count_obj))
+			return (1);
 		if (line_obj[0] == 'L'
 			&& make_light(&world->light[count_light++], line_obj))
 			return (free_line(line_obj));

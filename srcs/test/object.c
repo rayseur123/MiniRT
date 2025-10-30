@@ -19,7 +19,6 @@
 #include "light.h"
 #include "transform.h"
 #include <math.h>
-#include <world.h>
 
 t_obj	shape(enum e_obj_type const type)
 {
@@ -29,8 +28,6 @@ t_obj	shape(enum e_obj_type const type)
 	obj.id = id++;
 	obj.type = type;
 	obj.material = material();
-	obj.saved_ray = malloc(sizeof(t_ray));
-	*(obj.saved_ray) = set_ray(set_point(0, 0, 0), set_vector(0, 0, 0));
 	set_identity_matrix(obj.transform);
 	set_identity_matrix(obj.inverse_transform);
 	if (type == CYLINDER)

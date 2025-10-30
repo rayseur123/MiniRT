@@ -24,6 +24,7 @@ miniRT
 
 # Object files
 *.o
+*.d
 *.ko
 *.obj
 *.elf

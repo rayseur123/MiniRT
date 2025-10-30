@@ -28,7 +28,6 @@
 #include <time.h>
 
 #include "../includes/camera.h"
-#include "../includes/units.h"
 
 void	escape(int key_code, t_canvas *c)
 {
@@ -60,7 +59,7 @@ int	main(int ac, char **av)
 	if (parsing(av[1], &w, &cam))
 		return (1);
 	init_canva(&c);
-	create_scene(c);
+	render(cam, w, c);
 	mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
 	free(w.obj);
 	free(w.light);
