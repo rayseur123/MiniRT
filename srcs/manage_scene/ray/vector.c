@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:49:54 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/28 11:40:11 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/29 16:46:44 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,24 @@
 
 t_tuple	shape_normal_at(t_obj o, t_tuple op)
 {
+	double	t;
+
 	if (o.type == SPHERE)
 		return (tuple_subtraction(op, set_point(0, 0, 0)));
 	if (o.type == PLANE)
 		return (set_vector(0, 1, 0));
+	if (o.type == CYLINDER)
+	{
+		if (o.closed)
+		{
+			t = op.x * op.x + op.z * op.z;
+			if (t < 1 && op.y >= o.max - EPSILON)
+				return (set_vector(0, 1, 0));
+			if (t < 1 && op.y <= o.min + EPSILON)
+				return (set_vector(0, -1, 0));
+		}
+		return (set_vector(op.x, 0, op.z));
+	}
 	return (set_point(0, 0, 0));
 }
 
