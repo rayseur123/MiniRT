@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/29 13:36:50 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/04 10:28:53 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		make_cam(t_camera *c, char *str);
 int		make_light(t_light *l, char *str);
 int		check_is_digit_str(char *str);
 int		make_pl(t_obj *o, char *str);
+int	make_cy(t_obj *o, char *str);
 
 #endif

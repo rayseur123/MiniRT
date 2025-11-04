@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/30 13:41:42 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/04 10:58:34 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 #include "transform.h"
 #include <math.h>
 
-void	build_matrix_transform_cy(t_tuple coor, t_tuple normal, t_obj *o)
+void	build_matrix_transform_cy(double r, t_tuple coor, t_tuple n, t_obj *o)
 {
 	t_matrix4	trans;
 	t_matrix4	rotat_x;
 	t_matrix4	rotat_z;
 	t_matrix4	mult;
+	t_matrix4	scale;
 
+	scaling(r, r, r, scale);
+	rotation_z(atan2(n.x, n.y), rotat_z);
+	rotation_x(-asin(n.z), rotat_x);
 	translation(coor.x, coor.y, coor.z, trans);
-	rotation_z(atan2(normal.x, normal.y), rotat_z);
-	rotation_x(-asin(normal.z), rotat_x);
 	matrix4_multiplication(rotat_z, rotat_x, mult);
-	matrix4_multiplication(trans, mult, o->transform);
+	matrix4_multiplication(mult, scale, rotat_z);
+	matrix4_multiplication(trans, rotat_z, o->transform);
 	matrix4_inverse(o->transform, o->inverse_transform);
 }
 
@@ -51,8 +54,10 @@ int	make_cy(t_obj *o, char *str)
 		return (1);
 	}
 	radius = get_radius(data[3]);
-	height = ft_atod(data[4]);
-	build_matrix_transform_pl(coor, normal_vec, o);
+	height = ft_atod(data[4]) / 2;
+	o->min = -height;
+	o->max = height;
+	build_matrix_transform_cy(radius, coor, normal_vec, o);
 	ft_free_split(data);
 	return (0);
 }

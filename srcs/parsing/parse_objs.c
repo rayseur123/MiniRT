@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:14:01 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/30 12:44:51 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/04 10:55:32 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	build_objs(char *line_obj, t_world *world, int *count_obj)
 			return (free_line(line_obj));
 		*count_obj += 1;
 	}
-	if (!ft_strcmp(line_obj, "cy", 2))
+	if (!ft_strncmp(line_obj, "cy", 2))
 	{
 		if (make_cy(&world->obj[*count_obj], line_obj))
 			return (free_line(line_obj));
