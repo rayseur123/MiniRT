@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/28 11:41:16 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/31 11:08:27 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,7 @@ uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters)
 	inters->count = 0;
 	i = 0;
 	while (i < w.nb_obj)
-	{
-		intersect(r, &w.obj[i], inters);
-		i++;
-	}
+		intersect(r, &w.obj[i++], inters);
 	sort_intersection(inters);
 	return (0);
 }

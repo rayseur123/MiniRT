@@ -6,16 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 10:33:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/31 08:47:50 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "mlx.h"
-#include "mlx_int.h"
 #include "canvas.h"
-#include "camera.h"
-#include <X11/X.h>
 
 int	init_canva(t_canvas *canva)
 {

@@ -6,46 +6,16 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/30 12:52:56 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/04 10:48:32 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "libft.h"
-#include "test.h"
-#include "units.h"
-#include "../includes/test.h"
-#include "canvas.h"
-#include "sphere.h"
 #include "mlx.h"
-#include "mlx_int.h"
+#include "canvas.h"
 #include <X11/X.h>
-#include "camera.h"
 #include "parsing.h"
-#include "world.h"
 #include <stdlib.h>
-#include <time.h>
-
-#include "../includes/camera.h"
-
-void	escape(int key_code, t_canvas *c)
-{
-	if (key_code == 65307)
-		mlx_loop_end(c->mlx);
-}
-
-int	actions_hook(int key_code, t_canvas *c)
-{
-	escape(key_code, c);
-	return (0);
-}
-
-int	hook_close(void *mlx)
-{
-	mlx_loop_end(mlx);
-	return (0);
-}
+#include "keyhook.h"
 
 int	main(int ac, char **av)
 {

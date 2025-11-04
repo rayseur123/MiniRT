@@ -39,15 +39,6 @@ t_inter	*hit(t_inters *inters)
 	return (min);
 }
 
-t_ray	transform(t_ray ray, t_matrix4 m)
-{
-	t_ray	new_ray;
-
-	new_ray.direction = matrix4_multiplication_by_tuple(m, ray.direction);
-	new_ray.origin = matrix4_multiplication_by_tuple(m, ray.origin);
-	return (new_ray);
-}
-
 void	shape_intersect(t_obj *o, const t_ray r, t_inters *xs)
 {
 	if (o->type == PLANE)
@@ -56,6 +47,15 @@ void	shape_intersect(t_obj *o, const t_ray r, t_inters *xs)
 		intersect_sphere(o, r, xs);
 	else if (o->type == CYLINDER)
 		intersect_cylinder(o, r, xs);
+}
+
+t_ray	transform(t_ray ray, t_matrix4 m)
+{
+	t_ray	new_ray;
+
+	new_ray.direction = matrix4_multiplication_by_tuple(m, ray.direction);
+	new_ray.origin = matrix4_multiplication_by_tuple(m, ray.origin);
+	return (new_ray);
 }
 
 void	intersect(t_ray r, t_obj *o, t_inters *xs)

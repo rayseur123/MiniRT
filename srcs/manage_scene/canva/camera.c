@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/23 08:58:50 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/31 11:01:34 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 
 int	render(t_camera c, t_world w, t_canvas img)
 {
-	int				x;
-	int				y;
+	int	x;
+	int	y;
 	t_rgb			color;
 
 	x = 0;

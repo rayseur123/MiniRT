@@ -6,14 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:38:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/22 13:54:27 by njooris          ###   ########.fr       */
+/*   Updated: 2025/10/31 08:58:33 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "world.h"
 #include "sphere.h"
-#include "transform.h"
+#include "resources_test.h"
 
 int	test_world_0(void)
 {

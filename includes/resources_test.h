@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   resources_test.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 15:23:02 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/29 16:36:17 by njooris          ###   ########.fr       */
+/*   Created: 2025/10/31 08:57:55 by dernst            #+#    #+#             */
+/*   Updated: 2025/10/31 08:59:04 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <light.h>
-#include <transform.h>
-#include "intersection.h"
-#include "sphere.h"
-#include "world.h"
-#include <stdlib.h>
-#include <math.h>
-#include "camera.h"
+//
+// Created by dernst on 10/31/25.
+//
 
-void	create_scene(t_canvas canvas)
-{
-	(void)canvas;
-	return ;
-}
+#ifndef MINIRT_RESOURCES_TEST_H
+#define MINIRT_RESOURCES_TEST_H
+
+#include "world.h"
+
+t_world	default_world(void);
+
+#endif //MINIRT_RESOURCES_TEST_H

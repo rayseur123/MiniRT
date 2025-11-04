@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object.h                                           :+:      :+:    :+:   */
+/*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 12:35:35 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/28 14:48:43 by dernst           ###   ########.fr       */
+/*   Created: 2025/10/31 08:37:14 by dernst            #+#    #+#             */
+/*   Updated: 2025/10/31 10:58:56 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_OBJECT_H
-#define MINIRT_OBJECT_H
+#include "canvas.h"
+#include "mlx.h"
+#include "mlx_int.h"
+#include <X11/X.h>
 
-#include "matrix.h"
-#include "color.h"
-#include "intersection.h"
+void	escape(int key_code, t_canvas *c)
+{
+	if (key_code == 65307)
+		mlx_loop_end(c->mlx);
+}
 
-void	intersect_cylinder(t_obj *o, const t_ray r, t_inters *xs);
-void	intersect_plane(t_obj *o, const t_ray r, t_inters *xs);
-uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_inters *inters);
+int	actions_hook(int key_code, t_canvas *c)
+{
+	escape(key_code, c);
+	return (0);
+}
 
-#endif //MINIRT_OBJECT_H
+int	hook_close(void *mlx)
+{
+	mlx_loop_end(mlx);
+	return (0);
+}
