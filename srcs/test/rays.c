@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 13:44:02 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/31 08:54:50 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 #include "sphere.h"
 #include "transform.h"
 #include <math.h>
+
+
+void	set_transform(t_obj *s, t_matrix4 m)
+{
+	matrix4_cpy(s->transform, m);
+}
+
 
 int	test_ray_position(void)
 {

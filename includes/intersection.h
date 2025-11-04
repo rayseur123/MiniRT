@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/30 12:49:04 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/30 13:22:32 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ typedef struct s_obj
 	t_matrix4	transform;
 	t_matrix4	inverse_transform;
 	t_material	material;
-	t_ray		*saved_ray;
 	double		min;
 	double		max;
 	bool		closed;
 }	t_obj;
-
 typedef struct s_inter
 {
 	bool			null;

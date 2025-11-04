@@ -4,7 +4,6 @@ NAME := miniRT
 
 SRC_DIR := srcs/
 
-
 LIBSTEST_DIR := libs_test/
 LIBSTEST_SRCS := u_init.c \
              u_launch.c \
@@ -23,6 +22,7 @@ TEST_SRCS := tuples.c \
 				camera.c \
 				object.c \
 				shadow.c \
+				ressource.c \
 
 SHADOW_DIR := shadow/
 SHADOW_SRCS := shadow.c \
@@ -31,26 +31,23 @@ RAY_DIR := ray/
 RAY_SRCS := ray.c \
 			set_ray.c \
 			vector.c \
-			light.c \
-			cal_light.c \
 
-MSCENE_DIR := scene/
-MSCENE_SRCS := scene.c\
+LIGHT_DIR := light/
+LIGHT_SRCS := cal_light.c \
+				light.c \
 
 OBJECTS_DIR := object/
 OBJECTS_SRCS := object.c \
 				cylinder.c \
+				intersect.c \
 
 WORLD_DIR := world/
 WORLD_SRCS := world.c \
-				default_world.c \
-
-SPHERE_DIR := sphere/
-SPHERE_SRCS := sphere.c
 
 CANVA_DIR := canva/
 CANVA_SRCS := manage_canva.c \
 				camera.c 	\
+				keyhook.c	\
 
 FLOAT_DIR := float/
 FLOAT_SRCS := manage_float.c \
@@ -103,12 +100,12 @@ SCENE_SRCS += $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))
 SCENE_SRCS += $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))
 SCENE_SRCS += $(addprefix $(RGB_DIR), $(RGB_SRCS))
 SCENE_SRCS += $(addprefix $(TRANS_DIR), $(TRANS_SRCS))
-SCENE_SRCS += $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS))
 SCENE_SRCS += $(addprefix $(RAY_DIR), $(RAY_SRCS))
 SCENE_SRCS += $(addprefix $(WORLD_DIR), $(WORLD_SRCS))
 SCENE_SRCS += $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))
 SCENE_SRCS += $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS))
 SCENE_SRCS += $(addprefix $(OBJECTS_DIR), $(OBJECTS_SRCS))
+SCENE_SRCS += $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))
 
 
 SRCS += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
@@ -119,13 +116,12 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RGB_DIR), $(RGB_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TRANS_DIR), $(TRANS_SRCS)))
-SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SPHERE_DIR), $(SPHERE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(RAY_DIR), $(RAY_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(WORLD_DIR), $(WORLD_SRCS)))
-SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(MSCENE_DIR), $(MSCENE_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(OBJECTS_DIR), $(OBJECTS_SRCS)))
+SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
 SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 

@@ -6,38 +6,15 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 14:56:29 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/29 13:16:58 by dernst           ###   ########.fr       */
+/*   Updated: 2025/10/31 08:33:07 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "object.h"
-#include "object.h"
 #include <stdlib.h>
-#include "sphere.h"
-#include "light.h"
 #include "intersection.h"
-#include "light.h"
 #include "transform.h"
 #include <math.h>
-
-t_obj	shape(enum e_obj_type const type)
-{
-	static int32_t	id;
-	t_obj			obj;
-
-	obj.id = id++;
-	obj.type = type;
-	obj.material = material();
-	set_identity_matrix(obj.transform);
-	set_identity_matrix(obj.inverse_transform);
-	if (type == CYLINDER)
-	{
-		obj.max = 100;
-		obj.min = -100;
-		obj.closed = true;
-	}
-	return (obj);
-}
+#include "object.h"
 
 int	test_shape1(void)
 {
