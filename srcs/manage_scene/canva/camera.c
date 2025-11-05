@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/05 12:01:29 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 12:05:24 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	render(t_camera c, t_world w, t_canvas img)
 		y = 0;
 		while (y < c.vsize)
 		{
-			color = color_at(w, ray_for_pixel(c, x, y), NB_BOUNCE, &linter);
+			color = color_at(w, ray_for_pixel(c, x, y), NB_BOUNCE, linter);
 			put_px_in_canva(img, x, y, color);
 			y++;
 		}

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/05 11:58:47 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 13:41:06 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ typedef struct s_world
 t_world		world(void);
 uint32_t	intersect_world(t_world w, t_ray r, t_linter *linter);
 void		prepare_computations(t_inter *inter, t_ray ray);
-t_rgb		shade_hit(t_world world, t_inter comps);
-t_rgb		color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter *linter);
+t_rgb		shade_hit(t_world world, t_inter comps, t_linter linter);
+t_rgb		color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter);
 t_world 	default_world(void);
 
 #endif

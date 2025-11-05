@@ -6,17 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/05 12:01:50 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 13:41:20 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "color.h"
 #include "world.h"
-#include "mlx.h"
-#include "mlx_int.h"
 #include "libft.h"
-#include <X11/X.h>
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
@@ -63,7 +60,7 @@ t_rgb	indirect_light_maker(t_inter *h, t_world w,
 		if (dot_product(new_ray.direction, h->normalv) < 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
 		indirect_color = rgb_addition(indirect_color,
-				color_at(w, new_ray, nb_bounce - 1, linter));
+				color_at(w, new_ray, nb_bounce - 1, *linter));
 		indirect_color = rgb_multiplication(indirect_color,
 				h->obj->material.color);
 		i++;
@@ -72,7 +69,7 @@ t_rgb	indirect_light_maker(t_inter *h, t_world w,
 	return (indirect_color);
 }
 
-t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter *linter)
+t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter)
 {
 	t_inter			*h;
 	t_rgb			direct_color;
@@ -80,18 +77,16 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter *linter)
 
 	if (nb_bounce == 0)
 		return (set_rgb(0, 0, 0));
-	if (intersect_world(w, r, linter))
+	if (intersect_world(w, r, &linter))
 		return (set_rgb (0, 0, 0));
-	h = hit(linter);
+	h = hit(&linter);
 	if (!h)
 	{
-		free(linter->inters);
 		return (set_rgb (0, 0, 0));
 	}
 	prepare_computations(h, r);
-	direct_color = shade_hit(w, *h);
-	indirect_light = indirect_light_maker(h, w, nb_bounce, linter);
-	free(linter->inters);
+	direct_color = shade_hit(w, *h, linter);
+	indirect_light = indirect_light_maker(h, w, nb_bounce, &linter);
 	return (rgb_addition(direct_color, indirect_light));
 }
 

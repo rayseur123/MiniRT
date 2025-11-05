@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/31 11:08:27 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 13:39:08 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	prepare_computations(t_inter *inter, const t_ray ray)
 			tuple_multiplication(inter->normalv, EPSILON));
 }
 
-t_rgb	shade_hit(t_world world, t_inter comps)
+t_rgb	shade_hit(t_world world, t_inter comps, t_linter linter)
 {
 	unsigned int	i;
 	t_lighting		l;
@@ -100,7 +100,7 @@ t_rgb	shade_hit(t_world world, t_inter comps)
 		l.eyev = comps.eyev;
 		color = rgb_addition(color, lighting(l,
 					comps.point, comps.normalv, is_shadowed(world,
-						comps.over_point, world.light[i])));
+						comps.over_point, world.light[i], linter)));
 		i++;
 	}
 	return (color);
