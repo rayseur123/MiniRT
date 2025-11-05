@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:29:31 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 16:53:00 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 12:02:06 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	is_shadowed(t_world world, t_tuple point, t_light light)
 	t_tuple		v;
 	double		distance;
 	t_ray		ray;
-	t_inters	xs;
+	t_linter	xs;
 	t_inter		*h;
 
 	v = tuple_subtraction(light.position, point);

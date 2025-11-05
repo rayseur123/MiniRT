@@ -21,7 +21,7 @@ void	swap_double(double *t0, double *t1)
 	*t1 = temp;
 }
 
-void	trunc_cylinder(t_obj *o, t_ray r, t_inters *xs, t_range range)
+void	trunc_cylinder(t_obj *o, t_ray r, t_linter *xs, t_range range)
 {
 	double	y0;
 	double	y1;
@@ -48,7 +48,7 @@ bool	check_caps(t_ray r, double t)
 	return (false);
 }
 
-void	intersect_caps(t_obj *o, const t_ray r, t_inters *xs)
+void	intersect_caps(t_obj *o, const t_ray r, t_linter *xs)
 {
 	double	t;
 

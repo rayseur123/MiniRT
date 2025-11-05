@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:38:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/31 08:58:33 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 11:52:04 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	test_world_0(void)
 {
 	t_world		w;
 	t_ray		r;
-	t_inters	xs;
+	t_linter	xs;
 
 	w = default_world();
 	r = set_ray(set_point(0,0,-5), set_vector(0,0,1));

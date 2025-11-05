@@ -13,7 +13,7 @@
 #include "intersection.h"
 #include "math.h"
 
-void	intersect_cylinder(t_obj *o, const t_ray r, t_inters *xs)
+void	intersect_cylinder(t_obj *o, const t_ray r, t_linter *xs)
 {
 	double	a;
 	double	b;
@@ -35,7 +35,7 @@ void	intersect_cylinder(t_obj *o, const t_ray r, t_inters *xs)
 	intersect_caps(o, r, xs);
 }
 
-void	intersect_plane(t_obj *o, const t_ray r, t_inters *xs)
+void	intersect_plane(t_obj *o, const t_ray r, t_linter *xs)
 {
 	double	t;
 
@@ -45,7 +45,7 @@ void	intersect_plane(t_obj *o, const t_ray r, t_inters *xs)
 	xs->inters[xs->count++] = set_intersection(t, o);
 }
 
-uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_inters *inters)
+uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_linter *inters)
 {
 	const t_tuple		sphere_to_ray = tuple_subtraction(r.origin,
 			set_point(0, 0, 0));

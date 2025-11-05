@@ -22,7 +22,7 @@ t_tuple	position(t_ray ray, double range)
 			tuple_multiplication(ray.direction, range)));
 }
 
-t_inter	*hit(t_inters *inters)
+t_inter	*hit(t_linter *inters)
 {
 	t_inter		*min;
 	uint32_t	i;
@@ -39,7 +39,7 @@ t_inter	*hit(t_inters *inters)
 	return (min);
 }
 
-void	shape_intersect(t_obj *o, const t_ray r, t_inters *xs)
+void	shape_intersect(t_obj *o, const t_ray r, t_linter *xs)
 {
 	if (o->type == PLANE)
 		intersect_plane(o, r, xs);
@@ -58,7 +58,7 @@ t_ray	transform(t_ray ray, t_matrix4 m)
 	return (new_ray);
 }
 
-void	intersect(t_ray r, t_obj *o, t_inters *xs)
+void	intersect(t_ray r, t_obj *o, t_linter *xs)
 {
 	r = transform(r, o->inverse_transform);
 	shape_intersect(o, r, xs);

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:44:48 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/31 08:54:50 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 11:47:56 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int test_intersect_sphere_1(void)
 {
 	t_ray r;
 	t_obj s;
-	t_inters xs;
+	t_linter xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
 	s = shape(SPHERE);
@@ -67,7 +67,7 @@ int test_intersect_sphere_2(void)
 {
 	t_ray r;
 	t_obj s;
-	t_inters xs;
+	t_linter xs;
 
 	r = set_ray(set_point(0, 2, -5), set_vector(0, 0 , 1));
 	s = shape(SPHERE);
@@ -83,7 +83,7 @@ int test_intersect_sphere_3(void)
 {
 	t_ray r;
 	t_obj s;
-	t_inters xs;
+	t_linter xs;
 
 	r = set_ray(set_point(0, 0, 0), set_vector(0, 0 , 1));
 	s = shape(SPHERE);
@@ -105,7 +105,7 @@ int test_intersect_sphere_4(void)
 {
 	t_ray r;
 	t_obj s;
-	t_inters xs;
+	t_linter xs;
 
 	r = set_ray(set_point(0, 0, 5), set_vector(0, 0 , 1));
 	s = shape(SPHERE);
@@ -142,7 +142,7 @@ int test_aggregating_intersection(void)
 	t_obj s;
 	t_inter i1;
 	t_inter i2;
-	t_inters xs;
+	t_linter xs;
 
 	s = shape(SPHERE);
 	i1 = set_intersection(1, &s);
@@ -160,7 +160,7 @@ int test_intersection_objet(void)
 {
 	t_ray r;
 	t_obj s;
-	t_inters xs;
+	t_linter xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0 , 1));
 	s = shape(SPHERE);
@@ -180,10 +180,10 @@ int	test_hit_1(void)
 	t_obj	s;
 	t_inter	i1;
 	t_inter i2;
-	t_inters xs;
+	t_linter xs;
 
 	s = shape(SPHERE);
-	
+
 	i1 = set_intersection(1, &s);
 	i2 = set_intersection(2, &s);
 	xs.count = 0;
@@ -198,10 +198,10 @@ int	test_hit_2(void)
 	t_obj	s;
 	t_inter	i1;
 	t_inter i2;
-	t_inters xs;
+	t_linter xs;
 
 	s = shape(SPHERE);
-	
+
 	i1 = set_intersection(-1, &s);
 	i2 = set_intersection(1, &s);
 	set_intersections(&xs, i1, i2);
@@ -215,7 +215,7 @@ int	test_hit_3(void)
 	t_obj	s;
 	t_inter	i1;
 	t_inter i2;
-	t_inters xs;
+	t_linter xs;
 
 	s = shape(SPHERE);
 	
@@ -289,7 +289,7 @@ int	test_transfrom_5(void)
 	t_ray		r;
 	t_obj		s;
 	t_matrix4	m;
-	t_inters	xs;
+	t_linter	xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0, 1));
 	s = shape(SPHERE);
@@ -310,7 +310,7 @@ int	test_transfrom_6(void)
 	t_ray		r;
 	t_obj		s;
 	t_matrix4	m;
-	t_inters	xs;
+	t_linter	xs;
 
 	r = set_ray(set_point(0, 0, -5), set_vector(0, 0, 1));
 	s = shape(SPHERE);

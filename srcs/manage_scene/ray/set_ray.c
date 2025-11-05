@@ -37,7 +37,7 @@ t_inter	set_intersection(double t, t_obj *obj)
 	return (inter);
 }
 
-int	set_intersections(t_inters *inters, t_inter inter1, t_inter inter2)
+int	set_intersections(t_linter *inters, t_inter inter1, t_inter inter2)
 {
 	inters->inters = malloc(sizeof(t_inter) * 2);
 	inters->count = 2;
