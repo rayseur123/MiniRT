@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/31 11:08:27 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 14:26:12 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_rgb	shade_hit(t_world world, t_inter comps)
 		color = rgb_addition(color, lighting(l,
 					comps.point, comps.normalv, is_shadowed(world,
 						comps.over_point, world.light[i])));
+		color = rgb_addition(color, world.ambient);
 		i++;
 	}
 	return (color);

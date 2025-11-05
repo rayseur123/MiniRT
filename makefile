@@ -92,6 +92,7 @@ PARSING_SRC := file_manage.c \
 					parse_light.c \
 					parse_plane.c \
 					parse_cylindre.c \
+					parse_ambient.c \
 					get_parsing.c \
 
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))

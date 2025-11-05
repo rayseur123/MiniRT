@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:06:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/27 16:23:06 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/05 14:29:20 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ t_rgb	lighting(t_lighting l,
 
 	lightv = tuple_normalization(tuple_subtraction(l.light.position, point));
 	light_dot_normal = dot_product(lightv, normalv);
-	cal_ambient(&ef_color, l.light, l.mat);
+	ef_color = rgb_multiplication(l.mat.color, l.light.intensity);
 	if (light_dot_normal < 0 || is_shadowed)
-		return (cal_ambient(&ef_color, l.light, l.mat));
+		return (set_rgb(0, 0, 0));
 	reflectv = reflect(tuple_negation(lightv), normalv);
 	reflect_dot_eye = dot_product(reflectv, l.eyev);
 	return (asb_phong(ef_color, l, light_dot_normal,

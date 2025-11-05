@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:14:01 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/04 10:55:32 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/05 14:42:59 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,10 @@ int	make_objs(t_world *world, t_camera *c, int fd)
 		if (line_obj[0] == 'C'
 			&& make_cam(c, line_obj))
 			return (free_line(line_obj));
+		if (line_obj[0] == 'A' && make_ambient(line_obj, world))
+			return (free_line(line_obj));
 		free_line(line_obj);
 		line_obj = next_obj(fd);
 	}
-	close(fd);
 	return (0);
 }

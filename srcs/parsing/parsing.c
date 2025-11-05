@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/29 16:39:22 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/05 14:42:52 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,11 @@ int	parsing(char *str, t_world *world, t_camera *c)
 		return (1);
 	if (alloc_world(world))
 		return (1);
-	return (make_objs(world, c, fd));
+	if (make_objs(world, c, fd))
+	{
+		close(fd);
+		return (1);
+	}
+	close(fd);
+	return (0);
 }
