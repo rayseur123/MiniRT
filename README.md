@@ -41,13 +41,27 @@ To simulate reflection, we use the Phong model ([Phong reflection model](https:/
 
 <img width="994" height="492" alt="Screenshot from 2025-10-13 12-27-40" src="https://github.com/user-attachments/assets/3b201be1-6c17-4f40-b80e-4ec3afe02ed2" />
 
-## Indirect light and shadow
+## Indirect light
+<img width="967" height="483" alt="Screenshot from 2025-11-06 13-37-33" src="https://github.com/user-attachments/assets/db129110-dc3d-42df-87eb-f31a372268fb" />
 
-<img width="866" height="460" alt="Screenshot from 2025-10-30 11-43-39" src="https://github.com/user-attachments/assets/c478cbd6-aad8-4c3a-bd6c-c932dc318cf1" />
+The light source is positioned on the left, and the object on the right illuminates the right side of the left object through secondary light bounces.
+This phenomenon allows certain areas to remain lit even when they are not directly exposed to the light source.
+In the current implementation, light attenuation due to distance or the number of bounces is not taken into account, which results in indirect lighting being overly intense.
+Nevertheless, the overall visual quality of the render is significantly improved.
+
+### Color bleeding
+<img width="967" height="483" alt="Screenshot from 2025-11-06 13-36-12" src="https://github.com/user-attachments/assets/fd9c4303-95fe-4ea2-a767-f880dff5ac73" />
+
+Indirect lighting also produces color bleeding, where the color of an object is reflected through light bounces and influences the appearance of nearby surfaces.
+As with indirect lighting, the color bleeding effect appears stronger than expected because several physical attenuation factors have not yet been implemented.
+
+## shadow
+
+(DEVAN JE TE LAISSE LE FAIRE)
 
 ## Plane and cylindre
 
-<img width="991" height="782" alt="Screenshot from 2025-11-04 13-18-27" src="https://github.com/user-attachments/assets/2dcc971e-0ca7-4951-b936-20b5a3aba46a" />
+(DEVAN JE TE LAISSE LE FAIRE)
 
 ## Logic Implementation
 
