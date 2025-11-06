@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/04 10:58:34 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/06 11:28:48 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	make_cy(t_obj *o, char *str)
 	if (!data)
 		return (1);
 	*o = shape(CYLINDER);
-	if (size_of_split(data) != 6 || get_coord(data[1], &coor)
+	if (size_of_split(data) != 6 || ft_strlen(data[0]) != 2 || get_coord(data[1], &coor)
 		|| get_vector_coord(data[2], &normal_vec)
 		|| get_rgb(data[5], &o->material.color))
 	{
