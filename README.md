@@ -41,6 +41,14 @@ To simulate reflection, we use the Phong model ([Phong reflection model](https:/
 
 <img width="994" height="492" alt="Screenshot from 2025-10-13 12-27-40" src="https://github.com/user-attachments/assets/3b201be1-6c17-4f40-b80e-4ec3afe02ed2" />
 
+## Indirect light and shadow
+
+<img width="866" height="460" alt="Screenshot from 2025-10-30 11-43-39" src="https://github.com/user-attachments/assets/c478cbd6-aad8-4c3a-bd6c-c932dc318cf1" />
+
+## Plane and cylindre
+
+<img width="991" height="782" alt="Screenshot from 2025-11-04 13-18-27" src="https://github.com/user-attachments/assets/2dcc971e-0ca7-4951-b936-20b5a3aba46a" />
+
 ## Logic Implementation
 
 ### Tuples
