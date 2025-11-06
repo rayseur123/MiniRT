@@ -89,7 +89,7 @@ int test_plane1(void)
 {
 	t_obj	p;
 	t_ray	r;
-	t_inters xs;
+	t_linter xs;
 
 	p = shape(PLANE);
 	r = set_ray(set_point(0, 10, 0), set_vector(0, 0, 1));
@@ -105,7 +105,7 @@ int test_plane2(void)
 {
 	t_obj	p;
 	t_ray	r;
-	t_inters xs;
+	t_linter xs;
 
 	p = shape(PLANE);
 	r = set_ray(set_point(0, 0, 0), set_vector(0, 0, 1));
@@ -121,7 +121,7 @@ int	test_plane3(void)
 {
 	t_obj	p;
 	t_ray	r;
-	t_inters xs;
+	t_linter xs;
 
 	p = shape(PLANE);
 	r = set_ray(set_point(0, 0, 0), set_vector(0, 0, 1));
@@ -144,7 +144,7 @@ int	test_plane4(void)
 {
 	t_obj	p;
 	t_ray	r;
-	t_inters xs;
+	t_linter xs;
 
 	p = shape(PLANE);
 	r = set_ray(set_point(0, 1, 0), set_vector(0, -1, 0));
@@ -160,7 +160,7 @@ int	test_plane5(void)
 {
 	t_obj	p;
 	t_ray	r;
-	t_inters xs;
+	t_linter xs;
 
 	p = shape(PLANE);
 	r = set_ray(set_point(0, -1, 0), set_vector(0, 1, 0));
@@ -177,7 +177,7 @@ int test_cylinder1(void)
 	unsigned int i;
 	t_obj c;
 	t_ray	r;
-	t_inters xs;
+	t_linter xs;
 
 	i = 0;
 	while (i < 3)

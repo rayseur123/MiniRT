@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/31 11:08:27 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/06 10:05:41 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_world	world(void)
 	return (w);
 }
 
-void	sort_intersection(t_inters *inters)
+void	sort_intersection(t_linter *inters)
 {
 	t_inter			temp;
 	unsigned int	i;
@@ -54,13 +54,10 @@ void	sort_intersection(t_inters *inters)
 	}
 }
 
-uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters)
+uint32_t	intersect_world(t_world w, t_ray r, t_linter *inters)
 {
 	unsigned int	i;
 
-	inters->inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
-	if (!inters->inters)
-		return (1);
 	inters->count = 0;
 	i = 0;
 	while (i < w.nb_obj)
@@ -85,7 +82,7 @@ void	prepare_computations(t_inter *inter, const t_ray ray)
 			tuple_multiplication(inter->normalv, EPSILON));
 }
 
-t_rgb	shade_hit(t_world world, t_inter comps)
+t_rgb	shade_hit(t_world world, t_inter comps, t_linter linter)
 {
 	unsigned int	i;
 	t_lighting		l;
@@ -100,7 +97,7 @@ t_rgb	shade_hit(t_world world, t_inter comps)
 		l.eyev = comps.eyev;
 		color = rgb_addition(color, lighting(l,
 					comps.point, comps.normalv, is_shadowed(world,
-						comps.over_point, world.light[i])));
+						comps.over_point, world.light[i], linter)));
 		i++;
 	}
 	return (color);
