@@ -24,11 +24,6 @@ description du parsing et des possibilité
 - executer avec './miniRT'
 ```
 
-## Resources 
-
-- [the raytracer challenge de Jamis Buck](http://raytracerchallenge.com/)
-- [Line–sphere intersection](https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection)
-
 ## Visual Progress
 
 ### First Step
@@ -96,6 +91,11 @@ We build a global transformation matrix by successively applying individual tran
 - Moving an object down = elevating our viewpoint
 
 This approach simplifies calculations while producing identical results.
+
+## Resources 
+
+- [the raytracer challenge de Jamis Buck](http://raytracerchallenge.com/)
+- [Line–sphere intersection](https://en.wikipedia.org/wiki/Line%E2%80%93sphere_intersection)
 
 ## Contributors
 [@njooris] (https://github.com/rayseur123)
