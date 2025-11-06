@@ -49,6 +49,8 @@ This phenomenon allows certain areas to remain lit even when they are not direct
 In the current implementation, light attenuation due to distance or the number of bounces is not taken into account, which results in indirect lighting being overly intense.
 Nevertheless, the overall visual quality of the render is significantly improved.
 
+The visible noise is due to the lack of rays at each bounce, and the colors are not very realistic because of the low number of bounces.
+
 ### Color bleeding
 <img width="967" height="483" alt="Screenshot from 2025-11-06 13-36-12" src="https://github.com/user-attachments/assets/fd9c4303-95fe-4ea2-a767-f880dff5ac73" />
 
