@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:29:31 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/05 13:44:41 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/06 10:06:10 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "world.h"
 #include "stdbool.h"
 
-bool	is_shadowed(t_world world, t_tuple point, t_light light, t_linter linter)
+bool	is_shadowed(t_world world, t_tuple point, t_light light, t_linter lin)
 {
 	t_tuple		v;
 	double		distance;
@@ -26,13 +26,9 @@ bool	is_shadowed(t_world world, t_tuple point, t_light light, t_linter linter)
 	v = tuple_subtraction(light.position, point);
 	distance = tuple_magnitude(v);
 	ray = set_ray(point, tuple_normalization(v));
-	intersect_world(world, ray, &linter);
-	h = hit(&linter);
+	intersect_world(world, ray, &lin);
+	h = hit(&lin);
 	if (h && distance - h->range > EPSILON)
-	{
-		// free(linter.inters);
 		return (true);
-	}
-	// free(linter.inters);
 	return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/05 12:05:24 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/06 10:05:29 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,12 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 
 int	render(t_camera c, t_world w, t_canvas img)
 {
-	int		x;
-	int		y;
-	t_rgb	color;
-	t_linter linter;
+	int			x;
+	int			y;
+	t_rgb		color;
+	t_linter	linter;
 
 	x = 0;
-
 	linter.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
 	while (x < c.hsize)
 	{
