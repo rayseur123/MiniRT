@@ -5,6 +5,10 @@
 
 MiniRT generates a 3D image with realistic lighting using ray tracing technology.
 
+### Content
+
+description du parsing et des possibilité
+
 ## Installation
 ### Download the repository
 ```
