@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:06:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/05 14:29:20 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/06 16:29:31 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ t_rgb	asb_phong(t_rgb c, t_lighting l, double light, t_rgb spec)
 	t_rgb	diffuse;
 
 	diffuse = cal_diffuse(c, light, l.mat);
-	return (rgb_addition(rgb_addition(
-				cal_ambient(&c, l.light, l.mat), diffuse), spec));
+	return (rgb_addition(diffuse, spec));
 }
 
 t_rgb	lighting(t_lighting l,

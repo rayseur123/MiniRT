@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 14:41:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 13:47:22 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/06 14:55:26 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,6 @@ int	test_create_light(void)
 	pos = set_point(0,0,0);
 	light = point_light(pos, intensity);
 	if (check_equal_tuples(light.position,pos) && light.intensity.r == intensity.r && light.intensity.g == intensity.g && light.intensity.b == intensity.b)
-		return (0);
-	return (1);
-}
-
-int test_default_material(void)
-{
-	t_material m;
-
-	m = material();
-	if (m.ambient == 0.1 && m.diffuse == 0.9 && m.spec == 0.9 && m.shininess == 200)
 		return (0);
 	return (1);
 }

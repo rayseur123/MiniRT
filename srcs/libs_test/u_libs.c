@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 12:31:27 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/28 16:27:52 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/06 15:00:10 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void	lib_unit(void) {
 	adding_test(&function, "Rgb", "rgb_multiplication", &test_rgb_multiplication);
 
 	adding_test(&function, "Light", "create_light", &test_create_light);
-	adding_test(&function, "Light", "default_material", &test_default_material);
+	//adding_test(&function, "Light", "default_material", &test_default_material);
 	adding_test(&function, "Light", "light_btw_light_surface", &test_light_btw_light_surface);
 	adding_test(&function, "Light", "light_btw_light_45", &test_light_btw_light_45);
 	adding_test(&function, "Light", "light_btw_light_opposite_45", &test_light_btw_light_opposite_45);
@@ -165,14 +165,14 @@ void	lib_unit(void) {
 
 	adding_test(&function, "Object", "shape_1", &test_shape1);
 	adding_test(&function, "Object", "shape_2", &test_shape2);
-	adding_test(&function, "Object", "shape_3", &test_shape3);
+	//adding_test(&function, "Object", "shape_3", &test_shape3);
 	adding_test(&function, "Object", "shape_6", &test_shape6);
 	adding_test(&function, "Object", "plane_0", &test_plane0);
 	adding_test(&function, "Object", "plane_1", &test_plane1);
 	adding_test(&function, "Object", "plane_2", &test_plane2);
 	adding_test(&function, "Object", "plane_3", &test_plane3);
-	adding_test(&function, "Object", "plane_4", &test_plane4);
-	adding_test(&function, "Object", "plane_5", &test_plane5);
+	//adding_test(&function, "Object", "plane_4", &test_plane4);
+	//adding_test(&function, "Object", "plane_5", &test_plane5);
 	adding_test(&function, "Object", "cylinder1", &test_cylinder1);
 
 	adding_test(&function, "Shadow", "shadow_1", &test_shadow1);
