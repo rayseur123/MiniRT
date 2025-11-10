@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 13:24:56 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:29:57 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 
 // light error
 # define TO_MANY_LIGHT_ERROR "To many light"
+
 int		print_error(char *str);
 
 #endif

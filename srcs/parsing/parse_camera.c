@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/06 13:08:18 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:36:13 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "transform.h"
 #include "matrix.h"
 #include "parsing.h"
+#include "error.h"
 
 int	make_cam(t_camera *c, char *str)
 {
@@ -25,9 +26,18 @@ int	make_cam(t_camera *c, char *str)
 
 	data = ft_split(str, ' ');
 	if (!data)
-		return (1);
-	if (size_of_split(data) != 4 || ft_strlen(data[0]) != 1
-		|| get_coord(data[1], &from))
+		return (print_error(MALLOC_ERROR));
+	if (size_of_split(data) != 4)
+	{
+		ft_free_split(data);
+		return (print_error(PARAMETER_NUMBER_ERROR));
+	}
+	if (ft_strlen(data[0]) != 1)
+	{
+		ft_free_split(data);
+		return (print_error(ARGUMENT_ERROR));
+	}
+	if (get_coord(data[1], &from))
 	{
 		ft_free_split(data);
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 13:15:46 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:33:42 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,15 @@ int	make_sp(t_obj *o, char *str)
 		return (print_error(MALLOC_ERROR));
 	*o = shape(SPHERE);
 	if (size_of_split(data) != 4)
+	{
+		ft_free_split(data);
 		return (print_error(PARAMETER_NUMBER_ERROR));
+	}
 	if (ft_strlen(data[0]) != 2)
+	{
+		ft_free_split(data);
 		return (print_error(ARGUMENT_ERROR));
+	}
 	if (get_coord(data[1], &coor) || check_is_digit_str(data[2]))
 	{
 		ft_free_split(data);

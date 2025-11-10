@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:14:01 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 13:27:34 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:32:58 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,10 @@ int	make_objs(t_world *world, t_camera *c, int fd)
 	count_light = 0;
 	while (line_obj)
 	{
-		if (build_objs(line_obj, world, &count_obj) 
-			|| (build_light(line_obj, world, &count_light)) // check_point
+		if (build_objs(line_obj, world, &count_obj)
+			|| (build_light(line_obj, world, &count_light))
 			|| (line_obj[0] == 'C' && make_cam(c, line_obj))
-			|| (line_obj[0] == 'A' && make_ambient(line_obj, world)))
+			|| (line_obj[0] == 'A' && make_ambient(line_obj, world)))// check_point
 		{
 			free(line_obj);
 			return (1);
