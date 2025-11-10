@@ -6,10 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/07 11:54:01 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:00:21 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include <stdio.h>
 #include "libft.h"
 #include "parsing.h"
@@ -21,12 +22,12 @@ int	alloc_world(t_world *world)
 {
 	world->obj = malloc(sizeof(t_obj) * world->nb_obj);
 	if (!world->obj)
-		return (1);
+		return (print_error(MALLOC_ERROR));
 	world->light = malloc(sizeof(t_light) * world->nb_light);
 	if (!world->light)
 	{
 		free(world->obj);
-		return (1);
+		return (print_error(MALLOC_ERROR));
 	}
 	return (0);
 }
@@ -40,7 +41,7 @@ int	check_cap(char *str)
 	int			count_cam;
 
 	if (fd == -1)
-		return (1);
+		return (print_error(FD_ERROR));
 	line = get_next_line(fd);
 	count_ambient = 0;
 	count_light = 0;
@@ -55,8 +56,10 @@ int	check_cap(char *str)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (count_ambient != 1 || count_cam != 1 || count_light != 1)
-		return (1);
+	if (count_ambient < 1 || count_cam < 1 || count_light < 1)
+		return (print_error(MISS_CAP_ERROR));
+	if (count_ambient > 1 || count_cam > 1 || count_light > 1)
+		return (print_error(DOUBLE_CAP_ERROR));
 	return (0);
 }
 
@@ -65,8 +68,10 @@ int	parsing(char *str, t_world *world, t_camera *c)
 	const int	fd = open_rt_file(str);
 
 	if (fd == -1)
+		return (print_error(FD_ERROR));
+	if (check_cap(str))
 		return (1);
-	if (check_cap(str) || count_obj_and_light(str, world))
+	if (count_obj_and_light(str, world))
 		return (1);
 	if (alloc_world(world))
 		return (1);

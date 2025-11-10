@@ -4,26 +4,6 @@ NAME := miniRT
 
 SRC_DIR := srcs/
 
-LIBSTEST_DIR := libs_test/
-LIBSTEST_SRCS := u_init.c \
-             u_launch.c \
-             u_manage.c \
-             u_print.c \
-             u_libs.c \
-
-TEST_DIR := test/
-TEST_SRCS := tuples.c \
-				matrix.c \
-				rgb.c \
-				transformation.c \
-				rays.c \
-				light.c \
-				world.c \
-				camera.c \
-				object.c \
-				shadow.c \
-				ressource.c \
-
 SHADOW_DIR := shadow/
 SHADOW_SRCS := shadow.c \
 
@@ -94,6 +74,7 @@ PARSING_SRC := file_manage.c \
 					parse_cylindre.c \
 					parse_ambient.c \
 					get_parsing.c \
+					error_manage.c \
 
 SCENE_SRCS += $(addprefix $(CANVA_DIR), $(CANVA_SRCS))
 SCENE_SRCS += $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))
@@ -110,7 +91,6 @@ SCENE_SRCS += $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))
 
 
 SRCS += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
-SRCS += $(addprefix $(TEST_DIR), $(TEST_SRCS))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS)))
@@ -123,7 +103,6 @@ SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(OBJECTS_DIR), $(OBJECTS_SRCS)))
 SRCS += $(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS)))
-SRCS += $(addprefix $(LIBSTEST_DIR), $(LIBSTEST_SRCS))
 SRCS += minirt.c
 
 # --- CHECK NORME --- #

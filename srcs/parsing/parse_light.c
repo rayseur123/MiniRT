@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/06 13:06:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:27:11 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "transform.h"
 #include "matrix.h"
 #include "parsing.h"
+#include "error.h"
 
 int	make_light(t_light *l, char *str)
 {
@@ -24,9 +25,12 @@ int	make_light(t_light *l, char *str)
 
 	data = ft_split(str, ' ');
 	if (!data)
-		return (1);
-	if (size_of_split(data) != 4 || ft_strlen(data[0]) != 1
-		|| get_coord(data[1], &l->position))
+		return (print_error(MALLOC_ERROR));
+	if (size_of_split(data) != 4)
+		return (print_error(PARAMETER_NUMBER_ERROR));
+	if (ft_strlen(data[0]) != 1)
+		return (print_error(ARGUMENT_ERROR));
+	if (get_coord(data[1], &l->position))
 	{
 		ft_free_split(data);
 		return (1);

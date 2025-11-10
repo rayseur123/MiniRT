@@ -6,10 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:14:01 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/07 11:52:11 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:27:34 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include "world.h"
 #include "libft.h"
 #include "parsing.h"
@@ -24,7 +25,7 @@ int	count_obj_and_light(char *str, t_world *w)
 	const int	fd = open_rt_file(str);
 
 	if (fd == -1)
-		return (1);
+		return (print_error(FD_ERROR));
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -36,7 +37,8 @@ int	count_obj_and_light(char *str, t_world *w)
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
+	if (close(fd) == -1)
+		return (print_error(CLOSE_ERROR));
 	return (0);
 }
 
@@ -65,13 +67,13 @@ int	build_objs(char *line_obj, t_world *world, int *count_obj)
 		if (make_sp(&world->obj[*count_obj], line_obj))
 			return (1);
 		*count_obj += 1;
-	}
+	} 
 	if (!ft_strncmp(line_obj, "pl", 2))
 	{
 		if (make_pl(&world->obj[*count_obj], line_obj))
 			return (1);
 		*count_obj += 1;
-	}
+	} 
 	if (!ft_strncmp(line_obj, "cy", 2))
 	{
 		if (make_cy(&world->obj[*count_obj], line_obj))
@@ -88,7 +90,7 @@ int	build_light(char *line_obj, t_world *world, int *count_light)
 	if (line_obj[0] == 'L' || line_obj[0] == 'l')
 	{
 		if (line_obj[0] == 'L' && check_l++)
-			return (1);
+			return (print_error(TO_MANY_LIGHT_ERROR));
 		if (make_light(&world->light[*count_light], line_obj))
 			return (1);
 		*count_light += 1;
@@ -104,13 +106,13 @@ int	make_objs(t_world *world, t_camera *c, int fd)
 
 	line_obj = next_obj(fd);
 	if (!line_obj)
-		return (1);
+		return (print_error(MALLOC_ERROR));
 	count_obj = 0;
 	count_light = 0;
 	while (line_obj)
 	{
-		if (build_objs(line_obj, world, &count_obj)
-			|| (build_light(line_obj, world, &count_light))
+		if (build_objs(line_obj, world, &count_obj) 
+			|| (build_light(line_obj, world, &count_light)) // check_point
 			|| (line_obj[0] == 'C' && make_cam(c, line_obj))
 			|| (line_obj[0] == 'A' && make_ambient(line_obj, world)))
 		{

@@ -6,10 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/24 13:29:24 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:14:40 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "error.h"
 #include "libft.h"
 #include "parsing.h"
 #include "libft.h"
@@ -30,7 +31,7 @@ int	check_is_digit_str(char *str)
 			if (str[i] == '.' && count_dot == 0)
 				count_dot++;
 			else
-				return (1);
+				return (print_error(BAD_FORMAT_ERROR));
 		}
 		i++;
 	}

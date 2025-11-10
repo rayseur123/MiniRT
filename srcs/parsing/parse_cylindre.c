@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/06 13:05:27 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:22:57 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "libft.h"
 #include "transform.h"
 #include <math.h>
+#include "error.h"
 
 void	build_matrix_transform_cy(double r, t_tuple coor, t_tuple n, t_obj *o)
 {
@@ -44,10 +45,13 @@ int	make_cy(t_obj *o, char *str)
 
 	data = ft_split(str, ' ');
 	if (!data)
-		return (1);
+		return (print_error(MALLOC_ERROR));
 	*o = shape(CYLINDER);
-	if (size_of_split(data) != 6 || ft_strlen(data[0]) != 2
-		|| get_coord(data[1], &coor) || get_vector_coord(data[2], &normal_vec)
+	if (size_of_split(data) != 6)
+		return (print_error(PARAMETER_NUMBER_ERROR));
+	if (ft_strlen(data[0]) != 2)
+		return (print_error(ARGUMENT_ERROR));
+	if (get_coord(data[1], &coor) || get_vector_coord(data[2], &normal_vec)
 		|| get_rgb(data[5], &o->material.color))
 	{
 		ft_free_split(data);
