@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 13:14:40 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 14:19:59 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static int	check_extension(char *str, char *ext)
 	const size_t	len = ft_strlen(str);
 
 	if (len <= 3)
-		return (1);
+		return (print_error(FILE_NAME_ERROR));
 	return (ft_strncmp(&str[len - 3], ext, 3));
 }
 
 int	open_rt_file(char *str)
 {
 	if (check_extension(str, EXTENSION))
-		return (-1);
+		return (-2);
 	return (open(str, O_RDONLY));
 }

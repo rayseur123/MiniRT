@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 13:00:21 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/11 10:29:29 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,17 @@ int	alloc_world(t_world *world)
 	return (0);
 }
 
+int	check_count_cap(int count_ambient, int count_light, int count_cam)
+{
+	if (close(fd) == -1)
+		return (print_error(CLOSE_ERROR));
+	if (count_ambient < 1 || count_cam < 1 || count_light < 1)
+		return (print_error(MISS_CAP_ERROR));
+	if (count_ambient > 1 || count_cam > 1 || count_light > 1)
+		return (print_error(DOUBLE_CAP_ERROR));
+	return (0);
+}
+
 int	check_cap(char *str)
 {
 	char		*line;
@@ -42,6 +53,8 @@ int	check_cap(char *str)
 
 	if (fd == -1)
 		return (print_error(FD_ERROR));
+	if (fd == 1)
+		return (1);
 	line = get_next_line(fd);
 	count_ambient = 0;
 	count_light = 0;
@@ -55,12 +68,7 @@ int	check_cap(char *str)
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
-	if (count_ambient < 1 || count_cam < 1 || count_light < 1)
-		return (print_error(MISS_CAP_ERROR));
-	if (count_ambient > 1 || count_cam > 1 || count_light > 1)
-		return (print_error(DOUBLE_CAP_ERROR));
-	return (0);
+	return (check_count_cap(count_ambient, count_light, count_cam));
 }
 
 int	parsing(char *str, t_world *world, t_camera *c)
@@ -80,6 +88,7 @@ int	parsing(char *str, t_world *world, t_camera *c)
 		close(fd);
 		return (1);
 	}
-	close(fd);
+	if (close(fd) == -1)
+		return (print_error(CLOSE_ERROR));
 	return (0);
 }

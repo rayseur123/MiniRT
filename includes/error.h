@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 13:29:57 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 14:19:15 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # define CLOSE_ERROR "Error with close"
 
 // parsing error
+# define FILE_NAME_ERROR "Bad file name"
 # define DOUBLE_CAP_ERROR "Multi capitalize"
 # define MISS_CAP_ERROR "Miss capitalize"
 # define PARAMETER_NUMBER_ERROR "Bad number of parameter on an argument"

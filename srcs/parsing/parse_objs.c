@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:14:01 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 13:32:58 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:42:21 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ int	build_objs(char *line_obj, t_world *world, int *count_obj)
 		if (make_sp(&world->obj[*count_obj], line_obj))
 			return (1);
 		*count_obj += 1;
-	} 
+	}
 	if (!ft_strncmp(line_obj, "pl", 2))
 	{
 		if (make_pl(&world->obj[*count_obj], line_obj))
 			return (1);
 		*count_obj += 1;
-	} 
+	}
 	if (!ft_strncmp(line_obj, "cy", 2))
 	{
 		if (make_cy(&world->obj[*count_obj], line_obj))
@@ -114,7 +114,7 @@ int	make_objs(t_world *world, t_camera *c, int fd)
 		if (build_objs(line_obj, world, &count_obj)
 			|| (build_light(line_obj, world, &count_light))
 			|| (line_obj[0] == 'C' && make_cam(c, line_obj))
-			|| (line_obj[0] == 'A' && make_ambient(line_obj, world)))// check_point
+			|| (line_obj[0] == 'A' && make_ambient(line_obj, world)))
 		{
 			free(line_obj);
 			return (1);
