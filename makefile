@@ -40,6 +40,7 @@ OBJECTS_DIR := object/
 OBJECTS_SRCS := object.c \
 				cylinder.c \
 				intersect.c \
+				quicksort.c \
 
 WORLD_DIR := world/
 WORLD_SRCS := world.c \
@@ -164,7 +165,7 @@ DEPS := $(OBJS:.o=.d)
 CPPFLAGS += -MMD -MP $(addprefix -I,$(INCLUDES)) \
 					 $(addprefix -I, $(LIBS_INCLUDES))
 
-CFLAGS +=  -Ofast -O2 -Wall -Wextra -Werror
+CFLAGS +=  -Ofast -Wall -Wextra -Werror
 
 LDFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
 			$(addprefix -l,$(LIBS)) \

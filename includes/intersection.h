@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/05 11:44:54 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/12 09:03:55 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_obj
 }	t_obj;
 typedef struct s_inter
 {
-	bool			null;
 	double			nb_inter;
 	t_obj			*obj;
 	double			range;
@@ -60,7 +59,7 @@ typedef struct s_inter
 
 typedef struct s_linter
 {
-	uint32_t	count;
+	int	count;
 	t_inter		*inters;
 } t_linter;
 
@@ -84,5 +83,7 @@ t_tuple			normal_at(t_obj s, t_tuple p);
 t_tuple			shape_normal_at(t_obj s, t_tuple p);
 t_tuple			reflect(t_tuple	v, t_tuple n);
 t_obj	shape(enum e_obj_type type);
+int	count_inters(t_inter inters);
+void	recursive(t_inter *inters, int start, int end);
 
 #endif
