@@ -6,15 +6,15 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/04 10:58:34 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/10 14:06:35 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-#include "sphere.h"
 #include "libft.h"
 #include "transform.h"
 #include <math.h>
+#include "error.h"
 
 void	build_matrix_transform_cy(double r, t_tuple coor, t_tuple n, t_obj *o)
 {
@@ -34,30 +34,41 @@ void	build_matrix_transform_cy(double r, t_tuple coor, t_tuple n, t_obj *o)
 	matrix4_inverse(o->transform, o->inverse_transform);
 }
 
-int	make_cy(t_obj *o, char *str)
+int	build_cy_parse(t_obj *o, char **data)
 {
 	t_tuple		coor;
 	t_tuple		normal_vec;
 	double		radius;
 	double		height;
-	char		**data;
 
-	data = ft_split(str, ' ');
-	if (!data)
-		return (1);
-	*o = shape(CYLINDER);
-	if (size_of_split(data) != 6 || get_coord(data[1], &coor)
-		|| get_vector_coord(data[2], &normal_vec)
+	if (size_of_split(data) != 6)
+		return (print_error(PARAMETER_NUMBER_ERROR));
+	if (ft_strlen(data[0]) != 2)
+		return (print_error(ARGUMENT_ERROR));
+	if (get_coord(data[1], &coor) || get_vector_coord(data[2], &normal_vec)
 		|| get_rgb(data[5], &o->material.color))
-	{
-		ft_free_split(data);
 		return (1);
-	}
 	radius = get_radius(data[3]);
 	height = ft_atod(data[4]) / 2;
 	o->min = -height;
 	o->max = height;
 	build_matrix_transform_cy(radius, coor, normal_vec, o);
+	return (0);
+}
+
+int	make_cy(t_obj *o, char *str)
+{
+	char		**data;
+
+	data = ft_split(str, ' ');
+	if (!data)
+		return (print_error(MALLOC_ERROR));
+	*o = shape(CYLINDER);
+	if (build_cy_parse(o, data))
+	{
+		ft_free_split(data);
+		return (1);
+	}
 	ft_free_split(data);
 	return (0);
 }

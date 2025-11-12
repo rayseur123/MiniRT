@@ -31,6 +31,5 @@ typedef struct s_canvas
 int			init_canva(t_canvas *canva);
 void		put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb);
 uint32_t	fcolor_to_uint(t_rgb col);
-uint32_t	pixel_at(t_canvas canva, int x, int y);
 
 #endif

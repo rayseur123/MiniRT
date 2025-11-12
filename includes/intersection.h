@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/12 09:03:55 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/12 17:27:41 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,24 @@
 #include <stdbool.h>
 #include "tuple.h"
 #include "matrix.h"
+#include "shape.h"
 #include "color.h"
 
-typedef struct s_ray	t_ray;
-
-typedef enum e_obj_type
+typedef struct s_ray
 {
-	SPHERE,
-	PLANE,
-	CYLINDER,
-}	t_obj_type;
-
+	t_tuple origin;
+	t_tuple direction;
+} t_ray;
 
 typedef struct s_range
 {
 	double t0;
 	double t1;
 } t_range;
-typedef struct s_obj
-{
-	t_obj_type	type;
-	int			id;
-	t_matrix4	transform;
-	t_matrix4	inverse_transform;
-	t_material	material;
-	double		min;
-	double		max;
-	bool		closed;
-}	t_obj;
+
 typedef struct s_inter
 {
+	bool			null;
 	double			nb_inter;
 	t_obj			*obj;
 	double			range;
@@ -56,18 +44,11 @@ typedef struct s_inter
 	bool			inside;
 }	t_inter;
 
-
 typedef struct s_linter
 {
 	int	count;
 	t_inter		*inters;
 } t_linter;
-
-struct s_ray
-{
-	t_tuple origin;
-	t_tuple direction;
-};
 
 t_ray			set_ray(t_tuple point, t_tuple vector);
 t_tuple			position(t_ray ray, double range);
@@ -82,8 +63,10 @@ void			trunc_cylinder(t_obj *o, t_ray r, t_linter *xs, t_range range);
 t_tuple			normal_at(t_obj s, t_tuple p);
 t_tuple			shape_normal_at(t_obj s, t_tuple p);
 t_tuple			reflect(t_tuple	v, t_tuple n);
-t_obj	shape(enum e_obj_type type);
 int	count_inters(t_inter inters);
 void	recursive(t_inter *inters, int start, int end);
+void	intersect_cylinder(t_obj *o, const t_ray r, t_linter *xs);
+void	intersect_plane(t_obj *o, const t_ray r, t_linter *xs);
+uint32_t	intersect_sphere(t_obj *s, const t_ray r, t_linter *inters);
 
 #endif

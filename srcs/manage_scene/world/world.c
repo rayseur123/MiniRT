@@ -6,12 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/12 11:27:06 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/06 16:30:35 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
-#include "sphere.h"
 #include "stdlib.h"
 #include <stdio.h>
 #include "shadow.h"
