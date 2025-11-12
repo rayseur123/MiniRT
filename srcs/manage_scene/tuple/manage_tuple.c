@@ -6,12 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 13:41:52 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:35:10 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/12 10:19:35 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuple.h"
-#include "env.h"
 #include <math.h>
 
 double	tuple_magnitude(t_tuple tuple)
@@ -41,12 +40,3 @@ t_tuple	cross_product(t_tuple a, t_tuple b)
 			a.x * b.y - a.y * b.x));
 }
 
-t_projectile	tick(t_environment env, t_projectile proj)
-{
-	t_projectile	proj2;
-
-	proj2.position = tuple_addition(proj.position, proj.velocity);
-	proj2.velocity = tuple_addition(tuple_addition(proj.velocity,
-				env.gravity), env.wind);
-	return (proj2);
-}

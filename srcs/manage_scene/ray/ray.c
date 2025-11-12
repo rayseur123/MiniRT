@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/28 14:54:54 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/12 10:15:55 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "stdlib.h"
 #include "sphere.h"
 #include <math.h>
-#include "object.h"
+#include "shape.h"
 
 t_tuple	position(t_ray ray, double range)
 {

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/06 14:16:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/12 10:16:22 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,5 @@ uint32_t	intersect_world(t_world w, t_ray r, t_inters *inters);
 void		prepare_computations(t_inter *inter, t_ray ray);
 t_rgb		shade_hit(t_world world, t_inter comps);
 t_rgb		color_at(t_world w, t_ray r, uint32_t nb_bounce);
-t_world 	default_world(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/12 10:10:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/12 10:19:08 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@
 #include "shape.h"
 #include "color.h"
 
-typedef struct s_ray	t_ray;
+typedef struct s_ray
+{
+	t_tuple origin;
+	t_tuple direction;
+} t_ray;
 
 typedef struct s_range
 {
@@ -46,12 +50,9 @@ typedef struct s_inters
 	t_inter		*inters;
 } t_inters;
 
-struct s_ray
-{
-	t_tuple origin;
-	t_tuple direction;
-};
-
+void			intersect_cylinder(t_obj *o, const t_ray r, t_inters *xs);
+void			intersect_plane(t_obj *o, const t_ray r, t_inters *xs);
+uint32_t		intersect_sphere(t_obj *s, const t_ray r, t_inters *inters);
 t_ray			set_ray(t_tuple point, t_tuple vector);
 t_tuple			position(t_ray ray, double range);
 t_inter			set_intersection(double t, t_obj *obj);
