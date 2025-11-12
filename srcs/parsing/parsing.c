@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/11 10:29:29 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/12 10:11:01 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	alloc_world(t_world *world)
 	return (0);
 }
 
-int	check_count_cap(int count_ambient, int count_light, int count_cam)
+int	check_count_cap(int count_ambient, int count_light, int count_cam, int fd)
 {
 	if (close(fd) == -1)
 		return (print_error(CLOSE_ERROR));
@@ -68,7 +68,7 @@ int	check_cap(char *str)
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (check_count_cap(count_ambient, count_light, count_cam));
+	return (check_count_cap(count_ambient, count_light, count_cam, fd));
 }
 
 int	parsing(char *str, t_world *world, t_camera *c)

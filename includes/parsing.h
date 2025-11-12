@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 12:51:44 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/12 10:06:17 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 # define EXTENSION ".rt"
 #include "world.h"
 #include "camera.h"
-
-# define MALLOC_ERROR "Malloc failed"
-# define DOUBLE_CAP_ERROR "Multi capitalize"
-# define MISS_CAP_ERROR "Miss capitalize"
-# define ERROR_FD "Error with fd"
-
 
 int		open_rt_file(char *str);
 int		parsing(char *str, t_world *world, t_camera *c);
