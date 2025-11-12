@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/06 10:05:41 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/12 11:27:06 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,6 @@ t_world	world(void)
 	return (w);
 }
 
-void	sort_intersection(t_linter *inters)
-{
-	t_inter			temp;
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	k;
-
-	i = -1;
-	while (++i < inters->count)
-	{
-		j = i - 1;
-		k = i;
-		while (++j < inters->count)
-		{
-			if (inters->inters[j].range < inters->inters[k].range
-				&& inters->inters[j].obj > 0)
-				k = j;
-		}
-		temp = inters->inters[i];
-		inters->inters[i] = inters->inters[k];
-		inters->inters[k] = temp;
-	}
-}
-
 uint32_t	intersect_world(t_world w, t_ray r, t_linter *inters)
 {
 	unsigned int	i;
@@ -62,7 +38,7 @@ uint32_t	intersect_world(t_world w, t_ray r, t_linter *inters)
 	i = 0;
 	while (i < w.nb_obj)
 		intersect(r, &w.obj[i++], inters);
-	sort_intersection(inters);
+	recursive(inters->inters, 0, inters->count - 1);
 	return (0);
 }
 
