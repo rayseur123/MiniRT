@@ -6,13 +6,11 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 10:05:29 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/12 11:28:57 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:22:34 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "../../../includes/intersection.h"
+#include "intersection.h"
 
 void	swap(t_inter *a, t_inter *b)
 {

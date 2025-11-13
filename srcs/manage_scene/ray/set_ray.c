@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 10:56:34 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 17:06:20 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 10:22:01 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,6 @@ t_inter	set_intersection(double t, t_obj *obj)
 	inter.nb_inter = 0;
 	inter.normalv = set_vector(0, 0, 0);
 	inter.point = set_point(0, 0, 0);
+	inter.over_point = set_point(0, 0, 0);
 	return (inter);
-}
-
-int	set_intersections(t_linter *inters, t_inter inter1, t_inter inter2)
-{
-	inters->inters = malloc(sizeof(t_inter) * 2);
-	inters->count = 2;
-	inters->inters[0] = inter1;
-	inters->inters[1] = inter2;
-	return (0);
 }
