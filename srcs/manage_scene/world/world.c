@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 15:48:20 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 16:07:09 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ uint32_t	intersect_world(t_world w, t_ray r, t_linter *inters)
 
 t_comp	prepare_computations(t_inter *inter, const t_ray ray)
 {
-	t_comp comp;
+	t_comp	comp;
 
 	comp.point = position(ray, inter->range);
 	comp.eyev = tuple_negation(ray.direction);
