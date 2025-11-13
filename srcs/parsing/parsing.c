@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 13:37:07 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 15:16:21 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ int	parsing(char *str, t_world *world, t_camera *c)
 {
 	const int	fd = open_rt_file(str);
 
-	if (fd == -1)
-		return (print_error(FD_ERROR));
+	if (fd < 0)
+		return (1);
 	if (check_cap(str))
 		return (1);
 	if (count_obj_and_light(str, world))
