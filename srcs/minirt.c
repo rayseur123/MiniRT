@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 09:26:41 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:46:09 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include "parsing.h"
 #include <stdlib.h>
 #include "keyhook.h"
+#include "../libs/minilibx/mlx.h"
+
+void	distroy_canvas(t_canvas c)
+{
+	mlx_destroy_image(c.mlx, c.canva);
+	mlx_destroy_window(c.mlx, c.window);
+	mlx_destroy_display(c.mlx);
+	free(c.mlx);
+}
 
 int	main(int ac, char **av)
 {
@@ -41,9 +50,6 @@ int	main(int ac, char **av)
 	mlx_hook(c.window, KeyPress, KeyPressMask, &actions_hook, &c);
 	mlx_hook(c.window, DestroyNotify, NoEventMask, &hook_close, c.mlx);
 	mlx_loop(c.mlx);
-	mlx_destroy_image(c.mlx, c.canva);
-	mlx_destroy_window(c.mlx, c.window);
-	mlx_destroy_display(c.mlx);
-	free(c.mlx);
+	distroy_canvas(c);
 	return (0);
 }
