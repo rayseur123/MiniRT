@@ -34,5 +34,6 @@ t_inter	set_intersection(double t, t_obj *obj)
 	inter.nb_inter = 0;
 	inter.normalv = set_vector(0, 0, 0);
 	inter.point = set_point(0, 0, 0);
+	inter.over_point = set_point(0, 0, 0);
 	return (inter);
 }

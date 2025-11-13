@@ -33,7 +33,6 @@ typedef struct s_range
 
 typedef struct s_inter
 {
-	bool			null;
 	double			nb_inter;
 	t_obj			*obj;
 	double			range;

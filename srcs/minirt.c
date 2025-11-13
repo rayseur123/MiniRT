@@ -16,6 +16,15 @@
 #include "parsing.h"
 #include <stdlib.h>
 #include "keyhook.h"
+#include "../libs/minilibx/mlx.h"
+
+void	distroy_canvas(t_canvas c)
+{
+	mlx_destroy_image(c.mlx, c.canva);
+	mlx_destroy_window(c.mlx, c.window);
+	mlx_destroy_display(c.mlx);
+	free(c.mlx);
+}
 
 int	main(int ac, char **av)
 {
@@ -25,21 +34,22 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	if (world(&w))
+	w = world();
+	if (w.fd == -1)
 		return (1);
 	if (parsing(av[1], &w, &cam))
 		return (1);
-	init_canva(&c);
-	render(cam, w, c);
-	mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
+	if (init_canva(&c))
+		return (1);
+	if (render(cam, w, c))
+		return (1);
+	if (!mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0))
+		return (1);
 	free(w.obj);
 	free(w.light);
 	mlx_hook(c.window, KeyPress, KeyPressMask, &actions_hook, &c);
 	mlx_hook(c.window, DestroyNotify, NoEventMask, &hook_close, c.mlx);
 	mlx_loop(c.mlx);
-	mlx_destroy_image(c.mlx, c.canva);
-	mlx_destroy_window(c.mlx, c.window);
-	mlx_destroy_display(c.mlx);
-	free(c.mlx);
+	distroy_canvas(c);
 	return (0);
 }

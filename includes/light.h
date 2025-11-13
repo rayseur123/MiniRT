@@ -31,7 +31,6 @@ typedef struct s_lighting
 	t_tuple		eyev;
 }	t_lighting;
 
-t_material	material(void);
 t_light		point_light(t_tuple	position, t_rgb inte);
 t_rgb		lighting(t_lighting l, t_tuple point, t_tuple normalv,
 				bool is_shadowed);
