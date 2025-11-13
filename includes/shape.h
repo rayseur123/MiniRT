@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 12:35:35 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/12 17:27:37 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:19:02 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "color.h"
 #include "matrix.h"
-#include "intersection.h"
 
 typedef enum e_obj_type
 {

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/04 10:59:59 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:26:41 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,16 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (0);
 	w = world();
+	if (w.fd == -1)
+		return (1);
 	if (parsing(av[1], &w, &cam))
 		return (1);
-	init_canva(&c);
-	render(cam, w, c);
-	mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0);
+	if (init_canva(&c))
+		return (1);
+	if (render(cam, w, c))
+		return (1);
+	if (!mlx_put_image_to_window(c.mlx, c.window, c.canva, 0, 0))
+		return (1);
 	free(w.obj);
 	free(w.light);
 	mlx_hook(c.window, KeyPress, KeyPressMask, &actions_hook, &c);

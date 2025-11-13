@@ -6,14 +6,12 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:33:33 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/28 13:16:16 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:20:11 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLE_H
 #define TUPLE_H
-
-#include <stdint.h>
 
 #define EPSILON 0.0001
 

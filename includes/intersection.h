@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/12 17:27:41 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 09:31:33 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "tuple.h"
 #include "matrix.h"
 #include "shape.h"
-#include "color.h"
 
 typedef struct s_ray
 {
@@ -33,7 +32,6 @@ typedef struct s_range
 
 typedef struct s_inter
 {
-	bool			null;
 	double			nb_inter;
 	t_obj			*obj;
 	double			range;
