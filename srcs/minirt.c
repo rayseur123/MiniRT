@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 09:46:09 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 15:45:59 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "parsing.h"
 #include <stdlib.h>
 #include "keyhook.h"
-#include "../libs/minilibx/mlx.h"
 
 void	distroy_canvas(t_canvas c)
 {

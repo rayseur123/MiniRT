@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 10:10:41 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 15:51:24 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	random_vector(t_tuple *vector)
 	return (0);
 }
 
-t_rgb	indirect_light_maker(t_inter *h, t_world w,
+t_rgb	indirect_light_maker(t_comp *h, t_world w,
 		uint32_t nb_bounce, t_linter *linter)
 {
 	int		i;
@@ -62,7 +62,7 @@ t_rgb	indirect_light_maker(t_inter *h, t_world w,
 		indirect_color = rgb_addition(indirect_color,
 				color_at(w, new_ray, nb_bounce - 1, *linter));
 		indirect_color = rgb_multiplication(indirect_color,
-				h->obj->material.color);
+				h->material.color);
 		i++;
 	}
 	indirect_color = rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY);
@@ -74,7 +74,7 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter)
 	t_inter			*h;
 	t_rgb			direct_color;
 	t_rgb			indirect_light;
-	t_inter			h_cpy;
+	t_comp			comp;
 
 	if (nb_bounce == 0)
 		return (set_rgb(0, 0, 0));
@@ -83,10 +83,9 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter)
 	h = hit(&linter);
 	if (!h)
 		return (set_rgb (0, 0, 0));
-	prepare_computations(h, r);
-	h_cpy = *h;
-	direct_color = shade_hit(w, *h, linter);
-	indirect_light = indirect_light_maker(&h_cpy, w, nb_bounce, &linter);
+	comp = prepare_computations(h, r);
+	direct_color = shade_hit(w, comp, linter);
+	indirect_light = indirect_light_maker(&comp, w, nb_bounce, &linter);
 	return (rgb_addition(direct_color, indirect_light));
 }
 

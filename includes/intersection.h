@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 09:31:33 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 15:45:29 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@ typedef struct s_ray
 	t_tuple direction;
 } t_ray;
 
+typedef struct s_comp
+{
+	t_tuple point;
+	t_tuple eyev;
+	t_tuple normalv;
+	t_tuple over_point;
+	t_material material;
+	bool	inside;
+
+} t_comp;
+
 typedef struct s_range
 {
 	double t0;
@@ -35,11 +46,6 @@ typedef struct s_inter
 	double			nb_inter;
 	t_obj			*obj;
 	double			range;
-	t_tuple			point;
-	t_tuple			eyev;
-	t_tuple			normalv;
-	t_tuple			over_point;
-	bool			inside;
 }	t_inter;
 
 typedef struct s_linter
