@@ -6,12 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/12 10:12:40 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:39:39 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "canvas.h"
+#include "minirt_error.h"
 
 int	init_canva(t_canvas *canva)
 {
@@ -19,17 +20,22 @@ int	init_canva(t_canvas *canva)
 	canva->height = HEIGHT_CANVA;
 	canva->mlx = mlx_init();
 	if (!canva->mlx)
+	{
+		print_error(MALLOC_ERROR);
 		return (1);
+	}
 	canva->window = mlx_new_window(canva->mlx, canva->width,
 			canva->height, "MINI_RT");
 	if (!canva->window)
 	{
+		print_error(MALLOC_ERROR);
 		mlx_destroy_display(canva->mlx);
 		return (1);
 	}
 	canva->canva = mlx_new_image(canva->mlx, canva->width, canva->height);
 	if (!canva->canva)
 	{
+		print_error(MALLOC_ERROR);
 		mlx_destroy_window(canva->mlx, canva->window);
 		mlx_destroy_display(canva->mlx);
 		return (1);

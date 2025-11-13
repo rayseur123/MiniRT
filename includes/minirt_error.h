@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   minirt_error.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 14:19:15 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:36:37 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef MINIRT_ERROR_H
+# define MINIRT_ERROR_H
 
 // system error
 # define MALLOC_ERROR "Malloc failed"

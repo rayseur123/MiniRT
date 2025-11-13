@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 14:06:35 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:37:11 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "transform.h"
 #include <math.h>
-#include "error.h"
+#include "minirt_error.h"
 
 void	build_matrix_transform_cy(double r, t_tuple coor, t_tuple n, t_obj *o)
 {
