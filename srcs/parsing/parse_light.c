@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 14:12:56 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:36:56 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "transform.h"
 #include "matrix.h"
 #include "parsing.h"
-#include "error.h"
+#include "minirt_error.h"
 
 int	build_l_parse(t_light *l, char **data)
 {

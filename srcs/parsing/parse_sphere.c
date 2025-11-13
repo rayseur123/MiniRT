@@ -6,11 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/12 17:34:02 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 13:37:04 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "minirt_error.h"
 #include "parsing.h"
 #include "libft.h"
 #include "transform.h"

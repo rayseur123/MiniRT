@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/06 10:05:29 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 13:40:33 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "canvas.h"
 #include "world.h"
 #include "color.h"
+#include "minirt_error.h"
 
 t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
 					t_matrix4 r)
@@ -97,6 +98,11 @@ int	render(t_camera c, t_world w, t_canvas img)
 
 	x = 0;
 	linter.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
+	if (!linter.inters)
+	{
+		print_error(MALLOC_ERROR);
+		return (1);
+	}
 	while (x < c.hsize)
 	{
 		y = 0;

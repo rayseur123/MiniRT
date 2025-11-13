@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 13:19:06 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:34:24 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_world
 	int			fd;
 }	t_world;
 
-t_world		world(void);
+int			world(t_world *world);
 uint32_t	intersect_world(t_world w, t_ray r, t_linter *linter);
 void		prepare_computations(t_inter *inter, t_ray ray);
 t_rgb		shade_hit(t_world world, t_inter comps, t_linter linter);

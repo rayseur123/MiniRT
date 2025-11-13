@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/04 10:59:59 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 13:34:42 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	w = world();
+	if (world(&w))
+		return (1);
 	if (parsing(av[1], &w, &cam))
 		return (1);
 	init_canva(&c);

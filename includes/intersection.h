@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 13:20:22 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:44:39 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ typedef struct s_linter
 t_ray			set_ray(t_tuple point, t_tuple vector);
 t_tuple			position(t_ray ray, double range);
 t_inter			set_intersection(double t, t_obj *obj);
-int				set_intersections(t_linter *inters, t_inter inter1,
-					t_inter inter2);
 t_inter			*hit(t_linter *inters);
 t_ray			transform(t_ray ray, t_matrix4 m);
 void			shape_intersect(t_obj *o, t_ray r, t_linter *xs);

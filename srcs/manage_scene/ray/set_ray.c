@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 10:56:34 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/27 17:06:20 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/13 13:44:36 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,3 @@ t_inter	set_intersection(double t, t_obj *obj)
 	return (inter);
 }
 
-int	set_intersections(t_linter *inters, t_inter inter1, t_inter inter2)
-{
-	inters->inters = malloc(sizeof(t_inter) * 2);
-	inters->count = 2;
-	inters->inters[0] = inter1;
-	inters->inters[1] = inter2;
-	return (0);
-}
