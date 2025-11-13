@@ -33,8 +33,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (0);
-	w = world();
-	if (w.fd == -1)
+	if (world(&w))
 		return (1);
 	if (parsing(av[1], &w, &cam))
 		return (1);

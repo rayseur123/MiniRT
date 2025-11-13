@@ -16,17 +16,21 @@
 #include "shadow.h"
 #include <sys/stat.h>
 #include <fcntl.h>
+#include "minirt_error.h"
 
-t_world	world(void)
+int	world(t_world *w)
 {
-	t_world	w;
-
-	w.nb_light = 0;
-	w.nb_obj = 0;
-	w.light = NULL;
-	w.obj = 0;
-	w.fd = open("/dev/random", O_RDONLY);
-	return (w);
+	w->nb_light = 0;
+	w->nb_obj = 0;
+	w->light = NULL;
+	w->obj = 0;
+	w->fd = open("/dev/random", O_RDONLY);
+	if (w->fd == -1)
+	{
+		print_error(FD_ERROR);
+		return (1);
+	}
+	return (0);
 }
 
 uint32_t	intersect_world(t_world w, t_ray r, t_linter *inters)

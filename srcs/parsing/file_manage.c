@@ -6,11 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 14:19:59 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 15:18:03 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "error.h"
+#include "minirt_error.h"
 #include "libft.h"
 #include "parsing.h"
 #include "libft.h"
@@ -43,13 +43,21 @@ static int	check_extension(char *str, char *ext)
 	const size_t	len = ft_strlen(str);
 
 	if (len <= 3)
-		return (print_error(FILE_NAME_ERROR));
+		return (1);
 	return (ft_strncmp(&str[len - 3], ext, 3));
 }
 
 int	open_rt_file(char *str)
 {
+	int	fd;
+
 	if (check_extension(str, EXTENSION))
-		return (-2);
-	return (open(str, O_RDONLY));
+	{
+		print_error(FILE_NAME_ERROR);
+		return (-1);
+	}
+	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		print_error(FD_ERROR);
+	return (fd);
 }

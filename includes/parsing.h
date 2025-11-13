@@ -6,15 +6,16 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/12 10:06:17 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:17:04 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 # define EXTENSION ".rt"
-#include "world.h"
-#include "camera.h"
+
+# include "world.h"
+# include "camera.h"
 
 int		open_rt_file(char *str);
 int		parsing(char *str, t_world *world, t_camera *c);

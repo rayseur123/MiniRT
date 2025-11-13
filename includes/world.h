@@ -10,15 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_WORLD_H
-#define MINIRT_WORLD_H
+#ifndef WORLD_H
+# define WORLD_H
+# define NB_BOUNCE 2
+# define NB_RAY 16
 
-#include <stdint.h>
-#include "light.h"
-#include "intersection.h"
-
-#define NB_BOUNCE 2
-#define NB_RAY 16
+# include <stdint.h>
+# include "light.h"
+# include "intersection.h"
 
 typedef struct s_world
 {
@@ -30,7 +29,7 @@ typedef struct s_world
 	int			fd;
 }	t_world;
 
-t_world		world(void);
+int			world(t_world *world);
 uint32_t	intersect_world(t_world w, t_ray r, t_linter *linter);
 t_comp		prepare_computations(t_inter *inter, t_ray ray);
 t_rgb		shade_hit(t_world world, t_comp comps, t_linter linter);
