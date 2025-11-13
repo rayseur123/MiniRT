@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 14:10:01 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:37:12 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "transform.h"
 #include "matrix.h"
 #include "parsing.h"
-#include "error.h"
+#include "minirt_error.h"
 
 int	build_cm_parse(t_camera *c, char **data)
 {
