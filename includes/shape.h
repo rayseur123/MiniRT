@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sphere.h                                           :+:      :+:    :+:   */
+/*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 08:42:14 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/05 11:46:06 by dernst           ###   ########.fr       */
+/*   Created: 2025/10/28 12:35:35 by dernst            #+#    #+#             */
+/*   Updated: 2025/11/12 17:27:37 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_SPHERE_H
-#define MINIRT_SPHERE_H
+#ifndef SHAPE_H
+# define SHAPE_H
 
-#include <stdint.h>
-#include "canvas.h"
+#include "color.h"
+#include "matrix.h"
 #include "intersection.h"
 
-uint32_t 		intersect_sphere(t_obj *s, t_ray r, t_linter *inters);
+typedef enum e_obj_type
+{
+	SPHERE,
+	PLANE,
+	CYLINDER,
+}	t_obj_type;
+
+typedef struct s_obj
+{
+	t_obj_type	type;
+	int			id;
+	t_matrix4	transform;
+	t_matrix4	inverse_transform;
+	t_material	material;
+	double		min;
+	double		max;
+	bool		closed;
+}	t_obj;
+
+t_obj			shape(enum e_obj_type type);
 
 #endif
-

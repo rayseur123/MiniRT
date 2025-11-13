@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "world.h"
-#include "sphere.h"
 #include "resources_test.h"
 
 int	test_world_0(void)

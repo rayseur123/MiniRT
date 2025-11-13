@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_light.c                                      :+:      :+:    :+:   */
+/*   parse_ambient.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/15 15:49:45 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/10 14:12:56 by njooris          ###   ########.fr       */
+/*   Created: 2025/11/05 14:40:24 by njooris           #+#    #+#             */
+/*   Updated: 2025/11/10 14:15:48 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "camera.h"
-#include "tuple.h"
+#include "world.h"
 #include "libft.h"
-#include "transform.h"
-#include "matrix.h"
 #include "parsing.h"
+#include "camera.h"
+#include "transform.h"
+#include <stdio.h>
+#include <math.h>
 #include "error.h"
 
-int	build_l_parse(t_light *l, char **data)
+int	build_a_parse(t_world *world, char **data)
 {
-	double		bright;
+	t_rgb	color;
+	double	power;
 
-	if (size_of_split(data) != 4)
+	if (size_of_split(data) != 3)
 		return (print_error(PARAMETER_NUMBER_ERROR));
 	if (ft_strlen(data[0]) != 1)
 		return (print_error(ARGUMENT_ERROR));
-	if (get_coord(data[1], &l->position))
+	power = ft_atod(data[1]);
+	if (get_rgb(data[2], &color))
 		return (1);
-	bright = ft_atod(data[2]);
-	if (get_rgb(data[3], &l->intensity))
-		return (1);
-	l->intensity = rgb_multiplication_scalar(l->intensity, bright);
+	world->ambient = rgb_multiplication_scalar(color, power);
 	return (0);
 }
 
-int	make_light(t_light *l, char *str)
+int	make_ambient(char *str, t_world *world)
 {
-	char		**data;
+	char	**data;
 
 	data = ft_split(str, ' ');
 	if (!data)
 		return (print_error(MALLOC_ERROR));
-	if (build_l_parse(l, data))
+	if (build_a_parse(world, data))
 	{
 		ft_free_split(data);
 		return (1);
