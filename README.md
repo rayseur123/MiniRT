@@ -56,25 +56,20 @@ The visible noise is due to the lack of rays at each bounce, and the colors are 
 Indirect lighting also produces color bleeding, where the color of an object is reflected through light bounces and influences the appearance of nearby surfaces.
 As with indirect lighting, the color bleeding effect appears stronger than expected because several physical attenuation factors have not yet been implemented.
 
-## shadow
+## Shadow
 
-To cast shadow, we recreate one by one a new ray named "shadow ray" wich start from each point on object and end to the light, we named the magnitude of this vector v. Also we cast the ray and detect if it hit an other object until the light.
-In case of an object is present we considered that the point is in shadow, in the other case the point is in the light.
-
-Pour l'affichage des ombres, On recree dans un premier temps un ray qui part d'un point d'un object et qui se dirige vers la source de lumiere. Ainsi on obtient un vecteur qu'on nomme "Shadow Ray" auquel on stock sa magnitude dans une variable v.
-Si ce ray croise un autre object durant son chemin avant d'atteindre la source lumineuse on en convient que le point initial de l'objet est donc dans l'ombres. Dans le cas contraire il est dans la lumiere. On repete ce processus pour chaque point de tout les objets et on obtient notre ombre !
+For shadow rendering, we first create a ray that starts from a point on an object and heads toward the light source. This gives us a vector called the “**Shadow Ray**”. If this ray intersects another object along its path before reaching the light source, then the original point on the object is considered to be in shadow. Otherwise, it is in the light. We repeat this process for every point on all objects, and that’s how we obtain our shadows!
 
 ## Plane and cylindre and sphere
 
-L'ajout des objets ce fait tous en suivant le meme paterne de base, On lance un rayon dans notre scene et on observe si il intersecte un objet.
+Adding objects follows the same basic pattern: we cast a ray into the scene and check whether it intersects an object.
 
-Sphere: La sphere est une surface ferme dont tout les points sont situe a une meme distance du centre.
+**Sphere**: A sphere is a closed surface whose points are all located at the same distance from its center.
 
-Plane: Le plane est une surface plate en 2 dimensions qui s'etend indefiniment. De ce faite tout les rayons envoyer vont toucher le plane sauf si ce dernier et le planes sont parallele.
+**Plane**: A plane is a flat, two-dimensional surface that extends infinitely. As a result, any ray cast toward it will hit the plane, unless the ray and the plane are parallel.
 
-Cylindre: Le cylindre ce fait en 3 etapes, Dans un premier temps le cylindre qu'on catch est infiniment long alors il nous faut lui attribuer une valeur de debut et une valeur de fin pour qu'il est une height bien definis.
-Notre cylindre est actuellement ouvert alors il nous font desormais lui rajouter des caps pour qu'il soit fermer comme un vrai cylindre.
-
+**Cylinder**: The cylinder is created in three steps. First, the cylinder we compute is infinitely long, so we need to give it a start value and an end value so that it has a well-defined height.
+At this stage, the cylinder is still open, so we then need to add caps to close it, making it behave like a real cylinder.
 ## Logic Implementation
 
 ### Tuples
