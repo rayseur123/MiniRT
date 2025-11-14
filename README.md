@@ -58,11 +58,22 @@ As with indirect lighting, the color bleeding effect appears stronger than expec
 
 ## shadow
 
-(DEVAN JE TE LAISSE LE FAIRE)
+To cast shadow, we recreate one by one a new ray named "shadow ray" wich start from each point on object and end to the light, we named the magnitude of this vector v. Also we cast the ray and detect if it hit an other object until the light.
+In case of an object is present we considered that the point is in shadow, in the other case the point is in the light.
 
-## Plane and cylindre
+Pour l'affichage des ombres, On recree dans un premier temps un ray qui part d'un point d'un object et qui se dirige vers la source de lumiere. Ainsi on obtient un vecteur qu'on nomme "Shadow Ray" auquel on stock sa magnitude dans une variable v.
+Si ce ray croise un autre object durant son chemin avant d'atteindre la source lumineuse on en convient que le point initial de l'objet est donc dans l'ombres. Dans le cas contraire il est dans la lumiere. On repete ce processus pour chaque point de tout les objets et on obtient notre ombre !
 
-(DEVAN JE TE LAISSE LE FAIRE)
+## Plane and cylindre and sphere
+
+L'ajout des objets ce fait tous en suivant le meme paterne de base, On lance un rayon dans notre scene et on observe si il intersecte un objet.
+
+Sphere: La sphere est une surface ferme dont tout les points sont situe a une meme distance du centre.
+
+Plane: Le plane est une surface plate en 2 dimensions qui s'etend indefiniment. De ce faite tout les rayons envoyer vont toucher le plane sauf si ce dernier et le planes sont parallele.
+
+Cylindre: Le cylindre ce fait en 3 etapes, Dans un premier temps le cylindre qu'on catch est infiniment long alors il nous faut lui attribuer une valeur de debut et une valeur de fin pour qu'il est une height bien definis.
+Notre cylindre est actuellement ouvert alors il nous font desormais lui rajouter des caps pour qu'il soit fermer comme un vrai cylindre.
 
 ## Logic Implementation
 
