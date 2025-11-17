@@ -56,14 +56,20 @@ The visible noise is due to the lack of rays at each bounce, and the colors are 
 Indirect lighting also produces color bleeding, where the color of an object is reflected through light bounces and influences the appearance of nearby surfaces.
 As with indirect lighting, the color bleeding effect appears stronger than expected because several physical attenuation factors have not yet been implemented.
 
-## shadow
+## Shadow
 
-(DEVAN JE TE LAISSE LE FAIRE)
+For shadow rendering, we first create a ray that starts from a point on an object and heads toward the light source. This gives us a vector called the “**Shadow Ray**”. If this ray intersects another object along its path before reaching the light source, then the original point on the object is considered to be in shadow. Otherwise, it is in the light. We repeat this process for every point on all objects, and that’s how we obtain our shadows!
 
-## Plane and cylindre
+## Plane and cylindre and sphere
 
-(DEVAN JE TE LAISSE LE FAIRE)
+Adding objects follows the same basic pattern: we cast a ray into the scene and check whether it intersects an object.
 
+**Sphere**: A sphere is a closed surface whose points are all located at the same distance from its center.
+
+**Plane**: A plane is a flat, two-dimensional surface that extends infinitely. As a result, any ray cast toward it will hit the plane, unless the ray and the plane are parallel.
+
+**Cylinder**: The cylinder is created in three steps. First, the cylinder we compute is infinitely long, so we need to give it a start value and an end value so that it has a well-defined height.
+At this stage, the cylinder is still open, so we then need to add caps to close it, making it behave like a real cylinder.
 ## Logic Implementation
 
 ### Tuples
