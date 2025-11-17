@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/14 15:17:42 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/17 09:04:23 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	main(int ac, char **av)
 		return (1);
 	if (parsing(av[1], &w, &cam))
 	{
-		free(w.obj);
 		free(w.light);
 		return (1);
 	}
