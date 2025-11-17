@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 13:39:39 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/14 15:09:24 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "canvas.h"
 #include "minirt_error.h"
 
-int	init_canva(t_canvas *canva)
+uint8_t	init_canva(t_canvas *canva)
 {
 	canva->width = WIDTH_CANVA;
 	canva->height = HEIGHT_CANVA;

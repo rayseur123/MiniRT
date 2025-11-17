@@ -18,19 +18,15 @@
 #include <time.h>
 #include <unistd.h>
 
-int	random_vector(t_tuple *vector)
+int	random_vector(t_tuple *vector, int fd)
 {
 	static uint32_t	seed;
-	int				fd;
 	double			x;
 	double			y;
 	double			z;
 
 	if (!seed)
 	{
-		fd = open("/dev/urandom", O_RDONLY);
-		if (fd == -1)
-			return (1);
 		if (read(fd, &seed, 4) == -1)
 			return (1);
 		close(fd);
@@ -56,7 +52,7 @@ t_rgb	indirect_light_maker(t_comp *h, t_world w,
 	indirect_color = set_rgb(0, 0, 0);
 	while (i < NB_RAY)
 	{
-		random_vector(&new_ray.direction);
+		random_vector(&new_ray.direction, w.fd);
 		if (dot_product(new_ray.direction, h->normalv) < 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
 		indirect_color = rgb_addition(indirect_color,
@@ -78,8 +74,7 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter)
 
 	if (nb_bounce == 0)
 		return (set_rgb(0, 0, 0));
-	if (intersect_world(w, r, &linter))
-		return (set_rgb (0, 0, 0));
+	intersect_world(w, r, &linter);
 	h = hit(&linter);
 	if (!h)
 		return (set_rgb (0, 0, 0));

@@ -169,7 +169,7 @@ DEPS := $(OBJS:.o=.d)
 CPPFLAGS += -MMD -MP $(addprefix -I, includes/) \
 					 $(addprefix -I, $(LIBS_INCLUDES))
 
-CFLAGS +=  -Ofast -Wall -Wextra -Werror
+CFLAGS +=  -g3 -Wall -Wextra -Werror
 
 LDFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
 			$(addprefix -l,$(LIBS)) \

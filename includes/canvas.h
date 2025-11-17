@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:31:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 09:56:13 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/14 15:09:58 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_canvas
 	void	*canva;
 }	t_canvas;
 
-int			init_canva(t_canvas *canva);
+uint8_t			init_canva(t_canvas *canva);
 void		put_px_in_canva(t_canvas canva, int x, int y, t_rgb rgb);
 
 #endif
