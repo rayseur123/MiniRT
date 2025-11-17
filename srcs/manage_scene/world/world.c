@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 16:07:09 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/14 15:07:53 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include <fcntl.h>
 #include "minirt_error.h"
 
-int	world(t_world *w)
+uint8_t	world(t_world *w)
 {
 	w->nb_light = 0;
 	w->nb_obj = 0;
@@ -33,7 +33,7 @@ int	world(t_world *w)
 	return (0);
 }
 
-uint32_t	intersect_world(t_world w, t_ray r, t_linter *inters)
+void	intersect_world(t_world w, t_ray r, t_linter *inters)
 {
 	unsigned int	i;
 
@@ -42,7 +42,6 @@ uint32_t	intersect_world(t_world w, t_ray r, t_linter *inters)
 	while (i < w.nb_obj)
 		intersect(r, &w.obj[i++], inters);
 	recursive(inters->inters, 0, inters->count - 1);
-	return (0);
 }
 
 t_comp	prepare_computations(t_inter *inter, const t_ray ray)

@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 15:51:24 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/14 15:08:54 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter)
 
 	if (nb_bounce == 0)
 		return (set_rgb(0, 0, 0));
-	if (intersect_world(w, r, &linter))
-		return (set_rgb (0, 0, 0));
+	intersect_world(w, r, &linter);
 	h = hit(&linter);
 	if (!h)
 		return (set_rgb (0, 0, 0));
