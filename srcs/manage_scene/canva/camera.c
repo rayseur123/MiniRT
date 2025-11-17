@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/17 15:56:05 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/17 13:58:01 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,33 +87,4 @@ t_ray	ray_for_pixel(t_camera c, uint32_t px, uint32_t py)
 			set_point(0, 0, 0));
 	return (set_ray(origin, tuple_normalization(
 				tuple_subtraction(pixel, origin))));
-}
-
-uint8_t	render(t_camera c, t_world w, t_canvas img)
-{
-	int			x;
-	int			y;
-	t_rgb		color;
-	t_linter	linter;
-
-	x = 0;
-	linter.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
-	if (!linter.inters)
-	{
-		print_error(MALLOC_ERROR);
-		return (1);
-	}
-	while (x < c.hsize)
-	{
-		y = 0;
-		while (y < c.vsize)
-		{
-			color = color_at(w, ray_for_pixel(c, x, y), NB_BOUNCE, linter);
-			put_px_in_canva(img, x, y, color);
-			y++;
-		}
-		x++;
-	}
-	free(linter.inters);
-	return (0);
 }
