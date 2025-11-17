@@ -6,14 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:31:41 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/14 15:09:58 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/17 16:24:26 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVAS_H
 # define CANVAS_H
-# define WIDTH_CANVA 1000
-# define HEIGHT_CANVA 800
+# define WIDTH_CANVA 400
+# define HEIGHT_CANVA 200
 
 # include <stdint.h>
 # include "color.h"
