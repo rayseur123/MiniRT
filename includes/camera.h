@@ -37,6 +37,6 @@ t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
 					t_matrix4 r);
 t_camera		camera(double hsize, double vsize, double fov);
 t_ray			ray_for_pixel(t_camera c, uint32_t px, uint32_t py);
-uint8_t				render(t_camera c, t_world w, t_canvas img);
+int				render(t_camera c, t_world w, t_canvas img);
 
 #endif

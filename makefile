@@ -43,6 +43,7 @@ CANVA_SRCS  := 	manage_canva.c \
 				camera.c \
 				keyhook.c \
 				render.c \
+				clean.c  \
 
 CANVA_SRCS_BONUS := manage_canva.c \
 					camera.c \
