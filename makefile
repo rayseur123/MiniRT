@@ -29,6 +29,7 @@ CANVA_DIR := canva/
 CANVA_SRCS := manage_canva.c \
 				camera.c 	\
 				keyhook.c	\
+				clean.c		\
 
 FLOAT_DIR := float/
 FLOAT_SRCS := manage_float.c \
