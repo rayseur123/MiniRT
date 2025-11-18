@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 13:33:09 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:40:33 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,11 @@ uint8_t	world(t_world *w)
 	w->nb_obj = 0;
 	w->light = NULL;
 	w->obj = 0;
-	w->seed = malloc(sizeof(uint32_t));
-	if (!w->seed)
-		return (print_error(MALLOC_ERROR));
 	fd = open("/dev/urandom", O_RDONLY);
 	if (fd == -1)
-	{
-		free(w->seed);
 		return (print_error(FD_ERROR));
-	}
-	if (read(fd, w->seed, 4) == -1)
+	if (read(fd, &w->seed, 4) == -1)
 	{
-		free(w->seed);
 		close(fd);
 		return (1);
 	}

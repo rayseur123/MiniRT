@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 13:35:10 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:43:43 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	random_vector(t_tuple *vector, uint32_t *seed)
 	return (0);
 }
 
-t_rgb	indirect_light_maker(t_comp *h, t_world w,
+t_rgb	indirect_light_maker(t_comp *h, t_world *w,
 		uint32_t nb_bounce, t_linter *linter)
 {
 	int		i;
@@ -44,7 +44,7 @@ t_rgb	indirect_light_maker(t_comp *h, t_world w,
 	indirect_color = set_rgb(0, 0, 0);
 	while (i < NB_RAY)
 	{
-		random_vector(&new_ray.direction, w.seed);
+		random_vector(&new_ray.direction, &w->seed);
 		if (dot_product(new_ray.direction, h->normalv) < 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
 		sample = color_at(w, new_ray, nb_bounce - 1, *linter);
@@ -56,7 +56,7 @@ t_rgb	indirect_light_maker(t_comp *h, t_world w,
 	return (indirect_color);
 }
 
-t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter)
+t_rgb	color_at(t_world *w, t_ray r, uint32_t nb_bounce, t_linter linter)
 {
 	t_inter			*h;
 	t_rgb			direct_color;
@@ -65,12 +65,12 @@ t_rgb	color_at(t_world w, t_ray r, uint32_t nb_bounce, t_linter linter)
 
 	if (nb_bounce == 0)
 		return (set_rgb(0, 0, 0));
-	intersect_world(w, r, &linter);
+	intersect_world(*w, r, &linter);
 	h = hit(&linter);
 	if (!h)
 		return (set_rgb (0, 0, 0));
 	comp = prepare_computations(h, r);
-	direct_color = shade_hit(w, comp, linter);
+	direct_color = shade_hit(*w, comp, linter);
 	indirect_light = indirect_light_maker(&comp, w, nb_bounce, &linter);
 	return (rgb_addition(direct_color, indirect_light));
 }

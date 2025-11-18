@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 10:39:05 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 14:41:26 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 		distroy_all(w, c);
 		return (1);
 	}
-	if (render(cam, w, c))
+	if (render(cam, &w, c))
 	{
 		distroy_all(w, c);
 		return (1);
