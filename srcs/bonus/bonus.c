@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 11:18:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 14:44:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:46:45 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ int	render(t_camera c, t_world *w, t_canvas img)
 	x = 0;
 	linter.inters = malloc((2 * w->nb_obj) * sizeof(t_inter));
 	if (!linter.inters)
-	{
-		print_error(MALLOC_ERROR);
-		return (1);
-	}
+		return (print_error(MALLOC_ERROR));
 	while (x < c.hsize)
 	{
 		y = 0;

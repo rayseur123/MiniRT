@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 14:45:38 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:47:47 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ uint8_t	world(t_world *w)
 	if (read(fd, &w->seed, 4) == -1)
 	{
 		close(fd);
-		return (1);
+		return (print_error(READ_ERROR));
 	}
 	if (close(fd) == -1)
 		return (print_error(CLOSE_ERROR));
