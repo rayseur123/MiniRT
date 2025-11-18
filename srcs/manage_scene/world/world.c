@@ -6,20 +6,20 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 11:10:02 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 12:26:14 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "shadow.h"
 #include <fcntl.h>
+#include <unistd.h>
+#include "shadow.h"
 #include "minirt_error.h"
-#include "unistd.h"
+#include "world.h"
 
 uint8_t	world(t_world *w)
 {
 	int			fd;
-	uint32_t	seed;
 
 	w->nb_light = 0;
 	w->nb_obj = 0;
@@ -31,7 +31,7 @@ uint8_t	world(t_world *w)
 		print_error(FD_ERROR);
 		return (1);
 	}
-	if (read(fd, &seed, 4) == -1)
+	if (read(fd, &w->seed, 4) == -1)
 		return (1);
 	close(fd);
 	return (0);
