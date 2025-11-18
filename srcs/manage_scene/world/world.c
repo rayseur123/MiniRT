@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 11:07:08 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 11:10:02 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 uint8_t	world(t_world *w)
 {
-	int fd;
+	int			fd;
 	uint32_t	seed;
 
 	w->nb_light = 0;
