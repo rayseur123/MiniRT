@@ -6,14 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/18 14:44:26 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:44:51 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WORLD_H
 # define WORLD_H
 # define NB_BOUNCE 2
-# define NB_RAY 16
+# define NB_RAY 126
 
 # include <stdint.h>
 # include "light.h"
