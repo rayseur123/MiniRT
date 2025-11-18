@@ -6,13 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 16:04:55 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/06 16:00:39 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:33:49 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
 #include "light.h"
-#include "color.h"
 
 t_rgb	cal_ambient(t_rgb *ef_color, t_light l, t_material mat)
 {

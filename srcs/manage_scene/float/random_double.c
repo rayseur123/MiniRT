@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <stdint.h>
-#include "libft.h"
 
 double	random_xor(uint32_t *seed)
 {

@@ -11,13 +11,8 @@
 /* ************************************************************************** */
 
 #include "minirt_error.h"
-#include "world.h"
 #include "libft.h"
 #include "parsing.h"
-#include "camera.h"
-#include "transform.h"
-#include <stdio.h>
-#include <math.h>
 
 int	count_obj_and_light(char *str, t_world *w)
 {

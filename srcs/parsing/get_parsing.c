@@ -6,16 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 16:39:17 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 13:37:13 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:37:22 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 #include "parsing.h"
-#include "world.h"
-#include "light.h"
-#include "transform.h"
 #include "minirt_error.h"
 
 int	get_coord(char *str, t_tuple *point)

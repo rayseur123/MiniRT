@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
 #include "light.h"
 #include "intersection.h"
-#include <math.h>
 
 t_light	point_light(t_tuple	position, t_rgb inte)
 {

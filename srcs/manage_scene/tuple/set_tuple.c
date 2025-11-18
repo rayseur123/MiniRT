@@ -6,12 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:02:42 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/09 10:44:56 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:36:33 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuple.h"
-#include <math.h>
 
 t_tuple	set_vector(double x, double y, double z)
 {

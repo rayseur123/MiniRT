@@ -6,19 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 11:18:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/17 13:58:15 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:41:13 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include <stdlib.h>
-#include "matrix.h"
 #include "camera.h"
-#include "transform.h"
-#include "intersection.h"
-#include "canvas.h"
-#include "world.h"
-#include "color.h"
 #include "minirt_error.h"
 
 int	render(t_camera c, t_world w, t_canvas img)

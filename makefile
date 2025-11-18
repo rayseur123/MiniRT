@@ -45,10 +45,6 @@ CANVA_SRCS  := 	manage_canva.c \
 				render.c \
 				clean.c  \
 
-CANVA_SRCS_BONUS := manage_canva.c \
-					camera.c \
-					keyhook.c \
-
 FLOAT_SRCS  := 	manage_float.c \
 				random_double.c \
 
@@ -118,6 +114,7 @@ CANVA_DIR_BONUS := canva/
 CANVA_SRCS_BONUS := manage_canva.c \
 						camera.c 	\
 						keyhook.c    \
+						clean.c	\
 
 BONUS_DIR := bonus/
 BONUS_SRCS := bonus.c
@@ -212,6 +209,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf miniRT_bonus
 	$(MAKE) fclean -C libs/libft/
 	$(MAKE) fclean -C libs/minilibx/
 

@@ -6,12 +6,10 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 13:52:40 by dernst            #+#    #+#             */
-/*   Updated: 2025/10/31 08:53:33 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:34:36 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdint.h>
-#include "color.h"
 #include "intersection.h"
 
 t_material	material(void)

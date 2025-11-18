@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:25:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 13:37:09 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:38:41 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "parsing.h"
 #include "libft.h"
 #include "transform.h"
-#include <math.h>
 
 void	build_matrix_transform_pl(t_tuple coor, t_tuple normal, t_obj *o)
 {
