@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:48 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/18 11:06:10 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 13:33:34 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	distroy_world(t_world w)
 {
 	free(w.obj);
 	free(w.light);
+	free(w.seed);
 }
 
 void	distroy_all(t_world w, t_canvas c)

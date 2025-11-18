@@ -6,11 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 12:59:43 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 13:35:10 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
 #include <unistd.h>
 
 int	random_vector(t_tuple *vector, uint32_t *seed)
@@ -33,6 +36,7 @@ t_rgb	indirect_light_maker(t_comp *h, t_world w,
 	int		i;
 	t_ray	new_ray;
 	t_rgb	indirect_color;
+	t_rgb	sample;
 
 	i = 0;
 	new_ray.origin = tuple_addition(h->point,
@@ -40,13 +44,12 @@ t_rgb	indirect_light_maker(t_comp *h, t_world w,
 	indirect_color = set_rgb(0, 0, 0);
 	while (i < NB_RAY)
 	{
-		random_vector(&new_ray.direction, &w.seed);
+		random_vector(&new_ray.direction, w.seed);
 		if (dot_product(new_ray.direction, h->normalv) < 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
-		indirect_color = rgb_addition(indirect_color,
-				color_at(w, new_ray, nb_bounce - 1, *linter));
-		indirect_color = rgb_multiplication(indirect_color,
-				h->material.color);
+		sample = color_at(w, new_ray, nb_bounce - 1, *linter);
+		sample = rgb_multiplication(sample, h->material.color);
+		indirect_color = rgb_addition(indirect_color, sample);
 		i++;
 	}
 	indirect_color = rgb_multiplication_scalar(indirect_color, 1.0 / NB_RAY);
