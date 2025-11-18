@@ -187,7 +187,7 @@ $(NAME) : $(LIBS_TARGET) $(OBJS)
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS) : $(LIBS_TARGET) $(OBJS_BONUS)
-	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
+	$(CC) $^ $(LDFLAGS) -o $(NAME) $(SYS_LIBS)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)

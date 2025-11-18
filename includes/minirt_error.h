@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 13:36:37 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:47:26 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define FD_ERROR "Error with fd"
 # define OPEN_ERROR "Error with open"
 # define CLOSE_ERROR "Error with close"
+# define READ_ERROR "Error with read"
 
 // parsing error
 # define FILE_NAME_ERROR "Bad file name"

@@ -6,20 +6,21 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 11:10:02 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 14:47:47 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "shadow.h"
 #include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include "shadow.h"
 #include "minirt_error.h"
-#include "unistd.h"
+#include "world.h"
 
 uint8_t	world(t_world *w)
 {
 	int			fd;
-	uint32_t	seed;
 
 	w->nb_light = 0;
 	w->nb_obj = 0;
@@ -27,13 +28,14 @@ uint8_t	world(t_world *w)
 	w->obj = 0;
 	fd = open("/dev/urandom", O_RDONLY);
 	if (fd == -1)
+		return (print_error(FD_ERROR));
+	if (read(fd, &w->seed, 4) == -1)
 	{
-		print_error(FD_ERROR);
-		return (1);
+		close(fd);
+		return (print_error(READ_ERROR));
 	}
-	if (read(fd, &seed, 4) == -1)
-		return (1);
-	close(fd);
+	if (close(fd) == -1)
+		return (print_error(CLOSE_ERROR));
 	return (0);
 }
 

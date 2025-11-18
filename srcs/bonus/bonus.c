@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 11:18:50 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 10:41:13 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 14:46:45 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "camera.h"
 #include "minirt_error.h"
 
-int	render(t_camera c, t_world w, t_canvas img)
+int	render(t_camera c, t_world *w, t_canvas img)
 {
 	int			x;
 	int			y;
@@ -22,12 +22,9 @@ int	render(t_camera c, t_world w, t_canvas img)
 	t_linter	linter;
 
 	x = 0;
-	linter.inters = malloc((2 * w.nb_obj) * sizeof(t_inter));
+	linter.inters = malloc((2 * w->nb_obj) * sizeof(t_inter));
 	if (!linter.inters)
-	{
-		print_error(MALLOC_ERROR);
-		return (1);
-	}
+		return (print_error(MALLOC_ERROR));
 	while (x < c.hsize)
 	{
 		y = 0;
