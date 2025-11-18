@@ -6,31 +6,19 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/17 12:37:16 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 11:05:52 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include "color.h"
 #include "world.h"
-#include "libft.h"
-#include <stdlib.h>
-#include <time.h>
 #include <unistd.h>
 
-int	random_vector(t_tuple *vector, int fd)
+int	random_vector(t_tuple *vector, uint32_t seed)
 {
-	static uint32_t	seed;
 	double			x;
 	double			y;
 	double			z;
 
-	if (!seed)
-	{
-		if (read(fd, &seed, 4) == -1)
-			return (1);
-		close(fd);
-	}
 	x = random_xor(&seed);
 	y = random_xor(&seed);
 	z = random_xor(&seed);
@@ -52,7 +40,7 @@ t_rgb	indirect_light_maker(t_comp *h, t_world w,
 	indirect_color = set_rgb(0, 0, 0);
 	while (i < NB_RAY)
 	{
-		random_vector(&new_ray.direction, w.fd);
+		random_vector(&new_ray.direction, w.seed);
 		if (dot_product(new_ray.direction, h->normalv) < 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
 		indirect_color = rgb_addition(indirect_color,

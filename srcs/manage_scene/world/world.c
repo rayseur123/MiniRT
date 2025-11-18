@@ -6,30 +6,34 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 13:37:35 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/17 15:00:19 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 11:07:08 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world.h"
-#include "stdlib.h"
 #include <stdio.h>
 #include "shadow.h"
-#include <sys/stat.h>
 #include <fcntl.h>
 #include "minirt_error.h"
+#include "unistd.h"
 
 uint8_t	world(t_world *w)
 {
+	int fd;
+	uint32_t	seed;
+
 	w->nb_light = 0;
 	w->nb_obj = 0;
 	w->light = NULL;
 	w->obj = 0;
-	w->fd = open("/dev/urandom", O_RDONLY);
-	if (w->fd == -1)
+	fd = open("/dev/urandom", O_RDONLY);
+	if (fd == -1)
 	{
 		print_error(FD_ERROR);
 		return (1);
 	}
+	if (read(fd, &seed, 4) == -1)
+		return (1);
+	close(fd);
 	return (0);
 }
 

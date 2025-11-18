@@ -6,12 +6,11 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:06:00 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/13 12:31:30 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:36:26 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuple.h"
-#include <math.h>
 
 t_tuple	tuple_addition(t_tuple tuple1, t_tuple tuple2)
 {

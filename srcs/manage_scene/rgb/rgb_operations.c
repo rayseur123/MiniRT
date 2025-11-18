@@ -22,12 +22,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "color.h"
-#include "world.h"
-#include "mlx.h"
-#include "mlx_int.h"
-#include <X11/X.h>
 
 t_rgb	set_rgb(const double r, const double g, const double b)
 {

@@ -6,12 +6,10 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 13:49:54 by njooris           #+#    #+#             */
-/*   Updated: 2025/10/29 16:46:44 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:35:20 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "tuple.h"
-#include "matrix.h"
 #include "intersection.h"
 
 t_tuple	shape_normal_at(t_obj o, t_tuple op)

@@ -6,14 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 09:37:43 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 09:33:26 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:35:05 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 #include "stdlib.h"
-#include <math.h>
-#include "shape.h"
 
 t_tuple	position(t_ray ray, double range)
 {

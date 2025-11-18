@@ -13,7 +13,6 @@
 #include "parsing.h"
 #include "libft.h"
 #include "transform.h"
-#include <math.h>
 #include "minirt_error.h"
 
 void	build_matrix_transform_cy(double r, t_tuple coor, t_tuple n, t_obj *o)

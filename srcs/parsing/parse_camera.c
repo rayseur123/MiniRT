@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "camera.h"
-#include "tuple.h"
 #include "libft.h"
-#include "transform.h"
-#include "matrix.h"
 #include "parsing.h"
 #include "minirt_error.h"
 

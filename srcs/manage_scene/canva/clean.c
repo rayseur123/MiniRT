@@ -6,7 +6,7 @@
 /*   By: dernst <dernst@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 16:20:48 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/17 16:28:39 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 11:06:10 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	distroy_canvas(t_canvas c)
 
 void	distroy_world(t_world w)
 {
-	close(w.fd);
 	free(w.obj);
 	free(w.light);
 }

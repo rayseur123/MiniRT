@@ -6,14 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:36:18 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 15:18:03 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:18:43 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_error.h"
 #include "libft.h"
 #include "parsing.h"
-#include "libft.h"
 
 int	check_is_digit_str(char *str)
 {

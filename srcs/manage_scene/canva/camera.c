@@ -6,20 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/17 13:58:01 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 10:32:48 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <stdlib.h>
-#include "matrix.h"
 #include "camera.h"
 #include "transform.h"
-#include "intersection.h"
-#include "canvas.h"
-#include "world.h"
-#include "color.h"
-#include "minirt_error.h"
 
 t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
 					t_matrix4 r)

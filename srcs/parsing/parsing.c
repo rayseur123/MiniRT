@@ -6,17 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:53:06 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/17 09:11:12 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 10:10:08 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt_error.h"
-#include <stdio.h>
 #include "libft.h"
 #include "parsing.h"
-#include "world.h"
-#include "light.h"
-#include "transform.h"
 
 int	alloc_world(t_world *world)
 {

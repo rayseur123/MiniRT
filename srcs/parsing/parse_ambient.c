@@ -10,13 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "world.h"
 #include "libft.h"
 #include "parsing.h"
-#include "camera.h"
-#include "transform.h"
-#include <stdio.h>
-#include <math.h>
 #include "minirt_error.h"
 
 int	build_a_parse(t_world *world, char **data)

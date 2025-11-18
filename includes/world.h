@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/17 14:15:58 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/18 11:02:56 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_world
 	t_obj		*obj;
 	t_light		*light;
 	t_rgb		ambient;
-	int			fd;
+	uint32_t	seed;
 }	t_world;
 
 uint8_t			world(t_world *world);
