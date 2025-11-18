@@ -6,22 +6,22 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:14:09 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 12:25:40 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/18 12:59:43 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 #include <unistd.h>
 
-int	random_vector(t_tuple *vector, uint32_t seed)
+int	random_vector(t_tuple *vector, uint32_t *seed)
 {
 	double			x;
 	double			y;
 	double			z;
 
-	x = random_xor(&seed);
-	y = random_xor(&seed);
-	z = random_xor(&seed);
+	x = random_xor(seed);
+	y = random_xor(seed);
+	z = random_xor(seed);
 	*vector = set_vector(x, y, z);
 	*vector = tuple_normalization(*vector);
 	return (0);
@@ -40,7 +40,7 @@ t_rgb	indirect_light_maker(t_comp *h, t_world w,
 	indirect_color = set_rgb(0, 0, 0);
 	while (i < NB_RAY)
 	{
-		random_vector(&new_ray.direction, w.seed);
+		random_vector(&new_ray.direction, &w.seed);
 		if (dot_product(new_ray.direction, h->normalv) < 0)
 			new_ray.direction = tuple_negation(new_ray.direction);
 		indirect_color = rgb_addition(indirect_color,
