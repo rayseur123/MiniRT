@@ -8,10 +8,6 @@ gitignore
 
 *.gch
 
-*.rt
-
-*.rt
-
 mlx-test
 
 miniRT
