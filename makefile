@@ -158,7 +158,8 @@ OBJS := $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_BONUS := $(addprefix $(OBJS_DIR_BONUS), $(SRCS_BONUS:.c=.o))
 
 DEPS := $(OBJS:.o=.d)
-DEPS := $(OBJS_BONUS:.o=.d)
+DEPS_BONUS := $(OBJS_BONUS:.o=.d)
+
 # ---------------------------------------------------------#
 #                        FLAGS                             #
 # ---------------------------------------------------------#
@@ -189,7 +190,7 @@ bonus: $(NAME_BONUS)
 
 $(NAME_BONUS) : $(LIBS_TARGET) $(OBJS_BONUS)
 	rm -rf $(OBJS_DIR)
-	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
+	$(CC) $^ $(LDFLAGS) -o $(NAME) $(SYS_LIBS)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
@@ -238,4 +239,6 @@ print-%:
 	@echo $($(patsubst print-%,%,$@))
 
 .PHONY : clean fclean all re print-% debug force bonus
+
 -include $(DEPS)
+-include $(DEPS_BONUS)
