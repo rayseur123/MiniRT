@@ -120,16 +120,14 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $^
 
-$(UTILS)/%.o: %.c | $(UTILS)
+$(UTILS)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
-
-$(UTILS)/%:
-	@mkdir -p $(@D)
 
 -include $(DEPS)
 
 clean:
-	rm -f $(OBJS) $(DEPS)
+	rm -rf $(UTILS)
 
 fclean: clean
 	rm -f $(NAME)
