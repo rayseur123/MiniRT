@@ -182,11 +182,13 @@ CC = cc
 all : $(NAME)
 
 $(NAME) : $(LIBS_TARGET) $(OBJS)
+	rm -rf $(OBJS_DIR_BONUS)
 	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
 
 bonus: $(NAME_BONUS)
 
 $(NAME_BONUS) : $(LIBS_TARGET) $(OBJS_BONUS)
+	rm -rf $(OBJS_DIR)
 	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
