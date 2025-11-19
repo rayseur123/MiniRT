@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 15:45:29 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/19 11:13:01 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ typedef struct s_ray
 
 typedef struct s_comp
 {
-	t_tuple point;
-	t_tuple eyev;
-	t_tuple normalv;
-	t_tuple over_point;
-	t_material material;
-	bool	inside;
+	t_tuple		point;
+	t_tuple		eyev;
+	t_tuple		normalv;
+	t_tuple		over_point;
+	t_material	material;
+	bool		inside;
 
-} t_comp;
+}	t_comp;
 
 typedef struct s_range
 {
