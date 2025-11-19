@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atof.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 14:41:58 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/02 14:42:23 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 11:17:26 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ float	parse_fractional_part(char *str, int *i)
 
 float	ft_atof(char *str)
 {
-	float	result;
+	float		result;
 	int			sign;
 	int			i;
 

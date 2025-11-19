@@ -20,6 +20,8 @@ miniRT_bonus
 
 *.d
 
+*.md
+
 # Object files
 *.o
 *.d
