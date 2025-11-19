@@ -6,17 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 12:09:03 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 14:42:11 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:13:52 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAMERA_H
 # define CAMERA_H
 
-# include <stdint.h>
-# include "tuple.h"
-# include "intersection.h"
-# include "matrix.h"
 # include "canvas.h"
 # include "world.h"
 

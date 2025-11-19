@@ -14,7 +14,6 @@
 # define PARSING_H
 # define EXTENSION ".rt"
 
-# include "world.h"
 # include "camera.h"
 
 int		open_rt_file(char *str);
