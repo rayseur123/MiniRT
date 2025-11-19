@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_del.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 11:36:19 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/02 13:20:03 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 11:27:32 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	free_vector(t_vector vector)
 
 void	delete_vector(t_vector vector)
 {
-	t_vcthead *head;
-	size_t	i;
+	t_vcthead	*head;
+	size_t		i;
 
 	head = get_vector_head(vector);
 	i = 0;
