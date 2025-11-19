@@ -152,13 +152,13 @@ SYS_LIBS	=	m X11 Xext
 SYS_LIBS	:=	$(addprefix -l, $(SYS_LIBS))
 
 OBJS_DIR := .build/objs/
+OBJS_DIR_BONUS := .build/objs_bonus/
 
 OBJS := $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
-
-OBJS_BONUS := $(addprefix $(OBJS_DIR), $(SRCS_BONUS:.c=.o))
+OBJS_BONUS := $(addprefix $(OBJS_DIR_BONUS), $(SRCS_BONUS:.c=.o))
 
 DEPS := $(OBJS:.o=.d)
-
+DEPS := $(OBJS_BONUS:.o=.d)
 # ---------------------------------------------------------#
 #                        FLAGS                             #
 # ---------------------------------------------------------#
@@ -167,7 +167,7 @@ DEPS := $(OBJS:.o=.d)
 CPPFLAGS += -MMD -MP $(addprefix -I, includes/) \
 					 $(addprefix -I, $(LIBS_INCLUDES))
 
-CFLAGS +=  -g3 -Wall -Wextra -Werror
+CFLAGS +=  -g3 -Ofast -Wall -Wextra -Werror
 
 LDFLAGS += 	$(addprefix -L,$(dir $(LIBS_TARGET))) \
 			$(addprefix -l,$(LIBS)) \
@@ -184,12 +184,16 @@ all : $(NAME)
 $(NAME) : $(LIBS_TARGET) $(OBJS)
 	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
 
-bonus: $(NAME_BONUS)
+bonus: fclean $(NAME_BONUS)
 
 $(NAME_BONUS) : $(LIBS_TARGET) $(OBJS_BONUS)
 	$(CC) $^ $(LDFLAGS) -o $(NAME) $(SYS_LIBS)
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
+
+$(OBJS_DIR_BONUS)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
