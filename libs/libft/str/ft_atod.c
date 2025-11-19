@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 14:35:29 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/02 14:40:22 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 11:17:05 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ double	parse_fractional_part(char *str, int *i)
 
 double	ft_atod(char *str)
 {
-	double	result;
+	double		result;
 	int			sign;
 	int			i;
 

@@ -8,7 +8,6 @@ gitignore
 
 *.gch
 
-
 mlx-test
 
 miniRT
@@ -20,6 +19,8 @@ miniRT_bonus
 .build
 
 *.d
+
+*.md
 
 # Object files
 *.o

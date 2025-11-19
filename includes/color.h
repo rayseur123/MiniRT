@@ -6,14 +6,14 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:27:15 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 13:05:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 11:10:44 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 
-#include <stdint.h>
+# include <stdint.h>
 
 typedef struct s_rgb
 {
