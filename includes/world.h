@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:29:08 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/19 11:10:29 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:17:02 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # define NB_BOUNCE 2
 # define NB_RAY 126
 
-# include <stdint.h>
 # include "light.h"
 # include "intersection.h"
 

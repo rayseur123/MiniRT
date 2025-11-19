@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:28:17 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/19 11:13:01 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:15:07 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 # define INTERSECTION_H
 
 # include <stdbool.h>
-# include "tuple.h"
-# include "matrix.h"
 # include "shape.h"
-# include "color.h"
 
 typedef struct s_ray
 {

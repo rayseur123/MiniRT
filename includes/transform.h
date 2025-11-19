@@ -6,15 +6,12 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:41:28 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 13:18:34 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:16:36 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TRANSFORM_H
 # define TRANSFORM_H
-
-# include "matrix.h"
-# include "intersection.h"
 
 t_matrix4_ptr	translation(double x, double y, double z, t_matrix4 m1);
 t_matrix4_ptr	scaling(double x, double y, double z, t_matrix4 m);

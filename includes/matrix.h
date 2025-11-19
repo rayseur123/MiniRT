@@ -6,14 +6,13 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 08:33:24 by dernst            #+#    #+#             */
-/*   Updated: 2025/11/13 13:25:06 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 16:15:43 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATRIX_H
 # define MATRIX_H
 
-# include <stdint.h>
 # include "tuple.h"
 
 typedef double	t_matrix4[4][4];
