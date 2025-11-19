@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: njooris <njooris@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 13:08:24 by njooris           #+#    #+#             */
-/*   Updated: 2025/09/02 11:57:22 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/19 11:15:53 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ typedef	void	*t_vector;
 
 typedef struct s_vcthead
 {
-	size_t	element_size; // size of an element
-	size_t	size; // size used
-	size_t	capacity; // size max
+	size_t	element_size;
+	size_t	size;
+	size_t	capacity;
 	void	(*del)(void *);
 	uint8_t	data[];
 }	t_vcthead;
