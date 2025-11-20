@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 10:49:56 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/13 13:17:04 by njooris          ###   ########.fr       */
+/*   Updated: 2025/11/20 14:25:12 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int		check_is_digit_str(char *str);
 int		make_pl(t_obj *o, char *str);
 int		make_cy(t_obj *o, char *str);
 int		make_ambient(char *str, t_world *world);
+int		build_light(char *line_obj, t_world *world, int *count_light);
 
 #endif

@@ -38,6 +38,7 @@ PARSING_SRC := 	file_manage.c \
                	parse_ambient.c \
 			   	get_parsing.c \
 			   	error_manage.c\
+				mandat_parse.c\
 
 CANVA_SRCS  := 	manage_canva.c \
 				camera.c \
@@ -110,17 +111,29 @@ SRCS =	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
 #                BUILD SOURCE (BONUS)                      #
 # ---------------------------------------------------------#
 
-CANVA_DIR_BONUS := canva/
 CANVA_SRCS_BONUS := manage_canva.c \
 						camera.c 	\
 						keyhook.c    \
 						clean.c	\
 
-BONUS_DIR := bonus/
-BONUS_SRCS := bonus.c
+PARSING_SRC_BONUS := 	file_manage.c \
+						parsing.c \
+						parse_objs.c \
+						parse_sphere.c \
+            		   	parse_camera.c \
+						parse_light.c \
+						parse_plane.c \
+						parse_cylindre.c \
+            		   	parse_ambient.c \
+					   	get_parsing.c \
+					   	error_manage.c\
 
-SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
-				$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR_BONUS), $(CANVA_SRCS_BONUS))) \
+BONUS_DIR := bonus/
+BONUS_SRCS := bonus.c\
+				parsing_bonus.c\
+
+SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC_BONUS)) \
+				$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS_BONUS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))) \
