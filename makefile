@@ -90,7 +90,7 @@ OBJECTS_SRCS:= 	object.c \
 #                BUILD SOURCE (MANDATORY)                  #
 # ---------------------------------------------------------#
 
-SRCS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
+SRCS =	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
 		$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS))) \
 		$(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))) \
 		$(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))) \
@@ -136,7 +136,15 @@ SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
 				minirt.c \
 
 # ---------------------------------------------------------#
-#                       LIBRARIES                          #
+#                          MOD                             #
+# ---------------------------------------------------------#
+
+ifeq ($(MOD), bonus)
+	SRCS=$(SRCS_BONUS)
+endif
+
+# ---------------------------------------------------------#
+#                BUILD SOURCE (MANDATORY)                  #
 # ---------------------------------------------------------#
 
 LIBS_TARGET :=	libs/libft/libft.a 	\
@@ -158,7 +166,6 @@ OBJS := $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_BONUS := $(addprefix $(OBJS_DIR_BONUS), $(SRCS_BONUS:.c=.o))
 
 DEPS := $(OBJS:.o=.d)
-DEPS_BONUS := $(OBJS_BONUS:.o=.d)
 
 # ---------------------------------------------------------#
 #                        FLAGS                             #
@@ -180,27 +187,19 @@ CC = cc
 #                       RULES                              #
 # ---------------------------------------------------------#
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : $(LIBS_TARGET) $(OBJS)
-	rm -rf $(OBJS_DIR_BONUS)
+$(NAME): $(LIBS_TARGET) $(OBJS)
 	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
 
-bonus: $(NAME_BONUS)
-
-$(NAME_BONUS) : $(LIBS_TARGET) $(OBJS_BONUS)
-	rm -rf $(OBJS_DIR)
-	$(CC) $^ $(LDFLAGS) -o $(NAME) $(SYS_LIBS)
+bonus:
+	@$(MAKE) MOD=bonus
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
-$(OBJS_DIR_BONUS)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
-
-$(LIBS_TARGET) : force
+$(LIBS_TARGET): force
 	$(MAKE) -C $(dir $@)
 
 force:
@@ -241,4 +240,3 @@ print-%:
 .PHONY : clean fclean all re print-% debug force bonus
 
 -include $(DEPS)
--include $(DEPS_BONUS)
