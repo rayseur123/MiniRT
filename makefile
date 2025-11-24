@@ -38,6 +38,7 @@ PARSING_SRC := 	file_manage.c \
                	parse_ambient.c \
 			   	get_parsing.c \
 			   	error_manage.c\
+				mandat_parse.c\
 
 CANVA_SRCS  := 	manage_canva.c \
 				camera.c \
@@ -90,7 +91,7 @@ OBJECTS_SRCS:= 	object.c \
 #                BUILD SOURCE (MANDATORY)                  #
 # ---------------------------------------------------------#
 
-SRCS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
+SRCS =	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
 		$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS))) \
 		$(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))) \
 		$(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))) \
@@ -110,17 +111,29 @@ SRCS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
 #                BUILD SOURCE (BONUS)                      #
 # ---------------------------------------------------------#
 
-CANVA_DIR_BONUS := canva/
 CANVA_SRCS_BONUS := manage_canva.c \
 						camera.c 	\
 						keyhook.c    \
 						clean.c	\
 
-BONUS_DIR := bonus/
-BONUS_SRCS := bonus.c
+PARSING_SRC_BONUS := 	file_manage.c \
+						parsing.c \
+						parse_objs.c \
+						parse_sphere.c \
+            		   	parse_camera.c \
+						parse_light.c \
+						parse_plane.c \
+						parse_cylindre.c \
+            		   	parse_ambient.c \
+					   	get_parsing.c \
+					   	error_manage.c\
 
-SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
-				$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR_BONUS), $(CANVA_SRCS_BONUS))) \
+BONUS_DIR := bonus/
+BONUS_SRCS := bonus.c\
+				parsing_bonus.c\
+
+SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC_BONUS)) \
+				$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS_BONUS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))) \
@@ -136,7 +149,15 @@ SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
 				minirt.c \
 
 # ---------------------------------------------------------#
-#                       LIBRARIES                          #
+#                          MOD                             #
+# ---------------------------------------------------------#
+
+ifeq ($(MOD), bonus)
+	SRCS=$(SRCS_BONUS)
+endif
+
+# ---------------------------------------------------------#
+#                BUILD SOURCE (MANDATORY)                  #
 # ---------------------------------------------------------#
 
 LIBS_TARGET :=	libs/libft/libft.a 	\
@@ -158,7 +179,6 @@ OBJS := $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 OBJS_BONUS := $(addprefix $(OBJS_DIR_BONUS), $(SRCS_BONUS:.c=.o))
 
 DEPS := $(OBJS:.o=.d)
-DEPS_BONUS := $(OBJS_BONUS:.o=.d)
 
 # ---------------------------------------------------------#
 #                        FLAGS                             #
@@ -180,27 +200,19 @@ CC = cc
 #                       RULES                              #
 # ---------------------------------------------------------#
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : $(LIBS_TARGET) $(OBJS)
-	rm -rf $(OBJS_DIR_BONUS)
+$(NAME): $(LIBS_TARGET) $(OBJS)
 	$(CC) $^ $(LDFLAGS) -o $@ $(SYS_LIBS)
 
-bonus: $(NAME_BONUS)
-
-$(NAME_BONUS) : $(LIBS_TARGET) $(OBJS_BONUS)
-	rm -rf $(OBJS_DIR)
-	$(CC) $^ $(LDFLAGS) -o $(NAME) $(SYS_LIBS)
+bonus:
+	@$(MAKE) MOD=bonus
 
 $(OBJS_DIR)%.o: $(SRC_DIR)%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
 
-$(OBJS_DIR_BONUS)%.o: $(SRC_DIR)%.c
-	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
-
-$(LIBS_TARGET) : force
+$(LIBS_TARGET): force
 	$(MAKE) -C $(dir $@)
 
 force:
@@ -241,4 +253,3 @@ print-%:
 .PHONY : clean fclean all re print-% debug force bonus
 
 -include $(DEPS)
--include $(DEPS_BONUS)
