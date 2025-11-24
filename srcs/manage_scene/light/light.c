@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 12:06:49 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/24 17:29:32 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/24 17:35:25 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ t_rgb	lighting(t_lighting l,
 	if (light_dot_normal < 0 || is_shadowed)
 		return (set_rgb(0, 0, 0));
 	return (asb_phong(ef_color, l, light_dot_normal,
-			set_rgb(0,0,0)));
+			set_rgb(0, 0, 0)));
 }
