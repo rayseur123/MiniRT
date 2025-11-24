@@ -111,7 +111,7 @@ SRCS =	$(addprefix $(PARSING_DIR), $(PARSING_SRC)) \
 #                BUILD SOURCE (BONUS)                      #
 # ---------------------------------------------------------#
 
-CANVA_SRCS_BONUS := manage_canva.c \
+CANVA_SRC_BONUS := manage_canva.c \
 						camera.c 	\
 						keyhook.c    \
 						clean.c	\
@@ -128,12 +128,16 @@ PARSING_SRC_BONUS := 	file_manage.c \
 					   	get_parsing.c \
 					   	error_manage.c\
 
+LIGHT_SRC_BONUS := cal_light.c \
+
 BONUS_DIR := bonus/
 BONUS_SRCS := bonus.c\
 				parsing_bonus.c\
+				light_bonus.c
 
 SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC_BONUS)) \
-				$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRCS_BONUS))) \
+				$(addprefix $(SCENE_DIR), $(addprefix $(CANVA_DIR), $(CANVA_SRC_BONUS))) \
+				$(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRC_BONUS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(FLOAT_DIR), $(FLOAT_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(TUPLE_DIR), $(TUPLE_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(MATRICE_DIR), $(MATRICE_SRCS))) \
@@ -141,10 +145,8 @@ SRCS_BONUS +=	$(addprefix $(PARSING_DIR), $(PARSING_SRC_BONUS)) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(TRANS_DIR), $(TRANS_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(RAY_DIR), $(RAY_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(WORLD_DIR), $(WORLD_SRCS))) \
-				$(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(SHADOW_DIR), $(SHADOW_SRCS))) \
 				$(addprefix $(SCENE_DIR), $(addprefix $(OBJECTS_DIR), $(OBJECTS_SRCS))) \
-				$(addprefix $(SCENE_DIR), $(addprefix $(LIGHT_DIR), $(LIGHT_SRCS))) \
 				$(addprefix $(BONUS_DIR), $(BONUS_SRCS)) \
 				minirt.c \
 
