@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:38:53 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 10:32:48 by dernst           ###   ########.fr       */
+/*   Updated: 2025/11/25 11:38:07 by njooris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "transform.h"
 
 t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
-					t_matrix4 r)
+		t_matrix4 r)
 {
 	t_matrix4	m;
 	t_tuple		forward;
@@ -23,7 +23,11 @@ t_matrix4_ptr	view_transform(t_tuple from, t_tuple to, t_tuple up,
 	t_matrix4	trans;
 
 	forward = tuple_normalization(tuple_subtraction(to, from));
-	left = cross_product(forward, tuple_normalization(up));
+	up = tuple_normalization(up);
+	if (dot_product(forward, up) > 1.0 - EPSILON
+		|| dot_product(forward, up) < -1.0 + EPSILON)
+		up = set_vector(0, 0, 1);
+	left = cross_product(forward, up);
 	true_up = cross_product(left, forward);
 	set_identity_matrix(m);
 	m[0][0] = left.x;
