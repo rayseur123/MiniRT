@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:42:16 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 14:41:26 by njooris          ###   ########.fr       */
+/*   Updated: 2025/12/01 09:11:55 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	minirt_init(t_world *w, int ac, char **av, t_camera *cam)
 	if (world(w))
 		return (1);
 	if (parsing(av[1], w, cam))
+	{
+		distroy_world(*w);
 		return (1);
+	}
 	return (0);
 }
 
