@@ -6,7 +6,7 @@
 /*   By: njooris <njooris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 16:39:17 by njooris           #+#    #+#             */
-/*   Updated: 2025/11/18 10:37:22 by dernst           ###   ########.fr       */
+/*   Updated: 2025/12/01 09:23:07 by dernst           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ int	get_coord(char *str, t_tuple *point)
 	if (!coord)
 		return (print_error(MALLOC_ERROR));
 	if (size_of_split(coord) != 3)
+	{
+		ft_free_split(coord);
 		return (print_error(COORD_NUMBER_ERROR));
+	}
 	if (check_is_digit_str(coord[0]) || check_is_digit_str(coord[1])
 		|| check_is_digit_str(coord[2]))
 	{
@@ -42,7 +45,10 @@ int	get_vector_coord(char *str, t_tuple *vector)
 	if (!coord)
 		return (print_error(MALLOC_ERROR));
 	if (size_of_split(coord) != 3)
+	{
+		ft_free_split(coord);
 		return (print_error(COORD_NUMBER_ERROR));
+	}
 	if (check_is_digit_str(coord[0]) || check_is_digit_str(coord[1])
 		|| check_is_digit_str(coord[2]))
 	{
